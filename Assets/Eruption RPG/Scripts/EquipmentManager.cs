@@ -12,15 +12,16 @@ public class EquipmentManager : MonoBehaviour
     }
 
     public PlayerStatus playerStatus;
+    public StatsUpdater statsUpdater;
 
-    private ItemData weaponSlot; // 무기 슬롯
-    private ItemData armorSlot; // 방어구 슬롯
-    private ItemData[] accessorySlots; // 악세서리 슬롯
+    public Item weaponSlot; // 무기 슬롯
+    public Item armorSlot; // 방어구 슬롯
+    public Item[] accessorySlots; // 악세서리 슬롯
 
-    private int maxAccessorySlots = 10; // 악세서리 슬롯 수
+    public int maxAccessorySlots = 10; // 악세서리 슬롯 수
 
-    [SerializeField] private ItemData defaultWeapon; // 기본 무기
-    [SerializeField] private ItemData defaultArmor; // 기본 방어구
+    [SerializeField] private Item defaultWeapon; // 기본 무기
+    [SerializeField] private Item defaultArmor; // 기본 방어구
 
     void Start()
     {
@@ -31,41 +32,52 @@ public class EquipmentManager : MonoBehaviour
     {
         weaponSlot = defaultWeapon;
         armorSlot = defaultArmor;
-        accessorySlots = new ItemData[maxAccessorySlots]; // 악세서리 슬롯 초기화
+        accessorySlots = new Item[maxAccessorySlots]; // 악세서리 슬롯 초기화
 
-        Debug.Log($"기본 무기 장착: {weaponSlot.itemName}");
-        Debug.Log($"기본 방어구 장착: {armorSlot.itemName}");
+        statsUpdater.UpdateStats();
+
+        Debug.Log($"기본 무기 장착: {weaponSlot.gameObject.name}");
+        Debug.Log($"기본 방어구 장착: {armorSlot.gameObject.name}");
     }
 
-    public bool EquipItem(ItemData newItem, int slotIndex = -1)
+    public bool EquipItem(Item newItem, int slotIndex = -1)
     {
         switch (newItem.itemType)
         {
-            case ItemType.Weapon:
-                if (weaponSlot != null)
+            case "Weapon":
+                if (weaponSlot != null) // UI 만들면 지우기
                 {
-                    Debug.Log($"[{weaponSlot.itemName}] -> [{newItem.itemName}] 교체");
+                    Debug.Log($"[{weaponSlot.gameObject.name}] -> [{newItem.gameObject.name}] 교체");
                 }
                 weaponSlot = newItem;
+
+                statsUpdater.UpdateStats();
+
                 return true;
 
-            case ItemType.Armor:
+            case "Armor":
                 if (armorSlot != null)
                 {
-                    Debug.Log($"[{armorSlot.itemName}] -> [{newItem.itemName}] 교체");
+                    Debug.Log($"[{armorSlot.gameObject.name}] -> [{newItem.gameObject.name}] 교체");
                 }
                 armorSlot = newItem;
+
+                statsUpdater.UpdateStats();
+
                 return true;
 
-            case ItemType.Accessory:
+            case "Accessory":
                 if (slotIndex >= 0 && slotIndex < maxAccessorySlots)
                 {
                     if (accessorySlots[slotIndex] != null)
                     {
-                        Debug.Log($"슬롯 {slotIndex}의 [{accessorySlots[slotIndex].itemName}] -> [{newItem.itemName}] 교체");
+                        Debug.Log($"슬롯 {slotIndex}의 [{accessorySlots[slotIndex].gameObject.name}] -> [{newItem.gameObject.name}] 교체");
                     }
                     accessorySlots[slotIndex] = newItem;
-                    Debug.Log($"악세서리 장착: {newItem.itemName} (슬롯 {slotIndex})");
+
+                    statsUpdater.UpdateStats();
+
+                    Debug.Log($"악세서리 장착: {newItem.gameObject.name} (슬롯 {slotIndex})");
                     return true;
                 }
                 else
@@ -81,20 +93,21 @@ public class EquipmentManager : MonoBehaviour
     {
         if (slotIndex >= 0 && slotIndex < maxAccessorySlots && accessorySlots[slotIndex] != null)
         {
-            Debug.Log($"악세서리 장착 해제: {accessorySlots[slotIndex].itemName} (슬롯 {slotIndex})");
+            Debug.Log($"악세서리 장착 해제: {accessorySlots[slotIndex].gameObject.name} (슬롯 {slotIndex})");
             accessorySlots[slotIndex] = null;
         }
+        statsUpdater.UpdateStats();
     }
 
-    // 현재 장착중인 아이템 출력
+    // 현재 장착중인 아이템 출력(UI 만들면 지우기)
     public void CurrentEquipment()
     {
-        Debug.Log($"무기: {weaponSlot?.itemName ?? "없음"}");
-        Debug.Log($"방어구: {armorSlot?.itemName ?? "없음"}");
+        Debug.Log($"무기: {weaponSlot?.gameObject.name ?? "없음"}");
+        Debug.Log($"방어구: {armorSlot?.gameObject.name ?? "없음"}");
 
         for (int i = 0; i < maxAccessorySlots; i++)
         {
-            Debug.Log($"악세서리 슬롯 {i}: {accessorySlots[i]?.itemName ?? "비어있음"}");
+            Debug.Log($"악세서리 슬롯 {i}: {accessorySlots[i]?.gameObject.name ?? "비어있음"}");
         }
     }
 }

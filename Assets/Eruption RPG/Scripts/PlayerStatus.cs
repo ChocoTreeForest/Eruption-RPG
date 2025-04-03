@@ -60,47 +60,47 @@ public class PlayerStatus : MonoBehaviour
     }
 
    // 장비, 아이템 장착 등으로 인한 각 스텟 변화
-    public void AddHealth(int bonusHealth, float multiplier)
+    public void UpdateHealth(int bonusHealth, float multiplier)
     {
         currentHealth = (int)((baseHealth + bonusHealth) * (1 + multiplier));
     }
 
-    public void AddAttack(int bonusAttack, float multiplier)
+    public void UpdateAttack(int bonusAttack, float multiplier)
     {
         currentAttack = (int)((baseAttack + bonusAttack) * (1 + multiplier));
     }
 
-    public void AddDefence(int bonusDefence, float multiplier)
+    public void UpdateDefence(int bonusDefence, float multiplier)
     {
         currentDefence = (int)((baseDefence + bonusDefence) * (1 + multiplier));
     }
 
-    public void AddLuck(int bonusLuck, float multiplier)
+    public void UpdateLuck(int bonusLuck, float multiplier)
     {
         currentLuck = (int)((baseLuck + bonusLuck) * (1 + multiplier));
     }
 
-    public void AddCriticalChance(int bonusCriticalChance)
+    public void UpdateCriticalChance(int bonusCriticalChance)
     {
         currentCriticalChance += bonusCriticalChance;
     }
 
-    public void AddCriticalMultiplier(float multiplier)
+    public void UpdateCriticalMultiplier(float multiplier)
     {
         currentCriticalMultiplier += multiplier;
     }
 
-    public void AddSpeed(float multiplier)
+    public void UpdateSpeed(float multiplier)
     {
         currentSpeed = player.speed * (1 + multiplier);
     }
 
-    public void AddMoneyMultiplier(float multiplier)
+    public void UpdateMoneyMultiplier(float multiplier)
     {
         moneyMultiplier += multiplier;
     }
 
-    public void AddEXPMultiplier(float multiplier)
+    public void UpdateEXPMultiplier(float multiplier)
     {
         expMultiplier += multiplier;
     }
