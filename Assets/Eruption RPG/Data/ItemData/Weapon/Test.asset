@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Test
   itemType: 0
   bonusHealth: 0
-  bonusAttack: 0
+  bonusAttack: 100
   bonusDefence: 0
   bonusLuck: 0
   bonusCriticalChance: 0
   healthMultiplier: 0
-  attackMultiplier: 0
+  attackMultiplier: 1.2
   defenceMultiplier: 0
   luckMultiplier: 0
   bonusCriticalMultiplier: 0

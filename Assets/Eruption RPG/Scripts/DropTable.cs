@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 //드랍템 목록을 유니티 인스펙터에서 추가할 수 있게 하기
 [System.Serializable]
@@ -24,9 +25,11 @@ public class DropTable : ScriptableObject
         {
             if (Random.Range(0f, 100f) <= item.dropChance)
             {
+                Debug.Log($"아이템 획득: {item.itemPrefab.name}");
                 return item.itemPrefab;
             }
         }
+        Debug.Log("아이템 획득 실패ㅠ");
         return null;
     }
 }

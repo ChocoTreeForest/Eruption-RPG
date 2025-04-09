@@ -9,6 +9,8 @@ public class EquipmentManager : MonoBehaviour
     void Awake()
     {
         if (Instance == null) Instance = this;
+
+        InitializeEquipment();
     }
 
     public PlayerStatus playerStatus;
@@ -22,11 +24,6 @@ public class EquipmentManager : MonoBehaviour
 
     [SerializeField] private Item defaultWeapon; // 기본 무기
     [SerializeField] private Item defaultArmor; // 기본 방어구
-
-    void Start()
-    {
-        InitializeEquipment();
-    }
 
     void InitializeEquipment()
     {
