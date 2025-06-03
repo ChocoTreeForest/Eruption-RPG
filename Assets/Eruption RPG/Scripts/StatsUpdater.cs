@@ -115,8 +115,8 @@ public class StatsUpdater : MonoBehaviour
         status.UpdateMoneyMultiplier(totalMoneyMultiplier);
         status.UpdateEXPMultiplier(totalEXPMultiplier);
 
-        Debug.Log($"증가한 스텟: 체력 {totalBonusHealth}, 체력 {totalHealthMultiplier * 100 - 100}%, 공격력 {totalBonusAttack}, 공격력 {totalAttackMultiplier * 100 - 100}%, " +
-            $"방어력 {totalBonusDefence}, 방어력 {totalDefenceMultiplier * 100 - 100}%, 럭 {totalBonusLuck}, 럭 {totalLuckMultiplier * 100 - 100}%, 크리티컬 확률 {totalBonusCriticalChance}%, " +
-            $"크리티컬 데미지 {totalCriticalMultiplier * 100 - 100}%, 스피드 {totalSpeedMultiplier * 100 - 100}%, 돈 획득량 {totalMoneyMultiplier * 100 - 100}%, 경험치 획득량 {totalEXPMultiplier * 100 - 100}%");
+        Debug.Log($"증가한 스텟: 체력 {totalBonusHealth}, 체력 {totalHealthMultiplier}%, 공격력 {totalBonusAttack}, 공격력 {totalAttackMultiplier}%, " +
+            $"방어력 {totalBonusDefence}, 방어력 {totalDefenceMultiplier}%, 럭 {totalBonusLuck}, 럭 {totalLuckMultiplier}%, 크리티컬 확률 {totalBonusCriticalChance}%, " +
+            $"크리티컬 데미지 {totalCriticalMultiplier}%, 스피드 {totalSpeedMultiplier}%, 돈 획득량 {totalMoneyMultiplier}%, 경험치 획득량 {totalEXPMultiplier}%");
     }
 }

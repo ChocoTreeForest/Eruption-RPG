@@ -71,23 +71,23 @@ public class PlayerStatus : MonoBehaviour
    // 장비, 아이템 장착 등으로 인한 각 스텟 변화
     public void UpdateHealth(int bonusHealth, float multiplier)
     {
-        currentHealth = (int)((baseHealth + bonusHealth) * (1 + multiplier));
+        currentHealth = (int)((baseHealth + bonusHealth) * (1 + multiplier / 100));
         maxHealth = currentHealth;
     }
 
     public void UpdateAttack(int bonusAttack, float multiplier)
     {
-        currentAttack = (int)((baseAttack + bonusAttack) * (1 + multiplier));
+        currentAttack = (int)((baseAttack + bonusAttack) * (1 + multiplier / 100));
     }
 
     public void UpdateDefence(int bonusDefence, float multiplier)
     {
-        currentDefence = (int)((baseDefence + bonusDefence) * (1 + multiplier));
+        currentDefence = (int)((baseDefence + bonusDefence) * (1 + multiplier / 100));
     }
 
     public void UpdateLuck(int bonusLuck, float multiplier)
     {
-        currentLuck = (int)((baseLuck + bonusLuck) * (1 + multiplier));
+        currentLuck = (int)((baseLuck + bonusLuck) * (1 + multiplier / 100));
     }
 
     public void UpdateCriticalChance(int bonusCriticalChance)
@@ -97,22 +97,22 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateCriticalMultiplier(float multiplier)
     {
-        currentCriticalMultiplier += multiplier;
+        currentCriticalMultiplier += multiplier / 100;
     }
 
     public void UpdateSpeed(float multiplier)
     {
-        currentSpeed = player.speed * (1 + multiplier);
+        currentSpeed = player.speed * (1 + multiplier / 100);
     }
 
     public void UpdateMoneyMultiplier(float multiplier)
     {
-        moneyMultiplier += multiplier;
+        moneyMultiplier += multiplier / 100;
     }
 
     public void UpdateEXPMultiplier(float multiplier)
     {
-        expMultiplier += multiplier;
+        expMultiplier += multiplier / 100;
     }
 
     // 돈 획득과 사용, 경험치 획득
@@ -130,6 +130,11 @@ public class PlayerStatus : MonoBehaviour
     {
         // 나중에 레벨 만들면 경험치 획득 로직 만들기
         // currentEXP += (int)(dropEXP * expMultiplier); 이런식으로
+    }
+
+    public void AddBP(int dropBP)
+    {
+        battlePoint += dropBP;
     }
 
     void Heal()

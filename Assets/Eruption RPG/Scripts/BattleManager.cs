@@ -53,7 +53,7 @@ public class BattleManager : MonoBehaviour
             player.AddEXP(monster.GetDropEXP());
             monster.TryDropItem();
 
-            player.battlePoint -= 1;
+            player.AddBP(monster.GetDropBP());
         }
         else
         {

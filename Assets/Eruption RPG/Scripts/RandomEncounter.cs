@@ -5,6 +5,7 @@ using UnityEngine;
 public class RandomEncounter : MonoBehaviour
 {
     public PlayerController playerController;
+    public BattleManager battleManager;
 
     private static RandomEncounter instance;
 
@@ -48,7 +49,7 @@ public class RandomEncounter : MonoBehaviour
         if (playerController.inputVec.magnitude > 0f)
         {
             IncreaseEncountChance();
-            TryEncount();
+            TryEncounter();
         }
     }
 
@@ -84,7 +85,7 @@ public class RandomEncounter : MonoBehaviour
         //Debug.Log($"현재 전투 확률: {encountChance * 100}% (목표: {randomValue * 100}%)");
     }
 
-    void TryEncount()
+    void TryEncounter()
     {
         if (encountChance >= randomValue)
         {
@@ -92,17 +93,24 @@ public class RandomEncounter : MonoBehaviour
             SetRandomValue(); //랜덤 값 설정
             if (currentMonsters.Count == 0) return;
 
-            StartBattle();
+            MonsterEncounter();
         }
     }
     
-    void StartBattle()
+    void MonsterEncounter()
     {
         int randomIndex = Random.Range(0, currentMonsters.Count);
         GameObject selectedMonster = currentMonsters[randomIndex];
 
         Debug.Log($"Encounter! {selectedMonster.name} appeared in {currentZone}!");
         //전투 UI 열리는 코드 쓰기 (전투 UI 스크립트 따로 만들기)
-
+        //화면 터치 시 전투 시작하게 하기
+        Monster monster = selectedMonster.GetComponent<Monster>(); //selectedMonster에서 Monster 컴포넌트 가져오기
+        if(monster == null)
+        {
+            Debug.LogError("선택된 몬스터 오브젝트에 Monster 컴포넌트 없음");
+            return;
+        }
+        battleManager.StartBattle(monster, false /* isBoss */);
     }
 }

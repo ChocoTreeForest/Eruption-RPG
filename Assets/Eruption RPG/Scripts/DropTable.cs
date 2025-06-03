@@ -16,6 +16,7 @@ public class DropTable : ScriptableObject
 {
     public int money;
     public int exp;
+    public int battlePoint;
     public DropItem[] dropItems;
 
     //랜덤 드랍 아이템은 한 번에 한 개씩만 드랍

@@ -14,6 +14,8 @@ public class Monster : MonoBehaviour
     private int money;
     private int exp;
 
+    private int battlePoint;
+
     void Start()
     {
         if (monsterStatData != null)
@@ -51,6 +53,11 @@ public class Monster : MonoBehaviour
         exp = dropTable.exp;
     }
 
+    void DropBP()
+    {
+        battlePoint = dropTable.battlePoint;
+    }
+
     public void TryDropItem()
     {
         dropTable.RandomDrop();
@@ -74,4 +81,5 @@ public class Monster : MonoBehaviour
     public int GetCurrentDefence() => currentDefence;
     public int GetDropMoney() => money;
     public int GetDropEXP() => exp;
+    public int GetDropBP() => battlePoint;
 }
