@@ -13,7 +13,7 @@ public class BattleUIManager : MonoBehaviour
         battleUIPanel.SetActive(true);
 
         monsterImage.sprite = monsterSprite;
-        //monsterImage.SetNativeSize();
+        monsterImage.SetNativeSize();
     }
 
     public void HideBattleUI()
