@@ -6,6 +6,7 @@ public class Monster : MonoBehaviour
 {
     public MonsterStatData monsterStatData;
     public DropTable dropTable;
+    public Sprite monsterSprite;
 
     private int currentHealth;
     private int currentAttack;
@@ -30,6 +31,7 @@ public class Monster : MonoBehaviour
         if (dropTable != null)
         {
             DropMoneyAndEXP();
+            DropBP();
         }
         else
         {
@@ -37,8 +39,13 @@ public class Monster : MonoBehaviour
         }
     }
 
-    void InitializeMonsterStat()
+    public void InitializeMonsterStat()
     {
+        if (monsterStatData == null)
+        {
+            Debug.LogWarning("MonsterStatData가 연결되지 않았습니다!");
+        }
+
         gameObject.name = monsterStatData.monsterName;
         currentHealth = monsterStatData.health;
         currentAttack = monsterStatData.attack;
@@ -47,19 +54,34 @@ public class Monster : MonoBehaviour
         Debug.Log($"[몬스터 생성] 이름: {monsterStatData.monsterName}, 체력: {monsterStatData.health}, 공격력: {monsterStatData.attack}, 방어력: {monsterStatData.defense}");
     }
 
-    void DropMoneyAndEXP()
+    public void DropMoneyAndEXP()
     {
+        if (dropTable == null)
+        {
+            Debug.LogWarning("DropTable이 연결되지 않았습니다!");
+        }
+
         money = dropTable.money;
         exp = dropTable.exp;
     }
 
-    void DropBP()
+    public void DropBP()
     {
+        if (dropTable == null)
+        {
+            Debug.LogWarning("DropTable이 연결되지 않았습니다!");
+        }
+
         battlePoint = dropTable.battlePoint;
     }
 
     public void TryDropItem()
     {
+        if (dropTable == null)
+        {
+            Debug.LogWarning("DropTable이 연결되지 않았습니다!");
+        }
+
         dropTable.RandomDrop();
     }
 

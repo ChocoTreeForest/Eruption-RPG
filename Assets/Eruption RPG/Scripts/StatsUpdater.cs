@@ -104,6 +104,13 @@ public class StatsUpdater : MonoBehaviour
             }
         }
 
+        totalHealthMultiplier = Mathf.Clamp(totalHealthMultiplier, -99f, 9999f);
+        totalAttackMultiplier = Mathf.Clamp(totalAttackMultiplier, -99f, 9999f);
+        totalDefenceMultiplier = Mathf.Clamp(totalDefenceMultiplier, -99f, 9999f);
+        totalLuckMultiplier = Mathf.Clamp(totalLuckMultiplier, -99f, 9999f);
+        totalMoneyMultiplier = Mathf.Clamp(totalMoneyMultiplier, -99f, 9999f);
+        totalEXPMultiplier = Mathf.Clamp(totalEXPMultiplier, -99f, 9999f);
+
         // 합산한 값으로 능력치 업데이트
         status.UpdateHealth(totalBonusHealth, totalHealthMultiplier);
         status.UpdateAttack(totalBonusAttack, totalAttackMultiplier);

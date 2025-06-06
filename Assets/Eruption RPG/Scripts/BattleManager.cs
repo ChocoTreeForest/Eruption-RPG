@@ -6,13 +6,16 @@ public class BattleManager : MonoBehaviour
 {
     public PlayerStatus player;
     public Monster monster;
-
     public bool isBossBattle;
+
+    public BattleUIManager battleUIManager;
 
     public void StartBattle(Monster encounterMonster, bool isBoss)
     {
         monster = encounterMonster;
         isBossBattle = isBoss;
+
+        battleUIManager.ShowBattleUI(encounterMonster.monsterSprite);
 
         StartCoroutine(Battle());
     }
@@ -20,7 +23,12 @@ public class BattleManager : MonoBehaviour
     private IEnumerator Battle()
     {
         Debug.Log("전투 시작!");
+        yield return new WaitForSeconds(0.5f);
 
+        Debug.Log($"몬스터 체력: {monster.GetCurrentHealth()}, 플레이어 체력: {player.GetCurrentHealth()}");
+
+        yield return new WaitUntil(() => Input.touchCount > 0);
+        
         bool playerTurn = !isBossBattle; // 보스전에는 몬스터가 먼저 공격
 
         while (player.IsAlive() && monster.IsAlive())
@@ -53,7 +61,7 @@ public class BattleManager : MonoBehaviour
             player.AddEXP(monster.GetDropEXP());
             monster.TryDropItem();
 
-            player.AddBP(monster.GetDropBP());
+            player.UpdateBP(monster.GetDropBP());
         }
         else
         {
@@ -62,5 +70,7 @@ public class BattleManager : MonoBehaviour
         }
 
         player.RestoreHealth();
+
+        battleUIManager.HideBattleUI();
     }
 }

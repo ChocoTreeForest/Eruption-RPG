@@ -8,6 +8,8 @@ public class PlayerStatus : MonoBehaviour
     private PlayerController player;
 
     // 기본 능력치
+    private int level = 1;
+    private int currentEXP = 0;
     private int baseHealth = 100;
     private int baseAttack = 10;
     private int baseDefence = 5;
@@ -132,7 +134,7 @@ public class PlayerStatus : MonoBehaviour
         // currentEXP += (int)(dropEXP * expMultiplier); 이런식으로
     }
 
-    public void AddBP(int dropBP)
+    public void UpdateBP(int dropBP)
     {
         battlePoint += dropBP;
     }
@@ -162,6 +164,9 @@ public class PlayerStatus : MonoBehaviour
         // 무한 모드를 만든다면 죽으면 바로 끝나게 (죽으면 currentBattlePoint -= currentBattlePoint 라던가)
     }
 
+    public int GetPlayerLevel() => level;
+    public int GetCurrentMoney() => currentMoney;
+    public int GetCurrentEXP() => currentEXP;
     public int GetCurrentHealth() => currentHealth;
     public int GetCurrentAttack() => currentAttack;
     public int GetCurrentDefence() => currentDefence;
@@ -171,4 +176,5 @@ public class PlayerStatus : MonoBehaviour
     public float GetCurrentSpeed() => currentSpeed;
     public float GetMoneyMultiplier() => moneyMultiplier;
     public float GetEXPMultiplier() => expMultiplier;
+    
 }

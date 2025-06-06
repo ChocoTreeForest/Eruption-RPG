@@ -13,8 +13,8 @@ public class RandomEncounter : MonoBehaviour
     private List<GameObject> currentMonsters = new List<GameObject>();
     private Dictionary<string, List<GameObject>> monsterDictionary = new Dictionary<string, List<GameObject>>(); //구역별 몬스터 리스트 관리
 
-    private float encountChance = 0f; //초기 인카운트 확률
-    private float randomValue; //인카운트를 위한 랜덤 값
+    private float encounterChance = 0f; //초기 인카운터 확률
+    private float randomValue; //인카운터를 위한 랜덤 값
 
     //유니티 인스펙터에서 구역별 몬스터 리스트 추가할 수 있게 하기
     [System.Serializable]
@@ -48,7 +48,7 @@ public class RandomEncounter : MonoBehaviour
     {
         if (playerController.inputVec.magnitude > 0f)
         {
-            IncreaseEncountChance();
+            IncreaseEncounterChance();
             TryEncounter();
         }
     }
@@ -78,18 +78,18 @@ public class RandomEncounter : MonoBehaviour
         Debug.Log($"설정된 랜덤 값: {randomValue}");
     }
 
-    void IncreaseEncountChance()
+    void IncreaseEncounterChance()
     {
         float increaseRate = 0.002f; //초당 10%씩 확률 증가
-        encountChance = Mathf.Min(encountChance + increaseRate, 1f); //확률이 최대 100%까지 증가
+        encounterChance = Mathf.Min(encounterChance + increaseRate, 1f); //확률이 최대 100%까지 증가
         //Debug.Log($"현재 전투 확률: {encountChance * 100}% (목표: {randomValue * 100}%)");
     }
 
     void TryEncounter()
     {
-        if (encountChance >= randomValue)
+        if (encounterChance >= randomValue)
         {
-            encountChance = 0f; //인카운트 확률 초기화
+            encounterChance = 0f; //인카운터 확률 초기화
             SetRandomValue(); //랜덤 값 설정
             if (currentMonsters.Count == 0) return;
 
@@ -103,14 +103,20 @@ public class RandomEncounter : MonoBehaviour
         GameObject selectedMonster = currentMonsters[randomIndex];
 
         Debug.Log($"Encounter! {selectedMonster.name} appeared in {currentZone}!");
-        //전투 UI 열리는 코드 쓰기 (전투 UI 스크립트 따로 만들기)
-        //화면 터치 시 전투 시작하게 하기
+
         Monster monster = selectedMonster.GetComponent<Monster>(); //selectedMonster에서 Monster 컴포넌트 가져오기
-        if(monster == null)
+        if (monster == null)
         {
             Debug.LogError("선택된 몬스터 오브젝트에 Monster 컴포넌트 없음");
             return;
         }
+
+        monster.InitializeMonsterStat();
+        monster.DropMoneyAndEXP();
+        monster.DropBP();
+
         battleManager.StartBattle(monster, false /* isBoss */);
     }
+
+    public float GetEncounterChance() => encounterChance;
 }
