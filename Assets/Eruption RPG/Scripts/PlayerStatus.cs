@@ -39,12 +39,13 @@ public class PlayerStatus : MonoBehaviour
     void Awake()
     {
         player = GetComponent<PlayerController>();
-    }
-
-    void Start()
-    {
         InitializeStatus();
     }
+
+    //void Start()
+    //{
+    //    InitializeStatus();
+    //}
 
     void InitializeStatus()
     {
@@ -152,7 +153,6 @@ public class PlayerStatus : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage - currentDefence;
-
         // 데미지 받는 로직
         // 방어력이 아무리 높아도 몬스터 데미지의 절반은 들어오도록 하고 데미지 받을 때마다 +-25%의 데미지 RNG가 있도록 구현하기
     }
@@ -168,6 +168,7 @@ public class PlayerStatus : MonoBehaviour
     public int GetCurrentMoney() => currentMoney;
     public int GetCurrentEXP() => currentEXP;
     public int GetCurrentHealth() => currentHealth;
+    public int GetMaxHealth() => maxHealth;
     public int GetCurrentAttack() => currentAttack;
     public int GetCurrentDefence() => currentDefence;
     public int GetCurrentLuck() => currentLuck;
@@ -175,6 +176,5 @@ public class PlayerStatus : MonoBehaviour
     public float GetCurrentCriticalMultiplier() => currentCriticalMultiplier;
     public float GetCurrentSpeed() => currentSpeed;
     public float GetMoneyMultiplier() => moneyMultiplier;
-    public float GetEXPMultiplier() => expMultiplier;
-    
+    public float GetEXPMultiplier() => expMultiplier;    
 }

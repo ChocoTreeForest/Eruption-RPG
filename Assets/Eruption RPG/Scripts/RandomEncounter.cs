@@ -46,6 +46,8 @@ public class RandomEncounter : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (battleManager.isInBattle) return;
+
         if (playerController.inputVec.magnitude > 0f)
         {
             IncreaseEncounterChance();

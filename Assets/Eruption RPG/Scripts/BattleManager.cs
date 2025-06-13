@@ -6,6 +6,8 @@ public class BattleManager : MonoBehaviour
 {
     public PlayerStatus player;
     public Monster monster;
+
+    public bool isInBattle = false;
     public bool isBossBattle;
 
     public BattleUIManager battleUIManager;
@@ -13,6 +15,7 @@ public class BattleManager : MonoBehaviour
     public void StartBattle(Monster encounterMonster, bool isBoss)
     {
         monster = encounterMonster;
+        isInBattle = true;
         isBossBattle = isBoss;
 
         battleUIManager.ShowBattleUI(encounterMonster.monsterSprite);
@@ -23,10 +26,11 @@ public class BattleManager : MonoBehaviour
     private IEnumerator Battle()
     {
         Debug.Log("전투 시작!");
-        yield return new WaitForSeconds(0.5f);
-
+        battleUIManager.MonsterHPUpdater(monster);
+        battleUIManager.PlayerHPUpdate();
         Debug.Log($"몬스터 체력: {monster.GetCurrentHealth()}, 플레이어 체력: {player.GetCurrentHealth()}");
 
+        yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => Input.touchCount > 0);
         
         bool playerTurn = !isBossBattle; // 보스전에는 몬스터가 먼저 공격
@@ -36,11 +40,13 @@ public class BattleManager : MonoBehaviour
             if (playerTurn)
             {
                 monster.TakeDamage(player.GetCurrentAttack());
+                battleUIManager.MonsterHPUpdater(monster);
                 Debug.Log($"플레이어의 공격으로 몬스터에게 {player.GetCurrentAttack()}의 데미지! 남은 몬스터 체력: {monster.GetCurrentHealth()}");
             }
             else
             {
                 player.TakeDamage(monster.GetCurrentAttack());
+                battleUIManager.PlayerHPUpdate();
                 Debug.Log($"몬스터의 공격으로 플레이어에게 {monster.GetCurrentAttack()}의 데미지! 남은 플레이어 체력: {player.GetCurrentHealth()}");
             }
 
@@ -72,5 +78,6 @@ public class BattleManager : MonoBehaviour
         player.RestoreHealth();
 
         battleUIManager.HideBattleUI();
+        isInBattle = false;
     }
 }

@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer playerSpriter;
     Animator anim;
 
+    public BattleManager battleManager;
     public SpriteRenderer shadowSpriter;
 
     void Awake()
@@ -23,12 +24,18 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (battleManager.isInBattle) return;
         Vector2 nextVec = inputVec * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
     }
 
     void LateUpdate()
     {
+        if (battleManager.isInBattle)
+        {
+            anim.SetFloat("Speed", 0f);
+            return;
+        }
         anim.SetFloat("Speed", inputVec.magnitude);
         anim.SetFloat("InputY", inputVec.y);
 

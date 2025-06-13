@@ -35,6 +35,7 @@ public class EquipmentManager : MonoBehaviour
 
         Debug.Log($"기본 무기 장착: {weaponSlot.gameObject.name}");
         Debug.Log($"기본 방어구 장착: {armorSlot.gameObject.name}");
+        Debug.Log($"플레이어 공격력: {playerStatus.GetCurrentAttack()}");
     }
 
     public bool EquipItem(Item newItem, int slotIndex = -1)

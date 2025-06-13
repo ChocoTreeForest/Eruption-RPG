@@ -15,6 +15,7 @@ public class PlayerUIUpdater : MonoBehaviour
     public Text currentZone;
     public Slider encounterGauge;
 
+    // 레벨, 돈, BP는 Update 말고 전투 끝나면 갱신되도록 바꾸기 존은 지역이 바뀔때마다 갱신되도록 바꾸기
     void Update()
     {
         currentLevel.text = playerStatus.GetPlayerLevel().ToString("N0");

@@ -8,6 +8,7 @@ public class Monster : MonoBehaviour
     public DropTable dropTable;
     public Sprite monsterSprite;
 
+    private int maxHealth;
     private int currentHealth;
     private int currentAttack;
     private int currentDefence;
@@ -47,6 +48,7 @@ public class Monster : MonoBehaviour
         }
 
         gameObject.name = monsterStatData.monsterName;
+        maxHealth = monsterStatData.health;
         currentHealth = monsterStatData.health;
         currentAttack = monsterStatData.attack;
         currentDefence = monsterStatData.defense;
@@ -98,6 +100,7 @@ public class Monster : MonoBehaviour
         return currentHealth > 0;
     }
 
+    public int GetMaxHealth() => maxHealth;
     public int GetCurrentHealth() => currentHealth;
     public int GetCurrentAttack() => currentAttack;
     public int GetCurrentDefence() => currentDefence;
