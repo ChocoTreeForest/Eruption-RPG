@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   money: 100
-  exp: 1
+  exp: 200
   battlePoint: -1
   dropItems: []

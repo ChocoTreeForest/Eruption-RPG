@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Divine Staff
   m_EditorClassIdentifier: 
+  id: 27
   itemName: Divine Staff
   itemType: 0
+  icon: {fileID: -1356539132, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 10000
   bonusAttack: 777
   bonusDefence: 0

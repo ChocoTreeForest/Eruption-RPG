@@ -9,7 +9,7 @@ public class PlayerStatus : MonoBehaviour
 
     // 기본 능력치
     private int level = 1;
-    private int currentEXP = 0;
+    private long currentEXP = 0;
     private int baseHealth = 100;
     private int baseAttack = 10;
     private int baseDefence = 5;
@@ -42,11 +42,6 @@ public class PlayerStatus : MonoBehaviour
         InitializeStatus();
     }
 
-    //void Start()
-    //{
-    //    InitializeStatus();
-    //}
-
     void InitializeStatus()
     {
         currentHealth = baseHealth;
@@ -71,7 +66,7 @@ public class PlayerStatus : MonoBehaviour
         return Mathf.RoundToInt(baseEXP * expMultiplier);
     }
 
-   // 장비, 아이템 장착 등으로 인한 각 스텟 변화
+   // 장비, 아이템 장착 등으로 인한 각 스테이터스 변화
     public void UpdateHealth(int bonusHealth, float multiplier)
     {
         currentHealth = (int)((baseHealth + bonusHealth) * (1 + multiplier / 100));
@@ -129,10 +124,20 @@ public class PlayerStatus : MonoBehaviour
         currentMoney -= price;
     }
 
-    public void AddEXP(int dropEXP)
+    public long GetRequiredEXP()
     {
-        // 나중에 레벨 만들면 경험치 획득 로직 만들기
-        // currentEXP += (int)(dropEXP * expMultiplier); 이런식으로
+        return (long)Mathf.Round(10 * Mathf.Pow(level, 1.25f));
+    }
+
+    public void AddEXP(long dropEXP)
+    {
+        currentEXP += dropEXP;
+
+        while (currentEXP >= GetRequiredEXP())
+        {
+            currentEXP -= GetRequiredEXP();
+            level++;
+        }
     }
 
     public void UpdateBP(int dropBP)
@@ -150,11 +155,18 @@ public class PlayerStatus : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int monsterDamage)
     {
-        currentHealth -= damage - currentDefence;
-        // 데미지 받는 로직
-        // 방어력이 아무리 높아도 몬스터 데미지의 절반은 들어오도록 하고 데미지 받을 때마다 +-25%의 데미지 RNG가 있도록 구현하기
+        int minDamage = (int)(monsterDamage * 0.5f);
+        int baseDamage = monsterDamage - Mathf.Min(currentDefence, minDamage);
+
+        float damageRNG = Random.Range(0.75f, 1.25f);
+
+        int finalDamage = (int)(baseDamage * damageRNG);
+
+        currentHealth -= finalDamage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        Debug.Log($"몬스터의 공격으로 {finalDamage}의 데미지!");
     }
 
     public bool IsAlive()
@@ -166,7 +178,7 @@ public class PlayerStatus : MonoBehaviour
 
     public int GetPlayerLevel() => level;
     public int GetCurrentMoney() => currentMoney;
-    public int GetCurrentEXP() => currentEXP;
+    public long GetCurrentEXP() => currentEXP;
     public int GetCurrentHealth() => currentHealth;
     public int GetMaxHealth() => maxHealth;
     public int GetCurrentAttack() => currentAttack;

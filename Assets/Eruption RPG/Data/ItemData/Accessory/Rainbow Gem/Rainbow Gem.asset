@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Rainbow Gem
   m_EditorClassIdentifier: 
+  id: 220
   itemName: Rainbow Gem
   itemType: 2
+  icon: {fileID: 1489211438, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 30000
   bonusAttack: 30000
   bonusDefence: 30000

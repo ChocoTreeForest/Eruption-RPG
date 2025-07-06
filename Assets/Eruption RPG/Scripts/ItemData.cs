@@ -7,8 +7,11 @@ public enum ItemType { Weapon, Armor, Accessory }
 [CreateAssetMenu(fileName = "NewItemData", menuName = "Item/Item Data")]
 public class ItemData : ScriptableObject
 {
+    public int id;
     public string itemName;
     public ItemType itemType;
+
+    public Sprite icon;
 
     public int bonusHealth;
     public int bonusAttack;

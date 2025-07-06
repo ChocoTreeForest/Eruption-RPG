@@ -12,11 +12,14 @@ public class BattleManager : MonoBehaviour
 
     public BattleUIManager battleUIManager;
 
-    public void StartBattle(Monster encounterMonster, bool isBoss)
+    private SymbolEncounter symbolEncounter;
+
+    public void StartBattle(Monster encounterMonster, bool isBoss, SymbolEncounter encounterSource = null)
     {
         monster = encounterMonster;
         isInBattle = true;
         isBossBattle = isBoss;
+        symbolEncounter = encounterSource;
 
         battleUIManager.ShowBattleUI(encounterMonster.monsterSprite);
 
@@ -39,15 +42,15 @@ public class BattleManager : MonoBehaviour
         {
             if (playerTurn)
             {
-                monster.TakeDamage(player.GetCurrentAttack());
+                monster.TakeDamage(player.GetCurrentAttack(), player.GetCurrentCriticalChance(), player.GetCurrentCriticalMultiplier());
                 battleUIManager.MonsterHPUpdater(monster);
-                Debug.Log($"플레이어의 공격으로 몬스터에게 {player.GetCurrentAttack()}의 데미지! 남은 몬스터 체력: {monster.GetCurrentHealth()}");
+                Debug.Log($"남은 몬스터 체력: {monster.GetCurrentHealth()}");
             }
             else
             {
                 player.TakeDamage(monster.GetCurrentAttack());
                 battleUIManager.PlayerHPUpdate();
-                Debug.Log($"몬스터의 공격으로 플레이어에게 {monster.GetCurrentAttack()}의 데미지! 남은 플레이어 체력: {player.GetCurrentHealth()}");
+                Debug.Log($"남은 플레이어 체력: {player.GetCurrentHealth()}");
             }
 
             yield return new WaitForSeconds(0.5f);
@@ -65,12 +68,27 @@ public class BattleManager : MonoBehaviour
             Debug.Log("전투 승리!");
             player.AddMoney(monster.GetDropMoney());
             player.AddEXP(monster.GetDropEXP());
+            player.UpdateBP(monster.GetDropBP());
             monster.TryDropItem();
 
-            player.UpdateBP(monster.GetDropBP());
+            if (isBossBattle)
+            {
+                Destroy(symbolEncounter.gameObject);
+            }
         }
         else
         {
+            if (isBossBattle)
+            {
+                monster.RestoreHealth();
+                symbolEncounter.hasEncounter = false;
+
+                // 무한 인카운터를 방지하기 위해 플레이어 위치 조정
+                Vector2 symbolPos = symbolEncounter.transform.position;
+                Vector2 belowSymbol = new Vector2(symbolPos.x, symbolPos.y - 2f);
+                player.transform.position = belowSymbol;
+            }
+
             Debug.Log("전투 패배!");
             player.battlePoint -= 3;
         }
@@ -79,5 +97,6 @@ public class BattleManager : MonoBehaviour
 
         battleUIManager.HideBattleUI();
         isInBattle = false;
+        symbolEncounter = null;
     }
 }

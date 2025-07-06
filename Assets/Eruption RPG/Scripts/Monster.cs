@@ -14,7 +14,7 @@ public class Monster : MonoBehaviour
     private int currentDefence;
 
     private int money;
-    private int exp;
+    private long exp;
 
     private int battlePoint;
 
@@ -87,12 +87,24 @@ public class Monster : MonoBehaviour
         dropTable.RandomDrop();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int playerDamage, int criticalChance, float criticalMultiplier)
     {
-        currentHealth -= damage - currentDefence;
+        int minDamage = (int)(playerDamage * 0.5f);
+        int baseDamage = playerDamage - Mathf.Min(currentDefence, minDamage);
+
+        float damageRNG = Random.Range(0.75f, 1.25f);
+
+        int finalDamage = (int)(baseDamage * damageRNG);
+
+        bool isCritical = Random.value < criticalChance / 100f;
+        if (isCritical)
+        {
+            finalDamage = (int)(finalDamage * criticalMultiplier);
+        }
+
+        currentHealth -= finalDamage;
         currentHealth = Mathf.Clamp(currentHealth, 0, monsterStatData.health);
-        Debug.Log($"현재 몬스터 체력: {currentHealth}");
-        // 데미지 받을 때마다 +-25%의 데미지 RNG가 있도록 구현하기
+        Debug.Log($"플레이어의 공격으로 {finalDamage}의 데미지!");
     }
 
     public bool IsAlive()
@@ -100,11 +112,16 @@ public class Monster : MonoBehaviour
         return currentHealth > 0;
     }
 
+    public void RestoreHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
     public int GetMaxHealth() => maxHealth;
     public int GetCurrentHealth() => currentHealth;
     public int GetCurrentAttack() => currentAttack;
     public int GetCurrentDefence() => currentDefence;
     public int GetDropMoney() => money;
-    public int GetDropEXP() => exp;
+    public long GetDropEXP() => exp;
     public int GetDropBP() => battlePoint;
 }

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Ruby
   m_EditorClassIdentifier: 
+  id: 208
   itemName: Ruby
   itemType: 2
+  icon: {fileID: 6187281, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 2000
   bonusDefence: 0

@@ -15,7 +15,7 @@ public class DropItem
 public class DropTable : ScriptableObject
 {
     public int money;
-    public int exp;
+    public long exp;
     public int battlePoint;
     public DropItem[] dropItems;
 

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5800175989432508086}
   - component: {fileID: 8229655549420757191}
   - component: {fileID: 4448881948827699680}
+  - component: {fileID: 7158004455826953017}
+  - component: {fileID: 2996934087906736808}
   m_Layer: 0
   m_Name: Pachikitty
   m_TagString: Untagged
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a03e29aeadecd414798629deddc6cf80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,6 +103,56 @@ MonoBehaviour:
   monsterStatData: {fileID: 11400000, guid: 15ce46bc10044354d93c50f87be20e63, type: 2}
   dropTable: {fileID: 11400000, guid: 117cbdfb584cc1644b125fe1adcb757f, type: 2}
   monsterSprite: {fileID: 21300000, guid: a03e29aeadecd414798629deddc6cf80, type: 3}
+--- !u!114 &7158004455826953017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748762344867643822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22214ad818955b479ec9eec0001f259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleManager: {fileID: 0}
+  monster: {fileID: 4448881948827699680}
+  hasEncounter: 0
+--- !u!70 &2996934087906736808
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748762344867643822}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 10, y: 10}
+  m_Direction: 0
 --- !u!1 &8146560248375914076
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,8 +179,8 @@ Transform:
   m_GameObject: {fileID: 8146560248375914076}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -6.5, z: 0}
+  m_LocalScale: {x: 25, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5800175989432508086}
