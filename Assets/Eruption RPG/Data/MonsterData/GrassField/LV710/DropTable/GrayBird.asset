@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: GrayBird
+  m_EditorClassIdentifier: 
+  money: 710
+  exp: 4764488
+  battlePoint: -1
+  dropItems:
+  - itemPrefab: {fileID: 8383516792775137293, guid: 72cf4c8aec0b0e04d821caec52b184fb,
+      type: 3}
+    dropChance: 5
+  - itemPrefab: {fileID: 4414211542031584450, guid: 83c88b61cfdfef541a2bfaf50bbffaf5,
+      type: 3}
+    dropChance: 3

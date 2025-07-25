@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: LizardKnight
+  m_EditorClassIdentifier: 
+  money: 5000
+  exp: 125000000
+  battlePoint: 10
+  dropItems:
+  - itemPrefab: {fileID: 2897831347429270829, guid: 634c5d38317704b47abaaaa1e2f16cca,
+      type: 3}
+    dropChance: 2
+  - itemPrefab: {fileID: 2944310936278752230, guid: e0dd7181da5eac44f8ef0f9341b6355e,
+      type: 3}
+    dropChance: 3
+  - itemPrefab: {fileID: 4352988500246289984, guid: 80966dd1baada154aba53076c179d3a2,
+      type: 3}
+    dropChance: 1

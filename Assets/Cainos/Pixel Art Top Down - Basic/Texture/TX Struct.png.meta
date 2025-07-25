@@ -406,7 +406,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 232
-        y: 384
+        y: 385
         width: 49
         height: 96
       alignment: 7
@@ -674,6 +674,174 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TX Stairs W 01 U
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 178
+        width: 90
+        height: 46
+      alignment: 9
+      pivot: {x: 0.9777778, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd4653d5bbb4bc4ea6667899d3254f8
+      internalID: -293941904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Stairs W 02 U
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 178
+        width: 90
+        height: 46
+      alignment: 9
+      pivot: {x: 0.9777778, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba57ac0322361484794ec40c0457be52
+      internalID: -275658010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Stairs E 01 U
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 178
+        width: 88
+        height: 46
+      alignment: 9
+      pivot: {x: -0, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e65740d3af19c4e9b029c83016ab07
+      internalID: -1827870714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Stairs E 02 U
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 178
+        width: 88
+        height: 46
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4004381b203e751498e7f100712da326
+      internalID: -1076116132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Stairs W 01 L
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 128
+        width: 90
+        height: 50
+      alignment: 9
+      pivot: {x: 0.9777778, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45b1d6d97576dfc4a9cc6a616127d904
+      internalID: -132900705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Stairs W 02 L
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 128
+        width: 90
+        height: 50
+      alignment: 9
+      pivot: {x: 0.9777778, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6903d2652a0e593418ae64677614f669
+      internalID: -461411122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Stairs E 02 L
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 128
+        width: 88
+        height: 50
+      alignment: 9
+      pivot: {x: 0, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811c87504747e0341905d92d31f3e36d
+      internalID: -575057542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Stairs E 01 L
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 128
+        width: 88
+        height: 50
+      alignment: 9
+      pivot: {x: 0, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89dea26f247f7ec46a9115131df2da76
+      internalID: -935552555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -686,6 +854,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       TX Stairs R M: 21300022
+      TX Stairs E 01 U: -1827870714
+      TX Stairs W 02 U: -275658010
       TX Stairs Broken L L: 21300034
       TX Stairs Broken L R: 21300038
       TX Stairs L R: 21300012
@@ -697,13 +867,19 @@ TextureImporter:
       TX Struct Gate T1 T: 21300028
       TX Stairs Broken R R: 21300044
       TX Stairs M L: 21300000
+      TX Stairs E 01 L: -935552555
+      TX Stairs W 01 L: -132900705
       TX Stairs L L: 21300010
+      TX Stairs W 01 U: -293941904
       TX Stairs L M: 21300014
       TX Struct Gate T2 B: 21300018
       TX Stairs R L: 21300020
       TX Stairs M M: 21300004
       TX Stairs Broken M R: 21300032
       TX Stairs R R: 21300024
+      TX Stairs W 02 L: -461411122
+      TX Stairs E 02 U: -1076116132
+      TX Stairs E 02 L: -575057542
       TX Struct Gate T1 B: 21300026
       TX Stairs Broken M L: 21300046
       TX Struct Gate T2 T: 21300016

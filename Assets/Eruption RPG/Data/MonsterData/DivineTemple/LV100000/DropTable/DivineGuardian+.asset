@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: DivineGuardian+
+  m_EditorClassIdentifier: 
+  money: 9999
+  exp: 26674191150
+  battlePoint: -1
+  dropItems:
+  - itemPrefab: {fileID: 4008896812982578360, guid: 5eb62b089d011af4185629d039c8c92c,
+      type: 3}
+    dropChance: 3
+  - itemPrefab: {fileID: 7657723890222463163, guid: a7fced1492ecdc845bbd8e0b70d8f259,
+      type: 3}
+    dropChance: 3

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: IceHorse
+  m_EditorClassIdentifier: 
+  money: 3200
+  exp: 1510298185
+  battlePoint: -1
+  dropItems:
+  - itemPrefab: {fileID: 8112082366553938368, guid: 4b17256779f2dd14ba340697d5f148d1,
+      type: 3}
+    dropChance: 1

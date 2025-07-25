@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: TwilightGatekeeper
+  m_EditorClassIdentifier: 
+  money: 15000
+  exp: 10000000000
+  battlePoint: 7
+  dropItems:
+  - itemPrefab: {fileID: 5589903470693587161, guid: d55bbd942ffd2424d8c7a66e1dc9f05f,
+      type: 3}
+    dropChance: 5
+  - itemPrefab: {fileID: 2416141522631210085, guid: 9dc1289e748e0ea4a88c630de8996bd3,
+      type: 3}
+    dropChance: 5
+  - itemPrefab: {fileID: 5761648280358494960, guid: 561660929c0cae5438176ddd3c645019,
+      type: 3}
+    dropChance: 5
+  - itemPrefab: {fileID: 6626832466221751153, guid: 3259eb8112a4b8c4196d2a035b1cb5b1,
+      type: 3}
+    dropChance: 5

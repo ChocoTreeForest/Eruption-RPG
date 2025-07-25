@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: Santa
+  m_EditorClassIdentifier: 
+  money: 3500
+  exp: 1328018303
+  battlePoint: -1
+  dropItems:
+  - itemPrefab: {fileID: 1438611143712520813, guid: 200892fa7a477c24c90542d7ab8ee906,
+      type: 3}
+    dropChance: 1
+  - itemPrefab: {fileID: 2209123918240236415, guid: af171f0bf23f49742a7c6be3541741bc,
+      type: 3}
+    dropChance: 5
+  - itemPrefab: {fileID: 4004104552887846495, guid: 4a9c2636a1163e94c859bb6cb036005c,
+      type: 3}
+    dropChance: 1

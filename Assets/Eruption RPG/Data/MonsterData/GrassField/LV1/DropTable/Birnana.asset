@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
   m_Name: Birnana
   m_EditorClassIdentifier: 
-  money: 50
+  money: 200
   exp: 3000
   battlePoint: -1
   dropItems:
   - itemPrefab: {fileID: 4697472251690626671, guid: 5a7f1ec4f6d283445bea3f5c2eda2601,
       type: 3}
-    dropChance: 10
+    dropChance: 3

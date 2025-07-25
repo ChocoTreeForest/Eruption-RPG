@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: StoneGoblin
+  m_EditorClassIdentifier: 
+  money: 1400
+  exp: 54352250
+  battlePoint: -1
+  dropItems:
+  - itemPrefab: {fileID: 7872257721453417998, guid: 62e846f913a2ead46bb148827576ba89,
+      type: 3}
+    dropChance: 10
+  - itemPrefab: {fileID: 4697472251690626671, guid: 5a7f1ec4f6d283445bea3f5c2eda2601,
+      type: 3}
+    dropChance: 10
+  - itemPrefab: {fileID: 4382065007814655111, guid: 149841b9570c5814bbe4f8a64ccf7a08,
+      type: 3}
+    dropChance: 10

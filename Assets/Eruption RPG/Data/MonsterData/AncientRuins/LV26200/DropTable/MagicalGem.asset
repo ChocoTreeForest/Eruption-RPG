@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: MagicalGem
+  m_EditorClassIdentifier: 
+  money: 3500
+  exp: 1999990185
+  battlePoint: -1
+  dropItems:
+  - itemPrefab: {fileID: 2509086775426330150, guid: 6fcdf00fdcbf5874fbfa80cb1d1accf2,
+      type: 3}
+    dropChance: 0.5
+  - itemPrefab: {fileID: 6709914290671902094, guid: 9a9f953703dfa3f4ab7e68bbf73717ae,
+      type: 3}
+    dropChance: 0.5

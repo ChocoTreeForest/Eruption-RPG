@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
   m_Name: Rat
   m_EditorClassIdentifier: 
-  money: 50
+  money: 200
   exp: 3000
   battlePoint: -1
   dropItems:
   - itemPrefab: {fileID: 4382065007814655111, guid: 149841b9570c5814bbe4f8a64ccf7a08,
       type: 3}
-    dropChance: 10
+    dropChance: 3

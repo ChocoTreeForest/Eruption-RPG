@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
+  m_Name: DarknessDragon
+  m_EditorClassIdentifier: 
+  money: 44444
+  exp: 44444444444
+  battlePoint: 4
+  dropItems:
+  - itemPrefab: {fileID: 6964869501071799804, guid: 582a954a72e58a445b71c0b606529360,
+      type: 3}
+    dropChance: 4
+  - itemPrefab: {fileID: 6264378300580616671, guid: 13f9f2fdcb3a1bb47b4da6fa640aa213,
+      type: 3}
+    dropChance: 4
