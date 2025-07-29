@@ -8,6 +8,7 @@ public class MenuUIManager : MonoBehaviour
     public GameObject statusPanel;
     public GameObject equipmentPanel;
     public GameObject unequipAlertPanel;
+    public GameObject statusPresetPanel;
 
     public void OpenMenuPanel()
     {
@@ -57,5 +58,17 @@ public class MenuUIManager : MonoBehaviour
     public void CancelUnequip()
     {
         unequipAlertPanel.SetActive(false);
+    }
+
+    public void OpenStatusPrestPanel()
+    {
+        statusPanel.SetActive(false);
+        statusPresetPanel.SetActive(true);
+    }
+
+    public void CloseStatusPresetPanel()
+    {
+        statusPanel.SetActive(true);
+        statusPresetPanel.SetActive(false);
     }
 }

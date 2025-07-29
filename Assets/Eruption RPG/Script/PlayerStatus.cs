@@ -203,7 +203,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void IncreaseStat(string stat, int useAP)
     {
-        if (abilityPoint < useAP) return;
+        if (abilityPoint < useAP || useAP <= 0) return;
 
         switch (stat)
         {
@@ -227,6 +227,38 @@ public class PlayerStatus : MonoBehaviour
         abilityPoint -= useAP;
 
         statusUIManager.StatIncreasePreview();
+        statusUIManager.UpdateAP();
+    }
+
+    public void IncreaseStatByPreset(string stat, int useAP)
+    {
+        if (abilityPoint < useAP || useAP <= 0) return;
+
+        switch (stat)
+        {
+            case "HP":
+                baseHealth += 5 * useAP;
+                UpdateHealth(statsUpdater.totalBonusHealth, statsUpdater.totalHealthMultiplier);
+                break;
+            case "ATK":
+                baseAttack += 1 * useAP;
+                UpdateAttack(statsUpdater.totalBonusAttack, statsUpdater.totalAttackMultiplier);
+                break;
+            case "DEF":
+                baseDefence += 1 * useAP;
+                UpdateDefence(statsUpdater.totalBonusDefence, statsUpdater.totalDefenceMultiplier);
+                break;
+            case "LUC":
+                baseLuck += 1 * useAP;
+                UpdateLuck(statsUpdater.totalBonusLuck, statsUpdater.totalLuckMultiplier);
+                break;
+            default:
+                return;
+        }
+
+        abilityPoint -= useAP;
+
+        statusUIManager.UpdateStatus();
         statusUIManager.UpdateAP();
     }
 

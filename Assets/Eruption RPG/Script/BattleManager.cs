@@ -8,6 +8,7 @@ public class BattleManager : MonoBehaviour
     public Monster monster;
 
     public PlayerUIUpdater playerUIUpdater;
+    public PresetManager presetManager;
 
     public bool isInBattle = false;
     public bool isBossBattle;
@@ -102,5 +103,6 @@ public class BattleManager : MonoBehaviour
         symbolEncounter = null;
 
         playerUIUpdater.UpdateEncounterGauge();
+        presetManager.DistributeStatByPreset();
     }
 }

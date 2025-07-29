@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2216742416763882525}
   - component: {fileID: 7148538454394093534}
   m_Layer: 0
-  m_Name: BornFlower
+  m_Name: BoneFlower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

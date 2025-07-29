@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ed7c4ff173a9e64e85bb46c3250edce, type: 3}
-  m_Name: BornFlower
+  m_Name: BoneFlower
   m_EditorClassIdentifier: 
-  monsterName: BornFlower
+  monsterName: BoneFlower
   health: 340000
   attack: 8000
   defense: 4000
