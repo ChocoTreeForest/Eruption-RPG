@@ -27,6 +27,21 @@ public class DropTable : ScriptableObject
             if (Random.Range(0f, 100f) <= item.dropChance)
             {
                 Debug.Log($"아이템 획득: {item.itemPrefab.name}");
+
+                Item itemComponent = item.itemPrefab.GetComponent<Item>();
+                if (itemComponent != null && itemComponent.itemData != null)
+                {
+                    EquipmentManager.Instance.AddItem(itemComponent.itemData);
+                    Debug.Log($"보유 아이템에 추가됨: {itemComponent.itemData.itemName}");
+
+                    ItemListUI.Instance.WeaponList();
+                    ItemListUI.Instance.ArmorList();
+                    ItemListUI.Instance.AccessoryList();
+                }
+                else
+                {
+                    Debug.Log($"아이템 데이터가 없습니다.");
+                }
                 return item.itemPrefab;
             }
         }

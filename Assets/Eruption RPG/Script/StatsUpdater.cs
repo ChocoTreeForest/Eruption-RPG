@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StatsUpdater : MonoBehaviour
 {
-    public EquipmentManager equipmentManager;
     public PlayerStatus status;
     public StatusUIManager statusUIManager;
 
@@ -30,59 +29,86 @@ public class StatsUpdater : MonoBehaviour
     public void UpdateStats()
     {
         // 무기, 방어구, 액세서리 능력치 전부 합산
-        if (equipmentManager.weaponSlot != null)
+        if (EquipmentManager.Instance.weaponSlot != null)
         {
-            var data = equipmentManager.weaponSlot.itemData;
+            var data = EquipmentManager.Instance.weaponSlot.itemData;
+            int count = EquipmentManager.Instance.GetItemCount(data);
 
             totalBonusHealth += data.bonusHealth;
             totalHealthMultiplier += data.healthMultiplier;
 
-            totalBonusAttack += data.bonusAttack;
-            totalAttackMultiplier += data.attackMultiplier;
-
-            totalBonusDefence += data.bonusDefence;
-            totalDefenceMultiplier += data.defenceMultiplier;
-
-            totalBonusLuck += data.bonusLuck;
-            totalLuckMultiplier += data.luckMultiplier;
-
-            totalBonusCriticalChance += data.bonusCriticalChance;
-            totalCriticalMultiplier += data.bonusCriticalMultiplier;
-
-            totalSpeedMultiplier += data.speedMultiplier;
-            totalMoneyMultiplier += data.bonusMoneyMultiplier;
-            totalEXPMultiplier += data.bonusEXPMultiplier;
-        }
-
-        if (equipmentManager.armorSlot != null)
-        {
-            var data = equipmentManager.armorSlot.itemData;
-
-            totalBonusHealth += data.bonusHealth;
-            totalHealthMultiplier += data.healthMultiplier;
-
-            totalBonusAttack += data.bonusAttack;
-            totalAttackMultiplier += data.attackMultiplier;
-
-            totalBonusDefence += data.bonusDefence;
-            totalDefenceMultiplier += data.defenceMultiplier;
-
-            totalBonusLuck += data.bonusLuck;
-            totalLuckMultiplier += data.luckMultiplier;
-
-            totalBonusCriticalChance += data.bonusCriticalChance;
-            totalCriticalMultiplier += data.bonusCriticalMultiplier;
-
-            totalSpeedMultiplier += data.speedMultiplier;
-            totalMoneyMultiplier += data.bonusMoneyMultiplier;
-            totalEXPMultiplier += data.bonusEXPMultiplier;
-        }
-
-        for(int i = 0; i < equipmentManager.maxAccessorySlots; i++)
-        {
-            if (equipmentManager.accessorySlots[i] != null)
+            if (count > 1)
             {
-                var data = equipmentManager.accessorySlots[i].itemData;
+                int additionalStat = EquipmentManager.Instance.GetAdditionalBonusStat(data.bonusAttack, count);
+                float additionalMultiplier = EquipmentManager.Instance.GetAdditionalStatMultiplier(data.attackMultiplier, count);
+
+                totalBonusAttack += data.bonusAttack + additionalStat;
+                totalAttackMultiplier += data.attackMultiplier + additionalMultiplier;
+            }
+            else
+            {
+                totalBonusAttack += data.bonusAttack;
+                totalAttackMultiplier += data.attackMultiplier;
+            }
+
+            totalBonusDefence += data.bonusDefence;
+            totalDefenceMultiplier += data.defenceMultiplier;
+
+            totalBonusLuck += data.bonusLuck;
+            totalLuckMultiplier += data.luckMultiplier;
+
+            totalBonusCriticalChance += data.bonusCriticalChance;
+            totalCriticalMultiplier += data.bonusCriticalMultiplier;
+
+            totalSpeedMultiplier += data.speedMultiplier;
+            totalMoneyMultiplier += data.bonusMoneyMultiplier;
+            totalEXPMultiplier += data.bonusEXPMultiplier;
+        }
+
+        if (EquipmentManager.Instance.armorSlot != null)
+        {
+            var data = EquipmentManager.Instance.armorSlot.itemData;
+            int count = EquipmentManager.Instance.GetItemCount(data);
+
+            totalBonusHealth += data.bonusHealth;
+            totalHealthMultiplier += data.healthMultiplier;
+
+            totalBonusAttack += data.bonusAttack;
+            totalAttackMultiplier += data.attackMultiplier;
+
+            totalBonusDefence += data.bonusDefence;
+            totalDefenceMultiplier += data.defenceMultiplier;
+
+            if (count > 1)
+            {
+                int additionalStat = EquipmentManager.Instance.GetAdditionalBonusStat(data.bonusDefence, count);
+                float additionalMultiplier = EquipmentManager.Instance.GetAdditionalStatMultiplier(data.defenceMultiplier, count);
+
+                totalBonusDefence += data.bonusDefence + additionalStat;
+                totalDefenceMultiplier += data.defenceMultiplier + additionalMultiplier;
+            }
+            else
+            {
+                totalBonusDefence += data.bonusDefence;
+                totalDefenceMultiplier += data.defenceMultiplier;
+            }
+
+            totalBonusLuck += data.bonusLuck;
+            totalLuckMultiplier += data.luckMultiplier;
+
+            totalBonusCriticalChance += data.bonusCriticalChance;
+            totalCriticalMultiplier += data.bonusCriticalMultiplier;
+
+            totalSpeedMultiplier += data.speedMultiplier;
+            totalMoneyMultiplier += data.bonusMoneyMultiplier;
+            totalEXPMultiplier += data.bonusEXPMultiplier;
+        }
+
+        for(int i = 0; i < EquipmentManager.Instance.maxAccessorySlots; i++)
+        {
+            if (EquipmentManager.Instance.accessorySlots[i] != null)
+            {
+                var data = EquipmentManager.Instance.accessorySlots[i].itemData;
 
                 totalBonusHealth += data.bonusHealth;
                 totalHealthMultiplier += data.healthMultiplier;

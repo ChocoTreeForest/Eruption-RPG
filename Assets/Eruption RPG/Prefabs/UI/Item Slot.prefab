@@ -443,11 +443,10 @@ MonoBehaviour:
   icon: {fileID: 4684298734825630028}
   itemStatus: {fileID: 8181553562073533549}
   buyEquipButton: {fileID: 3925974214755234349}
-  price: {fileID: 8103888529381413834}
-  numberOfItems: {fileID: 3308988600853256889}
+  priceText: {fileID: 8103888529381413834}
+  itemCountText: {fileID: 3308988600853256889}
   equippedText: {fileID: 6652190144235910033}
   unknownSprite: {fileID: 21300000, guid: f2b663ff4c523eb45bd3add460baf61e, type: 3}
-  buyEquipPanel: {fileID: 0}
 --- !u!1 &5567421904765053947
 GameObject:
   m_ObjectHideFlags: 0

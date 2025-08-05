@@ -12967,7 +12967,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 45327684}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &45327684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13264,7 +13276,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 47817346}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &47817346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13400,7 +13424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794ba81c8d9147f48833a3353ad631b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentManager: {fileID: 1854739410}
   status: {fileID: 1428900050}
   statusUIManager: {fileID: 1377687832}
   totalBonusHealth: 0
@@ -16715,10 +16738,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1671587836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &134750548
 MonoBehaviour:
@@ -18178,7 +18201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199918769}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &199918769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25347,7 +25382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -28565,7 +28600,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 442107237}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenArmorChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &442107237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29660,10 +29707,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 179869592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501221441
 MonoBehaviour:
@@ -35525,12 +35572,12 @@ RectTransform:
   m_Children:
   - {fileID: 2074690085}
   - {fileID: 1857380036}
+  - {fileID: 483931453}
   - {fileID: 1846027813}
   - {fileID: 1136020853}
   - {fileID: 393810421}
   - {fileID: 47765415}
   - {fileID: 589677285}
-  - {fileID: 483931453}
   m_Father: {fileID: 1706191899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -35623,7 +35670,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1377687830}
         m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
-        m_MethodName: CloseEquipmentPanel
+        m_MethodName: CloseArmorChangePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39149,19 +39196,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 783800166}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1377687830}
-        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
-        m_MethodName: CancelUnequip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &783800166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45773,7 +45808,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 898075742}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &898075742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45895,7 +45942,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 905433576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &905433576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47010,7 +47069,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 350, y: 100}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &985414604
 MonoBehaviour:
@@ -47060,7 +47119,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBB34\uAE30 \uBCC0\uACBD"
+  m_Text: "\uBC29\uC5B4\uAD6C \uBCC0\uACBD"
 --- !u!222 &985414606
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48000,7 +48059,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1023633421}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1023633421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85434,7 +85505,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1059364722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenWeaponChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1059364722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85556,7 +85639,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1076028330}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1076028330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96495,7 +96590,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1368108817}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1368108817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96786,6 +96893,10 @@ MonoBehaviour:
   equipmentPanel: {fileID: 1846027812}
   unequipAlertPanel: {fileID: 1908445953}
   statusPresetPanel: {fileID: 483931452}
+  weaponChangePanel: {fileID: 1136020852}
+  armorChangePanel: {fileID: 393810420}
+  accessoryChangePanel: {fileID: 47765414}
+  buyEquipPanel: {fileID: 589677284}
 --- !u!114 &1377687831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96798,20 +96909,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d34cda783cdd04197a267455b6b182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contentParent: {fileID: 1327451810}
   itemSlotPrefab: {fileID: 4128791112719441875, guid: e7f6115ae098e9e46801126b0faf67ad,
     type: 3}
   allItemData:
-  - {fileID: 11400000, guid: e0945071d44417e4ea6b7cf39bf6db02, type: 2}
-  - {fileID: 11400000, guid: 7f0b5535135ab664f9c6bbe7b3564981, type: 2}
-  - {fileID: 11400000, guid: 65f9d31b6826fc8448d58afb5d543524, type: 2}
-  - {fileID: 11400000, guid: c3ef6e32f16d1124a83bf9186f8d930e, type: 2}
-  - {fileID: 11400000, guid: 230ae3218f7715f4494ef20e1f8722c4, type: 2}
-  - {fileID: 11400000, guid: 61d74887e14217845ac44e90206dcc67, type: 2}
-  - {fileID: 11400000, guid: 1922036adbfb17c48bce6b3ab38e3e6b, type: 2}
-  - {fileID: 11400000, guid: 60ebdd77140418b48bc0e50f3a02b21b, type: 2}
+  - {fileID: 11400000, guid: c58134a78410ef1438f8bc18c5406da1, type: 2}
+  - {fileID: 11400000, guid: 7a06088e3da128643b90444f84deef25, type: 2}
+  - {fileID: 11400000, guid: 3a6368d0ba2168849b3252504f067165, type: 2}
+  - {fileID: 11400000, guid: 2ba786d412fdf644ba3bc2f6145d2500, type: 2}
+  - {fileID: 11400000, guid: 68b883375c3461845b8970e1495bc34c, type: 2}
+  - {fileID: 11400000, guid: ed7876ecb98b3f249992d8763380211c, type: 2}
+  - {fileID: 11400000, guid: 1ca19942ff358384dbd8e6121578243f, type: 2}
+  - {fileID: 11400000, guid: 9c7d0180fb88edb4b8f01477d588da1f, type: 2}
+  - {fileID: 11400000, guid: 9a380281cf65b0f42a4701a9bb8b4451, type: 2}
+  - {fileID: 11400000, guid: 45b207689d089854b84be2df84a506e3, type: 2}
+  - {fileID: 11400000, guid: 12dbbba60cf91c24f8c017a20e1e416c, type: 2}
+  - {fileID: 11400000, guid: 47299c6ada2ad4748a9d46f3cd3b5d75, type: 2}
+  - {fileID: 11400000, guid: 6e949426663d4e4448c436360ae6a526, type: 2}
   - {fileID: 11400000, guid: 2bcaec6f17d13bb47941e667ccd8f637, type: 2}
   - {fileID: 11400000, guid: 8e2d9e5ca3f94eb49832ebeb862f54d6, type: 2}
+  - {fileID: 11400000, guid: b95e8cbd63dc7784c9613b84f398c892, type: 2}
+  - {fileID: 11400000, guid: 401bfcf6b517f3346919f53990635d62, type: 2}
+  - {fileID: 11400000, guid: 2f8d7fd803c5d2345a293cdef6eff540, type: 2}
+  - {fileID: 11400000, guid: 60ebdd77140418b48bc0e50f3a02b21b, type: 2}
+  - {fileID: 11400000, guid: 1922036adbfb17c48bce6b3ab38e3e6b, type: 2}
+  - {fileID: 11400000, guid: e15cb1bbe2cc77b43ac8474ba69801bb, type: 2}
+  - {fileID: 11400000, guid: 470308cb951f21848be5c46f0c76f564, type: 2}
+  - {fileID: 11400000, guid: 0c364945e3746e648804869c9e95a3db, type: 2}
+  - {fileID: 11400000, guid: 65f9d31b6826fc8448d58afb5d543524, type: 2}
+  - {fileID: 11400000, guid: 230ae3218f7715f4494ef20e1f8722c4, type: 2}
+  - {fileID: 11400000, guid: c3ef6e32f16d1124a83bf9186f8d930e, type: 2}
+  - {fileID: 11400000, guid: 7f0b5535135ab664f9c6bbe7b3564981, type: 2}
+  - {fileID: 11400000, guid: 1d3d95c357ecbad4f8e400c830e2cfce, type: 2}
+  - {fileID: 11400000, guid: 61d74887e14217845ac44e90206dcc67, type: 2}
+  - {fileID: 11400000, guid: e0945071d44417e4ea6b7cf39bf6db02, type: 2}
+  - {fileID: 11400000, guid: 5786d72e6749d6a44bd33ac989cd4ef9, type: 2}
+  - {fileID: 11400000, guid: 501b5d227117dbb4db1ae3cf5f3e37a1, type: 2}
+  - {fileID: 11400000, guid: cd90ad3fe947abe44816c91a647b1fde, type: 2}
+  - {fileID: 11400000, guid: 4e78061aa9b35a246a68d5387d796079, type: 2}
+  - {fileID: 11400000, guid: e90de919ec762a24db492f05c7600981, type: 2}
+  - {fileID: 11400000, guid: 7e5f05828c8267d4b9488da768317c0a, type: 2}
+  - {fileID: 11400000, guid: cfc898abe7d53344a9be310bedb513c5, type: 2}
+  - {fileID: 11400000, guid: 559b813aab8e25f4186cf69c3b29087e, type: 2}
+  - {fileID: 11400000, guid: 086a9ddc64420c946a3302b016da157f, type: 2}
+  - {fileID: 11400000, guid: 15271c262b5dc78408583224bf647119, type: 2}
+  - {fileID: 11400000, guid: f1e9b9c6b6447be4d8a3469794bf99df, type: 2}
+  - {fileID: 11400000, guid: fb69a23700b1af448b3cf31cf2434854, type: 2}
+  - {fileID: 11400000, guid: 828c4170116ff194396cf9054847c17d, type: 2}
+  - {fileID: 11400000, guid: c377cb7b609d6e74ea6c07a13696cfd8, type: 2}
+  - {fileID: 11400000, guid: 75b166b2be468f642b3300d5d675719f, type: 2}
+  - {fileID: 11400000, guid: 8e70c1c38e4b6ac49a092c92c3fe3730, type: 2}
+  - {fileID: 11400000, guid: 733e3c9df14fcf641968543c14c6513c, type: 2}
+  - {fileID: 11400000, guid: e787e8dfafbe5e44f8ca368d18a672b8, type: 2}
+  - {fileID: 11400000, guid: d1f1c11cfb96ad4479b30083b979fa77, type: 2}
+  - {fileID: 11400000, guid: 8a522605624fd614cb595906638992bb, type: 2}
+  - {fileID: 11400000, guid: fafbdc08604b45144b5dd666c43a449c, type: 2}
+  - {fileID: 11400000, guid: f1e8fbd56657f4e439a294a77a6f130b, type: 2}
+  - {fileID: 11400000, guid: 1052cde18b1783c48af6d2bf856ee59b, type: 2}
+  - {fileID: 11400000, guid: 590b422db971c094897ae0c8d86439dc, type: 2}
+  - {fileID: 11400000, guid: 753cd76ee5dd85c4a848873aa4b122bd, type: 2}
+  - {fileID: 11400000, guid: 22385da9e8d5851489f52398073f4bf5, type: 2}
+  - {fileID: 11400000, guid: 8742a24ba82cf634f9b1aa9fdac6defb, type: 2}
+  - {fileID: 11400000, guid: 02caa1291c3cc1c4daf46aad8e1d79a9, type: 2}
+  - {fileID: 11400000, guid: 40bf28b1b055957498750d2c4490fcb7, type: 2}
+  - {fileID: 11400000, guid: 029b1a5706a2dfc4e8638e19bedf13ed, type: 2}
+  - {fileID: 11400000, guid: dbfc175c495ae9346998768a9b84c04c, type: 2}
+  - {fileID: 11400000, guid: d3bf12f5f53b2fc45b06e2d3ce7029fc, type: 2}
+  - {fileID: 11400000, guid: d7e3ecd3e445d80478c3f797bec40add, type: 2}
+  - {fileID: 11400000, guid: 125f1431cc169f846aab12491da3d424, type: 2}
+  - {fileID: 11400000, guid: 5af4827b9ad41ba48add68867865f957, type: 2}
+  - {fileID: 11400000, guid: 92ed6a660a574d1419b1e07d7452a605, type: 2}
+  - {fileID: 11400000, guid: cd1b7c48176e6444f8f532c4595c7e38, type: 2}
+  - {fileID: 11400000, guid: df754f0810fd9d141b80de9e5064aa4a, type: 2}
+  - {fileID: 11400000, guid: 8d54e986061c1854296d500b5d25c286, type: 2}
+  - {fileID: 11400000, guid: 8b3c325fc6ce41745890b5ef5a5688b9, type: 2}
+  - {fileID: 11400000, guid: 4ede44648331a714b9572639adcb37af, type: 2}
+  - {fileID: 11400000, guid: 90ec48445fde3c34fb720cffd2b96aab, type: 2}
+  - {fileID: 11400000, guid: c29037b0a88c4be4d94c5bb01467754c, type: 2}
+  - {fileID: 11400000, guid: a6619b6669a6f4f4dab20ea0e28a2c03, type: 2}
+  - {fileID: 11400000, guid: 53c3ceec34f28864989e4fe8d113426e, type: 2}
+  - {fileID: 11400000, guid: ea0a64d2b05f31f44acc6d376693d574, type: 2}
+  - {fileID: 11400000, guid: fea284b759d15d94aa7f0178585fb392, type: 2}
+  - {fileID: 11400000, guid: 10dd80302435fc847b5a9389ff02dac0, type: 2}
+  - {fileID: 11400000, guid: 8ce04aaece763444d90a4122fc881f86, type: 2}
+  - {fileID: 11400000, guid: 28b31c126791dcc4ba6cdb2bfba38d5e, type: 2}
+  - {fileID: 11400000, guid: ab805f93b8200474aad5ea062ddcbe19, type: 2}
+  - {fileID: 11400000, guid: ad6ef36c23a3107419064c12cdbf83e3, type: 2}
+  - {fileID: 11400000, guid: 8309e5c802ff71a479882a824ecc2347, type: 2}
+  - {fileID: 11400000, guid: 4073e581abbda154597f44479c496d43, type: 2}
+  - {fileID: 11400000, guid: dc3705a9cea6f2f499dbceafc201827d, type: 2}
+  - {fileID: 11400000, guid: e30b1244017e26d48803b8f9935308ce, type: 2}
+  - {fileID: 11400000, guid: 924ed3276accd3b49a42f29e524ace10, type: 2}
+  - {fileID: 11400000, guid: b6173cfc93ef1df47b80ee43bf21c059, type: 2}
+  - {fileID: 11400000, guid: 4c1869ad403c9134b8b45aca0db5b726, type: 2}
+  - {fileID: 11400000, guid: 2789706ca45ecaa438f5e5850d9db7e8, type: 2}
+  weaponContentParent: {fileID: 1327451810}
+  armorContentParent: {fileID: 1127629437}
+  accessoryContentParent: {fileID: 582121367}
 --- !u!114 &1377687832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97613,7 +97806,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 350, y: 100}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1403950733
 MonoBehaviour:
@@ -97663,7 +97856,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBB34\uAE30 \uBCC0\uACBD"
+  m_Text: "\uC561\uC138\uC11C\uB9AC \uBCC0\uACBD"
 --- !u!222 &1403950735
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -99290,7 +99483,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 350, y: 100}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1412703288
 MonoBehaviour:
@@ -99722,7 +99915,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: "\uBCF4\uC720 RUP: 1,234,567,890 RUP\n\uAC00\uACA9: 1,234,567,890 RUP"
+  m_Text: "\uC544\uC774\uD15C \uC774\uB984\n\uBCF4\uC720 RUP: 1,234,567,890 RUP\n\uAC00\uACA9:
+    1,234,567,890 RUP"
 --- !u!222 &1428412218
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -102198,7 +102392,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1377687830}
         m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
-        m_MethodName: CloseEquipmentPanel
+        m_MethodName: CloseAccessoryChangePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -102558,6 +102752,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1477334880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477334881}
+  m_Layer: 0
+  m_Name: "\uCCAB\uBC88\uC9F8 \uC544\uC774\uD15C\uB9CC \uB4DC\uB78D\uB418\uB294 \uBC84\uADF8\uAC00
+    \uC788\uC74C"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1477334881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477334880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 760.31555, y: 1477.1299, z: -12.489216}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1493484457
 GameObject:
   m_ObjectHideFlags: 0
@@ -103099,7 +103325,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1377687830}
         m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
-        m_MethodName: CloseEquipmentPanel
+        m_MethodName: CloseBuyEquipPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -104462,7 +104688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -105024,7 +105250,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1377687830}
         m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
-        m_MethodName: CloseEquipmentPanel
+        m_MethodName: CloseWeaponChangePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -114612,7 +114838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1846027813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114794,6 +115020,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   maxAccessorySlots: 10
+  ownedItem: []
   defaultWeapon: {fileID: 5998453375969933793, guid: ac72eb0151b894f448774325d2d357d8,
     type: 3}
   defaultArmor: {fileID: 4483362409329459198, guid: b595e7f1295bfc342ad4e249a6925196,
@@ -115678,7 +115905,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1899603222}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1899603222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116059,10 +116298,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1232131588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1911861478
 MonoBehaviour:
@@ -118864,7 +119103,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2079757805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377687830}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: OpenAccessoryChangePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2079757805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119161,10 +119412,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1191655296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2102188765
 MonoBehaviour:
@@ -120743,3 +120994,4 @@ SceneRoots:
   - {fileID: 581334085}
   - {fileID: 1569670605497494458}
   - {fileID: 9071676122854804055}
+  - {fileID: 1477334881}

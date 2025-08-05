@@ -293,17 +293,17 @@ public class PlayerStatus : MonoBehaviour
 
     public void TempBonusStat()
     {
-        tempBonusHealth = (int)((baseHealth + tempHealth + statsUpdater.totalBonusHealth) * 
-            (1 + statsUpdater.totalHealthMultiplier / 100)) - currentHealth;
+        tempBonusHealth = (int)(((baseHealth + tempHealth + statsUpdater.totalBonusHealth) * 
+            (1 + statsUpdater.totalHealthMultiplier / 100)) - currentHealth) - tempHealth;
 
-        tempBonusAttack = (int)((baseAttack + tempAttack + statsUpdater.totalBonusAttack) *
-            (1 + statsUpdater.totalAttackMultiplier / 100)) - currentAttack;
+        tempBonusAttack = (int)(((baseAttack + tempAttack + statsUpdater.totalBonusAttack) *
+            (1 + statsUpdater.totalAttackMultiplier / 100)) - currentAttack) - tempAttack;
 
-        tempBonusDefence = (int)((baseDefence + tempDefence + statsUpdater.totalBonusDefence) *
-            (1 + statsUpdater.totalDefenceMultiplier / 100)) - currentDefence;
+        tempBonusDefence = (int)(((baseDefence + tempDefence + statsUpdater.totalBonusDefence) *
+            (1 + statsUpdater.totalDefenceMultiplier / 100)) - currentDefence) - tempDefence;
 
-        tempBonusLuck = (int)((baseLuck + tempLuck + statsUpdater.totalBonusLuck) *
-            (1 + statsUpdater.totalLuckMultiplier / 100)) - currentLuck;
+        tempBonusLuck = (int)(((baseLuck + tempLuck + statsUpdater.totalBonusLuck) *
+            (1 + statsUpdater.totalLuckMultiplier / 100)) - currentLuck) - tempLuck;
     }
 
     public int GetPlayerLevel() => level;

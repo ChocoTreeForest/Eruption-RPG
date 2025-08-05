@@ -55,6 +55,31 @@ public class StatusUIManager : MonoBehaviour
         expMultiplier.text = $"{100 * playerStatus.GetEXPMultiplier()}%";
         moneyMultiplier.text = $"{100 * playerStatus.GetMoneyMultiplier()}%";
         speed.text = playerStatus.GetCurrentSpeed().ToString();
+
+        HideCalculate(); // 보너스 스탯이 없는 스탯 괄호 표기 없애기 -> (베이스 스탯 + 0)인 경우
+    }
+
+    public void HideCalculate()
+    {
+        if (playerStatus.GetBaseHealth() - playerStatus.GetCurrentHealth() == 0)
+        {
+            healthCalculate.text = "";
+        }
+
+        if (playerStatus.GetBaseAttack() - playerStatus.GetCurrentAttack() == 0)
+        {
+            attackCalculate.text = "";
+        }
+
+        if (playerStatus.GetBaseDefence() - playerStatus.GetCurrentDefence() == 0)
+        {
+            defenceCalculate.text = "";
+        }
+
+        if (playerStatus.GetBaseLuck() - playerStatus.GetCurrentLuck() == 0)
+        {
+            luckCalculate.text = "";
+        }
     }
 
     public void UpdateAP()
@@ -196,6 +221,31 @@ public class StatusUIManager : MonoBehaviour
         else
         {
             luckIncrease.text = "";
+        }
+
+        HideTempBonusStat();
+    }
+
+    public void HideTempBonusStat()
+    {
+        if (playerStatus.GetTempBonusHealth() == 0 && playerStatus.GetTempHealth() > 0)
+        {
+            healthIncrease.text = playerStatus.GetTempHealth().ToString();
+        }
+
+        if (playerStatus.GetTempBonusAttack() == 0 && playerStatus.GetTempAttack() > 0)
+        {
+            attackIncrease.text = playerStatus.GetTempAttack().ToString();
+        }
+
+        if (playerStatus.GetTempBonusDefence() == 0 && playerStatus.GetTempDefence() > 0)
+        {
+            defenceIncrease.text = playerStatus.GetTempDefence().ToString();
+        }
+
+        if (playerStatus.GetTempBonusLuck() == 0 && playerStatus.GetTempLuck() > 0)
+        {
+            luckIncrease.text = playerStatus.GetTempLuck().ToString();
         }
     }
 

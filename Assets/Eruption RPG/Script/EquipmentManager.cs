@@ -1,20 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
     public static EquipmentManager Instance;
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-
-        InitializeEquipment();
-    }
 
     public PlayerStatus playerStatus;
     public StatsUpdater statsUpdater;
@@ -25,8 +16,26 @@ public class EquipmentManager : MonoBehaviour
 
     public int maxAccessorySlots = 10; // 악세서리 슬롯 수
 
+    public List<ItemData> ownedItem = new List<ItemData>();
+
     [SerializeField] private Item defaultWeapon; // 기본 무기
     [SerializeField] private Item defaultArmor; // 기본 방어구
+
+    private Dictionary<ItemData, int> ownedItemCounts = new Dictionary<ItemData, int>();
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(Instance);
+        }
+
+        InitializeEquipment();
+    }
 
     void InitializeEquipment()
     {
@@ -110,5 +119,73 @@ public class EquipmentManager : MonoBehaviour
         {
             Debug.Log($"악세서리 슬롯 {i}: {accessorySlots[i]?.gameObject.name ?? "비어있음"}");
         }
+    }
+
+    public int GetItemCount(ItemData item)
+    {
+        if (ownedItemCounts.TryGetValue(item, out int count))
+        {
+            return count;
+        }
+
+        return 0;
+    }
+
+    // 아이템을 구매하거나 드랍 시 호출하기
+    public void AddItem(ItemData item)
+    {
+        if (!ownedItemCounts.ContainsKey(item))
+        {
+            ownedItemCounts[item] = 0;
+        }
+
+        int maxCount = MaxItemCount(item.itemType);
+
+        if (ownedItemCounts[item] < maxCount)
+        {
+            ownedItemCounts[item]++;
+        }
+        
+    }
+
+    private int MaxItemCount(ItemType type)
+    {
+        switch (type)
+        {
+            case ItemType.Weapon:
+            case ItemType.Armor:
+                return 7;
+            case ItemType.Accessory:
+                return 3;
+            default:
+                return 1;
+        }
+    }
+
+    public bool HasItem(ItemData item)
+    {
+        return GetItemCount(item) > 0;
+    }
+
+    public int GetCurrentPrice(ItemData item)
+    {
+        if (item.itemType != ItemType.Weapon && item.itemType != ItemType.Armor)
+        {
+            return item.price; // 액세서리는 가격 고정
+        }
+
+        int count = GetItemCount(item);
+        float multiplier = 1.0f + 0.5f * count;
+        return Mathf.RoundToInt(item.price * multiplier);
+    }
+
+    public int GetAdditionalBonusStat(int baseValue, int count)
+    {
+        return Mathf.RoundToInt(baseValue * 0.05f * (count - 1));
+    }
+
+    public float GetAdditionalStatMultiplier(float baseValue, int count)
+    {
+        return baseValue * 0.05f * (count - 1);
     }
 }

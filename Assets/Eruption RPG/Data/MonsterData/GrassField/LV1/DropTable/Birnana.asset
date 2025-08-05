@@ -16,6 +16,6 @@ MonoBehaviour:
   exp: 3000
   battlePoint: -1
   dropItems:
-  - itemPrefab: {fileID: 4697472251690626671, guid: 5a7f1ec4f6d283445bea3f5c2eda2601,
+  - itemPrefab: {fileID: 9110167794909531722, guid: fd2249cdae0a80a44affaa23960e5b8d,
       type: 3}
-    dropChance: 3
+    dropChance: 100
