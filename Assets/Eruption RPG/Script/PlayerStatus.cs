@@ -135,12 +135,14 @@ public class PlayerStatus : MonoBehaviour
     public void AddMoney(int dropMoney)
     {
         currentMoney += (int)(dropMoney * moneyMultiplier);
-        playerUIUpdater.UpdateLVandMoney();
+        playerUIUpdater.UpdateLV();
+        playerUIUpdater.UpdateMoney();
     }
 
     public void UseMoney(int price)
     {
         currentMoney -= price;
+        playerUIUpdater.UpdateMoney();
     }
 
     public long GetRequiredEXP()
@@ -159,7 +161,8 @@ public class PlayerStatus : MonoBehaviour
             abilityPoint += 5;
         }
 
-        playerUIUpdater.UpdateLVandMoney();
+        playerUIUpdater.UpdateLV();
+        playerUIUpdater.UpdateMoney();
         statusUIManager.UpdateAP();
         statusUIManager.UpdateEXP();
     }

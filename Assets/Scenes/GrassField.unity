@@ -34611,6 +34611,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &619581214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619581215}
+  m_Layer: 0
+  m_Name: "\uC544\uC774\uD15C \uC7A5\uCC29 \uB85C\uC9C1\uACFC \uAD6C\uB9E4 \uC7A5\uCC29
+    \uD328\uB110\uC5D0 \uBCF4\uC720 RUP, \uAC00\uACA9 \uC5F0\uB3D9\uD558\uAE30\uBD80\uD130
+    \uC2DC\uC791"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &619581215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619581214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 760.31555, y: 1477.1299, z: -12.489216}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &620377569
 GameObject:
   m_ObjectHideFlags: 0
@@ -96807,6 +96840,7 @@ GameObject:
   - component: {fileID: 1377687831}
   - component: {fileID: 1377687832}
   - component: {fileID: 1377687833}
+  - component: {fileID: 1377687834}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -97086,6 +97120,21 @@ MonoBehaviour:
   - {fileID: 2072072491}
   - {fileID: 1532229574}
   onOffText: {fileID: 1917946035}
+--- !u!114 &1377687834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377687826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1ab7b0cefda4040847f06f70830539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
+  playerStatus: {fileID: 1428900050}
+  buyButton: {fileID: 1910381537}
 --- !u!1 &1384477051
 GameObject:
   m_ObjectHideFlags: 0
@@ -120995,3 +121044,4 @@ SceneRoots:
   - {fileID: 1569670605497494458}
   - {fileID: 9071676122854804055}
   - {fileID: 1477334881}
+  - {fileID: 619581215}

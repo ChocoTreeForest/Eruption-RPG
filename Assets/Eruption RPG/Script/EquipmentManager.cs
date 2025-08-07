@@ -148,7 +148,7 @@ public class EquipmentManager : MonoBehaviour
         
     }
 
-    private int MaxItemCount(ItemType type)
+    public int MaxItemCount(ItemType type)
     {
         switch (type)
         {

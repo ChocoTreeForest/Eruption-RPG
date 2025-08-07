@@ -34,9 +34,18 @@ public class DropTable : ScriptableObject
                     EquipmentManager.Instance.AddItem(itemComponent.itemData);
                     Debug.Log($"보유 아이템에 추가됨: {itemComponent.itemData.itemName}");
 
-                    ItemListUI.Instance.WeaponList();
-                    ItemListUI.Instance.ArmorList();
-                    ItemListUI.Instance.AccessoryList();
+                    if (itemComponent.itemData.itemType == ItemType.Weapon)
+                    {
+                        ItemListUI.Instance.WeaponList();
+                    }
+                    else if (itemComponent.itemData.itemType == ItemType.Armor)
+                    {
+                        ItemListUI.Instance.ArmorList();
+                    }
+                    else
+                    {
+                        ItemListUI.Instance.AccessoryList();
+                    }
                 }
                 else
                 {

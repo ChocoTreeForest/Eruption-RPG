@@ -49,7 +49,7 @@ public class ItemListUI : MonoBehaviour
 
             GameObject slot = Instantiate(itemSlotPrefab, weaponContentParent);
             ItemSlotUI slotUI = slot.GetComponent<ItemSlotUI>();
-            slotUI.SetData(item, false); // 언락(소유)했는지, 구매할 수 있는지, 장착중인지 확인해야 하는데 Player나 다른데서 처리해야 할듯
+            slotUI.SetData(item, false);
         }
     }
 
@@ -70,7 +70,7 @@ public class ItemListUI : MonoBehaviour
 
             GameObject slot = Instantiate(itemSlotPrefab, armorContentParent);
             ItemSlotUI slotUI = slot.GetComponent<ItemSlotUI>();
-            slotUI.SetData(item, false); // 언락(소유)했는지, 구매할 수 있는지, 장착중인지 확인해야 하는데 Player나 다른데서 처리해야 할듯ㄷㄷ
+            slotUI.SetData(item, false);
         }
     }
 
@@ -91,7 +91,7 @@ public class ItemListUI : MonoBehaviour
 
             GameObject slot = Instantiate(itemSlotPrefab, accessoryContentParent);
             ItemSlotUI slotUI = slot.GetComponent<ItemSlotUI>();
-            slotUI.SetData(item, false); // 언락(소유)했는지, 구매할 수 있는지, 장착중인지 확인해야 하는데 Player나 다른데서 처리해야 할듯ㄷㄷ
+            slotUI.SetData(item, false);
         }
     }
 }

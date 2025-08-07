@@ -127,6 +127,7 @@ public class ItemSlotUI : MonoBehaviour
     {
         if (isUnlocked || canBuy)
         {
+            ItemBuyEquip.Instance.SetItem(itemData);
             MenuUIManager.Instance.buyEquipPanel.SetActive(true);
         }
     }
