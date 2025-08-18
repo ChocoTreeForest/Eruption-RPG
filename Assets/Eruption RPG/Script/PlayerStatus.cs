@@ -8,7 +8,6 @@ public class PlayerStatus : MonoBehaviour
     private PlayerController player;
     public PlayerUIUpdater playerUIUpdater;
     public StatusUIManager statusUIManager;
-    public StatsUpdater statsUpdater;
 
     // 기본 능력치
     private int level = 1;
@@ -108,12 +107,12 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateCriticalChance(int bonusCriticalChance)
     {
-        currentCriticalChance += bonusCriticalChance;
+        currentCriticalChance = baseCriticalChance + bonusCriticalChance;
     }
 
     public void UpdateCriticalMultiplier(float multiplier)
     {
-        currentCriticalMultiplier += multiplier / 100;
+        currentCriticalMultiplier = baseCriticalMultiplier + multiplier / 100;
     }
 
     public void UpdateSpeed(float multiplier)
@@ -123,12 +122,12 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateMoneyMultiplier(float multiplier)
     {
-        moneyMultiplier += multiplier / 100;
+        moneyMultiplier = 1 + multiplier / 100;
     }
 
     public void UpdateEXPMultiplier(float multiplier)
     {
-        expMultiplier += multiplier / 100;
+        expMultiplier = 1 + multiplier / 100;
     }
 
     // 돈 획득과 사용, 경험치 획득
@@ -200,7 +199,6 @@ public class PlayerStatus : MonoBehaviour
     public bool IsAlive()
     {
         return currentHealth > 0;
-        // 체력 0이 되면 죽고 배틀 포인트 3 감소 후 전투 종료
         // 무한 모드를 만든다면 죽으면 바로 끝나게 (죽으면 currentBattlePoint -= currentBattlePoint 라던가)
     }
 
@@ -241,19 +239,19 @@ public class PlayerStatus : MonoBehaviour
         {
             case "HP":
                 baseHealth += 5 * useAP;
-                UpdateHealth(statsUpdater.totalBonusHealth, statsUpdater.totalHealthMultiplier);
+                UpdateHealth(StatsUpdater.Instance.totalBonusHealth, StatsUpdater.Instance.totalHealthMultiplier);
                 break;
             case "ATK":
                 baseAttack += 1 * useAP;
-                UpdateAttack(statsUpdater.totalBonusAttack, statsUpdater.totalAttackMultiplier);
+                UpdateAttack(StatsUpdater.Instance.totalBonusAttack, StatsUpdater.Instance.totalAttackMultiplier);
                 break;
             case "DEF":
                 baseDefence += 1 * useAP;
-                UpdateDefence(statsUpdater.totalBonusDefence, statsUpdater.totalDefenceMultiplier);
+                UpdateDefence(StatsUpdater.Instance.totalBonusDefence, StatsUpdater.Instance.totalDefenceMultiplier);
                 break;
             case "LUC":
                 baseLuck += 1 * useAP;
-                UpdateLuck(statsUpdater.totalBonusLuck, statsUpdater.totalLuckMultiplier);
+                UpdateLuck(StatsUpdater.Instance.totalBonusLuck, StatsUpdater.Instance.totalLuckMultiplier);
                 break;
             default:
                 return;
@@ -268,13 +266,13 @@ public class PlayerStatus : MonoBehaviour
     public void ApplyTempStat()
     {
         baseHealth += tempHealth;
-        UpdateHealth(statsUpdater.totalBonusHealth, statsUpdater.totalHealthMultiplier);
+        UpdateHealth(StatsUpdater.Instance.totalBonusHealth, StatsUpdater.Instance.totalHealthMultiplier);
         baseAttack += tempAttack;
-        UpdateAttack(statsUpdater.totalBonusAttack, statsUpdater.totalAttackMultiplier);
+        UpdateAttack(StatsUpdater.Instance.totalBonusAttack, StatsUpdater.Instance.totalAttackMultiplier);
         baseDefence += tempDefence;
-        UpdateDefence(statsUpdater.totalBonusDefence, statsUpdater.totalDefenceMultiplier);
+        UpdateDefence(StatsUpdater.Instance.totalBonusDefence, StatsUpdater.Instance.totalDefenceMultiplier);
         baseLuck += tempLuck;
-        UpdateLuck(statsUpdater.totalBonusLuck, statsUpdater.totalLuckMultiplier);
+        UpdateLuck(StatsUpdater.Instance.totalBonusLuck, StatsUpdater.Instance.totalLuckMultiplier);
 
         ResetTempStat();
     }
@@ -296,17 +294,17 @@ public class PlayerStatus : MonoBehaviour
 
     public void TempBonusStat()
     {
-        tempBonusHealth = (int)(((baseHealth + tempHealth + statsUpdater.totalBonusHealth) * 
-            (1 + statsUpdater.totalHealthMultiplier / 100)) - currentHealth) - tempHealth;
+        tempBonusHealth = (int)(((baseHealth + tempHealth + StatsUpdater.Instance.totalBonusHealth) * 
+            (1 + StatsUpdater.Instance.totalHealthMultiplier / 100)) - currentHealth) - tempHealth;
 
-        tempBonusAttack = (int)(((baseAttack + tempAttack + statsUpdater.totalBonusAttack) *
-            (1 + statsUpdater.totalAttackMultiplier / 100)) - currentAttack) - tempAttack;
+        tempBonusAttack = (int)(((baseAttack + tempAttack + StatsUpdater.Instance.totalBonusAttack) *
+            (1 + StatsUpdater.Instance.totalAttackMultiplier / 100)) - currentAttack) - tempAttack;
 
-        tempBonusDefence = (int)(((baseDefence + tempDefence + statsUpdater.totalBonusDefence) *
-            (1 + statsUpdater.totalDefenceMultiplier / 100)) - currentDefence) - tempDefence;
+        tempBonusDefence = (int)(((baseDefence + tempDefence + StatsUpdater.Instance.totalBonusDefence) *
+            (1 + StatsUpdater.Instance.totalDefenceMultiplier / 100)) - currentDefence) - tempDefence;
 
-        tempBonusLuck = (int)(((baseLuck + tempLuck + statsUpdater.totalBonusLuck) *
-            (1 + statsUpdater.totalLuckMultiplier / 100)) - currentLuck) - tempLuck;
+        tempBonusLuck = (int)(((baseLuck + tempLuck + StatsUpdater.Instance.totalBonusLuck) *
+            (1 + StatsUpdater.Instance.totalLuckMultiplier / 100)) - currentLuck) - tempLuck;
     }
 
     public int GetPlayerLevel() => level;

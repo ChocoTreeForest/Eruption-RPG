@@ -51,6 +51,7 @@ public class DropTable : ScriptableObject
                 {
                     Debug.Log($"아이템 데이터가 없습니다.");
                 }
+                EquipmentManager.Instance.UpdateEquipmentUI();
                 return item.itemPrefab;
             }
         }

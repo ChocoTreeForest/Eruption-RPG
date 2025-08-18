@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class MenuUIManager : MonoBehaviour
@@ -15,6 +16,9 @@ public class MenuUIManager : MonoBehaviour
     public GameObject armorChangePanel;
     public GameObject accessoryChangePanel;
     public GameObject buyEquipPanel;
+    public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
+
+    public bool isPanelOpen = false;
 
     void Awake()
     {
@@ -24,17 +28,21 @@ public class MenuUIManager : MonoBehaviour
         }
         else
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
     }
     public void OpenMenuPanel()
     {
         menuPanel.SetActive(true);
+        isPanelOpen = true;
+        raycastBlocker.SetActive(true);
     }
 
     public void CloseMenuPanel()
     {
         menuPanel.SetActive(false);
+        isPanelOpen = false;
+        raycastBlocker.SetActive(false);
     }
 
     public void OpenStatusPanel()
@@ -68,8 +76,8 @@ public class MenuUIManager : MonoBehaviour
 
     public void OKUnequip()
     {
+        AccessoryUIManager.Instance.UnequipAllAccessories();
         unequipAlertPanel.SetActive(false);
-        // 액세서리 전부 해제시키기
     }
 
     public void CancelUnequip()
@@ -87,6 +95,7 @@ public class MenuUIManager : MonoBehaviour
     {
         statusPanel.SetActive(true);
         statusPresetPanel.SetActive(false);
+
     }
 
     public void OpenWeaponChangePanel()
@@ -112,13 +121,6 @@ public class MenuUIManager : MonoBehaviour
     {
         equipmentPanel.SetActive(true);
         armorChangePanel.SetActive(false);
-    }
-
-    public void OpenAccessoryChangePanel()
-    {
-        ItemListUI.Instance.AccessoryList();
-        equipmentPanel.SetActive(false);
-        accessoryChangePanel.SetActive(true);
     }
 
     public void CloseAccessoryChangePanel()

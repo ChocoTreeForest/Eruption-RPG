@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 203
   itemName: Emerald
   itemType: 2
+  price: 1
   icon: {fileID: 689785827, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 5000
   bonusAttack: 0

@@ -21,7 +21,7 @@ public class ItemListUI : MonoBehaviour
         }
         else
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
     }
 

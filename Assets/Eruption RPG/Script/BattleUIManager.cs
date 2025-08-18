@@ -8,7 +8,7 @@ public class BattleUIManager : MonoBehaviour
     public PlayerStatus playerStatus;
     public Monster monster;
 
-    public GameObject battleUIPanel;
+    public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
     public Image monsterImage;
     public Animator battleUIAnimator;
 
@@ -28,14 +28,17 @@ public class BattleUIManager : MonoBehaviour
             monsterImage.sprite = null;
         }
 
+        raycastBlocker.SetActive(true);
         battleUIAnimator.SetBool("isShow", true);
 
         monsterImage.sprite = monsterSprite;
         monsterImage.SetNativeSize();
+        ShowMonsterUI();
     }
 
     public void HideBattleUI()
     {
+        raycastBlocker.SetActive(false);
         battleUIAnimator.SetBool("isShow", false);
     }
 
@@ -101,4 +104,20 @@ public class BattleUIManager : MonoBehaviour
         Color.blue,
         new Color(1f, 0.5f, 0f) // 주황색
     };
+
+    public void ShowMonsterUI()
+    {
+        monsterImage.gameObject.SetActive(true);
+        monsterHP.gameObject.SetActive(true);
+        monsterHPBarBack.gameObject.SetActive(true);
+        monsterHPBarFront.gameObject.SetActive(true);
+    }
+
+    public void HideMonsterUI()
+    {
+        monsterImage.gameObject.SetActive(false);
+        monsterHP.gameObject.SetActive(false);
+        monsterHPBarBack.gameObject.SetActive(false);
+        monsterHPBarFront.gameObject.SetActive(false);
+    }
 }

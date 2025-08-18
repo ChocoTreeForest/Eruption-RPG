@@ -28,4 +28,7 @@ public class ItemData : ScriptableObject
     public float speedMultiplier;
     public float bonusMoneyMultiplier;
     public float bonusEXPMultiplier;
+
+    public bool specialItem;
+    public bool criticalRing;
 }

@@ -47,7 +47,7 @@ public class RandomEncounter : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (battleManager.isInBattle) return;
+        if (battleManager.isInBattle || MenuUIManager.Instance.isPanelOpen) return;
 
         if (playerController.inputVec.magnitude > 0f)
         {

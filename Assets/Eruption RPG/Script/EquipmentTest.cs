@@ -5,9 +5,9 @@ using UnityEngine;
 public class EquipmentTest : MonoBehaviour
 {
     public EquipmentManager equipmentManager;
-    public Item weapon;
-    public Item armor;
-    public Item[] accessory;
+    public ItemData weapon;
+    public ItemData armor;
+    public ItemData[] accessory;
 
     void Start()
     {

@@ -48,79 +48,56 @@ public class ItemSlotUI : MonoBehaviour
             {
                 priceText.text = "구매 불가";
             }
+            buyEquipButton.interactable = true;
         }
         else
         {
             icon.sprite = unknownSprite;
             itemStatus.text = "";
             priceText.text = "구매 불가";
+            buyEquipButton.interactable = false;
         }
 
         int itemCount = EquipmentManager.Instance.GetItemCount(itemData);
         itemCountText.text = $"x {itemCount}";
 
-        equippedText.SetActive(isEquipped);
+        UpdateEquippedText();
     }
 
     public string GetItemStatusText()
     {
-        List<string> lines = new List<string>();
         int count = EquipmentManager.Instance.GetItemCount(itemData);
+        return ItemTextManager.GetItemStatusText(itemData, count);
+    }
 
-        if (itemData.bonusHealth != 0) lines.Add($"HP {itemData.bonusHealth}");
-        if (itemData.healthMultiplier != 0) lines.Add($"HP% {itemData.healthMultiplier}%");
+    void UpdateEquippedText()
+    {
+        bool isEquipped = false;
+        var currentPreset = EquipmentManager.Instance.presets[EquipmentManager.Instance.currentPresetIndex];
 
-        if (itemData.itemType == ItemType.Weapon && count > 1)
+        if (EquipmentManager.Instance.weaponSlot == itemData)
         {
-            if (itemData.bonusAttack != 0)
-            {
-                int bonus = EquipmentManager.Instance.GetAdditionalBonusStat(itemData.bonusAttack, count);
-                lines.Add($"ATK {itemData.bonusAttack} + {bonus}");
-            }
-
-            if (itemData.attackMultiplier != 0)
-            {
-                float bonus = EquipmentManager.Instance.GetAdditionalStatMultiplier(itemData.attackMultiplier, count);
-                lines.Add($"ATK% {itemData.attackMultiplier}% + {bonus}%");
-            }
-        }
-        else
-        {
-            if (itemData.bonusAttack != 0) lines.Add($"ATK {itemData.bonusAttack}");
-            if (itemData.attackMultiplier != 0) lines.Add($"ATK% {itemData.attackMultiplier}%");
+            isEquipped = true;
         }
 
-        if (itemData.itemType == ItemType.Armor && count > 1)
+        if (EquipmentManager.Instance.armorSlot == itemData)
         {
-            if (itemData.bonusDefence != 0)
-            {
-                int bonus = EquipmentManager.Instance.GetAdditionalBonusStat(itemData.bonusDefence, count);
-                lines.Add($"ATK {itemData.bonusDefence} + {bonus}");
-            }
-
-            if (itemData.defenceMultiplier != 0)
-            {
-                float bonus = EquipmentManager.Instance.GetAdditionalStatMultiplier(itemData.defenceMultiplier, count);
-                lines.Add($"ATK% {itemData.defenceMultiplier}% + {bonus}%");
-            }
-        }
-        else
-        {
-            if (itemData.bonusDefence != 0) lines.Add($"ATK {itemData.bonusDefence}");
-            if (itemData.defenceMultiplier != 0) lines.Add($"ATK% {itemData.defenceMultiplier}%");
+            isEquipped = true;
         }
 
-        if (itemData.bonusLuck != 0) lines.Add($"LUC {itemData.bonusLuck}");
-        if (itemData.luckMultiplier != 0) lines.Add($"LUC% {itemData.luckMultiplier}%");
+        if (itemData.itemType == ItemType.Accessory)
+        {
+            foreach (var accessory in EquipmentManager.Instance.accessorySlots)
+            {
+                if (accessory == itemData)
+                {
+                    isEquipped = true;
+                    break;
+                }
+            }
+        }
 
-        if (itemData.bonusCriticalChance != 0) lines.Add($"CRIT% {itemData.bonusCriticalChance}%");
-        if (itemData.bonusCriticalMultiplier != 0) lines.Add($"CRIT DMG {itemData.bonusCriticalMultiplier}%");
-
-        if (itemData.speedMultiplier != 0) lines.Add($"Speed {itemData.speedMultiplier}%");
-        if (itemData.bonusEXPMultiplier != 0) lines.Add($"EXP Drop {itemData.bonusEXPMultiplier}%");
-        if (itemData.bonusMoneyMultiplier != 0) lines.Add($"RUP Drop {itemData.bonusMoneyMultiplier}%");
-
-        return string.Join("\n", lines);
+        equippedText.SetActive(isEquipped);
     }
 
     void OnClickSlot()

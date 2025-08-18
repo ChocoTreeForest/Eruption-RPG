@@ -24,14 +24,14 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (battleManager.isInBattle) return;
+        if (battleManager.isInBattle || MenuUIManager.Instance.isPanelOpen) return;
         Vector2 nextVec = inputVec * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
     }
 
     void LateUpdate()
     {
-        if (battleManager.isInBattle)
+        if (battleManager.isInBattle || MenuUIManager.Instance.isPanelOpen)
         {
             anim.SetFloat("Speed", 0f);
             return;
