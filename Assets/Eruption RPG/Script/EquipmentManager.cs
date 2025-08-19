@@ -142,17 +142,6 @@ public class EquipmentManager : MonoBehaviour
         return false;
     }
 
-    // ¾Ç¼¼¼­¸® ÀåÂø ÇØÁ¦
-    //public void UnequipAccessory(int slotIndex)
-    //{
-    //    if (slotIndex >= 0 && slotIndex < maxAccessorySlots && accessorySlots[slotIndex] != null)
-    //    {
-    //        Debug.Log($"¾Ç¼¼¼­¸® ÀåÂø ÇØÁ¦: {accessorySlots[slotIndex].itemName} (½½·Ô {slotIndex})");
-    //        accessorySlots[slotIndex] = null;
-    //    }
-    //    statsUpdater.UpdateStats();
-    //}
-
     // ¾ÆÀÌÅÛ ÀåÂø ½Ã Àåºñ Ã¢¿¡ ÀåÂøµÈ ¾ÆÀÌÅÛ Ç¥½Ã
     public void UpdateEquipmentUI()
     {

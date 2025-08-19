@@ -49,6 +49,8 @@ public class MenuUIManager : MonoBehaviour
     {
         menuPanel.SetActive(false);
         statusPanel.SetActive(true);
+        isPanelOpen = true;
+        raycastBlocker.SetActive(true);
     }
 
     public void CloseStatusPanel()

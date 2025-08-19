@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 218
   itemName: Four-leaf Clover
   itemType: 2
-  price: 1
+  price: 0
   icon: {fileID: -2113947798, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 0
@@ -30,3 +30,5 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0

@@ -151,7 +151,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void AddEXP(long dropEXP)
     {
-        currentEXP += dropEXP;
+        currentEXP += (long)(dropEXP * expMultiplier);
 
         while (currentEXP >= GetRequiredEXP())
         {

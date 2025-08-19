@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 237
   itemName: Guts Pendant
   itemType: 2
-  price: 1
+  price: 0
   icon: {fileID: -1537256103, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 0

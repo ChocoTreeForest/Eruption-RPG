@@ -30,8 +30,8 @@ public class PlayerUIUpdater : MonoBehaviour
 
     public void UpdateLV()
     {
-        currentLevel.text = playerStatus.GetPlayerLevel().ToString();
-        statusLevel.text = playerStatus.GetPlayerLevel().ToString();
+        currentLevel.text = playerStatus.GetPlayerLevel().ToString("N0");
+        statusLevel.text = playerStatus.GetPlayerLevel().ToString("N0");
     }
 
     public void UpdateMoney()

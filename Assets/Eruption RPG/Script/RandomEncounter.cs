@@ -122,5 +122,13 @@ public class RandomEncounter : MonoBehaviour
         battleManager.StartBattle(monster, false /* isBoss */);
     }
 
+    public void OnClickEncounterButton()
+    {
+        MonsterEncounter();
+        encounterChance = 0f; //인카운터 확률 초기화
+        SetRandomValue(); //랜덤 값 설정
+        if (currentMonsters.Count == 0) return;
+    }
+
     public float GetEncounterChance() => encounterChance;
 }

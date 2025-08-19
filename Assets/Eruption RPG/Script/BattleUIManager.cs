@@ -11,6 +11,7 @@ public class BattleUIManager : MonoBehaviour
     public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
     public Image monsterImage;
     public Animator battleUIAnimator;
+    public GameObject battleUI;
 
     public Text playerHP;
     public Text monsterHP;
@@ -40,6 +41,13 @@ public class BattleUIManager : MonoBehaviour
     {
         raycastBlocker.SetActive(false);
         battleUIAnimator.SetBool("isShow", false);
+    }
+    // 나중에 설정 만들 때 if문으로 조건 만들어서 스테이터스 창 켜지게 할지 말지 결정하기
+    public void HideBattleUIAndOpenStatus()
+    {
+        raycastBlocker.SetActive(false);
+        battleUIAnimator.SetBool("isShow", false);
+        MenuUIManager.Instance.OpenStatusPanel();
     }
 
     public void PlayerHPUpdate()

@@ -1,12 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class WinUIManager : MonoBehaviour
 {
     public static WinUIManager Instance;
+    public BattleManager battleManager;
+    public PlayerStatus playerStatus;
     public CanvasGroup winUI;
     public float fadeDuration = 0.5f;
+
+    public Text earnedMoney;
+    public Text earnedEXP;
+    public Text levelUp;
+
+    public GameObject droppedItemUI;
+    public Image itemIcon;
+    public Text itemName;
 
     void Awake()
     {
@@ -22,6 +34,7 @@ public class WinUIManager : MonoBehaviour
 
     public void ShowWinUI()
     {
+        UpdateUI();
         StartCoroutine(FadeInWinUI());
     }
 
@@ -39,5 +52,40 @@ public class WinUIManager : MonoBehaviour
         }
         
         winUI.alpha = 1f;
+    }
+
+     public void UpdateUI()
+    {
+        var dropTable = battleManager.monster.dropTable;
+
+        if (dropTable != null)
+        {
+            long gainedEXP = (long)(dropTable.exp * playerStatus.GetEXPMultiplier());
+
+            earnedMoney.text = $"+ {(int)(dropTable.money * playerStatus.GetMoneyMultiplier()):N0} RUP";
+            earnedEXP.text = $"+ {gainedEXP:N0}";
+
+            // 레벨 몇 올랐는지 계산
+            int currentLevel = playerStatus.GetPlayerLevel();
+            long currentEXP = playerStatus.GetCurrentEXP();
+            int predictedLevel = currentLevel;
+            long tempEXP = currentEXP + gainedEXP;
+
+            while (tempEXP >= (long)Mathf.Round(10 * Mathf.Pow(predictedLevel, 1.25f)))
+            {
+                tempEXP -= (long)Mathf.Round(10 * Mathf.Pow(predictedLevel, 1.25f));
+                predictedLevel++;
+            }
+
+            int levelUpCount = predictedLevel - currentLevel;
+
+            levelUp.text = $"LV {currentLevel:N0} + {levelUpCount:N0}";
+        }
+        else
+        {
+            earnedMoney.text = "";
+            earnedEXP.text = "";
+            levelUp.text = "";
+        }
     }
 }

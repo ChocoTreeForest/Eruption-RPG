@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 236
   itemName: Swiftness Pendant
   itemType: 2
-  price: 1
+  price: 0
   icon: {fileID: -949974372, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 0

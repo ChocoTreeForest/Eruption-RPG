@@ -67,8 +67,16 @@ public class BattleManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
 
         player.RestoreHealth();
+        
+        if (player.IsAlive())
+        {
+            battleUIManager.HideBattleUIAndOpenStatus();
+        }
+        else
+        {
+            battleUIManager.HideBattleUI();
+        }
 
-        battleUIManager.HideBattleUI();
         WinUIManager.Instance.winUI.gameObject.SetActive(false);
         isInBattle = false;
         symbolEncounter = null;
@@ -83,12 +91,11 @@ public class BattleManager : MonoBehaviour
         {
             battleUIManager.HideMonsterUI();
             Debug.Log("ÀüÅõ ½Â¸®!");
+            monster.TryDropItem();
+            WinUIManager.Instance.ShowWinUI();
             player.AddMoney(monster.GetDropMoney());
             player.AddEXP(monster.GetDropEXP());
             player.UpdateBP(monster.GetDropBP());
-            monster.TryDropItem();
-
-            WinUIManager.Instance.ShowWinUI();
 
             if (isBossBattle)
             {
