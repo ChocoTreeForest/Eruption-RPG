@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 1355000
   attack: 28000
   defense: 10000
+  nextMapName: CursedForest

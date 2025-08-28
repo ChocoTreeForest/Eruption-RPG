@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 465000
   attack: 12500
   defense: 5000
+  nextMapName: Desert

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterStatData: {fileID: 11400000, guid: 0e25eeccbaf468644a8990d6c02a8418, type: 2}
-  dropTable: {fileID: 0}
+  dropTable: {fileID: 11400000, guid: 284573684d13f7b498f8d4ff2fc35378, type: 2}
   monsterSprite: {fileID: -599954844, guid: 884afa025278d234781f6c8fb259ac61, type: 3}
 --- !u!114 &2348876010958861190
 MonoBehaviour:
@@ -199,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22214ad818955b479ec9eec0001f259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleManager: {fileID: 0}
   monster: {fileID: 4240029567648604845}
   hasEncounter: 0
 --- !u!70 &8687862371417126206

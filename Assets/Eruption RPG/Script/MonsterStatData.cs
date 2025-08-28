@@ -9,4 +9,5 @@ public class MonsterStatData : ScriptableObject
     public int health;
     public int attack;
     public int defense;
+    public string nextMapName;
 }

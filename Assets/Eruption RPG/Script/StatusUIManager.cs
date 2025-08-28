@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class StatusUIManager : MonoBehaviour
 {
-    public PlayerStatus playerStatus;
-
     public Text health;
     public Text healthCalculate;
     public Text healthIncrease;
@@ -42,41 +40,41 @@ public class StatusUIManager : MonoBehaviour
 
     public void UpdateStatus()
     {
-        health.text = playerStatus.GetCurrentHealth().ToString();
-        healthCalculate.text = $"({playerStatus.GetBaseHealth()} + {playerStatus.GetCurrentHealth() - playerStatus.GetBaseHealth()})";
-        attack.text = playerStatus.GetCurrentAttack().ToString();
-        attackCalculate.text = $"({playerStatus.GetBaseAttack()} + {playerStatus.GetCurrentAttack() - playerStatus.GetBaseAttack()})";
-        defence.text = playerStatus.GetCurrentDefence().ToString();
-        defenceCalculate.text = $"({playerStatus.GetBaseDefence()} + {playerStatus.GetCurrentDefence() - playerStatus.GetBaseDefence()})";
-        luck.text = playerStatus.GetCurrentLuck().ToString();
-        luckCalculate.text = $"({playerStatus.GetBaseLuck()} + {playerStatus.GetCurrentLuck() - playerStatus.GetBaseLuck()})";
-        criticalChance.text = $"{playerStatus.GetCurrentCriticalChance()}%";
-        criticalMultiplier.text = $"{100 * playerStatus.GetCurrentCriticalMultiplier()}%";
-        expMultiplier.text = $"{100 * playerStatus.GetEXPMultiplier()}%";
-        moneyMultiplier.text = $"{100 * playerStatus.GetMoneyMultiplier()}%";
-        speed.text = playerStatus.GetCurrentSpeed().ToString();
+        health.text = PlayerStatus.Instance.GetCurrentHealth().ToString();
+        healthCalculate.text = $"({PlayerStatus.Instance.GetBaseHealth()} + {PlayerStatus.Instance.GetCurrentHealth() - PlayerStatus.Instance.GetBaseHealth()})";
+        attack.text = PlayerStatus.Instance.GetCurrentAttack().ToString();
+        attackCalculate.text = $"({PlayerStatus.Instance.GetBaseAttack()} + {PlayerStatus.Instance.GetCurrentAttack() - PlayerStatus.Instance.GetBaseAttack()})";
+        defence.text = PlayerStatus.Instance.GetCurrentDefence().ToString();
+        defenceCalculate.text = $"({PlayerStatus.Instance.GetBaseDefence()} + {PlayerStatus.Instance.GetCurrentDefence() - PlayerStatus.Instance.GetBaseDefence()})";
+        luck.text = PlayerStatus.Instance.GetCurrentLuck().ToString();
+        luckCalculate.text = $"({PlayerStatus.Instance.GetBaseLuck()} + {PlayerStatus.Instance.GetCurrentLuck() - PlayerStatus.Instance.GetBaseLuck()})";
+        criticalChance.text = $"{PlayerStatus.Instance.GetCurrentCriticalChance()}%";
+        criticalMultiplier.text = $"{100 * PlayerStatus.Instance.GetCurrentCriticalMultiplier()}%";
+        expMultiplier.text = $"{100 * PlayerStatus.Instance.GetEXPMultiplier()}%";
+        moneyMultiplier.text = $"{100 * PlayerStatus.Instance.GetMoneyMultiplier()}%";
+        speed.text = PlayerStatus.Instance.GetCurrentSpeed().ToString();
 
         HideCalculate(); // 보너스 스탯이 없는 스탯 괄호 표기 없애기 -> (베이스 스탯 + 0)인 경우
     }
 
     public void HideCalculate()
     {
-        if (playerStatus.GetBaseHealth() - playerStatus.GetCurrentHealth() == 0)
+        if (PlayerStatus.Instance.GetBaseHealth() - PlayerStatus.Instance.GetCurrentHealth() == 0)
         {
             healthCalculate.text = "";
         }
 
-        if (playerStatus.GetBaseAttack() - playerStatus.GetCurrentAttack() == 0)
+        if (PlayerStatus.Instance.GetBaseAttack() - PlayerStatus.Instance.GetCurrentAttack() == 0)
         {
             attackCalculate.text = "";
         }
 
-        if (playerStatus.GetBaseDefence() - playerStatus.GetCurrentDefence() == 0)
+        if (PlayerStatus.Instance.GetBaseDefence() - PlayerStatus.Instance.GetCurrentDefence() == 0)
         {
             defenceCalculate.text = "";
         }
 
-        if (playerStatus.GetBaseLuck() - playerStatus.GetCurrentLuck() == 0)
+        if (PlayerStatus.Instance.GetBaseLuck() - PlayerStatus.Instance.GetCurrentLuck() == 0)
         {
             luckCalculate.text = "";
         }
@@ -84,139 +82,139 @@ public class StatusUIManager : MonoBehaviour
 
     public void UpdateAP()
     {
-        AP.text = playerStatus.GetAbilityPoint().ToString();
+        AP.text = PlayerStatus.Instance.GetAbilityPoint().ToString();
     }
 
     public void UpdateEXP()
     {
-        exp.text = $"EXP: {playerStatus.GetCurrentEXP()}/{playerStatus.GetRequiredEXP()}";
-        expBar.value = (float)((double)playerStatus.GetCurrentEXP() / playerStatus.GetRequiredEXP());
+        exp.text = $"EXP: {PlayerStatus.Instance.GetCurrentEXP()}/{PlayerStatus.Instance.GetRequiredEXP()}";
+        expBar.value = (float)((double)PlayerStatus.Instance.GetCurrentEXP() / PlayerStatus.Instance.GetRequiredEXP());
     }
 
     public void Use1APToHP()
     {
         useAP = 1;
-        playerStatus.IncreaseStat("HP", useAP);
+        PlayerStatus.Instance.IncreaseStat("HP", useAP);
         StatIncreasePreview();
     }
 
     public void UseHalfAPToHP()
     {
-        totalAP = playerStatus.abilityPoint;
+        totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP / 2;
-        playerStatus.IncreaseStat("HP", useAP);
+        PlayerStatus.Instance.IncreaseStat("HP", useAP);
         StatIncreasePreview();
     }
 
     public void UseAllAPToHP()
     {
-        totalAP = playerStatus.abilityPoint;
+        totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP;
-        playerStatus.IncreaseStat("HP", useAP);
+        PlayerStatus.Instance.IncreaseStat("HP", useAP);
         StatIncreasePreview();
     }
 
     public void Use1APToATK()
     {
         useAP = 1;
-        playerStatus.IncreaseStat("ATK", useAP);
+        PlayerStatus.Instance.IncreaseStat("ATK", useAP);
         StatIncreasePreview();
     }
 
     public void UseHalfAPToATK()
     {
-        totalAP = playerStatus.abilityPoint;
+        totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP / 2;
-        playerStatus.IncreaseStat("ATK", useAP);
+        PlayerStatus.Instance.IncreaseStat("ATK", useAP);
         StatIncreasePreview();
     }
 
     public void UseAllAPToATK()
     {
-        totalAP = playerStatus.abilityPoint;
+        totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP;
-        playerStatus.IncreaseStat("ATK", useAP);
+        PlayerStatus.Instance.IncreaseStat("ATK", useAP);
         StatIncreasePreview();
     }
 
     public void Use1APToDEF()
     {
         useAP = 1;
-        playerStatus.IncreaseStat("DEF", useAP);
+        PlayerStatus.Instance.IncreaseStat("DEF", useAP);
         StatIncreasePreview();
     }
 
     public void UseHalfAPToDEF()
     {
-        totalAP = playerStatus.abilityPoint;
+        totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP / 2;
-        playerStatus.IncreaseStat("DEF", useAP);
+        PlayerStatus.Instance.IncreaseStat("DEF", useAP);
         StatIncreasePreview();
     }
 
     public void UseAllAPToDEF()
     {
-        totalAP = playerStatus.abilityPoint;
+        totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP;
-        playerStatus.IncreaseStat("DEF", useAP);
+        PlayerStatus.Instance.IncreaseStat("DEF", useAP);
         StatIncreasePreview();
     }
 
     public void Use1APToLUC()
     {
         useAP = 1;
-        playerStatus.IncreaseStat("LUC", useAP);
+        PlayerStatus.Instance.IncreaseStat("LUC", useAP);
         StatIncreasePreview();
     }
 
     public void UseHalfAPToLUC()
     {
-        totalAP = playerStatus.abilityPoint;
+        totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP / 2;
-        playerStatus.IncreaseStat("LUC", useAP);
+        PlayerStatus.Instance.IncreaseStat("LUC", useAP);
         StatIncreasePreview();
     }
 
     public void UseAllAPToLUC()
     {
-        totalAP = playerStatus.abilityPoint;
+        totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP;
-        playerStatus.IncreaseStat("LUC", useAP);
+        PlayerStatus.Instance.IncreaseStat("LUC", useAP);
         StatIncreasePreview();
     }
 
     public void StatIncreasePreview()
     {
-        if (playerStatus.GetTempHealth() > 0)
+        if (PlayerStatus.Instance.GetTempHealth() > 0)
         {
-            healthIncrease.text = $"{playerStatus.GetTempHealth()} + {playerStatus.GetTempBonusHealth()}";
+            healthIncrease.text = $"{PlayerStatus.Instance.GetTempHealth()} + {PlayerStatus.Instance.GetTempBonusHealth()}";
         }
         else
         {
             healthIncrease.text = "";
         }
 
-        if (playerStatus.GetTempAttack() > 0)
+        if (PlayerStatus.Instance.GetTempAttack() > 0)
         {
-            attackIncrease.text = $"{playerStatus.GetTempAttack()} + {playerStatus.GetTempBonusAttack()}";
+            attackIncrease.text = $"{PlayerStatus.Instance.GetTempAttack()} + {PlayerStatus.Instance.GetTempBonusAttack()}";
         }
         else
         {
             attackIncrease.text = "";
         }
 
-        if (playerStatus.GetTempDefence() > 0)
+        if (PlayerStatus.Instance.GetTempDefence() > 0)
         {
-            defenceIncrease.text = $"{playerStatus.GetTempDefence()} + {playerStatus.GetTempBonusDefence()}";
+            defenceIncrease.text = $"{PlayerStatus.Instance.GetTempDefence()} + {PlayerStatus.Instance.GetTempBonusDefence()}";
         }
         else
         {
             defenceIncrease.text = "";
         }
 
-        if (playerStatus.GetTempLuck() > 0)
+        if (PlayerStatus.Instance.GetTempLuck() > 0)
         {
-            luckIncrease.text = $"{playerStatus.GetTempLuck()} + {playerStatus.GetTempBonusLuck()}";
+            luckIncrease.text = $"{PlayerStatus.Instance.GetTempLuck()} + {PlayerStatus.Instance.GetTempBonusLuck()}";
         }
         else
         {
@@ -228,30 +226,30 @@ public class StatusUIManager : MonoBehaviour
 
     public void HideTempBonusStat()
     {
-        if (playerStatus.GetTempBonusHealth() == 0 && playerStatus.GetTempHealth() > 0)
+        if (PlayerStatus.Instance.GetTempBonusHealth() == 0 && PlayerStatus.Instance.GetTempHealth() > 0)
         {
-            healthIncrease.text = playerStatus.GetTempHealth().ToString();
+            healthIncrease.text = PlayerStatus.Instance.GetTempHealth().ToString();
         }
 
-        if (playerStatus.GetTempBonusAttack() == 0 && playerStatus.GetTempAttack() > 0)
+        if (PlayerStatus.Instance.GetTempBonusAttack() == 0 && PlayerStatus.Instance.GetTempAttack() > 0)
         {
-            attackIncrease.text = playerStatus.GetTempAttack().ToString();
+            attackIncrease.text = PlayerStatus.Instance.GetTempAttack().ToString();
         }
 
-        if (playerStatus.GetTempBonusDefence() == 0 && playerStatus.GetTempDefence() > 0)
+        if (PlayerStatus.Instance.GetTempBonusDefence() == 0 && PlayerStatus.Instance.GetTempDefence() > 0)
         {
-            defenceIncrease.text = playerStatus.GetTempDefence().ToString();
+            defenceIncrease.text = PlayerStatus.Instance.GetTempDefence().ToString();
         }
 
-        if (playerStatus.GetTempBonusLuck() == 0 && playerStatus.GetTempLuck() > 0)
+        if (PlayerStatus.Instance.GetTempBonusLuck() == 0 && PlayerStatus.Instance.GetTempLuck() > 0)
         {
-            luckIncrease.text = playerStatus.GetTempLuck().ToString();
+            luckIncrease.text = PlayerStatus.Instance.GetTempLuck().ToString();
         }
     }
 
     public void ApplyButton()
     {
-        playerStatus.ApplyTempStat();
+        PlayerStatus.Instance.ApplyTempStat();
         UpdateStatus();
         StatIncreasePreview();
         UpdateAP();
@@ -259,7 +257,7 @@ public class StatusUIManager : MonoBehaviour
 
     public void CancelButton()
     {
-        playerStatus.CancelTempStat();
+        PlayerStatus.Instance.CancelTempStat();
         StatIncreasePreview();
         UpdateAP();
     }

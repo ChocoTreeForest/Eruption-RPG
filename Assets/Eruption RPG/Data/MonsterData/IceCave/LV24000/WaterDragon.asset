@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 3750000
   attack: 77000
   defense: 35000
+  nextMapName: AncientRuins

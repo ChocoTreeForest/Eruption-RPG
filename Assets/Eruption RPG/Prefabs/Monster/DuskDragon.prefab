@@ -97,6 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f37255aebb6242ade64910559259b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterStatData: {fileID: 0}
-  dropTable: {fileID: 0}
+  monsterStatData: {fileID: 11400000, guid: c9df1c93143ed9a4c89d31561b080058, type: 2}
+  dropTable: {fileID: 11400000, guid: a5b9974634675ad4ba40fa11f7ee5f62, type: 2}
   monsterSprite: {fileID: 21300000, guid: 99b35d1ba7763204fa5c0ea7787a5959, type: 3}

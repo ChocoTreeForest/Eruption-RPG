@@ -5,10 +5,6 @@ using UnityEngine;
 public class RandomEncounter : MonoBehaviour
 {
     public PlayerController playerController;
-    public BattleManager battleManager;
-    public PlayerUIUpdater playerUIUpdater;
-
-    private static RandomEncounter instance;
 
     private string currentZone;
     private List<GameObject> currentMonsters = new List<GameObject>();
@@ -28,11 +24,6 @@ public class RandomEncounter : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-
         //인스펙터에서 추가한 데이터로 딕셔너리 초기화
         foreach (var zoneData in zoneMonsterList)
         {
@@ -47,7 +38,7 @@ public class RandomEncounter : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (battleManager.isInBattle || MenuUIManager.Instance.isPanelOpen) return;
+        if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen) return;
 
         if (playerController.inputVec.magnitude > 0f)
         {
@@ -85,7 +76,7 @@ public class RandomEncounter : MonoBehaviour
     {
         float increaseRate = 0.002f; //초당 10%씩 확률 증가
         encounterChance = Mathf.Min(encounterChance + increaseRate, 1f); //확률이 최대 100%까지 증가
-        playerUIUpdater.UpdateEncounterGauge();
+        PlayerUIUpdater.Instance.UpdateEncounterGauge();
         Debug.Log($"현재 전투 확률: {encounterChance * 100}% (목표: {randomValue * 100}%)");
     }
 
@@ -93,8 +84,7 @@ public class RandomEncounter : MonoBehaviour
     {
         if (encounterChance >= randomValue)
         {
-            encounterChance = 0f; //인카운터 확률 초기화
-            SetRandomValue(); //랜덤 값 설정
+            ResetEncounterChance();
             if (currentMonsters.Count == 0) return;
 
             MonsterEncounter();
@@ -119,15 +109,20 @@ public class RandomEncounter : MonoBehaviour
         monster.DropMoneyAndEXP();
         monster.DropBP();
 
-        battleManager.StartBattle(monster, false /* isBoss */);
+        BattleManager.Instance.StartBattle(monster, false /* isBoss */);
     }
 
     public void OnClickEncounterButton()
     {
         MonsterEncounter();
+        ResetEncounterChance();
+        if (currentMonsters.Count == 0) return;
+    }
+
+    public void ResetEncounterChance()
+    {
         encounterChance = 0f; //인카운터 확률 초기화
         SetRandomValue(); //랜덤 값 설정
-        if (currentMonsters.Count == 0) return;
     }
 
     public float GetEncounterChance() => encounterChance;

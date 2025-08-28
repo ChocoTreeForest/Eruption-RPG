@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerZoneChecker : MonoBehaviour
 {
     public RandomEncounter randomEncounter;
-    public PlayerUIUpdater playerUIUpdater;
     public string zoneTag;
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -14,7 +13,7 @@ public class PlayerZoneChecker : MonoBehaviour
         {
             zoneTag = collision.tag; //현재 구역 태그 가져오기
             randomEncounter.SetCurrentZone(zoneTag);
-            playerUIUpdater.UpdateCurrentZone();
+            PlayerUIUpdater.Instance.UpdateCurrentZone();
         }
     }
 }

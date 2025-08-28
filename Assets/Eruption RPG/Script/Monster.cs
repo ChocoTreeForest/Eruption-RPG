@@ -77,18 +77,20 @@ public class Monster : MonoBehaviour
         battlePoint = dropTable.battlePoint;
     }
 
-    public void TryDropItem()
+    public GameObject TryDropItem()
     {
         if (dropTable == null)
         {
             Debug.LogWarning("DropTable이 연결되지 않았습니다!");
         }
 
-        dropTable.RandomDrop();
+        return dropTable.RandomDrop();
     }
 
     public void TakeDamage(int playerDamage, int criticalChance, float criticalMultiplier)
     {
+        BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
+
         int minDamage = (int)(playerDamage * 0.5f);
         int baseDamage = playerDamage - Mathf.Min(currentDefence, minDamage);
 
@@ -100,6 +102,11 @@ public class Monster : MonoBehaviour
         if (isCritical)
         {
             finalDamage = (int)(finalDamage * criticalMultiplier);
+            battleLog.AddLog("InBattle", "CRITICAL", finalDamage);
+        }
+        else
+        {
+            battleLog.AddLog("InBattle", "ATTACK", finalDamage);
         }
 
         currentHealth -= finalDamage;

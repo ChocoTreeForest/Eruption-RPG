@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 4200000
   attack: 130000
   defense: 100000
+  nextMapName: DuskCorridor

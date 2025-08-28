@@ -20,11 +20,11 @@ public class AccessoryManager : MonoBehaviour
     private void OnSlotClick()
     {
         // 액세서리 목록 창 열고 선택한 슬롯 인덱스 전달
-        AccessoryUIManager.Instance.OpenAccessoryList(slotIndex);        
+        AccessoryUIManager.Instance.OpenAccessoryList(slotIndex);
     }
 
     public ItemData GetEquippedItem()
     {
         return equippedItem;
     }
-}
+}// 이 스크립트 굳이 필요한가???

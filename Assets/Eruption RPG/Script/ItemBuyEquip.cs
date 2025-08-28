@@ -8,7 +8,6 @@ public class ItemBuyEquip : MonoBehaviour
 {
     public static ItemBuyEquip Instance;
     public ItemData itemData;
-    public PlayerStatus playerStatus;
     public Button buyButton;
     public Button equipButton;
     public Text buyEquipPanelText;
@@ -64,7 +63,7 @@ public class ItemBuyEquip : MonoBehaviour
 
         bool canBuy = itemData.price > 0 &&
                       ownedCount < EquipmentManager.Instance.MaxItemCount(itemData.itemType) &&
-                      playerStatus.GetCurrentMoney() >= currentPrice;
+                      PlayerStatus.Instance.GetCurrentMoney() >= currentPrice;
 
         buyButton.interactable = canBuy;
     }
@@ -125,7 +124,7 @@ public class ItemBuyEquip : MonoBehaviour
         int ownedCount = EquipmentManager.Instance.GetItemCount(itemData);
         int currentPrice = EquipmentManager.Instance.GetCurrentPrice(itemData);
 
-        playerStatus.UseMoney(currentPrice);
+        PlayerStatus.Instance.UseMoney(currentPrice);
 
         EquipmentManager.Instance.AddItem(itemData);
         StatsUpdater.Instance.UpdateStats();
@@ -166,7 +165,7 @@ public class ItemBuyEquip : MonoBehaviour
         int price = EquipmentManager.Instance.GetCurrentPrice(itemData);
 
         buyEquipPanelText.text = $"{itemData.itemName}\n" +
-                                 $"보유 RUP: {playerStatus.GetCurrentMoney():N0} RUP\n" +
+                                 $"보유 RUP: {PlayerStatus.Instance.GetCurrentMoney():N0} RUP\n" +
                                  $"가격: {price:N0} RUP";
     }
 }

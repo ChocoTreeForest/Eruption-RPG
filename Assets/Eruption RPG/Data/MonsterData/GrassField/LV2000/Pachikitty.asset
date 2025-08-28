@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 155000
   attack: 7500
   defense: 1000
+  nextMapName: Wasteland

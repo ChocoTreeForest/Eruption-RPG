@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -91,6 +92,21 @@ public class ItemSlotUI : MonoBehaviour
             {
                 if (accessory == itemData)
                 {
+                    int equippedCount = EquipmentManager.Instance.accessorySlots.Count(item => item == itemData);
+
+                    if (equippedCount == 1)
+                    {
+                        equippedText.GetComponent<Text>().text = "ÀåÂø Áß(1)";
+                    }
+                    else if (equippedCount == 2)
+                    {
+                        equippedText.GetComponent<Text>().text = "ÀåÂø Áß(2)";
+                    }
+                    else if (equippedCount >= 3)
+                    {
+                        equippedText.GetComponent<Text>().text = "ÀåÂø Áß(3)";
+                    }
+
                     isEquipped = true;
                     break;
                 }

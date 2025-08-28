@@ -5,7 +5,6 @@ using UnityEngine;
 public class StatsUpdater : MonoBehaviour
 {
     public static StatsUpdater Instance;
-    public PlayerStatus status;
     public StatusUIManager statusUIManager;
 
     public int totalBonusHealth = 0;
@@ -79,15 +78,15 @@ public class StatsUpdater : MonoBehaviour
         totalEXPMultiplier = Mathf.Clamp(totalEXPMultiplier, -99f, 9999f);
 
         // 합산한 값으로 능력치 업데이트
-        status.UpdateHealth(totalBonusHealth, totalHealthMultiplier);
-        status.UpdateAttack(totalBonusAttack, totalAttackMultiplier);
-        status.UpdateDefence(totalBonusDefence, totalDefenceMultiplier);
-        status.UpdateLuck(totalBonusLuck, totalLuckMultiplier);
-        status.UpdateCriticalChance(totalBonusCriticalChance);
-        status.UpdateCriticalMultiplier(totalCriticalMultiplier);
-        status.UpdateSpeed(totalSpeedMultiplier);
-        status.UpdateMoneyMultiplier(totalMoneyMultiplier);
-        status.UpdateEXPMultiplier(totalEXPMultiplier);
+        PlayerStatus.Instance.UpdateHealth(totalBonusHealth, totalHealthMultiplier);
+        PlayerStatus.Instance.UpdateAttack(totalBonusAttack, totalAttackMultiplier);
+        PlayerStatus.Instance.UpdateDefence(totalBonusDefence, totalDefenceMultiplier);
+        PlayerStatus.Instance.UpdateLuck(totalBonusLuck, totalLuckMultiplier);
+        PlayerStatus.Instance.UpdateCriticalChance(totalBonusCriticalChance);
+        PlayerStatus.Instance.UpdateCriticalMultiplier(totalCriticalMultiplier);
+        PlayerStatus.Instance.UpdateSpeed(totalSpeedMultiplier);
+        PlayerStatus.Instance.UpdateMoneyMultiplier(totalMoneyMultiplier);
+        PlayerStatus.Instance.UpdateEXPMultiplier(totalEXPMultiplier);
 
         statusUIManager.UpdateStatus();
 

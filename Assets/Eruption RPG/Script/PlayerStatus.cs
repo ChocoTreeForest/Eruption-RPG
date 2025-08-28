@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
+    public static PlayerStatus Instance;
     private PlayerController player;
-    public PlayerUIUpdater playerUIUpdater;
     public StatusUIManager statusUIManager;
 
     // 기본 능력치
@@ -54,6 +54,15 @@ public class PlayerStatus : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         player = GetComponent<PlayerController>();
         InitializeStatus();
         ResetTempStat();
@@ -134,14 +143,14 @@ public class PlayerStatus : MonoBehaviour
     public void AddMoney(int dropMoney)
     {
         currentMoney += (int)(dropMoney * moneyMultiplier);
-        playerUIUpdater.UpdateLV();
-        playerUIUpdater.UpdateMoney();
+        PlayerUIUpdater.Instance.UpdateLV();
+        PlayerUIUpdater.Instance.UpdateMoney();
     }
 
     public void UseMoney(int price)
     {
         currentMoney -= price;
-        playerUIUpdater.UpdateMoney();
+        PlayerUIUpdater.Instance.UpdateMoney();
     }
 
     public long GetRequiredEXP()
@@ -160,8 +169,8 @@ public class PlayerStatus : MonoBehaviour
             abilityPoint += 5;
         }
 
-        playerUIUpdater.UpdateLV();
-        playerUIUpdater.UpdateMoney();
+        PlayerUIUpdater.Instance.UpdateLV();
+        PlayerUIUpdater.Instance.UpdateMoney();
         statusUIManager.UpdateAP();
         statusUIManager.UpdateEXP();
     }
@@ -169,12 +178,26 @@ public class PlayerStatus : MonoBehaviour
     public void UpdateBP(int dropBP)
     {
         battlePoint += dropBP;
-        playerUIUpdater.UpdateBP();
+        PlayerUIUpdater.Instance.UpdateBP();
     }
 
-    void Heal()
+    public void Heal(int finalDamage)
     {
-        // 재생의 반지로 인한 피흡
+        // 재생의 반지로 인한 피흡 if문으로 재생의 반지를 장착했을 때만 발동하게 바꾸기
+        int heal = (int)(finalDamage * 0.03f);
+        currentHealth += heal;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
+        battleLog.AddLog("InBattle", "HEAL", heal);
+    }
+
+    void EndureAttack()
+    {
+        // 기합의 펜던트와 근성의 펜던트로 체력 1로 버티기 if문으로 각 펜던트를 장착했을 때 발동하게 하기
+        BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
+        battleLog.AddLog("InBattle", "FOCUS"); // 기합의 펜던트 발동 로그
+        battleLog.AddLog("InBattle", "GUTS"); // 근성의 펜던트 발동 로그
     }
 
     public void RestoreHealth()
@@ -193,6 +216,8 @@ public class PlayerStatus : MonoBehaviour
 
         currentHealth -= finalDamage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
+        battleLog.AddLog("InBattle", "DAMAGED", finalDamage);
         Debug.Log($"몬스터의 공격으로 {finalDamage}의 데미지!");
     }
 

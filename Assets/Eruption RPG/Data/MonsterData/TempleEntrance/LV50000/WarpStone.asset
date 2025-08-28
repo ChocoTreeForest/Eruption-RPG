@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 13500000
   attack: 270000
   defense: 175000
+  nextMapName: DevineTemple

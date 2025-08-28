@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 450000
   attack: 14000
   defense: 4000
+  nextMapName: DeepCave

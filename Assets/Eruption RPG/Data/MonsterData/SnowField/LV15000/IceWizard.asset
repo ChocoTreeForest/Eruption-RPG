@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 2000000
   attack: 50000
   defense: 30000
+  nextMapName: IceCave

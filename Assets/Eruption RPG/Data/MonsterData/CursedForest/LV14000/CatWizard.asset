@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 1700000
   attack: 50000
   defense: 35000
+  nextMapName: CursedCave

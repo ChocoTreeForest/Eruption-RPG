@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 5555555
   attack: 90000
   defense: 62000
+  nextMapName: TempleEntrance

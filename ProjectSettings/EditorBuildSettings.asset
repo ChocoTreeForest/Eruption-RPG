@@ -4,5 +4,53 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 25b0ceb2660fff647b38af334ccd0ea1
+  - enabled: 1
+    path: Assets/Scenes/GrassField.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Cave.unity
+    guid: 55363acf1292c994798bf8afc7cd9d6e
+  - enabled: 1
+    path: Assets/Scenes/DeepCave.unity
+    guid: 7721c7fdcb0c12f47aae718234bf201a
+  - enabled: 1
+    path: Assets/Scenes/CursedForest.unity
+    guid: 8f6ec5a6d615d49409e398c12285f29a
+  - enabled: 1
+    path: Assets/Scenes/CursedCave.unity
+    guid: 2c5081e4e3f1c0a42b652891a74e0b3d
+  - enabled: 1
+    path: Assets/Scenes/NocturnThicket.unity
+    guid: 38076ecac7e1242408de152c5f3e7f61
+  - enabled: 1
+    path: Assets/Scenes/DuskCorridor.unity
+    guid: cb8362ad2553eff45b205f8e6c90454c
+  - enabled: 1
+    path: Assets/Scenes/TwilightTemple.unity
+    guid: a0b10fef424c7ee4f8e41e82804e1cc6
+  - enabled: 1
+    path: Assets/Scenes/Wasteland.unity
+    guid: 302dd5ea1fbb9e04d8f41ccafc9f3d7b
+  - enabled: 1
+    path: Assets/Scenes/Desert.unity
+    guid: 9f7020899f619f24181c8f4046a3fc50
+  - enabled: 1
+    path: Assets/Scenes/SnowField.unity
+    guid: de16b253fa6805b429040637bd7c5fcd
+  - enabled: 1
+    path: Assets/Scenes/IceCave.unity
+    guid: adcf61ffcfdc85241befefa03d1ca19a
+  - enabled: 1
+    path: Assets/Scenes/AncientRuins.unity
+    guid: 2c9115d8773eae8418108bcbcc07eca6
+  - enabled: 1
+    path: Assets/Scenes/TempleEntrance.unity
+    guid: 09b8c08dae139f34cb3c1956cb8cb50c
+  - enabled: 1
+    path: Assets/Scenes/DevineTemple.unity
+    guid: ce446398c8c0dd5469a7e0a6cfecd21f
   m_configObjects: {}

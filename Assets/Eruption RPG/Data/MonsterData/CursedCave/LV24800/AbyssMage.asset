@@ -16,3 +16,4 @@ MonoBehaviour:
   health: 3500000
   attack: 74000
   defense: 40000
+  nextMapName: NocturnThicket

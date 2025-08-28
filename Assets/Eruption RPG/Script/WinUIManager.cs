@@ -7,8 +7,6 @@ using static Cinemachine.DocumentationSortingAttribute;
 public class WinUIManager : MonoBehaviour
 {
     public static WinUIManager Instance;
-    public BattleManager battleManager;
-    public PlayerStatus playerStatus;
     public CanvasGroup winUI;
     public float fadeDuration = 0.5f;
 
@@ -43,11 +41,11 @@ public class WinUIManager : MonoBehaviour
         winUI.alpha = 0f;
         winUI.gameObject.SetActive(true);
         
-        float elapsedTime = 0f;
-        while (elapsedTime < fadeDuration)
+        float t = 0f;
+        while (t < fadeDuration)
         {
-            elapsedTime += Time.deltaTime;
-            winUI.alpha = Mathf.Clamp01(elapsedTime / fadeDuration);
+            t += Time.deltaTime;
+            winUI.alpha = Mathf.Clamp01(t / fadeDuration);
             yield return null;
         }
         
@@ -56,18 +54,18 @@ public class WinUIManager : MonoBehaviour
 
      public void UpdateUI()
     {
-        var dropTable = battleManager.monster.dropTable;
+        var dropTable = BattleManager.Instance.monster.dropTable;
 
         if (dropTable != null)
         {
-            long gainedEXP = (long)(dropTable.exp * playerStatus.GetEXPMultiplier());
+            long gainedEXP = (long)(dropTable.exp * PlayerStatus.Instance.GetEXPMultiplier());
 
-            earnedMoney.text = $"+ {(int)(dropTable.money * playerStatus.GetMoneyMultiplier()):N0} RUP";
+            earnedMoney.text = $"+ {(int)(dropTable.money * PlayerStatus.Instance.GetMoneyMultiplier()):N0} RUP";
             earnedEXP.text = $"+ {gainedEXP:N0}";
 
             // 레벨 몇 올랐는지 계산
-            int currentLevel = playerStatus.GetPlayerLevel();
-            long currentEXP = playerStatus.GetCurrentEXP();
+            int currentLevel = PlayerStatus.Instance.GetPlayerLevel();
+            long currentEXP = PlayerStatus.Instance.GetCurrentEXP();
             int predictedLevel = currentLevel;
             long tempEXP = currentEXP + gainedEXP;
 

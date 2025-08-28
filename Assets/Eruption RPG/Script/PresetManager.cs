@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 public class PresetManager : MonoBehaviour
 {
+    public static PresetManager Instance;
     public StatusPreset[] presets = new StatusPreset[3];    
-
-    public PlayerStatus playerStatus;
 
     public Text[] presetHPTexts;
     public Text[] presetATKTexts;
@@ -19,6 +18,18 @@ public class PresetManager : MonoBehaviour
 
     private int selectedPresetIndex = -1;
     private int lastPresetIndex = 0;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void PresetOnOff()
     {
@@ -52,7 +63,7 @@ public class PresetManager : MonoBehaviour
 
         StatusPreset preset = presets[selectedPresetIndex];
         int totalRatio = preset.totalRatio;
-        int totalAP = playerStatus.abilityPoint;
+        int totalAP = PlayerStatus.Instance.abilityPoint;
 
         if (totalRatio <= 0 || totalAP <= 0) return;
 
@@ -62,10 +73,10 @@ public class PresetManager : MonoBehaviour
         int defAP = totalAP * preset.defRatio / totalRatio;
         int lucAP = totalAP * preset.lucRatio / totalRatio;
 
-        playerStatus.IncreaseStatByPreset("HP", hpAP);
-        playerStatus.IncreaseStatByPreset("ATK", atkAP);
-        playerStatus.IncreaseStatByPreset("DEF", defAP);
-        playerStatus.IncreaseStatByPreset("LUC", lucAP);
+        PlayerStatus.Instance.IncreaseStatByPreset("HP", hpAP);
+        PlayerStatus.Instance.IncreaseStatByPreset("ATK", atkAP);
+        PlayerStatus.Instance.IncreaseStatByPreset("DEF", defAP);
+        PlayerStatus.Instance.IncreaseStatByPreset("LUC", lucAP);
     }
 
     public void ModifyPresetStat(int index, string stat, int delta)
