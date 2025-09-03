@@ -20,6 +20,9 @@ public class BattleUIManager : MonoBehaviour
     public Slider monsterHPBarFront; // 현재 체력바
     public Slider monsterHPBarBack; // 다음 체력바
 
+    public Image fadeImage; // 페이드 인/아웃용 이미지
+    public float fadeDuration = 0.5f;
+
     private int hpPerBar = 10000; // 체력 한 줄당 체력 1만
 
     public void ShowBattleUI(Sprite monsterSprite)
@@ -127,5 +130,39 @@ public class BattleUIManager : MonoBehaviour
         monsterHP.gameObject.SetActive(false);
         monsterHPBarBack.gameObject.SetActive(false);
         monsterHPBarFront.gameObject.SetActive(false);
+    }
+
+    public IEnumerator FadeOut()
+    {
+        Color color = fadeImage.color;
+
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            color.a = Mathf.Lerp(0, 1, t / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        fadeImage.color = color;
+    }
+
+    public IEnumerator FadeIn()
+    {
+        Color color = fadeImage.color;
+
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            color.a = Mathf.Lerp(1, 0, t / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        color.a = 0f;
+        fadeImage.color = color;
     }
 }

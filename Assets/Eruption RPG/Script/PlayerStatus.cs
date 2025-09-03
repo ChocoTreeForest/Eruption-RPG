@@ -52,6 +52,8 @@ public class PlayerStatus : MonoBehaviour
     // 보유 AP
     public int abilityPoint = 0;
 
+    public bool usedFocusEffect = false; // 기합의 펜던트 발동 여부
+
     void Awake()
     {
         if (Instance == null)
@@ -92,7 +94,7 @@ public class PlayerStatus : MonoBehaviour
         return Mathf.RoundToInt(baseEXP * expMultiplier);
     }
 
-   // 장비, 아이템 장착 등으로 인한 각 스테이터스 변화
+    // 장비, 아이템 장착 등으로 인한 각 스테이터스 변화
     public void UpdateHealth(int bonusHealth, float multiplier)
     {
         currentHealth = (int)((baseHealth + bonusHealth) * (1 + multiplier / 100));
@@ -142,7 +144,9 @@ public class PlayerStatus : MonoBehaviour
     // 돈 획득과 사용, 경험치 획득
     public void AddMoney(int dropMoney)
     {
-        currentMoney += (int)(dropMoney * moneyMultiplier);
+        float multiplierByLuck = LuckManager.GetDropMultiplierByLuck(currentLuck);
+
+        currentMoney += (int)(dropMoney * moneyMultiplier * multiplierByLuck);
         PlayerUIUpdater.Instance.UpdateLV();
         PlayerUIUpdater.Instance.UpdateMoney();
     }
@@ -183,21 +187,66 @@ public class PlayerStatus : MonoBehaviour
 
     public void Heal(int finalDamage)
     {
-        // 재생의 반지로 인한 피흡 if문으로 재생의 반지를 장착했을 때만 발동하게 바꾸기
-        int heal = (int)(finalDamage * 0.03f);
-        currentHealth += heal;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        foreach (var acc in EquipmentManager.Instance.accessorySlots)
+        {
+            if (acc != null && acc.specialEffectType == SpecialEffectType.Recovery)
+            {
+                int heal = (int)(finalDamage * (acc.effectValue / 100));
+                currentHealth += heal;
+                currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
-        battleLog.AddLog("InBattle", "HEAL", heal);
+                BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
+                battleLog.AddLog("InBattle", "HEAL", heal);
+                Debug.Log($"회복 발동! {heal} HP 회복 (현재 체력: {currentHealth})");
+                break;
+            }
+        }
+    }
+
+    public void InstantKill(Monster monster)
+    {
+        foreach (var acc in EquipmentManager.Instance.accessorySlots)
+        {
+            if (acc != null && acc.specialEffectType == SpecialEffectType.InstanceKill)
+            {
+                if (Random.Range(0f, 100f) <= acc.effectValue)
+                {
+                    monster.TryInstantKill(acc.effectValue);
+                }
+            }
+        }
     }
 
     void EndureAttack()
     {
-        // 기합의 펜던트와 근성의 펜던트로 체력 1로 버티기 if문으로 각 펜던트를 장착했을 때 발동하게 하기
         BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
-        battleLog.AddLog("InBattle", "FOCUS"); // 기합의 펜던트 발동 로그
-        battleLog.AddLog("InBattle", "GUTS"); // 근성의 펜던트 발동 로그
+        // 기합의 펜던트와 근성의 펜던트로 체력 1로 버티기 if문으로 각 펜던트를 장착했을 때 발동하게 하기
+        foreach (var acc in EquipmentManager.Instance.accessorySlots)
+        {
+            if (acc != null && acc.specialEffectType == SpecialEffectType.Focus)
+            {
+                // 전투 당 한 번만 발동
+                if (!usedFocusEffect && currentHealth <= 0)
+                {
+                    currentHealth = 1;
+                    usedFocusEffect = true;
+                    battleLog.AddLog("InBattle", "FOCUS"); // 기합의 펜던트 발동 로그
+                    break;
+                }
+            }
+            else if (acc != null && acc.specialEffectType == SpecialEffectType.Guts)
+            {
+                if (currentHealth <= 0)
+                {
+                    if (Random.Range(0f, 100f) <= acc.effectValue)
+                    {
+                        currentHealth = 1;
+                        battleLog.AddLog("InBattle", "GUTS"); // 근성의 펜던트 발동 로그
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     public void RestoreHealth()
@@ -208,13 +257,14 @@ public class PlayerStatus : MonoBehaviour
     public void TakeDamage(int monsterDamage)
     {
         int minDamage = (int)(monsterDamage * 0.5f);
-        int baseDamage = monsterDamage - Mathf.Min(currentDefence, minDamage);
+        int baseDamage = monsterDamage - Mathf.Min(currentDefence, minDamage); // 방어력의 최대 효율은 몬스터 공격력의 50%
 
         float damageRNG = Random.Range(0.75f, 1.25f);
 
         int finalDamage = (int)(baseDamage * damageRNG);
 
         currentHealth -= finalDamage;
+        EndureAttack();
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
         battleLog.AddLog("InBattle", "DAMAGED", finalDamage);
@@ -319,7 +369,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void TempBonusStat()
     {
-        tempBonusHealth = (int)(((baseHealth + tempHealth + StatsUpdater.Instance.totalBonusHealth) * 
+        tempBonusHealth = (int)(((baseHealth + tempHealth + StatsUpdater.Instance.totalBonusHealth) *
             (1 + StatsUpdater.Instance.totalHealthMultiplier / 100)) - currentHealth) - tempHealth;
 
         tempBonusAttack = (int)(((baseAttack + tempAttack + StatsUpdater.Instance.totalBonusAttack) *

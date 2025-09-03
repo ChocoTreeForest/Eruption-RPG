@@ -43,6 +43,7 @@ public class BattleManager : MonoBehaviour
         isInBattle = true;
         isBossBattle = isBoss;
         symbolEncounter = encounterSource;
+        PlayerStatus.Instance.usedFocusEffect = false;
 
         battleButton.SetActive(true);
         runButton.SetActive(true);
@@ -68,6 +69,7 @@ public class BattleManager : MonoBehaviour
                 monster.TakeDamage(player.GetCurrentAttack(), player.GetCurrentCriticalChance(), player.GetCurrentCriticalMultiplier());
                 battleUIManager.MonsterHPUpdater(monster);
                 Debug.Log($"남은 몬스터 체력: {monster.GetCurrentHealth()}");
+                battleUIManager.PlayerHPUpdate(); // 회복할 수도 있으니 플레이어 체력도 갱신
             }
             else
             {
@@ -85,10 +87,23 @@ public class BattleManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
 
+        if (battleLog.isTyping)
+        {
+            yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+
+            battleLog.SkipTypeEffect();
+
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        }
+
         if (player.IsAlive())
         {
             battleUIManager.HideBattleUIAndOpenStatus();
-            WarpToNextMap();
+
+            if (isBossBattle)
+            {
+                StartCoroutine(WarpToNextMap());
+            }
         }
         else
         {
@@ -181,11 +196,13 @@ public class BattleManager : MonoBehaviour
         battleLog.AddLog("BattleDefeat", "CONTINUE");
     }
 
-    private void WarpToNextMap()
+    private IEnumerator WarpToNextMap()
     {
         // 씬 전환 시 페이드 아웃 페이드 인 효과 추가하기
         if (!string.IsNullOrEmpty(monster.monsterStatData.nextMapName))
         {
+            yield return StartCoroutine(battleUIManager.FadeOut());
+
             SceneManager.LoadScene(monster.monsterStatData.nextMapName);
             player.transform.position = new Vector3(0f, 0f, 0f);
 
@@ -194,6 +211,8 @@ public class BattleManager : MonoBehaviour
             {
                 vcam.OnTargetObjectWarped(player.transform, player.transform.position - vcam.transform.position);
             }
+
+            yield return StartCoroutine(battleUIManager.FadeIn());
         }
     }
 
@@ -213,6 +232,8 @@ public class BattleManager : MonoBehaviour
 
         if (isBossBattle)
         {
+            symbolEncounter.hasEncounter = false;
+
             // 무한 인카운터를 방지하기 위해 플레이어 위치 조정
             Vector2 symbolPos = symbolEncounter.transform.position;
             Vector2 belowSymbol = new Vector2(symbolPos.x, symbolPos.y - 2f);

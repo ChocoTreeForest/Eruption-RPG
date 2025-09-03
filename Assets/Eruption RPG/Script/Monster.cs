@@ -91,8 +91,17 @@ public class Monster : MonoBehaviour
     {
         BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
 
+        PlayerStatus.Instance.InstantKill(this);
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("즉사 효과 발동!");
+            battleLog.AddLog("InBattle", "INSTKILL");
+            return; // 몬스터가 이미 죽었으면 데미지 계산을 하지 않음
+        }
+
         int minDamage = (int)(playerDamage * 0.5f);
-        int baseDamage = playerDamage - Mathf.Min(currentDefence, minDamage);
+        int baseDamage = playerDamage - Mathf.Min(currentDefence, minDamage); // 방어력의 최대 효율은 플레이어 공격력의 50%
 
         float damageRNG = Random.Range(0.75f, 1.25f);
 
@@ -112,6 +121,16 @@ public class Monster : MonoBehaviour
         currentHealth -= finalDamage;
         currentHealth = Mathf.Clamp(currentHealth, 0, monsterStatData.health);
         Debug.Log($"플레이어의 공격으로 {finalDamage}의 데미지!");
+
+        PlayerStatus.Instance.Heal(finalDamage);
+    }
+
+    public void TryInstantKill(float chance)
+    {
+        if (Random.Range(0f, 100f) <= chance)
+        {
+            currentHealth = 0;
+        }
     }
 
     public bool IsAlive()

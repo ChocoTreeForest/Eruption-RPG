@@ -57,6 +57,10 @@ public class DropTable : ScriptableObject
 
         // 드랍 아이템 목록에서 랜덤으로 아이템을 선택
         DropItem selectedItem = validDropItems[Random.Range(0, validDropItems.Count)];
+        float multiplierByLuck = LuckManager.GetDropMultiplierByLuck(PlayerStatus.Instance.GetCurrentLuck());
+
+        selectedItem.dropChance = Mathf.Clamp(selectedItem.dropChance * multiplierByLuck, 0f, 100f);
+        Debug.Log($"선택된 아이템: {selectedItem.itemPrefab.name} (드랍률: {selectedItem.dropChance}%)");
 
         // 드랍률에 따라 아이템 획득 여부 결정
         if (Random.Range(0f, 100f) <= selectedItem.dropChance)

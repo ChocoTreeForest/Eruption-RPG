@@ -15,13 +15,14 @@ MonoBehaviour:
   id: 232
   itemName: Cursed Book
   itemType: 2
+  price: 0
   icon: {fileID: 1536963740, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 0
   bonusDefence: 0
   bonusLuck: 0
   bonusCriticalChance: 0
-  healthMultiplier: 0
+  healthMultiplier: -20
   attackMultiplier: 0
   defenceMultiplier: 0
   luckMultiplier: -30
@@ -29,3 +30,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 120
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

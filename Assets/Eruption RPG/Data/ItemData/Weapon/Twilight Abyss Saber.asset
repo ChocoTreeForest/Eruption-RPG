@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 31
   itemName: Twilight Abyss Saber
   itemType: 0
+  price: 0
   icon: {fileID: 1577734260, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
   bonusAttack: 27000
@@ -22,10 +23,12 @@ MonoBehaviour:
   bonusLuck: 0
   bonusCriticalChance: 5
   healthMultiplier: 0
-  attackMultiplier: 300
+  attackMultiplier: 320
   defenceMultiplier: 0
   luckMultiplier: 0
   bonusCriticalMultiplier: 10
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0

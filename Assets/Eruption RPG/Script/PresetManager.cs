@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,6 +17,8 @@ public class PresetManager : MonoBehaviour
     public GameObject[] currentPresetTexts;
     public Text onOffText;
 
+    public List<Button> applyButtons;
+
     private int selectedPresetIndex = -1;
     private int lastPresetIndex = 0;
 
@@ -31,6 +34,17 @@ public class PresetManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if (selectedPresetIndex == -1)
+        {
+            foreach (var button in applyButtons)
+            {
+                button.interactable = false;
+            }
+        }
+    }
+
     public void PresetOnOff()
     {
         if (selectedPresetIndex == -1)
@@ -38,6 +52,11 @@ public class PresetManager : MonoBehaviour
             selectedPresetIndex = lastPresetIndex;
             currentPresetTexts[selectedPresetIndex].SetActive(true);
             onOffText.text = "ON";
+
+            foreach (var button in applyButtons)
+            {
+                button.interactable = button != applyButtons[selectedPresetIndex];
+            }
         }
         else
         {
@@ -45,6 +64,11 @@ public class PresetManager : MonoBehaviour
             lastPresetIndex = selectedPresetIndex;
             selectedPresetIndex = -1;
             onOffText.text = "OFF";
+
+            foreach (var button in applyButtons)
+            {
+                button.interactable = false;
+            }
         }        
     }
 
@@ -55,6 +79,11 @@ public class PresetManager : MonoBehaviour
 
         currentPresetTexts[lastPresetIndex].SetActive(false);
         currentPresetTexts[index].SetActive(true);
+
+        foreach (var button in applyButtons)
+        {
+            button.interactable = button != applyButtons[index];
+        }
     }
 
     public void DistributeStatByPreset()

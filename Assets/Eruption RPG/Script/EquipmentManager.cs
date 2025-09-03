@@ -24,6 +24,7 @@ public class EquipmentManager : MonoBehaviour
     public int maxAccessorySlots = 10; // 악세서리 슬롯 수
 
     public List<ItemData> ownedItem = new List<ItemData>();
+    public List<Button> presetButtons = new List<Button>();
 
     [SerializeField] private ItemData defaultWeapon; // 기본 무기
     [SerializeField] private ItemData defaultArmor; // 기본 방어구
@@ -46,6 +47,14 @@ public class EquipmentManager : MonoBehaviour
         }
 
         InitializeEquipment();
+    }
+
+    void Start()
+    {
+        foreach (var button in presetButtons)
+        {
+            button.interactable = button != presetButtons[currentPresetIndex];
+        }
     }
 
     void InitializeEquipment()
@@ -304,5 +313,10 @@ public class EquipmentManager : MonoBehaviour
     public void OnPresetButtonClicked(int index)
     {
         LoadPreset(index);
+
+        foreach (var button in presetButtons)
+        {
+            button.interactable = button != presetButtons[index];
+        }
     }
 }

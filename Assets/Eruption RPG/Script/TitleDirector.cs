@@ -26,9 +26,9 @@ public class TitleDirector : MonoBehaviour
 
     IEnumerator FadeInThenMove()
     {
-        float t = 0f;
         Color color = fadeImage.color;
 
+        float t = 0f;
         while (t < fadeDuration)
         {
             t += Time.deltaTime;

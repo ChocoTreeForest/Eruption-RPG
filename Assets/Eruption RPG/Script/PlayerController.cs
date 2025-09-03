@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
@@ -44,6 +45,13 @@ public class PlayerController : MonoBehaviour
 
     void OnTouchStart()
     {
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+            // UI 버튼 누른 중이라면 이동 안 함
+            inputVec = Vector2.zero;
+            return;
+        }
+
         // 터치 좌표 -> 월드 좌표 변환
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(touchControls.Touch.TouchPosition.ReadValue<Vector2>());
         inputVec = (touchPos - (Vector2)transform.position).normalized;
@@ -59,6 +67,13 @@ public class PlayerController : MonoBehaviour
         if (BattleManager.Instance != null && MenuUIManager.Instance != null)
         {
             if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen) return;
+        }
+
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+            // UI 버튼 누른 중이라면 이동 안 함
+            inputVec = Vector2.zero;
+            return;
         }
 
         if (touchControls.Touch.TouchPress.IsPressed())
@@ -81,6 +96,11 @@ public class PlayerController : MonoBehaviour
                 anim.SetFloat("Speed", 0f);
                 return;
             }
+        }
+
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+            return;
         }
 
         anim.SetFloat("Speed", inputVec.magnitude);

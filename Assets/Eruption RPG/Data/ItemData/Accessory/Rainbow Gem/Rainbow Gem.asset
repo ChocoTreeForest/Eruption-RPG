@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 220
   itemName: Rainbow Gem
   itemType: 2
-  price: 0
+  price: 1
   icon: {fileID: 1489211438, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 30000
   bonusAttack: 30000
@@ -30,3 +30,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0
