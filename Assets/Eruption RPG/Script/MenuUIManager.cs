@@ -36,6 +36,8 @@ public class MenuUIManager : MonoBehaviour
         menuPanel.SetActive(true);
         isPanelOpen = true;
         raycastBlocker.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CloseMenuPanel()
@@ -43,6 +45,8 @@ public class MenuUIManager : MonoBehaviour
         menuPanel.SetActive(false);
         isPanelOpen = false;
         raycastBlocker.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OpenStatusPanel()
@@ -51,46 +55,62 @@ public class MenuUIManager : MonoBehaviour
         statusPanel.SetActive(true);
         isPanelOpen = true;
         raycastBlocker.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CloseStatusPanel()
     {
         menuPanel.SetActive(true);
         statusPanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OpenEquipmentPanel()
     {
         menuPanel.SetActive(false);
         equipmentPanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CloseEquipmentPanel()
     {
         menuPanel.SetActive(true);
         equipmentPanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OpenUnequipAlertPanel()
     {
         unequipAlertPanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OKUnequip()
     {
         AccessoryUIManager.Instance.UnequipAllAccessories();
         unequipAlertPanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CancelUnequip()
     {
         unequipAlertPanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OpenStatusPrestPanel()
     {
         statusPanel.SetActive(false);
         statusPresetPanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CloseStatusPresetPanel()
@@ -98,6 +118,7 @@ public class MenuUIManager : MonoBehaviour
         statusPanel.SetActive(true);
         statusPresetPanel.SetActive(false);
 
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OpenWeaponChangePanel()
@@ -105,11 +126,15 @@ public class MenuUIManager : MonoBehaviour
         ItemListUI.Instance.WeaponList();
         equipmentPanel.SetActive(false);
         weaponChangePanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
     public void CloseWeaponChangePanel()
     {
         equipmentPanel.SetActive(true);
         weaponChangePanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OpenArmorChangePanel()
@@ -117,22 +142,30 @@ public class MenuUIManager : MonoBehaviour
         ItemListUI.Instance.ArmorList();
         equipmentPanel.SetActive(false);
         armorChangePanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CloseArmorChangePanel()
     {
         equipmentPanel.SetActive(true);
         armorChangePanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CloseAccessoryChangePanel()
     {
         equipmentPanel.SetActive(true);
         accessoryChangePanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CloseBuyEquipPanel()
     {
         buyEquipPanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 }

@@ -8,7 +8,7 @@ public class StatusPreset
     public int hpRatio;
     public int atkRatio;
     public int defRatio;
-    public int lucRatio;
+    public int lukRatio;
 
-    public int totalRatio => hpRatio + atkRatio + defRatio + lucRatio;
+    public int totalRatio => hpRatio + atkRatio + defRatio + lukRatio;
 }

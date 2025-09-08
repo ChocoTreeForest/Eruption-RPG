@@ -133,7 +133,9 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateMoneyMultiplier(float multiplier)
     {
-        moneyMultiplier = 1 + multiplier / 100;
+        float multiplierByLuck = LuckManager.GetDropMultiplierByLuck(currentLuck);
+
+        moneyMultiplier = 1 + multiplier / 100 * multiplierByLuck;
     }
 
     public void UpdateEXPMultiplier(float multiplier)
@@ -144,9 +146,7 @@ public class PlayerStatus : MonoBehaviour
     // 돈 획득과 사용, 경험치 획득
     public void AddMoney(int dropMoney)
     {
-        float multiplierByLuck = LuckManager.GetDropMultiplierByLuck(currentLuck);
-
-        currentMoney += (int)(dropMoney * moneyMultiplier * multiplierByLuck);
+        currentMoney += (int)(dropMoney * moneyMultiplier);
         PlayerUIUpdater.Instance.UpdateLV();
         PlayerUIUpdater.Instance.UpdateMoney();
     }
@@ -191,6 +191,7 @@ public class PlayerStatus : MonoBehaviour
         {
             if (acc != null && acc.specialEffectType == SpecialEffectType.Recovery)
             {
+                BattleEffectManager.Instance.PlayHealEffect(BattleUIManager.Instance.playerPosition);
                 int heal = (int)(finalDamage * (acc.effectValue / 100));
                 currentHealth += heal;
                 currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -256,6 +257,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void TakeDamage(int monsterDamage)
     {
+        BattleEffectManager.Instance.PlayPlayerHitEffect(BattleUIManager.Instance.playerPosition);
         int minDamage = (int)(monsterDamage * 0.5f);
         int baseDamage = monsterDamage - Mathf.Min(currentDefence, minDamage); // 방어력의 최대 효율은 몬스터 공격력의 50%
 
@@ -292,7 +294,7 @@ public class PlayerStatus : MonoBehaviour
             case "DEF":
                 tempDefence += 1 * useAP;
                 break;
-            case "LUC":
+            case "LUK":
                 tempLuck += 1 * useAP;
                 break;
             default:
@@ -324,7 +326,7 @@ public class PlayerStatus : MonoBehaviour
                 baseDefence += 1 * useAP;
                 UpdateDefence(StatsUpdater.Instance.totalBonusDefence, StatsUpdater.Instance.totalDefenceMultiplier);
                 break;
-            case "LUC":
+            case "LUK":
                 baseLuck += 1 * useAP;
                 UpdateLuck(StatsUpdater.Instance.totalBonusLuck, StatsUpdater.Instance.totalLuckMultiplier);
                 break;

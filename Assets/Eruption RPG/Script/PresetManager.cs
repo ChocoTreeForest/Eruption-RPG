@@ -13,7 +13,7 @@ public class PresetManager : MonoBehaviour
     public Text[] presetHPTexts;
     public Text[] presetATKTexts;
     public Text[] presetDEFTexts;
-    public Text[] presetLUCTexts;
+    public Text[] presetLUKTexts;
     public GameObject[] currentPresetTexts;
     public Text onOffText;
 
@@ -69,7 +69,9 @@ public class PresetManager : MonoBehaviour
             {
                 button.interactable = false;
             }
-        }        
+        }
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void ApplyPreset(int index)
@@ -84,6 +86,8 @@ public class PresetManager : MonoBehaviour
         {
             button.interactable = button != applyButtons[index];
         }
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void DistributeStatByPreset()
@@ -100,12 +104,12 @@ public class PresetManager : MonoBehaviour
         int hpAP = totalAP * preset.hpRatio / totalRatio;
         int atkAP = totalAP * preset.atkRatio / totalRatio;
         int defAP = totalAP * preset.defRatio / totalRatio;
-        int lucAP = totalAP * preset.lucRatio / totalRatio;
+        int lukAP = totalAP * preset.lukRatio / totalRatio;
 
         PlayerStatus.Instance.IncreaseStatByPreset("HP", hpAP);
         PlayerStatus.Instance.IncreaseStatByPreset("ATK", atkAP);
         PlayerStatus.Instance.IncreaseStatByPreset("DEF", defAP);
-        PlayerStatus.Instance.IncreaseStatByPreset("LUC", lucAP);
+        PlayerStatus.Instance.IncreaseStatByPreset("LUK", lukAP);
     }
 
     public void ModifyPresetStat(int index, string stat, int delta)
@@ -117,7 +121,7 @@ public class PresetManager : MonoBehaviour
         }
 
         if (index >= presetHPTexts.Length || index >= presetATKTexts.Length ||
-            index >= presetDEFTexts.Length || index >= presetLUCTexts.Length)
+            index >= presetDEFTexts.Length || index >= presetLUKTexts.Length)
         {
             Debug.LogError($"[PresetManager] 잘못된 UI 배열 인덱스 접근: {index}");
             return;
@@ -136,12 +140,14 @@ public class PresetManager : MonoBehaviour
             case "DEF":
                 preset.defRatio = Mathf.Max(0, preset.defRatio + delta);
                 break;
-            case "LUC":
-                preset.lucRatio = Mathf.Max(0, preset.lucRatio + delta);
+            case "LUK":
+                preset.lukRatio = Mathf.Max(0, preset.lukRatio + delta);
                 break;
         }
 
         UpdateUI(index);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void UpdateUI(int index)
@@ -151,6 +157,6 @@ public class PresetManager : MonoBehaviour
         presetHPTexts[index].text = preset.hpRatio.ToString();
         presetATKTexts[index].text = preset.atkRatio.ToString();
         presetDEFTexts[index].text = preset.defRatio.ToString();
-        presetLUCTexts[index].text = preset.lucRatio.ToString();
+        presetLUKTexts[index].text = preset.lukRatio.ToString();
     }
 }

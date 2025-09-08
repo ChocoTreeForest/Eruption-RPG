@@ -318,5 +318,7 @@ public class EquipmentManager : MonoBehaviour
         {
             button.interactable = button != presetButtons[index];
         }
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 }

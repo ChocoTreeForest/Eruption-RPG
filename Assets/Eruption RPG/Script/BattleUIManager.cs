@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class BattleUIManager : MonoBehaviour
 {
+    public static BattleUIManager Instance;
     public PlayerStatus playerStatus;
     public Monster monster;
 
     public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
     public Image monsterImage;
+    public RectTransform playerPosition; 
     public Animator battleUIAnimator;
     public GameObject battleUI;
 
@@ -24,6 +26,18 @@ public class BattleUIManager : MonoBehaviour
     public float fadeDuration = 0.5f;
 
     private int hpPerBar = 10000; // 체력 한 줄당 체력 1만
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void ShowBattleUI(Sprite monsterSprite)
     {

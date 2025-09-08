@@ -21,6 +21,7 @@ public class AccessoryManager : MonoBehaviour
     {
         // 액세서리 목록 창 열고 선택한 슬롯 인덱스 전달
         AccessoryUIManager.Instance.OpenAccessoryList(slotIndex);
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public ItemData GetEquippedItem()

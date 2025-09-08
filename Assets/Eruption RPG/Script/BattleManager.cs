@@ -14,7 +14,6 @@ public class BattleManager : MonoBehaviour
     public bool isInBattle = false;
     public bool isBossBattle;
 
-    public BattleUIManager battleUIManager;
     public BattleLogManager battleLog;
 
     private SymbolEncounter symbolEncounter;
@@ -47,13 +46,13 @@ public class BattleManager : MonoBehaviour
 
         battleButton.SetActive(true);
         runButton.SetActive(true);
-        battleUIManager.ShowBattleUI(encounterMonster.monsterSprite);
+        BattleUIManager.Instance.ShowBattleUI(encounterMonster.monsterSprite);
 
         Debug.Log("전투 시작!");
         battleLog.ClearLog();
         battleLog.AddLog("BattleStart", "START");
-        battleUIManager.MonsterHPUpdater(monster);
-        battleUIManager.PlayerHPUpdate();
+        BattleUIManager.Instance.MonsterHPUpdater(monster);
+        BattleUIManager.Instance.PlayerHPUpdate();
         Debug.Log($"몬스터 체력: {monster.GetCurrentHealth()}, 플레이어 체력: {player.GetCurrentHealth()}");
     }
 
@@ -67,14 +66,14 @@ public class BattleManager : MonoBehaviour
             if (playerTurn)
             {
                 monster.TakeDamage(player.GetCurrentAttack(), player.GetCurrentCriticalChance(), player.GetCurrentCriticalMultiplier());
-                battleUIManager.MonsterHPUpdater(monster);
+                BattleUIManager.Instance.MonsterHPUpdater(monster);
                 Debug.Log($"남은 몬스터 체력: {monster.GetCurrentHealth()}");
-                battleUIManager.PlayerHPUpdate(); // 회복할 수도 있으니 플레이어 체력도 갱신
+                BattleUIManager.Instance.PlayerHPUpdate(); // 회복할 수도 있으니 플레이어 체력도 갱신
             }
             else
             {
                 player.TakeDamage(monster.GetCurrentAttack());
-                battleUIManager.PlayerHPUpdate();
+                BattleUIManager.Instance.PlayerHPUpdate();
                 Debug.Log($"남은 플레이어 체력: {player.GetCurrentHealth()}");
             }
 
@@ -91,6 +90,7 @@ public class BattleManager : MonoBehaviour
         {
             yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
 
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
             battleLog.SkipTypeEffect();
 
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
@@ -98,7 +98,8 @@ public class BattleManager : MonoBehaviour
 
         if (player.IsAlive())
         {
-            battleUIManager.HideBattleUIAndOpenStatus();
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+            BattleUIManager.Instance.HideBattleUIAndOpenStatus();
 
             if (isBossBattle)
             {
@@ -107,7 +108,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            battleUIManager.HideBattleUI();
+            BattleUIManager.Instance.HideBattleUI();
 
             if (isBossBattle)
             {
@@ -135,7 +136,7 @@ public class BattleManager : MonoBehaviour
     {
         if (player.IsAlive())
         {
-            battleUIManager.HideMonsterUI();
+            BattleUIManager.Instance.HideMonsterUI();
             Debug.Log("전투 승리!");
             droppedItem = monster.TryDropItem();
             WinUIManager.Instance.ShowWinUI();
@@ -201,7 +202,7 @@ public class BattleManager : MonoBehaviour
         // 씬 전환 시 페이드 아웃 페이드 인 효과 추가하기
         if (!string.IsNullOrEmpty(monster.monsterStatData.nextMapName))
         {
-            yield return StartCoroutine(battleUIManager.FadeOut());
+            yield return StartCoroutine(BattleUIManager.Instance.FadeOut());
 
             SceneManager.LoadScene(monster.monsterStatData.nextMapName);
             player.transform.position = new Vector3(0f, 0f, 0f);
@@ -212,7 +213,7 @@ public class BattleManager : MonoBehaviour
                 vcam.OnTargetObjectWarped(player.transform, player.transform.position - vcam.transform.position);
             }
 
-            yield return StartCoroutine(battleUIManager.FadeIn());
+            yield return StartCoroutine(BattleUIManager.Instance.FadeIn());
         }
     }
 
@@ -222,6 +223,8 @@ public class BattleManager : MonoBehaviour
         runButton.SetActive(false);
 
         battleLog.ClearLog();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
         StartCoroutine(Battle());
     }
 
@@ -240,10 +243,12 @@ public class BattleManager : MonoBehaviour
             player.transform.position = belowSymbol;
         }
 
-        battleUIManager.HideBattleUI();
+        BattleUIManager.Instance.HideBattleUI();
         isInBattle = false;
         symbolEncounter = null;
 
         PlayerUIUpdater.Instance.UpdateEncounterGauge();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 }

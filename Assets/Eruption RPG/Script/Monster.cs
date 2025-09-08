@@ -95,6 +95,9 @@ public class Monster : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            BattleEffectManager.Instance.PlayCriticalHitEffect(
+                BattleEffectManager.Instance.criticalHitEffects,
+                BattleUIManager.Instance.monsterImage.rectTransform);
             Debug.Log("즉사 효과 발동!");
             battleLog.AddLog("InBattle", "INSTKILL");
             return; // 몬스터가 이미 죽었으면 데미지 계산을 하지 않음
@@ -110,11 +113,17 @@ public class Monster : MonoBehaviour
         bool isCritical = Random.value < criticalChance / 100f;
         if (isCritical)
         {
+            BattleEffectManager.Instance.PlayCriticalHitEffect(
+                BattleEffectManager.Instance.criticalHitEffects, 
+                BattleUIManager.Instance.monsterImage.rectTransform);
             finalDamage = (int)(finalDamage * criticalMultiplier);
             battleLog.AddLog("InBattle", "CRITICAL", finalDamage);
         }
         else
         {
+            BattleEffectManager.Instance.PlayMonsterHitEffect(
+                BattleEffectManager.Instance.monsterHitEffects,
+                BattleUIManager.Instance.monsterImage.rectTransform);
             battleLog.AddLog("InBattle", "ATTACK", finalDamage);
         }
 

@@ -117,6 +117,8 @@ public class RandomEncounter : MonoBehaviour
         MonsterEncounter();
         ResetEncounterChance();
         if (currentMonsters.Count == 0) return;
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void ResetEncounterChance()

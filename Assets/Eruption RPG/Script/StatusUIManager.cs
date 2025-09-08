@@ -96,6 +96,8 @@ public class StatusUIManager : MonoBehaviour
         useAP = 1;
         PlayerStatus.Instance.IncreaseStat("HP", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void UseHalfAPToHP()
@@ -104,6 +106,8 @@ public class StatusUIManager : MonoBehaviour
         useAP = totalAP / 2;
         PlayerStatus.Instance.IncreaseStat("HP", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void UseAllAPToHP()
@@ -112,6 +116,8 @@ public class StatusUIManager : MonoBehaviour
         useAP = totalAP;
         PlayerStatus.Instance.IncreaseStat("HP", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void Use1APToATK()
@@ -119,6 +125,8 @@ public class StatusUIManager : MonoBehaviour
         useAP = 1;
         PlayerStatus.Instance.IncreaseStat("ATK", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void UseHalfAPToATK()
@@ -127,6 +135,8 @@ public class StatusUIManager : MonoBehaviour
         useAP = totalAP / 2;
         PlayerStatus.Instance.IncreaseStat("ATK", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void UseAllAPToATK()
@@ -135,6 +145,8 @@ public class StatusUIManager : MonoBehaviour
         useAP = totalAP;
         PlayerStatus.Instance.IncreaseStat("ATK", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void Use1APToDEF()
@@ -142,6 +154,8 @@ public class StatusUIManager : MonoBehaviour
         useAP = 1;
         PlayerStatus.Instance.IncreaseStat("DEF", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void UseHalfAPToDEF()
@@ -150,6 +164,8 @@ public class StatusUIManager : MonoBehaviour
         useAP = totalAP / 2;
         PlayerStatus.Instance.IncreaseStat("DEF", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void UseAllAPToDEF()
@@ -158,29 +174,37 @@ public class StatusUIManager : MonoBehaviour
         useAP = totalAP;
         PlayerStatus.Instance.IncreaseStat("DEF", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
-    public void Use1APToLUC()
+    public void Use1APToLUK()
     {
         useAP = 1;
-        PlayerStatus.Instance.IncreaseStat("LUC", useAP);
+        PlayerStatus.Instance.IncreaseStat("LUK", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
-    public void UseHalfAPToLUC()
+    public void UseHalfAPToLUK()
     {
         totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP / 2;
-        PlayerStatus.Instance.IncreaseStat("LUC", useAP);
+        PlayerStatus.Instance.IncreaseStat("LUK", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
-    public void UseAllAPToLUC()
+    public void UseAllAPToLUK()
     {
         totalAP = PlayerStatus.Instance.abilityPoint;
         useAP = totalAP;
-        PlayerStatus.Instance.IncreaseStat("LUC", useAP);
+        PlayerStatus.Instance.IncreaseStat("LUK", useAP);
         StatIncreasePreview();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void StatIncreasePreview()
@@ -253,6 +277,8 @@ public class StatusUIManager : MonoBehaviour
         UpdateStatus();
         StatIncreasePreview();
         UpdateAP();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CancelButton()
@@ -260,5 +286,7 @@ public class StatusUIManager : MonoBehaviour
         PlayerStatus.Instance.CancelTempStat();
         StatIncreasePreview();
         UpdateAP();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 }

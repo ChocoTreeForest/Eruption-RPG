@@ -122,6 +122,8 @@ public class ItemSlotUI : MonoBehaviour
         {
             ItemBuyEquip.Instance.SetItem(itemData);
             MenuUIManager.Instance.buyEquipPanel.SetActive(true);
+
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
         }
     }
 }
