@@ -63,8 +63,6 @@ public class MenuUIManager : MonoBehaviour
     {
         menuPanel.SetActive(true);
         statusPanel.SetActive(false);
-
-        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OpenEquipmentPanel()

@@ -123,24 +123,24 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateCriticalMultiplier(float multiplier)
     {
-        currentCriticalMultiplier = baseCriticalMultiplier + multiplier / 100;
+        currentCriticalMultiplier = baseCriticalMultiplier + multiplier / 100f;
     }
 
     public void UpdateSpeed(float multiplier)
     {
-        currentSpeed = player.speed * (1 + multiplier / 100);
+        currentSpeed = player.speed * (1f + multiplier / 100f);
     }
 
     public void UpdateMoneyMultiplier(float multiplier)
     {
         float multiplierByLuck = LuckManager.GetDropMultiplierByLuck(currentLuck);
 
-        moneyMultiplier = 1 + multiplier / 100 * multiplierByLuck;
+        moneyMultiplier = (1f + multiplier / 100f) * multiplierByLuck;
     }
 
     public void UpdateEXPMultiplier(float multiplier)
     {
-        expMultiplier = 1 + multiplier / 100;
+        expMultiplier = 1f + multiplier / 100f;
     }
 
     // µ· È¹µæ°ú »ç¿ë, °æÇèÄ¡ È¹µæ
@@ -351,6 +351,7 @@ public class PlayerStatus : MonoBehaviour
         baseLuck += tempLuck;
         UpdateLuck(StatsUpdater.Instance.totalBonusLuck, StatsUpdater.Instance.totalLuckMultiplier);
 
+        StatsUpdater.Instance.UpdateStats();
         ResetTempStat();
     }
 

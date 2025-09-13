@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         if (EventSystem.current.currentSelectedGameObject != null)
         {
-            // UI 버튼 누른 중이라면 이동 안 함
+            // UI 버튼을 누르는 중이라면 이동 안 함
             inputVec = Vector2.zero;
             return;
         }
@@ -64,14 +64,19 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (titleDirector != null)
+        {
+            return;
+        }
+
         if (BattleManager.Instance != null && MenuUIManager.Instance != null)
         {
             if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen) return;
         }
 
-        if (EventSystem.current.currentSelectedGameObject != null)
+        if (EventSystem.current.currentSelectedGameObject != null && titleDirector == null)
         {
-            // UI 버튼 누른 중이라면 이동 안 함
+            // UI 버튼을 누르는 중이라면 이동 안 함
             inputVec = Vector2.zero;
             return;
         }
@@ -98,13 +103,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (EventSystem.current.currentSelectedGameObject != null)
+        if (EventSystem.current.currentSelectedGameObject != null && titleDirector == null)
         {
             return;
         }
-
-        anim.SetFloat("Speed", inputVec.magnitude);
-        anim.SetFloat("InputY", inputVec.y);
 
         if (titleDirector != null)
         {
@@ -113,7 +115,15 @@ public class PlayerController : MonoBehaviour
                 anim.SetFloat("Speed", titleDirector.speed);
                 anim.SetFloat("InputY", 1f);
             }
+            else
+            {
+                anim.SetFloat("Speed", 0f);
+            }
+            return;
         }
+
+        anim.SetFloat("Speed", inputVec.magnitude);
+        anim.SetFloat("InputY", inputVec.y);
 
         //inputVec.x가 0보다 작으면 좌우 반전
         if (inputVec.x != 0)

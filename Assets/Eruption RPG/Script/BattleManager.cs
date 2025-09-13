@@ -1,9 +1,11 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static AudioManager;
 
 public class BattleManager : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class BattleManager : MonoBehaviour
     public GameObject battleButton;
     public GameObject runButton;
     public GameObject droppedItem = null;
+
+    private AudioManager.BGM mapBGM;
 
     void Awake()
     {
@@ -54,6 +58,11 @@ public class BattleManager : MonoBehaviour
         BattleUIManager.Instance.MonsterHPUpdater(monster);
         BattleUIManager.Instance.PlayerHPUpdate();
         Debug.Log($"몬스터 체력: {monster.GetCurrentHealth()}, 플레이어 체력: {player.GetCurrentHealth()}");
+
+        string sceneName = SceneManager.GetActiveScene().name;
+        mapBGM = (AudioManager.BGM)System.Enum.Parse(typeof(AudioManager.BGM), sceneName);
+
+        StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.BattleBGM));
     }
 
     private IEnumerator Battle()
@@ -77,7 +86,7 @@ public class BattleManager : MonoBehaviour
                 Debug.Log($"남은 플레이어 체력: {player.GetCurrentHealth()}");
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
 
             playerTurn = !playerTurn;
         }
@@ -90,15 +99,15 @@ public class BattleManager : MonoBehaviour
         {
             yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
 
-            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
             battleLog.SkipTypeEffect();
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
 
+            yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         }
 
         if (player.IsAlive())
         {
-            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
             BattleUIManager.Instance.HideBattleUIAndOpenStatus();
 
             if (isBossBattle)
@@ -130,6 +139,9 @@ public class BattleManager : MonoBehaviour
 
         PlayerUIUpdater.Instance.UpdateEncounterGauge();
         PresetManager.Instance.DistributeStatByPreset();
+
+        StartCoroutine(AudioManager.Instance.SFXFadeOut());
+        StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
     }
 
     private void EndBattle()
@@ -149,6 +161,8 @@ public class BattleManager : MonoBehaviour
             {
                 Destroy(symbolEncounter.gameObject);
             }
+
+            StartCoroutine(PlayWinSFX());
         }
         else
         {
@@ -199,11 +213,9 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator WarpToNextMap()
     {
-        // 씬 전환 시 페이드 아웃 페이드 인 효과 추가하기
         if (!string.IsNullOrEmpty(monster.monsterStatData.nextMapName))
         {
             yield return StartCoroutine(BattleUIManager.Instance.FadeOut());
-
             SceneManager.LoadScene(monster.monsterStatData.nextMapName);
             player.transform.position = new Vector3(0f, 0f, 0f);
 
@@ -215,6 +227,13 @@ public class BattleManager : MonoBehaviour
 
             yield return StartCoroutine(BattleUIManager.Instance.FadeIn());
         }
+    }
+
+    private IEnumerator PlayWinSFX()
+    {
+        yield return StartCoroutine(AudioManager.Instance.BGMFadeOut());
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Win);
     }
 
     public void OnClickBattle()
@@ -250,5 +269,6 @@ public class BattleManager : MonoBehaviour
         PlayerUIUpdater.Instance.UpdateEncounterGauge();
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+        StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
     }
 }

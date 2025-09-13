@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3470866407914294697
+--- !u!1 &2551634551173567896
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3025971267995739478}
-  - component: {fileID: 8938462682293043377}
-  - component: {fileID: -1846099882851908548}
-  - component: {fileID: 933543491673265223}
-  - component: {fileID: 8196600502090746241}
+  - component: {fileID: 8623695707608760024}
+  - component: {fileID: 6866007623188640449}
+  - component: {fileID: -2034424506242056419}
+  - component: {fileID: 6375773896093155315}
+  - component: {fileID: 6720809768219101521}
   m_Layer: 0
-  m_Name: Player_Cri_Attack2_0
+  m_Name: Player_Cri_Attack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3025971267995739478
+--- !u!224 &8623695707608760024
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3470866407914294697}
+  m_GameObject: {fileID: 2551634551173567896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,19 +37,19 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 192, y: 192}
+  m_SizeDelta: {x: 94, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &8938462682293043377
+--- !u!95 &6866007623188640449
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3470866407914294697}
+  m_GameObject: {fileID: 2551634551173567896}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c6462fedcf51c0841b6bdfd8dcd2ef09, type: 2}
+  m_Controller: {fileID: 9100000, guid: 20213e5a11f5dc5448e61814c3fff169, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -60,33 +60,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-1846099882851908548
+--- !u!114 &-2034424506242056419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3470866407914294697}
+  m_GameObject: {fileID: 2551634551173567896}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cb15f95e77a91a4ab31aae2f86747b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!222 &933543491673265223
+--- !u!222 &6375773896093155315
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3470866407914294697}
+  m_GameObject: {fileID: 2551634551173567896}
   m_CullTransparentMesh: 1
---- !u!114 &8196600502090746241
+--- !u!114 &6720809768219101521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3470866407914294697}
+  m_GameObject: {fileID: 2551634551173567896}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 988731377, guid: bff71e36fe7815f44b498f0a9400b5fe, type: 3}
+  m_Sprite: {fileID: -1927622753, guid: a947fd2aed0508a459cc922b45fa9d2e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

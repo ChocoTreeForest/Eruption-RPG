@@ -160,8 +160,6 @@ public class ItemBuyEquip : MonoBehaviour
         EquipButtonControl();
         BuyButtonControl();
         MenuUIManager.Instance.CloseBuyEquipPanel();
-
-        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     void UpdateBuyEquipPanel()

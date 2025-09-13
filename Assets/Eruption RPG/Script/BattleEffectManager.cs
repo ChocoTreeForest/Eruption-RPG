@@ -33,6 +33,8 @@ public class BattleEffectManager : MonoBehaviour
         int randomIndex = Random.Range(0, effectList.Count);
         GameObject effect = Instantiate(effectList[randomIndex], effectParent);
         effect.transform.position = monsterSprite.position;
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Attack);
     }
 
     // 크리티컬 이펙트 재생
@@ -43,6 +45,19 @@ public class BattleEffectManager : MonoBehaviour
         int randomIndex = Random.Range(0, effectList.Count);
         GameObject effect = Instantiate(effectList[randomIndex], effectParent);
         effect.transform.position = monsterSprite.position;
+
+        if (randomIndex == 0)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.CriAttackFire);
+        }
+        else if (randomIndex == 1)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.CriAttack);
+        }
+        else if (randomIndex == 2)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.CriAttackWind);
+        }
     }
 
     // 플레이어 피격 이펙트 재생
@@ -52,6 +67,8 @@ public class BattleEffectManager : MonoBehaviour
 
         GameObject effect = Instantiate(playerHitEffect, effectParent);
         effect.transform.position = playerSprite.position; // 플레이어 이미지 중앙에 위치
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Hit);
     }
 
     // 회복 이펙트 재생
