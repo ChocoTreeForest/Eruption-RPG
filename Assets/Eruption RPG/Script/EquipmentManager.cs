@@ -29,7 +29,7 @@ public class EquipmentManager : MonoBehaviour
     [SerializeField] private ItemData defaultWeapon; // 기본 무기
     [SerializeField] private ItemData defaultArmor; // 기본 방어구
 
-    private Dictionary<ItemData, int> ownedItemCounts = new Dictionary<ItemData, int>();
+    public Dictionary<ItemData, int> ownedItemCounts = new Dictionary<ItemData, int>();
 
     public EquipmentPreset[] presets = new EquipmentPreset[4];
     public int currentPresetIndex = 0;
@@ -44,13 +44,22 @@ public class EquipmentManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
-        InitializeEquipment();
+        for (int i = 0; i < presets.Length; i++)
+        {
+            if (presets[i] == null)
+            {
+                presets[i] = new EquipmentPreset();
+            }
+        }
     }
 
     void Start()
     {
+        InitializeEquipment();
+
         foreach (var button in presetButtons)
         {
             button.interactable = button != presetButtons[currentPresetIndex];
@@ -59,23 +68,19 @@ public class EquipmentManager : MonoBehaviour
 
     void InitializeEquipment()
     {
-        weaponSlot = defaultWeapon;
-        armorSlot = defaultArmor;
-        accessorySlots = new ItemData[maxAccessorySlots]; // 악세서리 슬롯 초기화
+        if (weaponSlot == null || armorSlot == null)
+        {
+            weaponSlot = defaultWeapon;
+            armorSlot = defaultArmor;
+            accessorySlots = new ItemData[maxAccessorySlots]; // 악세서리 슬롯 초기화
+
+            Debug.Log($"기본 무기 장착: {weaponSlot.itemName}");
+            Debug.Log($"기본 방어구 장착: {armorSlot.itemName}");
+        }
 
         StatsUpdater.Instance.UpdateStats();
-        
-        for (int i = 0; i < presets.Length; i++)
-        {
-            if (presets[i] == null)
-            {
-                presets[i] = new EquipmentPreset();
-            }
-        }
-        UpdateEquipmentUI();
 
-        Debug.Log($"기본 무기 장착: {weaponSlot.itemName}");
-        Debug.Log($"기본 방어구 장착: {armorSlot.itemName}");
+        UpdateEquipmentUI();
         Debug.Log($"플레이어 공격력: {playerStatus.GetCurrentAttack()}");
     }
 
@@ -95,6 +100,7 @@ public class EquipmentManager : MonoBehaviour
                 if (!isLoadingPreset)
                 {
                     SaveCurrentPreset(currentPresetIndex);
+                    DataManager.Instance.SavePermanentData();
                 }
 
                 return true;
@@ -111,6 +117,7 @@ public class EquipmentManager : MonoBehaviour
                 if (!isLoadingPreset)
                 {
                     SaveCurrentPreset(currentPresetIndex);
+                    DataManager.Instance.SavePermanentData();
                 }
 
                 return true;
@@ -138,6 +145,7 @@ public class EquipmentManager : MonoBehaviour
                     if (!isLoadingPreset)
                     {
                         SaveCurrentPreset(currentPresetIndex);
+                        DataManager.Instance.SavePermanentData();
                     }
 
                     Debug.Log($"악세서리 장착: {newItem.itemName} (슬롯 {slotIndex})");
@@ -284,6 +292,8 @@ public class EquipmentManager : MonoBehaviour
         preset.armor = armorSlot;
         preset.accessories.Clear();
         preset.accessories.AddRange(accessorySlots);
+
+        DataManager.Instance.SavePermanentData();
     }
 
     // 프리셋 불러오기 (프리셋 버튼 누를 때 호출)
@@ -313,6 +323,7 @@ public class EquipmentManager : MonoBehaviour
     public void OnPresetButtonClicked(int index)
     {
         LoadPreset(index);
+        DataManager.Instance.SavePermanentData();
 
         foreach (var button in presetButtons)
         {

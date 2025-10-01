@@ -19,6 +19,8 @@ public class SceneBGMPlayer : MonoBehaviour
     {
         string sceneName = scene.name;
 
+        if (!gameObject.activeInHierarchy) return; // 비활성화 상태라면 그냥 무시
+
         if (System.Enum.TryParse(sceneName, out AudioManager.BGM bgm))
         {
             StartCoroutine(AudioManager.Instance.PlayBGM(bgm));

@@ -10,7 +10,6 @@ using static AudioManager;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance;
-    public PlayerStatus player;
     public Monster monster;
 
     public bool isInBattle = false;
@@ -57,7 +56,7 @@ public class BattleManager : MonoBehaviour
         battleLog.AddLog("BattleStart", "START");
         BattleUIManager.Instance.MonsterHPUpdater(monster);
         BattleUIManager.Instance.PlayerHPUpdate();
-        Debug.Log($"몬스터 체력: {monster.GetCurrentHealth()}, 플레이어 체력: {player.GetCurrentHealth()}");
+        Debug.Log($"몬스터 체력: {monster.GetCurrentHealth()}, 플레이어 체력: {PlayerStatus.Instance.GetCurrentHealth()}");
 
         string sceneName = SceneManager.GetActiveScene().name;
         mapBGM = (AudioManager.BGM)System.Enum.Parse(typeof(AudioManager.BGM), sceneName);
@@ -70,20 +69,20 @@ public class BattleManager : MonoBehaviour
         randomEncounter.ResetEncounterChance();
         bool playerTurn = !isBossBattle; // 보스전에는 몬스터가 먼저 공격
 
-        while (player.IsAlive() && monster.IsAlive())
+        while (PlayerStatus.Instance.IsAlive() && monster.IsAlive())
         {
             if (playerTurn)
             {
-                monster.TakeDamage(player.GetCurrentAttack(), player.GetCurrentCriticalChance(), player.GetCurrentCriticalMultiplier());
+                monster.TakeDamage(PlayerStatus.Instance.GetCurrentAttack(), PlayerStatus.Instance.GetCurrentCriticalChance(), PlayerStatus.Instance.GetCurrentCriticalMultiplier());
                 BattleUIManager.Instance.MonsterHPUpdater(monster);
                 Debug.Log($"남은 몬스터 체력: {monster.GetCurrentHealth()}");
                 BattleUIManager.Instance.PlayerHPUpdate(); // 회복할 수도 있으니 플레이어 체력도 갱신
             }
             else
             {
-                player.TakeDamage(monster.GetCurrentAttack());
+                PlayerStatus.Instance.TakeDamage(monster.GetCurrentAttack());
                 BattleUIManager.Instance.PlayerHPUpdate();
-                Debug.Log($"남은 플레이어 체력: {player.GetCurrentHealth()}");
+                Debug.Log($"남은 플레이어 체력: {PlayerStatus.Instance.GetCurrentHealth()}");
             }
 
             yield return new WaitForSeconds(0.3f);
@@ -106,7 +105,7 @@ public class BattleManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         }
 
-        if (player.IsAlive())
+        if (PlayerStatus.Instance.IsAlive())
         {
             BattleUIManager.Instance.HideBattleUIAndOpenStatus();
 
@@ -127,50 +126,77 @@ public class BattleManager : MonoBehaviour
                 // 무한 인카운터를 방지하기 위해 플레이어 위치 조정
                 Vector2 symbolPos = symbolEncounter.transform.position;
                 Vector2 belowSymbol = new Vector2(symbolPos.x, symbolPos.y - 2f);
-                player.transform.position = belowSymbol;
+                PlayerStatus.Instance.transform.position = belowSymbol;
             }
         }
 
-        player.RestoreHealth();
+        PlayerStatus.Instance.RestoreHealth();
 
         WinUIManager.Instance.winUI.gameObject.SetActive(false);
-        isInBattle = false;
-        symbolEncounter = null;
 
         PlayerUIUpdater.Instance.UpdateEncounterGauge();
         PresetManager.Instance.DistributeStatByPreset();
+        DataManager.Instance.SaveSessionData();
+        DataManager.Instance.SavePermanentData();
 
-        StartCoroutine(AudioManager.Instance.SFXFadeOut());
+        if (PlayerStatus.Instance.gameOver)
+        {
+            GameOverUIManager.Instance.ShowGameOverPanel();
+            // 게임 오버 브금 틀기
+            yield break;
+        }
+
         StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
+
+        yield return new WaitForSeconds(0.5f);
+        isInBattle = false;
+        symbolEncounter = null;
     }
 
     private void EndBattle()
     {
-        if (player.IsAlive())
+        if (PlayerStatus.Instance.IsAlive())
         {
             BattleUIManager.Instance.HideMonsterUI();
             Debug.Log("전투 승리!");
             droppedItem = monster.TryDropItem();
             WinUIManager.Instance.ShowWinUI();
-            player.AddMoney(monster.GetDropMoney());
-            player.AddEXP(monster.GetDropEXP());
-            player.UpdateBP(monster.GetDropBP());
+            PlayerStatus.Instance.AddMoney(monster.GetDropMoney());
+            PlayerStatus.Instance.AddEXP(monster.GetDropEXP());
+            PlayerStatus.Instance.UpdateBP(monster.GetDropBP());
             ShowWinLog();
 
             if (isBossBattle)
             {
                 Destroy(symbolEncounter.gameObject);
+                PlayerStatus.Instance.killedBossCount++;
             }
 
-            StartCoroutine(PlayWinSFX());
+            StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.Win));
         }
         else
         {
             Debug.Log("전투 패배!");
-            player.battlePoint -= 3;
+            PlayerStatus.Instance.battlePoint -= 3;
+
+            // 배들포인트가 0 아래로 떨어지지 않도록
+            if (PlayerStatus.Instance.battlePoint < 0)
+            {
+                PlayerStatus.Instance.battlePoint = 0;
+            }
+
             PlayerUIUpdater.Instance.UpdateBP();
             ShowDefeatLog();
+            PlayerStatus.Instance.defeatCount++;
+            PlayerStatus.Instance.usedBP = PlayerStatus.Instance.usedBP + 3;
+
+            if (PlayerStatus.Instance.battlePoint <= 0)
+            {
+                PlayerStatus.Instance.gameOver = true;
+            }
         }
+
+        PlayerStatus.Instance.battleCount++;
     }
 
     void ShowWinLog()
@@ -187,9 +213,9 @@ public class BattleManager : MonoBehaviour
             battleLog.AddLog("BattleWin", "BPDEC");
         }
 
-        battleLog.AddLog("BattleWin", "MONEY", (int)(monster.GetDropMoney() * player.GetMoneyMultiplier()));
-        battleLog.AddLog("BattleWin", "EXP", (int)(monster.GetDropEXP() * player.GetEXPMultiplier()));
-        battleLog.AddLog("BattleWin", "LEVELUP", player.GetPlayerLevel());
+        battleLog.AddLog("BattleWin", "MONEY", (int)(monster.GetDropMoney() * PlayerStatus.Instance.GetMoneyMultiplier()));
+        battleLog.AddLog("BattleWin", "EXP", (long)(monster.GetDropEXP() * PlayerStatus.Instance.GetEXPMultiplier()));
+        battleLog.AddLog("BattleWin", "LEVELUP", PlayerStatus.Instance.GetPlayerLevel());
         
         if (droppedItem != null)
         {
@@ -217,23 +243,18 @@ public class BattleManager : MonoBehaviour
         {
             yield return StartCoroutine(BattleUIManager.Instance.FadeOut());
             SceneManager.LoadScene(monster.monsterStatData.nextMapName);
-            player.transform.position = new Vector3(0f, 0f, 0f);
+            PlayerStatus.Instance.transform.position = new Vector3(0f, 0f, 0f);
 
             var vcam = FindObjectOfType<CinemachineVirtualCamera>();
             if (vcam != null)
             {
-                vcam.OnTargetObjectWarped(player.transform, player.transform.position - vcam.transform.position);
+                vcam.OnTargetObjectWarped(PlayerStatus.Instance.transform, PlayerStatus.Instance.transform.position - vcam.transform.position);
             }
 
+            DataManager.Instance.SaveSessionData();
+            DataManager.Instance.SavePermanentData();
             yield return StartCoroutine(BattleUIManager.Instance.FadeIn());
         }
-    }
-
-    private IEnumerator PlayWinSFX()
-    {
-        yield return StartCoroutine(AudioManager.Instance.BGMFadeOut());
-
-        AudioManager.Instance.PlaySFX(AudioManager.SFX.Win);
     }
 
     public void OnClickBattle()
@@ -259,7 +280,7 @@ public class BattleManager : MonoBehaviour
             // 무한 인카운터를 방지하기 위해 플레이어 위치 조정
             Vector2 symbolPos = symbolEncounter.transform.position;
             Vector2 belowSymbol = new Vector2(symbolPos.x, symbolPos.y - 2f);
-            player.transform.position = belowSymbol;
+            PlayerStatus.Instance.transform.position = belowSymbol;
         }
 
         BattleUIManager.Instance.HideBattleUI();

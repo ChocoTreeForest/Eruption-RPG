@@ -10,6 +10,7 @@ public class Monster : MonoBehaviour
 
     private int maxHealth;
     private int currentHealth;
+    private int previousHealth;
     private int currentAttack;
     private int currentDefence;
 
@@ -51,9 +52,9 @@ public class Monster : MonoBehaviour
         maxHealth = monsterStatData.health;
         currentHealth = monsterStatData.health;
         currentAttack = monsterStatData.attack;
-        currentDefence = monsterStatData.defense;
+        currentDefence = monsterStatData.defence;
 
-        Debug.Log($"[몬스터 생성] 이름: {monsterStatData.monsterName}, 체력: {monsterStatData.health}, 공격력: {monsterStatData.attack}, 방어력: {monsterStatData.defense}");
+        Debug.Log($"[몬스터 생성] 이름: {monsterStatData.monsterName}, 체력: {monsterStatData.health}, 공격력: {monsterStatData.attack}, 방어력: {monsterStatData.defence}");
     }
 
     public void DropMoneyAndEXP()
@@ -91,13 +92,15 @@ public class Monster : MonoBehaviour
     {
         BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
 
+        previousHealth = currentHealth;
+
         PlayerStatus.Instance.InstantKill(this);
 
         if (currentHealth <= 0)
         {
             BattleEffectManager.Instance.PlayCriticalHitEffect(
                 BattleEffectManager.Instance.criticalHitEffects,
-                BattleUIManager.Instance.monsterImage.rectTransform);
+                BattleUIManager.Instance.monsterImage.rectTransform);            
             Debug.Log("즉사 효과 발동!");
             battleLog.AddLog("InBattle", "INSTKILL");
             return; // 몬스터가 이미 죽었으면 데미지 계산을 하지 않음
@@ -118,6 +121,8 @@ public class Monster : MonoBehaviour
                 BattleUIManager.Instance.monsterImage.rectTransform);
             finalDamage = (int)(finalDamage * criticalMultiplier);
             battleLog.AddLog("InBattle", "CRITICAL", finalDamage);
+
+            BattleEffectManager.Instance.ShowDamageText(finalDamage, BattleUIManager.Instance.monsterImage.rectTransform, true /* isCritical */);
         }
         else
         {
@@ -125,6 +130,8 @@ public class Monster : MonoBehaviour
                 BattleEffectManager.Instance.monsterHitEffects,
                 BattleUIManager.Instance.monsterImage.rectTransform);
             battleLog.AddLog("InBattle", "ATTACK", finalDamage);
+
+            BattleEffectManager.Instance.ShowDamageText(finalDamage, BattleUIManager.Instance.monsterImage.rectTransform);
         }
 
         currentHealth -= finalDamage;
@@ -154,6 +161,7 @@ public class Monster : MonoBehaviour
 
     public int GetMaxHealth() => maxHealth;
     public int GetCurrentHealth() => currentHealth;
+    public int GetPreviousHealth() => previousHealth;
     public int GetCurrentAttack() => currentAttack;
     public int GetCurrentDefence() => currentDefence;
     public int GetDropMoney() => money;

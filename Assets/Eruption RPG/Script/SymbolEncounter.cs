@@ -17,7 +17,7 @@ public class SymbolEncounter : MonoBehaviour
             hasEncounter = true;
             Debug.Log($"심볼 인카운터 발생! {monster.name}");
 
-            BattleManager.Instance.StartBattle(monster, true /* isBoss */, this);
+            BattleManager.Instance.StartBattle(monster, isBoss:true, this);
         }
     }
 }

@@ -1,0 +1,214 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class DataManager : MonoBehaviour
+{
+    public static DataManager Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    public void SaveSessionData()
+    {
+        // UI도 저장해서 불러올 수 있게 해야 함 + 카메라도
+        SessionData data = PlayerStatus.Instance.ToSessionData();
+        SaveManager.SaveSessionData(data);
+    }
+
+    public void LoadSessionData()
+    {
+        var data = SaveManager.LoadSessionData();
+
+        if (data != null)
+        {
+            StartCoroutine(LoadPlayerPosition(data));
+        }
+    }
+
+    private IEnumerator LoadPlayerPosition(SessionData data)
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync(data.currentScene);
+        yield return op;
+
+        // 씬 로드가 완료된 후에 플레이어 위치 설정
+        if (PlayerStatus.Instance != null)
+        {
+            PlayerStatus.Instance.LoadFromSessionData(data);
+            PlayerStatus.Instance.transform.position = data.playerPosition;
+            Debug.Log("로드 실행됨, 레벨:" + data.level);
+        }
+    }
+
+    public void SavePermanentData()
+    {
+        PermanentData data = new PermanentData();
+
+        // 보유 아이템 저장
+        foreach (var item in EquipmentManager.Instance.ownedItemCounts)
+        {
+            data.ownedItems[item.Key.id] = item.Value;
+        }
+
+        // 장착 중인 장비 저장
+        if (EquipmentManager.Instance.weaponSlot != null)
+        {
+            data.equippedWeaponID = EquipmentManager.Instance.weaponSlot.id;
+        }
+        if (EquipmentManager.Instance.armorSlot != null)
+        {
+            data.equippedArmorID = EquipmentManager.Instance.armorSlot.id;
+        }
+
+        foreach (var acc in EquipmentManager.Instance.accessorySlots)
+        {
+            if (acc != null)
+            {
+                data.equippedAccessoryIDs.Add(acc.id);
+            }
+        }
+
+        // 장비 프리셋 저장
+        foreach (var preset in EquipmentManager.Instance.presets)
+        {
+            EquipmentPresetData presetData = new EquipmentPresetData();
+            if (preset.weapon != null)
+            {
+                presetData.weaponID = preset.weapon.id;
+            }
+            if (preset.armor != null)
+            {
+                presetData.armorID = preset.armor.id;
+            }
+
+            foreach (var acc in preset.accessories)
+            {
+                if (acc != null)
+                {
+                    presetData.accessoryIDs.Add(acc.id);
+                }
+            }
+
+            data.equipmentPresets.Add(presetData);
+        }
+
+        data.lastEquipmentPresetIndex = EquipmentManager.Instance.currentPresetIndex;
+
+        // 스테이터스 프리셋 저장
+        foreach (var preset in PresetManager.Instance.presets)
+        {
+            StatusPresetData presetData = new StatusPresetData()
+            {
+                hpRatio = preset.hpRatio,
+                atkRatio = preset.atkRatio,
+                defRatio = preset.defRatio,
+                lukRatio = preset.lukRatio
+            };
+
+            data.statusPresets.Add(presetData);
+        }
+
+        data.statusPresetOn = PresetManager.Instance.IsPresetOn();
+        data.selectedStatusPresetIndex = PresetManager.Instance.GetSelectedPresetIndex();
+
+        SaveManager.SavePermanentData(data);
+    }
+
+    public void LoadPermanentData()
+    {
+        PermanentData data = SaveManager.LoadPermanentData();
+        if (data == null) return;
+
+        // 보유 아이템 불러오기
+        foreach (var item in data.ownedItems)
+        {
+            ItemData itemID = ItemIDManager.Instance.GetItemByID(item.Key);
+            for (int i = 0; i < item.Value; i++)
+            {
+                EquipmentManager.Instance.AddItem(itemID);
+            }
+        }
+
+        // 장착 중인 장비 불러오기
+        if (data.equippedWeaponID != 0)
+        {
+            EquipmentManager.Instance.EquipItem(ItemIDManager.Instance.GetItemByID(data.equippedWeaponID));
+        }
+        if (data.equippedArmorID != 0)
+        {
+            EquipmentManager.Instance.EquipItem(ItemIDManager.Instance.GetItemByID(data.equippedArmorID));
+        }
+
+        for (int i = 0; i < data.equippedAccessoryIDs.Count; i++)
+        {
+            ItemData acc = ItemIDManager.Instance.GetItemByID(data.equippedAccessoryIDs[i]);
+            EquipmentManager.Instance.EquipItem(acc, i);
+        }
+
+        // 장비 프리셋 불러오기
+        for (int i = 0; i < data.equipmentPresets.Count && i < EquipmentManager.Instance.presets.Length; i++)
+        {
+            EquipmentPresetData presetData = data.equipmentPresets[i];
+            EquipmentPreset preset = EquipmentManager.Instance.presets[i];
+
+            preset.weapon = presetData.weaponID == 0 ? null : ItemIDManager.Instance.GetItemByID(presetData.weaponID);
+            preset.armor = presetData.armorID == 0 ? null : ItemIDManager.Instance.GetItemByID(presetData.armorID);
+
+            preset.accessories.Clear();
+            foreach (var accID in presetData.accessoryIDs)
+            {
+                preset.accessories.Add(ItemIDManager.Instance.GetItemByID(accID));
+            }
+        }
+
+        if (data.lastEquipmentPresetIndex >= 0 && data.lastEquipmentPresetIndex < EquipmentManager.Instance.presets.Length)
+        {
+            EquipmentManager.Instance.LoadPreset(data.lastEquipmentPresetIndex);
+
+            foreach (var button in EquipmentManager.Instance.presetButtons)
+            {
+                button.interactable = button != EquipmentManager.Instance.presetButtons[data.lastEquipmentPresetIndex];
+            }
+        }
+
+        // 스테이터스 프리셋 불러오기
+        for (int i = 0; i < data.statusPresets.Count && i < PresetManager.Instance.presets.Length; i++)
+        {
+            var presetData = data.statusPresets[i];
+            var preset = PresetManager.Instance.presets[i];
+
+            preset.hpRatio = presetData.hpRatio;
+            preset.atkRatio = presetData.atkRatio;
+            preset.defRatio = presetData.defRatio;
+            preset.lukRatio = presetData.lukRatio;
+
+            PresetManager.Instance.UpdateUI(i);
+        }
+
+        if (data.statusPresetOn && data.selectedStatusPresetIndex >= 0)
+        {
+            PresetManager.Instance.dataLoading = true;
+            PresetManager.Instance.ApplyPreset(data.selectedStatusPresetIndex);
+            PresetManager.Instance.dataLoading = false;
+        }
+        else
+        {
+            PresetManager.Instance.SetPresetOff();
+        }
+
+        EquipmentManager.Instance.UpdateEquipmentUI();
+        StatsUpdater.Instance.UpdateStats();
+    }
+}

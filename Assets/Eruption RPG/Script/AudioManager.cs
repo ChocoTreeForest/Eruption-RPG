@@ -39,7 +39,8 @@ public class AudioManager : MonoBehaviour
         TempleEntrance,
         Title,
         TwilightTemple,
-        Wasteland
+        Wasteland,
+        Win
     }
 
     public enum SFX
@@ -49,13 +50,20 @@ public class AudioManager : MonoBehaviour
         CriAttackFire,
         CriAttack,
         CriAttackWind,
-        Hit,
-        Win = 8
+        Hit
     }
 
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
@@ -74,7 +82,6 @@ public class AudioManager : MonoBehaviour
         {
             bgmPlayers[index] = bgmObject.AddComponent<AudioSource>();
             bgmPlayers[index].playOnAwake = false;
-            bgmPlayers[index].loop = true;
             bgmPlayers[index].volume = bgmVolume;
         }
 
@@ -110,6 +117,17 @@ public class AudioManager : MonoBehaviour
 
             bgmIndex = loopIndex;
             bgmPlayers[loopIndex].clip = bgmClips[(int)bgm + randomIndex];
+
+            // ½Â¸® ºê±ÝÀº ·çÇÁ ²ô±â
+            if (bgm == BGM.Win)
+            {
+                bgmPlayers[loopIndex].loop = false;
+            }
+            else
+            {
+                bgmPlayers[loopIndex].loop = true;
+            }
+
             bgmPlayers[loopIndex].Play();
             break;
         }

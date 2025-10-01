@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PresetManager : MonoBehaviour
 {
     public static PresetManager Instance;
-    public StatusPreset[] presets = new StatusPreset[3];    
+    public StatusPreset[] presets = new StatusPreset[3];
 
     public Text[] presetHPTexts;
     public Text[] presetATKTexts;
@@ -21,6 +21,8 @@ public class PresetManager : MonoBehaviour
 
     private int selectedPresetIndex = -1;
     private int lastPresetIndex = 0;
+
+    public bool dataLoading = false;
 
     void Awake()
     {
@@ -49,18 +51,36 @@ public class PresetManager : MonoBehaviour
     {
         if (selectedPresetIndex == -1)
         {
-            selectedPresetIndex = lastPresetIndex;
-            currentPresetTexts[selectedPresetIndex].SetActive(true);
+            // On으로 전환
+            if (lastPresetIndex >= 0 && lastPresetIndex < currentPresetTexts.Length)
+            {
+                selectedPresetIndex = lastPresetIndex;
+                currentPresetTexts[selectedPresetIndex].SetActive(true);
+            }
+            else
+            {
+                // lastPresetIndex가 유효하지 않으면 첫 번째 프리셋 선택
+                selectedPresetIndex = 0;
+                currentPresetTexts[selectedPresetIndex].SetActive(true);
+            }
+
             onOffText.text = "ON";
 
             foreach (var button in applyButtons)
             {
                 button.interactable = button != applyButtons[selectedPresetIndex];
             }
+
+            DataManager.Instance.SavePermanentData();
         }
         else
         {
-            currentPresetTexts[selectedPresetIndex].SetActive(false);
+            // Off로 전환
+            if (selectedPresetIndex >= 0 && selectedPresetIndex < currentPresetTexts.Length)
+            {
+                currentPresetTexts[selectedPresetIndex].SetActive(false);
+            }
+
             lastPresetIndex = selectedPresetIndex;
             selectedPresetIndex = -1;
             onOffText.text = "OFF";
@@ -69,6 +89,8 @@ public class PresetManager : MonoBehaviour
             {
                 button.interactable = false;
             }
+
+            DataManager.Instance.SavePermanentData();
         }
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
@@ -79,15 +101,30 @@ public class PresetManager : MonoBehaviour
         lastPresetIndex = selectedPresetIndex;
         selectedPresetIndex = index;
 
-        currentPresetTexts[lastPresetIndex].SetActive(false);
-        currentPresetTexts[index].SetActive(true);
+        // 이전 인덱스가 유효하면 끄기
+        if (lastPresetIndex >= 0 && lastPresetIndex < currentPresetTexts.Length)
+        {
+            currentPresetTexts[lastPresetIndex].SetActive(false);
+        }
+
+        // 새 인덱스가 유효하면 켜기
+        if (index >= 0 && index < currentPresetTexts.Length)
+        {
+            currentPresetTexts[index].SetActive(true);
+            onOffText.text = "ON";
+        }
 
         foreach (var button in applyButtons)
         {
             button.interactable = button != applyButtons[index];
         }
 
-        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+        DataManager.Instance.SavePermanentData();
+
+        if (!dataLoading)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+        }
     }
 
     public void DistributeStatByPreset()
@@ -147,6 +184,7 @@ public class PresetManager : MonoBehaviour
 
         UpdateUI(index);
 
+        DataManager.Instance.SavePermanentData();
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
@@ -158,5 +196,31 @@ public class PresetManager : MonoBehaviour
         presetATKTexts[index].text = preset.atkRatio.ToString();
         presetDEFTexts[index].text = preset.defRatio.ToString();
         presetLUKTexts[index].text = preset.lukRatio.ToString();
+    }
+
+    public bool IsPresetOn()
+    {
+        return selectedPresetIndex != -1;
+    }
+
+    public int GetSelectedPresetIndex()
+    {
+        return selectedPresetIndex;
+    }
+
+    public void SetPresetOff()
+    {
+        if (selectedPresetIndex >= 0)
+        {
+            currentPresetTexts[selectedPresetIndex].SetActive(false);
+        }
+
+        selectedPresetIndex = -1;
+        onOffText.text = "OFF";
+
+        foreach (var button in applyButtons)
+        {
+            button.interactable = false;
+        }
     }
 }

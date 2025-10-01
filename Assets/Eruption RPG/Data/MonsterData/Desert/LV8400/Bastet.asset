@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bastet
   m_EditorClassIdentifier: 
   monsterName: Bastet
-  health: 130000
+  health: 1300000
   attack: 28000
   defense: 10000
   nextMapName: SnowField

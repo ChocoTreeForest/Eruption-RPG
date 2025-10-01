@@ -109,7 +109,7 @@ public class RandomEncounter : MonoBehaviour
         monster.DropMoneyAndEXP();
         monster.DropBP();
 
-        BattleManager.Instance.StartBattle(monster, false /* isBoss */);
+        BattleManager.Instance.StartBattle(monster, isBoss:false);
     }
 
     public void OnClickEncounterButton()

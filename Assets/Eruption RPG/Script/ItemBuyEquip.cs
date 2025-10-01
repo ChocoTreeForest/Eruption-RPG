@@ -125,6 +125,7 @@ public class ItemBuyEquip : MonoBehaviour
         int currentPrice = EquipmentManager.Instance.GetCurrentPrice(itemData);
 
         PlayerStatus.Instance.UseMoney(currentPrice);
+        GameOverUIManager.Instance.UpdateUI();
 
         EquipmentManager.Instance.AddItem(itemData);
         StatsUpdater.Instance.UpdateStats();
@@ -134,6 +135,7 @@ public class ItemBuyEquip : MonoBehaviour
         EquipButtonControl();
         UpdateBuyEquipPanel();
 
+        DataManager.Instance.SavePermanentData();
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 

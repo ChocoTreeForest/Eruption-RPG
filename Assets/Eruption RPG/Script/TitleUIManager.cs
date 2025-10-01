@@ -13,11 +13,19 @@ public class TitleUIManager : MonoBehaviour
 
     public void OnClickPlay()
     {
-        // 플레이 버튼 누르면 바로 시작하지 말고 시작/다시 시작, 계속하기 버튼 나오는 패널 열기
         // 일단 임시로 바로 시작
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
 
-        SceneManager.LoadScene("GrassField");
+        StartCoroutine(LoadGame());
+        //SceneManager.LoadScene("GrassField");
+    }
+
+    private IEnumerator LoadGame()
+    {
+        var session = SaveManager.LoadSessionData();
+
+        AsyncOperation op = SceneManager.LoadSceneAsync(session.currentScene);
+        yield return op; // 씬 로드가 완료될 때까지 대기
     }
 
     public void OnClickRecord()

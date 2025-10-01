@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuUIManager : MonoBehaviour
 {
@@ -16,7 +17,11 @@ public class MenuUIManager : MonoBehaviour
     public GameObject armorChangePanel;
     public GameObject accessoryChangePanel;
     public GameObject buyEquipPanel;
+    public GameObject titleAlertPanel;
+    public GameObject endAlertPanel;
     public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
+
+    public Color previousColor;
 
     public bool isPanelOpen = false;
 
@@ -51,6 +56,12 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenStatusPanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            previousColor = statusPanel.GetComponent<Image>().color;
+            statusPanel.GetComponent<Image>().color = new Color(previousColor.r, previousColor.g, previousColor.b, 1f);
+        }
+
         menuPanel.SetActive(false);
         statusPanel.SetActive(true);
         isPanelOpen = true;
@@ -61,21 +72,32 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseStatusPanel()
     {
-        menuPanel.SetActive(true);
+        if (!PlayerStatus.Instance.gameOver) menuPanel.SetActive(true);
+        if (PlayerStatus.Instance.gameOver) raycastBlocker.SetActive(false);
+
         statusPanel.SetActive(false);
     }
 
     public void OpenEquipmentPanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            previousColor = equipmentPanel.GetComponent<Image>().color;
+            equipmentPanel.GetComponent<Image>().color = new Color(previousColor.r, previousColor.g, previousColor.b, 1f);
+        }
+
         menuPanel.SetActive(false);
         equipmentPanel.SetActive(true);
+        raycastBlocker.SetActive(true);
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void CloseEquipmentPanel()
     {
-        menuPanel.SetActive(true);
+        if (!PlayerStatus.Instance.gameOver) menuPanel.SetActive(true);
+        if (PlayerStatus.Instance.gameOver) raycastBlocker.SetActive(false);
+
         equipmentPanel.SetActive(false);
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
@@ -88,7 +110,7 @@ public class MenuUIManager : MonoBehaviour
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
-    public void OKUnequip()
+    public void ApplyUnequip()
     {
         AccessoryUIManager.Instance.UnequipAllAccessories();
         unequipAlertPanel.SetActive(false);
@@ -105,6 +127,12 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenStatusPrestPanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            previousColor = statusPresetPanel.GetComponent<Image>().color;
+            statusPresetPanel.GetComponent<Image>().color = new Color(previousColor.r, previousColor.g, previousColor.b, 1f);
+        }
+
         statusPanel.SetActive(false);
         statusPresetPanel.SetActive(true);
 
@@ -121,6 +149,12 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenWeaponChangePanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            previousColor = weaponChangePanel.GetComponent<Image>().color;
+            weaponChangePanel.GetComponent<Image>().color = new Color(previousColor.r, previousColor.g, previousColor.b, 1f);
+        }
+
         ItemListUI.Instance.WeaponList();
         equipmentPanel.SetActive(false);
         weaponChangePanel.SetActive(true);
@@ -137,6 +171,12 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenArmorChangePanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            previousColor = armorChangePanel.GetComponent<Image>().color;
+            armorChangePanel.GetComponent<Image>().color = new Color(previousColor.r, previousColor.g, previousColor.b, 1f);
+        }
+
         ItemListUI.Instance.ArmorList();
         equipmentPanel.SetActive(false);
         armorChangePanel.SetActive(true);
@@ -165,5 +205,63 @@ public class MenuUIManager : MonoBehaviour
         buyEquipPanel.SetActive(false);
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void OpenTitleAlertPanel()
+    {
+        titleAlertPanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void CancelTitle()
+    {
+        titleAlertPanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void ApplyTitle()
+    {
+        // 데이터 저장
+        DataManager.Instance.SaveSessionData();
+        DataManager.Instance.SavePermanentData();
+
+        titleAlertPanel.SetActive(false);
+        menuPanel.SetActive(false);
+        isPanelOpen = false;
+        raycastBlocker.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+
+        // 타이틀 화면으로 이동 + 페이드아웃 추가하기
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+    }
+
+    public void OpenEndAlertPanel()
+    {
+        endAlertPanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void CancelEnd()
+    {
+        endAlertPanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void ApplyEnd()
+    {
+        PlayerStatus.Instance.gameOver = true;
+        endAlertPanel.SetActive(false);
+        menuPanel.SetActive(false);
+        isPanelOpen = false;
+        raycastBlocker.SetActive(false);
+        GameOverUIManager.Instance.ShowGameOverPanel();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+        // 게임 오버 브금 틀기
     }
 }

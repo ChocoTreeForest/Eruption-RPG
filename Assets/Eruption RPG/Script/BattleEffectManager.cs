@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleEffectManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BattleEffectManager : MonoBehaviour
     public GameObject healEffect; // 회복 이펙트 프리팹
 
     public RectTransform effectParent; // 이펙트가 생성될 부모 오브젝트
+
+    public GameObject damageTextPrefab; // 데미지 텍스트 프리팹
 
     void Awake()
     {
@@ -78,5 +81,59 @@ public class BattleEffectManager : MonoBehaviour
 
         GameObject effect = Instantiate(healEffect, effectParent);
         effect.transform.position = playerSprite.position; // 플레이어 이미지 중앙에 위치
+    }
+
+    public void ShowDamageText(int damage, RectTransform targetSprite, bool isCritical = false, bool isHeal = false)
+    {
+        if (damageTextPrefab == null || targetSprite == null) return;
+
+        GameObject textObj = Instantiate(damageTextPrefab, effectParent);
+        textObj.transform.position = targetSprite.position + new Vector3(Random.Range(-100f, 100f), 200f, 0f); // 약간의 랜덤 오프셋 추가
+        textObj.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f)); // 약간의 랜덤 회전 추가
+
+        Text damageText = textObj.GetComponent<Text>();
+        damageText.text = damage.ToString();
+
+        if (isCritical)
+        {
+            damageText.color = Color.red;
+            damageText.fontSize = 40;
+        }
+        else if (isHeal)
+        {
+            damageText.color = Color.green;
+            damageText.fontSize = 30;
+        }
+        else
+        {
+            damageText.color = Color.yellow;
+            damageText.fontSize = 30;
+        }
+
+        StartCoroutine(FadeOutText(textObj));
+    }
+
+    private IEnumerator FadeOutText(GameObject textObj)
+    {
+        Text text = textObj.GetComponent<Text>();
+        Color originalColor = text.color;
+
+        Vector3 startPos = textObj.transform.position;
+        Vector3 endPos = startPos + new Vector3(0, 50f, 0); // 위로 50만큼 이동
+
+        float duration = 0.5f;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+
+            text.transform.position = Vector3.Lerp(startPos, endPos, t / duration);
+            text.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1 - (t / duration));
+
+            yield return null;
+        }
+
+        Destroy(textObj);
     }
 }

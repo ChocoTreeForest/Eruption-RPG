@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum ItemType { Weapon, Armor, Accessory }
 
-public enum  SpecialEffectType
+public enum SpecialEffectType
 {
     None,
     Recovery, // È¸º¹

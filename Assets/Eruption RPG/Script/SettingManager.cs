@@ -9,7 +9,6 @@ public class SettingManager : MonoBehaviour
     public Text bgmVolumeText;
     public Text sfxVolumeText;
 
-
     void Start()
     {
         AudioManager.Instance.bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);

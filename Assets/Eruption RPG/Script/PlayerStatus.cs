@@ -19,6 +19,12 @@ public class PlayerStatus : MonoBehaviour
     private int baseCriticalChance = 5;
     private float baseCriticalMultiplier = 1.3f;
 
+    public int battleCount;
+    public int killedBossCount;
+    public int defeatCount;
+    public int usedBP;
+    public int earnedMoney;
+
     // 돈, 경험치 획득 배율
     private float moneyMultiplier = 1f;
     private float expMultiplier = 1f;
@@ -54,16 +60,11 @@ public class PlayerStatus : MonoBehaviour
 
     public bool usedFocusEffect = false; // 기합의 펜던트 발동 여부
 
+    public bool gameOver = false; // 게임 오버 여부
+
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
 
         player = GetComponent<PlayerController>();
         InitializeStatus();
@@ -81,6 +82,11 @@ public class PlayerStatus : MonoBehaviour
         currentSpeed = player.speed;
         currentMoney = 0;
         battlePoint = 20;
+        battleCount = 0;
+        killedBossCount = 0;
+        defeatCount = 0;
+        usedBP = 0;
+        earnedMoney = 0;
     }
 
     // 돈과 경험치 획득 배율 적용
@@ -146,7 +152,9 @@ public class PlayerStatus : MonoBehaviour
     // 돈 획득과 사용, 경험치 획득
     public void AddMoney(int dropMoney)
     {
-        currentMoney += (int)(dropMoney * moneyMultiplier);
+        int earnMoney = (int)(dropMoney * moneyMultiplier);
+        earnedMoney += earnMoney;
+        currentMoney += earnMoney;
         PlayerUIUpdater.Instance.UpdateLV();
         PlayerUIUpdater.Instance.UpdateMoney();
     }
@@ -183,6 +191,22 @@ public class PlayerStatus : MonoBehaviour
     {
         battlePoint += dropBP;
         PlayerUIUpdater.Instance.UpdateBP();
+
+        if (dropBP < 0)
+        {
+            usedBP = usedBP + (-dropBP);
+        }
+
+        // 배틀포인트가 0 아래로 떨어지지 않도록
+        if (battlePoint < 0)
+        {
+            battlePoint = 0;
+        }
+
+        if (battlePoint <= 0)
+        {
+            gameOver = true;
+        }
     }
 
     public void Heal(int finalDamage)
@@ -199,6 +223,8 @@ public class PlayerStatus : MonoBehaviour
                 BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
                 battleLog.AddLog("InBattle", "HEAL", heal);
                 Debug.Log($"회복 발동! {heal} HP 회복 (현재 체력: {currentHealth})");
+
+                BattleEffectManager.Instance.ShowDamageText(heal, BattleUIManager.Instance.playerPosition, isHeal:true);
                 break;
             }
         }
@@ -271,6 +297,8 @@ public class PlayerStatus : MonoBehaviour
         BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
         battleLog.AddLog("InBattle", "DAMAGED", finalDamage);
         Debug.Log($"몬스터의 공격으로 {finalDamage}의 데미지!");
+
+        BattleEffectManager.Instance.ShowDamageText(finalDamage, BattleUIManager.Instance.playerPosition);
     }
 
     public bool IsAlive()
@@ -383,6 +411,74 @@ public class PlayerStatus : MonoBehaviour
 
         tempBonusLuck = (int)(((baseLuck + tempLuck + StatsUpdater.Instance.totalBonusLuck) *
             (1 + StatsUpdater.Instance.totalLuckMultiplier / 100)) - currentLuck) - tempLuck;
+    }
+
+    public void UpdateUI()
+    {
+        statusUIManager.UpdateStatus();
+        statusUIManager.UpdateEXP();
+        statusUIManager.UpdateAP();
+        statusUIManager.StatIncreasePreview();
+        PlayerUIUpdater.Instance.UpdateLV();
+        PlayerUIUpdater.Instance.UpdateMoney();
+        PlayerUIUpdater.Instance.UpdateBP();
+        PlayerUIUpdater.Instance.UpdateEncounterGauge();
+        PlayerUIUpdater.Instance.UpdateCurrentZone();
+    }
+
+    public SessionData ToSessionData()
+    {
+        return new SessionData
+        {
+            level = level,
+            currentEXP = currentEXP,
+            baseHealth = baseHealth,
+            baseAttack = baseAttack,
+            baseDefence = baseDefence,
+            baseLuck = baseLuck,
+
+            battleCount = battleCount,
+            killedBossCount = killedBossCount,
+            defeatCount = defeatCount,
+            usedBP = usedBP,
+            earnedMoney = earnedMoney,
+
+            currentMoney = currentMoney,
+            battlePoint = battlePoint,
+            abilityPoint = abilityPoint,
+
+            currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
+            playerPosition = transform.position
+            // 잡은 보스 리스트도 저장하기
+        };
+    }
+
+    public void LoadFromSessionData(SessionData data)
+    {
+        if (data == null) return;
+
+        level = data.level;
+        currentEXP = data.currentEXP;
+        baseHealth = data.baseHealth;
+        baseAttack = data.baseAttack;
+        baseDefence = data.baseDefence;
+        baseLuck = data.baseLuck;
+
+        battleCount = data.battleCount;
+        killedBossCount = data.killedBossCount;
+        defeatCount = data.defeatCount;
+        usedBP = data.usedBP;
+        earnedMoney = data.earnedMoney;
+
+        currentMoney = data.currentMoney;
+        battlePoint = data.battlePoint;
+        abilityPoint = data.abilityPoint;
+
+        transform.position = data.playerPosition;
+        // 잡은 보스 리스트도 불러오기
+
+        StatsUpdater.Instance.UpdateStats();
+        UpdateUI();
     }
 
     public int GetPlayerLevel() => level;

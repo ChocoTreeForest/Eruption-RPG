@@ -11,7 +11,7 @@ public class BattleUIManager : MonoBehaviour
 
     public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
     public Image monsterImage;
-    public RectTransform playerPosition; 
+    public RectTransform playerPosition;
     public Animator battleUIAnimator;
     public GameObject battleUI;
 
@@ -26,6 +26,16 @@ public class BattleUIManager : MonoBehaviour
     public float fadeDuration = 0.5f;
 
     private int hpPerBar = 10000; // 체력 한 줄당 체력 1만
+
+    private Color[] hpBarColors = new Color[]
+    {
+        Color.red,
+        Color.green,
+        Color.yellow,
+        new Color(0.5f, 0f, 0.5f), // 보라색
+        Color.blue,
+        new Color(1f, 0.5f, 0f) // 주황색
+    };
 
     private void Awake()
     {
@@ -64,7 +74,11 @@ public class BattleUIManager : MonoBehaviour
     {
         raycastBlocker.SetActive(false);
         battleUIAnimator.SetBool("isShow", false);
-        MenuUIManager.Instance.OpenStatusPanel();
+
+        if (!PlayerStatus.Instance.gameOver)
+        {
+            MenuUIManager.Instance.OpenStatusPanel();
+        }
     }
 
     public void PlayerHPUpdate()
@@ -119,16 +133,6 @@ public class BattleUIManager : MonoBehaviour
             }
         }
     }
-
-    private Color[] hpBarColors = new Color[]
-    {
-        Color.red,
-        Color.green,
-        Color.yellow,
-        new Color(0.5f, 0f, 0.5f), // 보라색
-        Color.blue,
-        new Color(1f, 0.5f, 0f) // 주황색
-    };
 
     public void ShowMonsterUI()
     {
