@@ -170,6 +170,8 @@ public class BattleManager : MonoBehaviour
             {
                 Destroy(symbolEncounter.gameObject);
                 PlayerStatus.Instance.killedBossCount++;
+
+                PlayerStatus.Instance.defeatedBosses.Add(monster.name);
             }
 
             StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.Win));

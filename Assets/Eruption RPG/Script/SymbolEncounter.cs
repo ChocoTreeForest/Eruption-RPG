@@ -8,6 +8,15 @@ public class SymbolEncounter : MonoBehaviour
 
     public bool hasEncounter = false;  // 중복 인카운터 방지
 
+    void Start()
+    {
+        if (PlayerStatus.Instance.defeatedBosses.Contains(monster.name))
+        {
+            Debug.Log($"이미 처치한 보스 {monster.name} 제거");
+            Destroy(gameObject);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (hasEncounter) return;

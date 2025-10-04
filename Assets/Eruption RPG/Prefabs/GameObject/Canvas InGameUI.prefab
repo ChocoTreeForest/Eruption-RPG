@@ -1716,6 +1716,8 @@ MonoBehaviour:
   titleAlertPanel: {fileID: 5810489073054993559}
   endAlertPanel: {fileID: 8256872136430621698}
   raycastBlocker: {fileID: 6490734233178870723}
+  fadeImage: {fileID: 0}
+  fadeDuration: 0.5
   previousColor: {r: 0, g: 0, b: 0, a: 0}
   isPanelOpen: 0
 --- !u!114 &2246897054272217107
@@ -1909,6 +1911,7 @@ MonoBehaviour:
   - {fileID: 4872250571694823025}
   - {fileID: 8770108138531546585}
   - {fileID: 8271993798358986314}
+  dataLoading: 0
 --- !u!114 &2999542890246628869
 MonoBehaviour:
   m_ObjectHideFlags: 0

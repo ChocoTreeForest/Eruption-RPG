@@ -152,6 +152,7 @@ public class BattleUIManager : MonoBehaviour
 
     public IEnumerator FadeOut()
     {
+        fadeImage.gameObject.SetActive(true);
         Color color = fadeImage.color;
 
         float t = 0f;
@@ -182,5 +183,6 @@ public class BattleUIManager : MonoBehaviour
 
         color.a = 0f;
         fadeImage.color = color;
+        fadeImage.gameObject.SetActive(false);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TitleUIManager : MonoBehaviour
@@ -11,20 +12,33 @@ public class TitleUIManager : MonoBehaviour
     public GameObject loadDataAlertPanel;
     public GameObject creditsPanel;
 
+    public Image fadeImage; // 페이드 인/아웃용 이미지
+    public float fadeDuration = 0.5f;
+
     public void OnClickPlay()
     {
-        // 일단 임시로 바로 시작
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
 
         StartCoroutine(LoadGame());
-        //SceneManager.LoadScene("GrassField");
     }
 
     private IEnumerator LoadGame()
     {
+        yield return StartCoroutine(FadeOut());
         var session = SaveManager.LoadSessionData();
 
-        AsyncOperation op = SceneManager.LoadSceneAsync(session.currentScene);
+        string sceneToLoad;
+
+        if (session == null)
+        {
+            sceneToLoad = "GrassField"; // 새로운 게임 시작 시 로드할 씬 이름
+        }
+        else
+        {
+            sceneToLoad = session.currentScene; // 저장된 씬 이름
+        }
+
+        AsyncOperation op = SceneManager.LoadSceneAsync(sceneToLoad);
         yield return op; // 씬 로드가 완료될 때까지 대기
     }
 
@@ -99,5 +113,23 @@ public class TitleUIManager : MonoBehaviour
 
         Application.Quit();
         // 게임 종료 버튼 누르면 정말 종료할 것인지 확인하는 팝업을 띄우는 것도 좋을 듯
+    }
+
+    public IEnumerator FadeOut()
+    {
+        fadeImage.gameObject.SetActive(true);
+        Color color = fadeImage.color;
+
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            color.a = Mathf.Lerp(0, 1, t / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        fadeImage.color = color;
     }
 }

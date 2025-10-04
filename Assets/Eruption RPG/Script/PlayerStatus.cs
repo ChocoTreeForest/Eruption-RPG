@@ -62,6 +62,9 @@ public class PlayerStatus : MonoBehaviour
 
     public bool gameOver = false; // 게임 오버 여부
 
+    // 처치한 보스 리스트
+    public List<string> defeatedBosses = new List<string>();
+
     void Awake()
     {
         Instance = this;
@@ -448,8 +451,9 @@ public class PlayerStatus : MonoBehaviour
             abilityPoint = abilityPoint,
 
             currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
-            playerPosition = transform.position
-            // 잡은 보스 리스트도 저장하기
+            playerPosition = transform.position,
+
+            defeatedBosses = defeatedBosses
         };
     }
 
@@ -475,7 +479,8 @@ public class PlayerStatus : MonoBehaviour
         abilityPoint = data.abilityPoint;
 
         transform.position = data.playerPosition;
-        // 잡은 보스 리스트도 불러오기
+
+        defeatedBosses = data.defeatedBosses ?? new List<string>();
 
         StatsUpdater.Instance.UpdateStats();
         UpdateUI();

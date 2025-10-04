@@ -39,6 +39,7 @@ public class TitleDirector : MonoBehaviour
 
         color.a = 0f;
         fadeImage.color = color;
+        fadeImage.gameObject.SetActive(false);
 
         StartCoroutine(MoveToPoint());
     }

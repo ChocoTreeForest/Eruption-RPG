@@ -64,6 +64,19 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (PlayerStatus.Instance != null)
+        {
+            if (PlayerStatus.Instance.gameOver)
+            {
+                return;
+            }
+        }
+
+        if (MenuUIManager.Instance != null && MenuUIManager.Instance.isFading)
+        {
+            return;
+        }
+
         if (titleDirector != null)
         {
             return;
@@ -94,6 +107,21 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate()
     {
+        if (PlayerStatus.Instance != null)
+        {
+            if (PlayerStatus.Instance.gameOver)
+            {
+                anim.SetFloat("Speed", 0f);
+                return;
+            }
+        }
+
+        if (MenuUIManager.Instance != null && MenuUIManager.Instance.isFading)
+        {
+            anim.SetFloat("Speed", 0f);
+            return;
+        }
+
         if (BattleManager.Instance != null && MenuUIManager.Instance != null)
         {
             if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen)

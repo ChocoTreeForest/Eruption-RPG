@@ -27,6 +27,7 @@ public class GameCore : MonoBehaviour
             gameCore.SetActive(true);
             DataManager.Instance.LoadSessionData();
             DataManager.Instance.LoadPermanentData();
+            StartCoroutine(MenuUIManager.Instance.FadeIn());
             initialized = true;
         }
         else if (scene.name == "Title")

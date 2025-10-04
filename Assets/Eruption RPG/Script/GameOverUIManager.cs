@@ -109,4 +109,24 @@ public class GameOverUIManager : MonoBehaviour
 
         secondGroup.alpha = 1f;
     }
+
+    public void OnClickTitleButton()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+        DataManager.Instance.SavePermanentData();
+        SaveManager.DeleteSessionData();
+
+        PlayerStatus.Instance.gameOver = false;
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+
+        gameOverPanel.SetActive(false);
+        topPanels.SetActive(true);
+        bottomPanels.SetActive(true);
+        menuButton.SetActive(true);
+        encounterButton.SetActive(true);
+
+        firstGroup.alpha = 0f;
+        secondGroup.alpha = 0f;
+    }
 }

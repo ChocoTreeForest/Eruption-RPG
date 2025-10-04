@@ -21,6 +21,10 @@ public class MenuUIManager : MonoBehaviour
     public GameObject endAlertPanel;
     public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
 
+    public Image fadeImage; // 페이드 인/아웃용 이미지
+    public float fadeDuration = 0.5f;
+    public bool isFading = false;
+
     public Color previousColor;
 
     public bool isPanelOpen = false;
@@ -234,7 +238,12 @@ public class MenuUIManager : MonoBehaviour
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
 
-        // 타이틀 화면으로 이동 + 페이드아웃 추가하기
+        StartCoroutine(ReturnToTitle());
+    }
+
+    IEnumerator ReturnToTitle()
+    {
+        yield return StartCoroutine(FadeOut());
         UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
     }
 
@@ -263,5 +272,48 @@ public class MenuUIManager : MonoBehaviour
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
         // 게임 오버 브금 틀기
+    }
+
+    public IEnumerator FadeOut()
+    {
+        isFading = true;
+        fadeImage.gameObject.SetActive(true);
+        Color color = fadeImage.color;
+
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            color.a = Mathf.Lerp(0, 1, t / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        fadeImage.color = color;
+        isFading = false;
+    }
+
+    public IEnumerator FadeIn()
+    {
+        isFading = true;
+        fadeImage.color = new Color(0, 0, 0, 1f);
+        Color color = fadeImage.color;
+
+        yield return new WaitForSeconds(0.7f);
+
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            color.a = Mathf.Lerp(1, 0, t / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        color.a = 0f;
+        fadeImage.color = color;
+        fadeImage.gameObject.SetActive(false);
+        isFading = false;
     }
 }
