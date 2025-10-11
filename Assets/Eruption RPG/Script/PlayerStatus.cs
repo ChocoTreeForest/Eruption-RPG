@@ -8,6 +8,7 @@ public class PlayerStatus : MonoBehaviour
     public static PlayerStatus Instance;
     private PlayerController player;
     public StatusUIManager statusUIManager;
+    public FreeEXPTable freeEXPTable;
 
     // 기본 능력치
     private int level = 1;
@@ -62,8 +63,14 @@ public class PlayerStatus : MonoBehaviour
 
     public bool gameOver = false; // 게임 오버 여부
 
+    // 어빌리티 관련
+    public int abilityLevel;
+    public int freeEXP;
+    public int points;
+
     // 처치한 보스 리스트
     public List<string> defeatedBosses = new List<string>();
+    public string pendingNextMap = null; // 보스 처치 후 이동할 맵
 
     void Awake()
     {
@@ -72,6 +79,17 @@ public class PlayerStatus : MonoBehaviour
         player = GetComponent<PlayerController>();
         InitializeStatus();
         ResetTempStat();
+
+        var data = SaveManager.LoadSessionData();
+
+        if (data != null && !string.IsNullOrEmpty(data.pendingNextMap))
+        {
+            pendingNextMap = data.pendingNextMap;
+        }
+        else
+        {
+            pendingNextMap = null;
+        }
     }
 
     void InitializeStatus()
@@ -190,6 +208,20 @@ public class PlayerStatus : MonoBehaviour
         statusUIManager.UpdateEXP();
     }
 
+    public void AddFreeEXP(int finalLevel)
+    {
+        freeEXP += finalLevel;
+
+        while (abilityLevel < freeEXPTable.requiredFreeEXP.Length &&
+            freeEXP >= freeEXPTable.requiredFreeEXP[abilityLevel])
+        {
+            freeEXP -= freeEXPTable.requiredFreeEXP[abilityLevel];
+            abilityLevel++;
+            points++;
+        }
+        Debug.Log($"자유 경험치: {freeEXP}");
+    }
+
     public void UpdateBP(int dropBP)
     {
         battlePoint += dropBP;
@@ -227,7 +259,7 @@ public class PlayerStatus : MonoBehaviour
                 battleLog.AddLog("InBattle", "HEAL", heal);
                 Debug.Log($"회복 발동! {heal} HP 회복 (현재 체력: {currentHealth})");
 
-                BattleEffectManager.Instance.ShowDamageText(heal, BattleUIManager.Instance.playerPosition, isHeal:true);
+                BattleEffectManager.Instance.ShowDamageText(heal, BattleUIManager.Instance.playerPosition, isHeal: true);
                 break;
             }
         }
@@ -453,7 +485,10 @@ public class PlayerStatus : MonoBehaviour
             currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
             playerPosition = transform.position,
 
-            defeatedBosses = defeatedBosses
+            gameOver = gameOver,
+
+            defeatedBosses = defeatedBosses,
+            pendingNextMap = pendingNextMap
         };
     }
 
@@ -480,10 +515,53 @@ public class PlayerStatus : MonoBehaviour
 
         transform.position = data.playerPosition;
 
+        gameOver = data.gameOver;
+
         defeatedBosses = data.defeatedBosses ?? new List<string>();
+        pendingNextMap = data.pendingNextMap;
 
         StatsUpdater.Instance.UpdateStats();
         UpdateUI();
+
+        if (gameOver)
+        {
+            AddFreeEXP(level);
+            GameOverUIManager.Instance.ShowGameOverPanel();
+        }
+    }
+
+    public void ResetStatus()
+    {
+        level = 1;
+        currentEXP = 0;
+        baseHealth = 100;
+        baseAttack = 10;
+        baseDefence = 5;
+        baseLuck = 1;
+
+        battleCount = 0;
+        killedBossCount = 0;
+        defeatCount = 0;
+        usedBP = 0;
+        earnedMoney = 0;
+
+        currentMoney = 0;
+        battlePoint = 20;
+        abilityPoint = 0;
+
+        defeatedBosses.Clear();
+
+        transform.position = Vector3.zero;
+
+        InitializeStatus();
+        ResetTempStat();
+        StatsUpdater.Instance.UpdateStats();
+        UpdateUI();
+    }
+
+    void OnDestroy()
+    {
+        Debug.LogError("PlayerStatus가 파괴됨! 현재 씬: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
     public int GetPlayerLevel() => level;

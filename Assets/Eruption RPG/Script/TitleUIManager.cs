@@ -11,6 +11,8 @@ public class TitleUIManager : MonoBehaviour
     public GameObject saveDataAlertPanel;
     public GameObject loadDataAlertPanel;
     public GameObject creditsPanel;
+    public GameObject abilityPanel;
+    public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
 
     public Image fadeImage; // 페이드 인/아웃용 이미지
     public float fadeDuration = 0.5f;
@@ -45,12 +47,14 @@ public class TitleUIManager : MonoBehaviour
     public void OnClickRecord()
     {
         // 게임 기록 패널 열기
+        //raycastBlocker.SetActive(true);
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
     public void OnClickSetting()
     {
         settingPanel.SetActive(true);
+        raycastBlocker.SetActive(true);
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
@@ -58,6 +62,7 @@ public class TitleUIManager : MonoBehaviour
     public void OnClickSettingClose()
     {
         settingPanel.SetActive(false);
+        raycastBlocker.SetActive(false);
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
@@ -102,6 +107,22 @@ public class TitleUIManager : MonoBehaviour
     {
         creditsPanel.SetActive(false);
         settingPanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void OnClickAbility()
+    {
+        abilityPanel.SetActive(true);
+        raycastBlocker.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void OnClickAbilityClose()
+    {
+        abilityPanel.SetActive(false);
+        raycastBlocker.SetActive(false);
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }

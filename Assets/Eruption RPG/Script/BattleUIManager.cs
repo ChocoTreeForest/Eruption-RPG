@@ -70,11 +70,8 @@ public class BattleUIManager : MonoBehaviour
         battleUIAnimator.SetBool("isShow", false);
     }
     // 나중에 설정 만들 때 if문으로 조건 만들어서 스테이터스 창 켜지게 할지 말지 결정하기
-    public void HideBattleUIAndOpenStatus()
+    public void OpenStatus()
     {
-        raycastBlocker.SetActive(false);
-        battleUIAnimator.SetBool("isShow", false);
-
         if (!PlayerStatus.Instance.gameOver)
         {
             MenuUIManager.Instance.OpenStatusPanel();

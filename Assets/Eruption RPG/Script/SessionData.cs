@@ -25,5 +25,8 @@ public class SessionData
     public string currentScene;
     public Vector3 playerPosition;
 
+    public bool gameOver;
+
     public List<string> defeatedBosses = new List<string>(); // 잡은 보스
+    public string pendingNextMap;
 }

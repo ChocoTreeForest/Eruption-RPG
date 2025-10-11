@@ -268,6 +268,8 @@ public class MenuUIManager : MonoBehaviour
         menuPanel.SetActive(false);
         isPanelOpen = false;
         raycastBlocker.SetActive(false);
+        DataManager.Instance.SaveSessionData();
+        PlayerStatus.Instance.AddFreeEXP(PlayerStatus.Instance.GetPlayerLevel());
         GameOverUIManager.Instance.ShowGameOverPanel();
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);

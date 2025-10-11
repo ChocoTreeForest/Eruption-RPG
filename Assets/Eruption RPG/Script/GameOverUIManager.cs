@@ -113,10 +113,18 @@ public class GameOverUIManager : MonoBehaviour
     public void OnClickTitleButton()
     {
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+        StartCoroutine(ReturnToTitle());
+    }
+
+    IEnumerator ReturnToTitle()
+    {
+        yield return StartCoroutine(MenuUIManager.Instance.FadeOut());
+
         DataManager.Instance.SavePermanentData();
         SaveManager.DeleteSessionData();
 
         PlayerStatus.Instance.gameOver = false;
+        PlayerStatus.Instance.pendingNextMap = null;
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
 
@@ -128,5 +136,7 @@ public class GameOverUIManager : MonoBehaviour
 
         firstGroup.alpha = 0f;
         secondGroup.alpha = 0f;
+
+        PlayerStatus.Instance.ResetStatus();
     }
 }

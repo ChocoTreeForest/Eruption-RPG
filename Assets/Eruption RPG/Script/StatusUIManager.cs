@@ -278,6 +278,7 @@ public class StatusUIManager : MonoBehaviour
         StatIncreasePreview();
         UpdateAP();
 
+        DataManager.Instance.SaveSessionData();
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 

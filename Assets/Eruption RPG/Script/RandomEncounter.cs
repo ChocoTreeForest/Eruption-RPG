@@ -38,7 +38,7 @@ public class RandomEncounter : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen || PlayerStatus.Instance.gameOver) return;
+        if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen || PlayerStatus.Instance.gameOver || BattleManager.Instance.sceneChanging) return;
 
         if (playerController.inputVec.magnitude > 0f)
         {
@@ -114,6 +114,8 @@ public class RandomEncounter : MonoBehaviour
 
     public void OnClickEncounterButton()
     {
+        if (BattleManager.Instance.sceneChanging) return;
+
         MonsterEncounter();
         ResetEncounterChance();
         if (currentMonsters.Count == 0) return;

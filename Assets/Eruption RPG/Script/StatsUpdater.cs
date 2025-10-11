@@ -59,7 +59,7 @@ public class StatsUpdater : MonoBehaviour
             ApplyItemStats(data, count);
         }
 
-        for(int i = 0; i < EquipmentManager.Instance.maxAccessorySlots; i++)
+        for (int i = 0; i < EquipmentManager.Instance.maxAccessorySlots; i++)
         {
             if (EquipmentManager.Instance.accessorySlots[i] != null)
             {
@@ -69,6 +69,9 @@ public class StatsUpdater : MonoBehaviour
                 ApplyItemStats(data, count);
             }
         }
+
+        // 어빌리티로 인한 능력치 합산
+        AbilityBonus();
 
         totalHealthMultiplier = Mathf.Clamp(totalHealthMultiplier, -99f, 9999f);
         totalAttackMultiplier = Mathf.Clamp(totalAttackMultiplier, -99f, 9999f);
@@ -113,7 +116,7 @@ public class StatsUpdater : MonoBehaviour
                 bonusAttack += EquipmentManager.Instance.GetAdditionalBonusStat(data.bonusAttack, count);
                 attackMultiplier += EquipmentManager.Instance.GetAdditionalStatMultiplier(data.attackMultiplier, count);
             }
-            
+
             if (data.itemType == ItemType.Armor)
             {
                 bonusDefence += EquipmentManager.Instance.GetAdditionalBonusStat(data.bonusDefence, count);
@@ -126,7 +129,7 @@ public class StatsUpdater : MonoBehaviour
 
         totalBonusDefence += bonusDefence;
         totalDefenceMultiplier += defenceMultiplier;
-                
+
         totalBonusLuck += data.bonusLuck;
         totalLuckMultiplier += data.luckMultiplier;
 
@@ -136,6 +139,15 @@ public class StatsUpdater : MonoBehaviour
         totalSpeedMultiplier += data.speedMultiplier;
         totalMoneyMultiplier += data.bonusMoneyMultiplier;
         totalEXPMultiplier += data.bonusEXPMultiplier;
+    }
+
+    void AbilityBonus()
+    {
+        totalHealthMultiplier += AbilityManager.Instance.hpMultiplier;
+        totalAttackMultiplier += AbilityManager.Instance.atkMultiplier;
+        totalDefenceMultiplier += AbilityManager.Instance.defMultiplier;
+        totalLuckMultiplier += AbilityManager.Instance.lukMultiplier;
+        totalCriticalMultiplier += AbilityManager.Instance.criticalMultiplier;
     }
 
     void ResetTotals()

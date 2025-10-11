@@ -50,6 +50,13 @@ public class DataManager : MonoBehaviour
             PlayerStatus.Instance.transform.position = data.playerPosition;
             Debug.Log("로드 실행됨, 레벨:" + data.level);
         }
+
+        yield return null;
+
+        if (!string.IsNullOrEmpty(PlayerStatus.Instance.pendingNextMap))
+        {
+            StartCoroutine(GameCore.Instance.LoadNextMap());
+        }
     }
 
     public void SavePermanentData()
@@ -59,7 +66,7 @@ public class DataManager : MonoBehaviour
         // 보유 아이템 저장
         foreach (var item in EquipmentManager.Instance.ownedItemCounts)
         {
-            data.ownedItems[item.Key.id] = item.Value;
+            data.ownedItems.Add(new OwnedItemData { itemID = item.Key.id, count = item.Value });
         }
 
         // 장착 중인 장비 저장
@@ -123,6 +130,23 @@ public class DataManager : MonoBehaviour
         data.statusPresetOn = PresetManager.Instance.IsPresetOn();
         data.selectedStatusPresetIndex = PresetManager.Instance.GetSelectedPresetIndex();
 
+        // 어빌리티 데이터 저장
+        data.abilityLevel = PlayerStatus.Instance.abilityLevel;
+        data.freeEXP = PlayerStatus.Instance.freeEXP;
+        data.points = PlayerStatus.Instance.points;
+
+        data.hpLevel = AbilityManager.Instance.hpLevel;
+        data.atkLevel = AbilityManager.Instance.atkLevel;
+        data.defLevel = AbilityManager.Instance.defLevel;
+        data.lukLevel = AbilityManager.Instance.lukLevel;
+        data.critDmgLevel = AbilityManager.Instance.critDmgLevel;
+
+        data.hpMultiplier = AbilityManager.Instance.hpMultiplier;
+        data.atkMultiplier = AbilityManager.Instance.atkMultiplier;
+        data.defMultiplier = AbilityManager.Instance.defMultiplier;
+        data.lukMultiplier = AbilityManager.Instance.lukMultiplier;
+        data.criticalMultiplier = AbilityManager.Instance.criticalMultiplier;
+
         SaveManager.SavePermanentData(data);
     }
 
@@ -131,11 +155,28 @@ public class DataManager : MonoBehaviour
         PermanentData data = SaveManager.LoadPermanentData();
         if (data == null) return;
 
+        // 어빌리티 데이터 불러오기
+        PlayerStatus.Instance.abilityLevel = data.abilityLevel;
+        PlayerStatus.Instance.freeEXP = data.freeEXP;
+        PlayerStatus.Instance.points = data.points;
+
+        AbilityManager.Instance.hpLevel = data.hpLevel;
+        AbilityManager.Instance.atkLevel = data.atkLevel;
+        AbilityManager.Instance.defLevel = data.defLevel;
+        AbilityManager.Instance.lukLevel = data.lukLevel;
+        AbilityManager.Instance.critDmgLevel = data.critDmgLevel;
+
+        AbilityManager.Instance.hpMultiplier = data.hpMultiplier;
+        AbilityManager.Instance.atkMultiplier = data.atkMultiplier;
+        AbilityManager.Instance.defMultiplier = data.defMultiplier;
+        AbilityManager.Instance.lukMultiplier = data.lukMultiplier;
+        AbilityManager.Instance.criticalMultiplier = data.criticalMultiplier;
+
         // 보유 아이템 불러오기
         foreach (var item in data.ownedItems)
         {
-            ItemData itemID = ItemIDManager.Instance.GetItemByID(item.Key);
-            for (int i = 0; i < item.Value; i++)
+            ItemData itemID = ItemIDManager.Instance.GetItemByID(item.itemID);
+            for (int i = 0; i < item.count; i++)
             {
                 EquipmentManager.Instance.AddItem(itemID);
             }

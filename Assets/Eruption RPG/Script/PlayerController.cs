@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
         if (BattleManager.Instance != null && MenuUIManager.Instance != null)
         {
-            if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen) return;
+            if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen || BattleManager.Instance.sceneChanging) return;
         }
 
         if (EventSystem.current.currentSelectedGameObject != null && titleDirector == null)
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
         if (BattleManager.Instance != null && MenuUIManager.Instance != null)
         {
-            if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen)
+            if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen || BattleManager.Instance.sceneChanging)
             {
                 anim.SetFloat("Speed", 0f);
                 return;

@@ -27,6 +27,8 @@ public class BattleManager : MonoBehaviour
 
     private AudioManager.BGM mapBGM;
 
+    public bool sceneChanging = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -107,11 +109,15 @@ public class BattleManager : MonoBehaviour
 
         if (PlayerStatus.Instance.IsAlive())
         {
-            BattleUIManager.Instance.HideBattleUIAndOpenStatus();
+            BattleUIManager.Instance.HideBattleUI();
 
             if (isBossBattle)
             {
                 StartCoroutine(WarpToNextMap());
+            }
+            else
+            {
+                BattleUIManager.Instance.OpenStatus();
             }
         }
         else
@@ -127,6 +133,8 @@ public class BattleManager : MonoBehaviour
                 Vector2 symbolPos = symbolEncounter.transform.position;
                 Vector2 belowSymbol = new Vector2(symbolPos.x, symbolPos.y - 2f);
                 PlayerStatus.Instance.transform.position = belowSymbol;
+
+                DataManager.Instance.SaveSessionData();
             }
         }
 
@@ -136,13 +144,15 @@ public class BattleManager : MonoBehaviour
 
         PlayerUIUpdater.Instance.UpdateEncounterGauge();
         PresetManager.Instance.DistributeStatByPreset();
+
         DataManager.Instance.SaveSessionData();
         DataManager.Instance.SavePermanentData();
 
         if (PlayerStatus.Instance.gameOver)
         {
+            PlayerStatus.Instance.AddFreeEXP(PlayerStatus.Instance.GetPlayerLevel());
             GameOverUIManager.Instance.ShowGameOverPanel();
-            // 게임 오버 브금 틀기
+            // 게임 오버 브금은 GameOverUIManager에서 재생
             yield break;
         }
 
@@ -170,8 +180,12 @@ public class BattleManager : MonoBehaviour
             {
                 Destroy(symbolEncounter.gameObject);
                 PlayerStatus.Instance.killedBossCount++;
-
                 PlayerStatus.Instance.defeatedBosses.Add(monster.name);
+
+                if (!string.IsNullOrEmpty(monster.monsterStatData.nextMapName))
+                {
+                    PlayerStatus.Instance.pendingNextMap = monster.monsterStatData.nextMapName;
+                }
             }
 
             StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.Win));
@@ -199,6 +213,9 @@ public class BattleManager : MonoBehaviour
         }
 
         PlayerStatus.Instance.battleCount++;
+
+        DataManager.Instance.SaveSessionData();
+        DataManager.Instance.SavePermanentData();
     }
 
     void ShowWinLog()
@@ -243,6 +260,7 @@ public class BattleManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(monster.monsterStatData.nextMapName))
         {
+            sceneChanging = true;
             yield return StartCoroutine(BattleUIManager.Instance.FadeOut());
             SceneManager.LoadScene(monster.monsterStatData.nextMapName);
             PlayerStatus.Instance.transform.position = new Vector3(0f, 0f, 0f);
@@ -253,9 +271,17 @@ public class BattleManager : MonoBehaviour
                 vcam.OnTargetObjectWarped(PlayerStatus.Instance.transform, PlayerStatus.Instance.transform.position - vcam.transform.position);
             }
 
+            yield return null;
             DataManager.Instance.SaveSessionData();
             DataManager.Instance.SavePermanentData();
+
+            BattleUIManager.Instance.OpenStatus();
             yield return StartCoroutine(BattleUIManager.Instance.FadeIn());
+            sceneChanging = false;
+        }
+        else
+        {
+            BattleUIManager.Instance.OpenStatus();
         }
     }
 
