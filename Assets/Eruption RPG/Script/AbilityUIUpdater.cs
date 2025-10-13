@@ -37,11 +37,21 @@ public class AbilityUIUpdater : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        hpUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickHPUPButton());
+        atkUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickATKUPButton());
+        defUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickDEFUPButton());
+        lukUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickLUKUPButton());
+        critDmgUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickCRITDMGUPButton());
+        resetButton.onClick.AddListener(() => AbilityManager.Instance.OnClickResetButton());
+    }
+
     public void UpdateUI()
     {
         abilityLevelText.text = PlayerStatus.Instance.abilityLevel.ToString();
         pointsText.text = PlayerStatus.Instance.points.ToString();
-        freeEXPText.text = $"Free EXP: {PlayerStatus.Instance.freeEXP.ToString()}/{freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel].ToString()}";
+        freeEXPText.text = $"Free EXP: {PlayerStatus.Instance.freeEXP}/{freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel]}";
         Debug.Log($"자유 경험치: {PlayerStatus.Instance.freeEXP}");
         freeEXPBar.value = (float)PlayerStatus.Instance.freeEXP / freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel];
 

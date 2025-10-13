@@ -31,6 +31,8 @@ public class EquipmentManager : MonoBehaviour
 
     public Dictionary<ItemData, int> ownedItemCounts = new Dictionary<ItemData, int>();
 
+    public List<ItemData> droppedItems = new List<ItemData>(); // 이번 세션에서 획득한 아이템 목록
+
     public EquipmentPreset[] presets = new EquipmentPreset[4];
     public int currentPresetIndex = 0;
     private bool isLoadingPreset = false;
@@ -141,7 +143,7 @@ public class EquipmentManager : MonoBehaviour
                     accessorySlots[slotIndex] = newItem;
 
                     StatsUpdater.Instance.UpdateStats();
-                    
+
                     if (!isLoadingPreset)
                     {
                         SaveCurrentPreset(currentPresetIndex);
@@ -165,7 +167,7 @@ public class EquipmentManager : MonoBehaviour
         if (weaponSlot != null)
         {
             int weaponCount = GetItemCount(weaponSlot);
-            weaponIcon.sprite = weaponSlot.icon;            
+            weaponIcon.sprite = weaponSlot.icon;
             weaponIcon.enabled = true;
             weaponStatsText.text = ItemTextManager.GetItemStatusText(weaponSlot, weaponCount);
         }
@@ -178,7 +180,7 @@ public class EquipmentManager : MonoBehaviour
         if (armorSlot != null)
         {
             int armorCount = GetItemCount(armorSlot);
-            armorIcon.sprite = armorSlot.icon;            
+            armorIcon.sprite = armorSlot.icon;
             armorIcon.enabled = true;
             armorStatsText.text = ItemTextManager.GetItemStatusText(armorSlot, armorCount);
         }
@@ -237,8 +239,12 @@ public class EquipmentManager : MonoBehaviour
         if (ownedItemCounts[item] < maxCount)
         {
             ownedItemCounts[item]++;
+
+            if (!DataManager.Instance.isLoading)
+            {
+                droppedItems.Add(item);
+            }
         }
-        
     }
 
     public int MaxItemCount(ItemType type)
@@ -331,5 +337,10 @@ public class EquipmentManager : MonoBehaviour
         }
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void ClearDroppedItems()
+    {
+        droppedItems.Clear();
     }
 }

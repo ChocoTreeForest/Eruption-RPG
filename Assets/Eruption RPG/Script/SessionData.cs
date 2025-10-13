@@ -29,4 +29,6 @@ public class SessionData
 
     public List<string> defeatedBosses = new List<string>(); // 잡은 보스
     public string pendingNextMap;
+
+    public List<int> droppedItems = new List<int>(); // 이번 세션에서 획득한 아이템 ID 목록
 }

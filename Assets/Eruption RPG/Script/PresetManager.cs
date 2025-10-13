@@ -208,6 +208,16 @@ public class PresetManager : MonoBehaviour
         return selectedPresetIndex;
     }
 
+    public int GetLastPresetIndex()
+    {
+        return lastPresetIndex;
+    }
+
+    public void SetLastPresetIndex(int index)
+    {
+        lastPresetIndex = index;
+    }
+
     public void SetPresetOff()
     {
         if (selectedPresetIndex >= 0)

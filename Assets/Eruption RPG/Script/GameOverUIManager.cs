@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameOverUIManager : MonoBehaviour
 {
     public static GameOverUIManager Instance;
+    public FreeEXPTable freeEXPTable;
 
     public GameObject gameOverPanel;
     public GameObject topPanels;
@@ -15,6 +16,7 @@ public class GameOverUIManager : MonoBehaviour
 
     public Text levelValue;
     public Text abilityLevelValue;
+    public Text IncresedAbilityLevelValue;
     public Text freeEXPValue;
     public Slider freeEXPBar;
     public Text freeEXPBarValue;
@@ -24,6 +26,9 @@ public class GameOverUIManager : MonoBehaviour
     public Text usedBPValue;
     public Text earnedMoneyValue;
     public Text currentMoneyValue;
+
+    public Transform droppedItemParent;
+    public GameObject itemIcon;
 
     public CanvasGroup firstGroup;
     public CanvasGroup secondGroup;
@@ -60,15 +65,46 @@ public class GameOverUIManager : MonoBehaviour
     public void UpdateUI()
     {
         levelValue.text = $"LV {PlayerStatus.Instance.GetPlayerLevel().ToString("N0")}";
-        // 어빌리티 레벨 추가하기
+        abilityLevelValue.text = PlayerStatus.Instance.prevAbilityLevel.ToString();
+
+        if (PlayerStatus.Instance.prevAbilityLevel == PlayerStatus.Instance.abilityLevel)
+        {
+            IncresedAbilityLevelValue.text = "";
+        }
+        else
+        {
+            IncresedAbilityLevelValue.text = $"+ {PlayerStatus.Instance.abilityLevel - PlayerStatus.Instance.prevAbilityLevel}";
+        }
+
         freeEXPValue.text = PlayerStatus.Instance.GetPlayerLevel().ToString("N0");
-        // 자유 경험치 슬라이더, 값 관련 추가하기
+        freeEXPBar.value = (float)PlayerStatus.Instance.freeEXP / freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel];
+        freeEXPBarValue.text = $"Free EXP: {PlayerStatus.Instance.freeEXP}/{freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel]}";
+
         battleCountValue.text = PlayerStatus.Instance.battleCount.ToString();
         killedBossValue.text = PlayerStatus.Instance.killedBossCount.ToString();
         defeatCountValue.text = PlayerStatus.Instance.defeatCount.ToString();
         usedBPValue.text = PlayerStatus.Instance.usedBP.ToString();
         earnedMoneyValue.text = PlayerStatus.Instance.earnedMoney.ToString("N0");
         currentMoneyValue.text = PlayerStatus.Instance.GetCurrentMoney().ToString("N0");
+
+        ShowDroppedItems();
+    }
+
+    public void ShowDroppedItems()
+    {
+        // 기존 아이콘 제거
+        foreach (Transform child in droppedItemParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // 이번 세션에서 획득한 아이템 아이콘 생성
+        foreach (ItemData item in EquipmentManager.Instance.droppedItems)
+        {
+            GameObject icon = Instantiate(itemIcon, droppedItemParent);
+            Image img = icon.GetComponent<Image>();
+            img.sprite = item.icon;
+        }
     }
 
     IEnumerator FadeIn()
@@ -138,5 +174,6 @@ public class GameOverUIManager : MonoBehaviour
         secondGroup.alpha = 0f;
 
         PlayerStatus.Instance.ResetStatus();
+        EquipmentManager.Instance.ClearDroppedItems();
     }
 }

@@ -17,6 +17,7 @@ public class PermanentData
     public List<StatusPresetData> statusPresets = new List<StatusPresetData>(); // 스테이터스 프리셋
     public bool statusPresetOn = false;
     public int selectedStatusPresetIndex = -1; // 사용 중인 스테이터스 프리셋 인덱스
+    public int lastStatusPresetIndex = 0; // 마지막으로 사용한 스테이터스 프리셋 인덱스
 
     public int abilityLevel;
     public int freeEXP;

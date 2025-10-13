@@ -65,6 +65,7 @@ public class PlayerStatus : MonoBehaviour
 
     // 어빌리티 관련
     public int abilityLevel;
+    public int prevAbilityLevel;
     public int freeEXP;
     public int points;
 
@@ -210,6 +211,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void AddFreeEXP(int finalLevel)
     {
+        prevAbilityLevel = abilityLevel;
         freeEXP += finalLevel;
 
         while (abilityLevel < freeEXPTable.requiredFreeEXP.Length &&

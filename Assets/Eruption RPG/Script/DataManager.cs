@@ -7,6 +7,8 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
 
+    public bool isLoading = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -23,8 +25,14 @@ public class DataManager : MonoBehaviour
 
     public void SaveSessionData()
     {
-        // UI도 저장해서 불러올 수 있게 해야 함 + 카메라도
         SessionData data = PlayerStatus.Instance.ToSessionData();
+
+        data.droppedItems.Clear();
+        foreach (var item in EquipmentManager.Instance.droppedItems)
+        {
+            data.droppedItems.Add(item.id);
+        }
+
         SaveManager.SaveSessionData(data);
     }
 
@@ -34,6 +42,16 @@ public class DataManager : MonoBehaviour
 
         if (data != null)
         {
+            EquipmentManager.Instance.droppedItems.Clear();
+            foreach (var itemID in data.droppedItems)
+            {
+                ItemData item = ItemIDManager.Instance.GetItemByID(itemID);
+                if (item != null)
+                {
+                    EquipmentManager.Instance.droppedItems.Add(item);
+                }
+            }
+
             StartCoroutine(LoadPlayerPosition(data));
         }
     }
@@ -61,7 +79,26 @@ public class DataManager : MonoBehaviour
 
     public void SavePermanentData()
     {
+        if (isLoading) return; // 로딩 중에는 저장하지 않음
+
         PermanentData data = new PermanentData();
+
+        // 어빌리티 데이터 저장
+        data.abilityLevel = PlayerStatus.Instance.abilityLevel;
+        data.freeEXP = PlayerStatus.Instance.freeEXP;
+        data.points = PlayerStatus.Instance.points;
+
+        data.hpLevel = AbilityManager.Instance.hpLevel;
+        data.atkLevel = AbilityManager.Instance.atkLevel;
+        data.defLevel = AbilityManager.Instance.defLevel;
+        data.lukLevel = AbilityManager.Instance.lukLevel;
+        data.critDmgLevel = AbilityManager.Instance.critDmgLevel;
+
+        data.hpMultiplier = AbilityManager.Instance.hpMultiplier;
+        data.atkMultiplier = AbilityManager.Instance.atkMultiplier;
+        data.defMultiplier = AbilityManager.Instance.defMultiplier;
+        data.lukMultiplier = AbilityManager.Instance.lukMultiplier;
+        data.criticalMultiplier = AbilityManager.Instance.criticalMultiplier;
 
         // 보유 아이템 저장
         foreach (var item in EquipmentManager.Instance.ownedItemCounts)
@@ -129,31 +166,21 @@ public class DataManager : MonoBehaviour
 
         data.statusPresetOn = PresetManager.Instance.IsPresetOn();
         data.selectedStatusPresetIndex = PresetManager.Instance.GetSelectedPresetIndex();
-
-        // 어빌리티 데이터 저장
-        data.abilityLevel = PlayerStatus.Instance.abilityLevel;
-        data.freeEXP = PlayerStatus.Instance.freeEXP;
-        data.points = PlayerStatus.Instance.points;
-
-        data.hpLevel = AbilityManager.Instance.hpLevel;
-        data.atkLevel = AbilityManager.Instance.atkLevel;
-        data.defLevel = AbilityManager.Instance.defLevel;
-        data.lukLevel = AbilityManager.Instance.lukLevel;
-        data.critDmgLevel = AbilityManager.Instance.critDmgLevel;
-
-        data.hpMultiplier = AbilityManager.Instance.hpMultiplier;
-        data.atkMultiplier = AbilityManager.Instance.atkMultiplier;
-        data.defMultiplier = AbilityManager.Instance.defMultiplier;
-        data.lukMultiplier = AbilityManager.Instance.lukMultiplier;
-        data.criticalMultiplier = AbilityManager.Instance.criticalMultiplier;
+        data.lastStatusPresetIndex = PresetManager.Instance.GetLastPresetIndex();
 
         SaveManager.SavePermanentData(data);
     }
 
     public void LoadPermanentData()
     {
+        isLoading = true;
+
         PermanentData data = SaveManager.LoadPermanentData();
-        if (data == null) return;
+        if (data == null)
+        {
+            isLoading = false;
+            return;
+        }
 
         // 어빌리티 데이터 불러오기
         PlayerStatus.Instance.abilityLevel = data.abilityLevel;
@@ -173,6 +200,9 @@ public class DataManager : MonoBehaviour
         AbilityManager.Instance.criticalMultiplier = data.criticalMultiplier;
 
         // 보유 아이템 불러오기
+        EquipmentManager.Instance.ownedItemCounts.Clear();
+        EquipmentManager.Instance.ownedItem.Clear();
+
         foreach (var item in data.ownedItems)
         {
             ItemData itemID = ItemIDManager.Instance.GetItemByID(item.itemID);
@@ -238,6 +268,8 @@ public class DataManager : MonoBehaviour
             PresetManager.Instance.UpdateUI(i);
         }
 
+        PresetManager.Instance.SetLastPresetIndex(data.lastStatusPresetIndex);
+
         if (data.statusPresetOn && data.selectedStatusPresetIndex >= 0)
         {
             PresetManager.Instance.dataLoading = true;
@@ -251,5 +283,7 @@ public class DataManager : MonoBehaviour
 
         EquipmentManager.Instance.UpdateEquipmentUI();
         StatsUpdater.Instance.UpdateStats();
+
+        isLoading = false;
     }
 }
