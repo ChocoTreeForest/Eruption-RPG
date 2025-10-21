@@ -9,6 +9,8 @@ public class GameOverUIManager : MonoBehaviour
     public FreeEXPTable freeEXPTable;
 
     public GameObject gameOverPanel;
+    public GameObject recordPanel;
+    public GameObject infinityModeRecordPanel;
     public GameObject topPanels;
     public GameObject bottomPanels;
     public GameObject menuButton;
@@ -26,6 +28,11 @@ public class GameOverUIManager : MonoBehaviour
     public Text usedBPValue;
     public Text earnedMoneyValue;
     public Text currentMoneyValue;
+
+    public Text bestRecordValue;
+    public Text bestLevelValue;
+    public Text infinityModeBattleCountValue;
+    public Text infinityModeEarnedMoneyValue;
 
     public Transform droppedItemParent;
     public GameObject itemIcon;
@@ -56,6 +63,17 @@ public class GameOverUIManager : MonoBehaviour
             menuButton.SetActive(false);
             encounterButton.SetActive(false);
 
+            if (GameCore.Instance.isInInfinityMode)
+            {
+                recordPanel.SetActive(false);
+                infinityModeRecordPanel.SetActive(true);
+            }
+            else
+            {
+                recordPanel.SetActive(true);
+                infinityModeRecordPanel.SetActive(false);
+            }
+
             StartCoroutine(FadeIn());
 
             UpdateUI();
@@ -80,11 +98,38 @@ public class GameOverUIManager : MonoBehaviour
         freeEXPBar.value = (float)PlayerStatus.Instance.freeEXP / freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel];
         freeEXPBarValue.text = $"Free EXP: {PlayerStatus.Instance.freeEXP}/{freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel]}";
 
-        battleCountValue.text = PlayerStatus.Instance.battleCount.ToString();
-        killedBossValue.text = PlayerStatus.Instance.killedBossCount.ToString();
-        defeatCountValue.text = PlayerStatus.Instance.defeatCount.ToString();
-        usedBPValue.text = PlayerStatus.Instance.usedBP.ToString();
-        earnedMoneyValue.text = PlayerStatus.Instance.earnedMoney.ToString("N0");
+        if (GameCore.Instance.isInInfinityMode)
+        {
+            if (PlayerStatus.Instance.infinityModeBestRecord < PlayerStatus.Instance.battleCount)
+            {
+                bestRecordValue.text = PlayerStatus.Instance.battleCount.ToString();
+            }
+            else
+            {
+                bestRecordValue.text = PlayerStatus.Instance.infinityModeBestRecord.ToString();
+            }
+
+            if (PlayerStatus.Instance.infinityModeBestLevel < PlayerStatus.Instance.GetPlayerLevel())
+            {
+                bestLevelValue.text = $"LV {PlayerStatus.Instance.GetPlayerLevel().ToString("N0")}";
+            }
+            else
+            {
+                bestLevelValue.text = $"LV {PlayerStatus.Instance.infinityModeBestLevel.ToString("N0")}";
+            }
+
+            infinityModeBattleCountValue.text = PlayerStatus.Instance.battleCount.ToString();
+            infinityModeEarnedMoneyValue.text = PlayerStatus.Instance.earnedMoney.ToString("N0");
+        }
+        else
+        {
+            battleCountValue.text = PlayerStatus.Instance.battleCount.ToString();
+            killedBossValue.text = PlayerStatus.Instance.killedBossCount.ToString();
+            defeatCountValue.text = PlayerStatus.Instance.defeatCount.ToString();
+            usedBPValue.text = PlayerStatus.Instance.usedBP.ToString();
+            earnedMoneyValue.text = PlayerStatus.Instance.earnedMoney.ToString("N0");
+        }
+
         currentMoneyValue.text = PlayerStatus.Instance.GetCurrentMoney().ToString("N0");
 
         ShowDroppedItems();
@@ -157,7 +202,17 @@ public class GameOverUIManager : MonoBehaviour
         yield return StartCoroutine(MenuUIManager.Instance.FadeOut());
 
         DataManager.Instance.SavePermanentData();
-        SaveManager.DeleteSessionData();
+
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            // 일반 모드 데이터 삭제
+            SaveManager.DeleteSessionData();
+        }
+        else
+        {
+            // 무한 모드 데이터 삭제
+            SaveManager.DeleteInfinityModeData();
+        }
 
         PlayerStatus.Instance.gameOver = false;
         PlayerStatus.Instance.pendingNextMap = null;

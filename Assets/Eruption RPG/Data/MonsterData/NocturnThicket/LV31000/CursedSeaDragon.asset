@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedSeaDragon
   health: 2700000
   attack: 71200
-  defense: 65000
+  defence: 40550
+  nextMapName: 

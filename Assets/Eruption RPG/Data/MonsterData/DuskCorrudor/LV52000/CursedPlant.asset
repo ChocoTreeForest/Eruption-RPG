@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedPlant
   health: 6400000
   attack: 160000
-  defense: 160000
+  defence: 100000
+  nextMapName: 

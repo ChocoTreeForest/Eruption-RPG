@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedMage
   health: 1100000
   attack: 26000
-  defense: 13500
+  defence: 13000
+  nextMapName: 

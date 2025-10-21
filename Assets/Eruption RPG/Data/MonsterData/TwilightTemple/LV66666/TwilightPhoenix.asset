@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightPhoenix
   health: 9842000
   attack: 275500
-  defense: 250000
+  defence: 167000
+  nextMapName: 

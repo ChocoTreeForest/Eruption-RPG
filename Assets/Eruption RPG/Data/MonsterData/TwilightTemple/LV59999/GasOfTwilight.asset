@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GasOfTwilight
   health: 8200000
   attack: 194000
-  defense: 190000
+  defence: 120000
+  nextMapName: 

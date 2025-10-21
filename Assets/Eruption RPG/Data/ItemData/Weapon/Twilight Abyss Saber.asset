@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Twilight Abyss Saber
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 6264378300580616671, guid: 13f9f2fdcb3a1bb47b4da6fa640aa213,
+    type: 3}
   id: 31
   itemName: Twilight Abyss Saber
   itemType: 0
   price: 0
   icon: {fileID: 1577734260, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
-  bonusAttack: 27000
+  bonusAttack: 40000
   bonusDefence: 0
   bonusLuck: 0
   bonusCriticalChance: 5
@@ -32,3 +34,5 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

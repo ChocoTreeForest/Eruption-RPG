@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Rhino
   health: 4555000
   attack: 110000
-  defense: 99000
+  defence: 75000
+  nextMapName: 

@@ -8,6 +8,7 @@ public class BattleUIManager : MonoBehaviour
     public static BattleUIManager Instance;
     public PlayerStatus playerStatus;
     public Monster monster;
+    public SettingManager settingManager;
 
     public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
     public Image monsterImage;
@@ -69,12 +70,16 @@ public class BattleUIManager : MonoBehaviour
         raycastBlocker.SetActive(false);
         battleUIAnimator.SetBool("isShow", false);
     }
-    // 나중에 설정 만들 때 if문으로 조건 만들어서 스테이터스 창 켜지게 할지 말지 결정하기
+
     public void OpenStatus()
     {
+        // 나중에 설정 만들 때 스테이터스 창 켜지게 할지 말지 고를 수 있게 하기
         if (!PlayerStatus.Instance.gameOver)
         {
-            MenuUIManager.Instance.OpenStatusPanel();
+            if (settingManager.GetStatusOpenSetting())
+            {
+                MenuUIManager.Instance.OpenStatusPanel();
+            }
         }
     }
 
@@ -93,6 +98,7 @@ public class BattleUIManager : MonoBehaviour
         if (monster.GetMaxHealth() <= hpPerBar)
         {
             monsterHPBarFront.value = (float)currentHP / maxHP;
+            monsterHPBarFront.fillRect.GetComponent<Image>().color = hpBarColors[0];
             monsterHPBarBack.value = 0f;
             monsterHP.text = "";
         }

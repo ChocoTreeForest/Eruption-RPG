@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Cursed Dark Armor
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 4966422073797768571, guid: 7277eb122c0042b4286806a702c2f35e,
+    type: 3}
   id: 116
   itemName: Cursed Dark Armor
   itemType: 1
+  price: 0
   icon: {fileID: -555838936, guid: e98a12f58f8a02648b272e5fe078a893, type: 3}
   bonusHealth: 0
   bonusAttack: 5000
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Captain
   health: 964500
   attack: 24300
-  defense: 10000
+  defence: 12150
+  nextMapName: 

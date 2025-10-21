@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: WingGem
   health: 1600000
   attack: 30600
-  defense: 15000
+  defence: 18000
+  nextMapName: 

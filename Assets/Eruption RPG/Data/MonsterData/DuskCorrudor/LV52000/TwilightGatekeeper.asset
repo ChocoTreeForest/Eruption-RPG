@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: TwilightGatekeeper
   health: 13000000
   attack: 300000
-  defense: 200000
+  defence: 200000
   nextMapName: TwilightTemple

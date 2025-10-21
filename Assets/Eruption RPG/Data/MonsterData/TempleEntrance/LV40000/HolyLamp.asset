@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: HolyLamp
   health: 4596000
   attack: 100000
-  defense: 95000
+  defence: 66000
+  nextMapName: 

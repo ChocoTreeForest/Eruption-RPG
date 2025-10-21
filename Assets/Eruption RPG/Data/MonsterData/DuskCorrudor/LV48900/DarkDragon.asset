@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DarkDragon
   health: 5775000
   attack: 136000
-  defense: 130000
+  defence: 88000
+  nextMapName: 

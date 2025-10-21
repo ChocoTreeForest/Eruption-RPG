@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: FireAdventurer
   health: 440000
   attack: 11200
-  defense: 5000
+  defence: 6200
+  nextMapName: 

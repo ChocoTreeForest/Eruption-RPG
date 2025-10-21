@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: AngelStone
   health: 8500000
   attack: 200000
-  defense: 200000
+  defence: 130000
+  nextMapName: 

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Four-leaf Clover+
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 6466196457552840751, guid: 88cb54ccd7d84fb4eb0481dd6c80ebca,
+    type: 3}
   id: 219
   itemName: Four-leaf Clover+
   itemType: 2
+  price: 0
   icon: {fileID: -2113947798, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 0
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

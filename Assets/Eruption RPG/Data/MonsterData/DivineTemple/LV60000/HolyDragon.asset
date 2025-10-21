@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: HolyDragon
   health: 8300000
   attack: 235000
-  defense: 200000
+  defence: 150000
+  nextMapName: 

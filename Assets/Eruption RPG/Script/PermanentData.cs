@@ -34,6 +34,10 @@ public class PermanentData
     public float defMultiplier;
     public float lukMultiplier;
     public float criticalMultiplier;
+
+    // 무한 모드 최고 기록
+    public int infinityModeBestRecord = 0;
+    public int infinityModeBestLevel = 0;
 }
 
 [System.Serializable]

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Lizard+
   health: 280000
   attack: 10000
-  defense: 5000
+  defence: 5600
+  nextMapName: 

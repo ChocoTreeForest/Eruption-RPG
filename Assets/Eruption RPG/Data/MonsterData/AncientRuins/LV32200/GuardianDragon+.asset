@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GuardianDragon+
   health: 2950000
   attack: 74000
-  defense: 62000
+  defence: 45000
+  nextMapName: 

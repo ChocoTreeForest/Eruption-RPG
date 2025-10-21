@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SkiGoblin+
   health: 596000
   attack: 18000
-  defense: 35000
+  defence: 9000
+  nextMapName: 

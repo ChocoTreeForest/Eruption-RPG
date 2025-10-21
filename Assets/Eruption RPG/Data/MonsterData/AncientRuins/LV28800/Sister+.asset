@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Sister+
   health: 2600000
   attack: 59000
-  defense: 54000
+  defence: 30000
+  nextMapName: 

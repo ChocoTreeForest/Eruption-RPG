@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Cursed Book
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 5761648280358494960, guid: 561660929c0cae5438176ddd3c645019,
+    type: 3}
   id: 232
   itemName: Cursed Book
   itemType: 2

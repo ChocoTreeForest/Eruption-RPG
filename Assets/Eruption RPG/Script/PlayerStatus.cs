@@ -26,6 +26,10 @@ public class PlayerStatus : MonoBehaviour
     public int usedBP;
     public int earnedMoney;
 
+    // 무한 모드 최고 기록
+    public int infinityModeBestRecord = 0;
+    public int infinityModeBestLevel = 0;
+
     // 돈, 경험치 획득 배율
     private float moneyMultiplier = 1f;
     private float expMultiplier = 1f;
@@ -75,7 +79,14 @@ public class PlayerStatus : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         player = GetComponent<PlayerController>();
         InitializeStatus();
@@ -521,6 +532,56 @@ public class PlayerStatus : MonoBehaviour
 
         defeatedBosses = data.defeatedBosses ?? new List<string>();
         pendingNextMap = data.pendingNextMap;
+
+        StatsUpdater.Instance.UpdateStats();
+        UpdateUI();
+
+        if (gameOver)
+        {
+            AddFreeEXP(level);
+            GameOverUIManager.Instance.ShowGameOverPanel();
+        }
+    }
+
+    public InfinityModeData ToInfinityModeData()
+    {
+        return new InfinityModeData
+        {
+            level = level,
+            currentEXP = currentEXP,
+            baseHealth = baseHealth,
+            baseAttack = baseAttack,
+            baseDefence = baseDefence,
+            baseLuck = baseLuck,
+
+            battleCount = battleCount,
+            earnedMoney = earnedMoney,
+
+            currentMoney = currentMoney,
+            abilityPoint = abilityPoint,
+
+            gameOver = gameOver,
+        };
+    }
+
+    public void LoadFromInfinityModeData(InfinityModeData data)
+    {
+        if (data == null) return;
+
+        level = data.level;
+        currentEXP = data.currentEXP;
+        baseHealth = data.baseHealth;
+        baseAttack = data.baseAttack;
+        baseDefence = data.baseDefence;
+        baseLuck = data.baseLuck;
+
+        battleCount = data.battleCount;
+        earnedMoney = data.earnedMoney;
+
+        currentMoney = data.currentMoney;
+        abilityPoint = data.abilityPoint;
+
+        gameOver = data.gameOver;
 
         StatsUpdater.Instance.UpdateStats();
         UpdateUI();

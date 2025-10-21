@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Pot
   health: 65500
   attack: 1600
-  defense: 500
+  defence: 720
+  nextMapName: 

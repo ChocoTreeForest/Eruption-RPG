@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Nyaro
   health: 200000
   attack: 8400
-  defense: 2500
+  defence: 3600
+  nextMapName: 

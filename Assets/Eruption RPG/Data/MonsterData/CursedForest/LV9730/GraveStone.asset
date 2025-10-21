@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GraveStone
   health: 800000
   attack: 18000
-  defense: 9000
+  defence: 9000
+  nextMapName: 

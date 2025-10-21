@@ -24,7 +24,7 @@ public class TitleUIManager : MonoBehaviour
         StartCoroutine(LoadGame());
     }
 
-    private IEnumerator LoadGame()
+    IEnumerator LoadGame()
     {
         yield return StartCoroutine(FadeOut());
         var session = SaveManager.LoadSessionData();
@@ -44,12 +44,23 @@ public class TitleUIManager : MonoBehaviour
         yield return op; // 씬 로드가 완료될 때까지 대기
     }
 
-    public void OnClickRecord()
+    public void OnClickInfinityMode()
     {
-        // 게임 기록 패널 열기
-        //raycastBlocker.SetActive(true);
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+
+        StartCoroutine(LoadInfinityMode());
     }
+
+    IEnumerator LoadInfinityMode()
+    {
+        yield return StartCoroutine(FadeOut());
+
+        SceneManager.LoadScene("InfinityMode");
+
+        AsyncOperation op = SceneManager.LoadSceneAsync("InfinityMode");
+        yield return op; // 씬 로드가 완료될 때까지 대기
+    }
+
 
     public void OnClickSetting()
     {

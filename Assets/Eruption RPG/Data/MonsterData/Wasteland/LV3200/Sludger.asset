@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Sludger
   health: 190000
   attack: 6600
-  defense: 2000
+  defence: 3200
+  nextMapName: 

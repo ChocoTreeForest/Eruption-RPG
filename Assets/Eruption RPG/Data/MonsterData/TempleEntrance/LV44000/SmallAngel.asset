@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: SmallAngel
   health: 5099000
-  attack: 11500
-  defense: 10000
+  attack: 115000
+  defence: 78000
+  nextMapName: 

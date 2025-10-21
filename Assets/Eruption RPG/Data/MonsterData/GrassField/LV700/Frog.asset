@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Frog
   health: 31000
   attack: 1100
-  defense: 300
+  defence: 500
+  nextMapName: 

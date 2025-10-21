@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DevilBear
   health: 190000
   attack: 4000
-  defense: 1200
+  defence: 2660
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CaveCrab+
   health: 380000
   attack: 9500
-  defense: 5000
+  defence: 6000
+  nextMapName: 

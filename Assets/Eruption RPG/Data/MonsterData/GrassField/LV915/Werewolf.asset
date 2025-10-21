@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Werewolf
   health: 39200
   attack: 1720
-  defense: 400
+  defence: 700
+  nextMapName: 

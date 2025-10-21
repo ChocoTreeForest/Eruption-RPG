@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SnowGirl
   health: 850000
   attack: 24000
-  defense: 45000
+  defence: 20000
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: ThiefRaccoon
   health: 198000
   attack: 6500
-  defense: 1700
+  defence: 3200
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Intermediater
   health: 385000
   attack: 7770
-  defense: 3600
+  defence: 5320
+  nextMapName: 

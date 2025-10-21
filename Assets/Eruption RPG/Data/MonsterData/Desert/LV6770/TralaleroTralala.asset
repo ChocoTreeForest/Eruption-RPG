@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TralaleroTralala
   health: 548000
   attack: 8500
-  defense: 4500
+  defence: 6000
+  nextMapName: 

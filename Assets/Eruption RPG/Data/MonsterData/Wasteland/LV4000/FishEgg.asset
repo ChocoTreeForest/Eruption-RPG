@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: FishEgg
   health: 290000
   attack: 6500
-  defense: 2500
+  defence: 4000
+  nextMapName: 

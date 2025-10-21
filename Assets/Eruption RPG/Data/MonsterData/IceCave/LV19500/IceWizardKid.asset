@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: IceWizardKid
   health: 1685000
   attack: 30500
-  defense: 15500
+  defence: 18000
+  nextMapName: 

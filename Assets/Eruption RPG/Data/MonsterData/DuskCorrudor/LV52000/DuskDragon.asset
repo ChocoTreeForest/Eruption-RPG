@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DuskDragon
   health: 6666666
   attack: 166666
-  defense: 160000
+  defence: 111111
+  nextMapName: 

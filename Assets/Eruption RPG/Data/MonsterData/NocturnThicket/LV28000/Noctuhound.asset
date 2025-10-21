@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Noctuhound
   health: 2508000
   attack: 55000
-  defense: 56780
+  defence: 33500
+  nextMapName: 

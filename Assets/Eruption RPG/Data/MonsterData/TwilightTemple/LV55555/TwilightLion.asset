@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightLion
   health: 7000000
   attack: 177000
-  defense: 180000
+  defence: 115000
+  nextMapName: 

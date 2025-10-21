@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: RockLizard+
   health: 680000
   attack: 15500
-  defense: 7450
+  defence: 7600
+  nextMapName: 

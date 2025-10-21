@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightMage
   health: 7000000
   attack: 180000
-  defense: 180000
+  defence: 120000
+  nextMapName: 

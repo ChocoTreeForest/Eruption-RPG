@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Skull
   health: 440000
   attack: 8400
-  defense: 4400
+  defence: 6000
+  nextMapName: 

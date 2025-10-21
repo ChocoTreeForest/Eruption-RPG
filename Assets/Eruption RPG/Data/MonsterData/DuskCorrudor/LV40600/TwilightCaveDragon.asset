@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightCaveDragon
   health: 4300000
   attack: 99000
-  defense: 99000
+  defence: 75000
+  nextMapName: 

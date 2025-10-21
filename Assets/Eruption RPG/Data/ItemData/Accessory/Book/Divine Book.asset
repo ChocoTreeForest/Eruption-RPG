@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Divine Book
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 7657723890222463163, guid: a7fced1492ecdc845bbd8e0b70d8f259,
+    type: 3}
   id: 231
   itemName: Divine Book
   itemType: 2
+  price: 0
   icon: {fileID: -465209956, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 0
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 80
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Devil
   health: 190000
   attack: 5000
-  defense: 1300
+  defence: 3000
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DuskYong
   health: 4385000
   attack: 99000
-  defense: 99000
+  defence: 75000
+  nextMapName: 

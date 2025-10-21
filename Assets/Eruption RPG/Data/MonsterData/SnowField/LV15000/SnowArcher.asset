@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SnowArcher
   health: 1120000
   attack: 25000
-  defense: 13450
+  defence: 12500
+  nextMapName: 

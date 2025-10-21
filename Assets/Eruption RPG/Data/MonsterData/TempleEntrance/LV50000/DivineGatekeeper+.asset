@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DivineGatekeeper+
   health: 6000000
   attack: 155000
-  defense: 120000
+  defence: 100000
+  nextMapName: 

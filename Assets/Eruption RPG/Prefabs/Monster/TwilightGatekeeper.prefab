@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22214ad818955b479ec9eec0001f259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleManager: {fileID: 0}
   monster: {fileID: 7530509907080907144}
   hasEncounter: 0
 --- !u!70 &5756146444087521932

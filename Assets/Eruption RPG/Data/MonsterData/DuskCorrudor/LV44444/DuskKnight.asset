@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DuskKnight
   health: 5440000
   attack: 115000
-  defense: 120000
+  defence: 80000
+  nextMapName: 

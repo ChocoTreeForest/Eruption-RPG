@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: MysteryBook
   health: 867000
   attack: 20000
-  defense: 8000
+  defence: 10000
+  nextMapName: 

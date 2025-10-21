@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: BirdMan
   health: 160000
   attack: 6000
-  defense: 1600
+  defence: 2990
+  nextMapName: 

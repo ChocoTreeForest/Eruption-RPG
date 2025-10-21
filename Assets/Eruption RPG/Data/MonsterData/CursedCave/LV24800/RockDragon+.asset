@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: RockDragon+
   health: 2121000
   attack: 38800
-  defense: 20000
+  defence: 25000
+  nextMapName: 

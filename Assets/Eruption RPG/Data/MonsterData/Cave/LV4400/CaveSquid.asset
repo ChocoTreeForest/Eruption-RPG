@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CaveSquid
   health: 280000
   attack: 7300
-  defense: 2900
+  defence: 4400
+  nextMapName: 

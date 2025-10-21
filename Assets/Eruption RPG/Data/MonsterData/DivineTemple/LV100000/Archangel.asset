@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Archangel
   health: 26000000
   attack: 570000
-  defense: 500000
+  defence: 340000
+  nextMapName: 

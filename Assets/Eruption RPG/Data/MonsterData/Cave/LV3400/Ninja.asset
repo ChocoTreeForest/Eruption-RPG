@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Ninja
   health: 240000
   attack: 5800
-  defense: 2100
+  defence: 3400
+  nextMapName: 

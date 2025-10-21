@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: MonsterEgg
   health: 130000
   attack: 4500
-  defense: 1000
+  defence: 2300
+  nextMapName: 

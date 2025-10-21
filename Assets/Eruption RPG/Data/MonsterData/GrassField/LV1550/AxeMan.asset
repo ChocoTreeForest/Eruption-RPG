@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: AxeMan
   health: 70000
   attack: 3500
-  defense: 550
+  defence: 1350
+  nextMapName: 

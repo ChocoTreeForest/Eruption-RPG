@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DuskDrop
   health: 5800000
   attack: 140000
-  defense: 130000
+  defence: 90000
+  nextMapName: 

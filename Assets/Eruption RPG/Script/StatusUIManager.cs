@@ -278,7 +278,17 @@ public class StatusUIManager : MonoBehaviour
         StatIncreasePreview();
         UpdateAP();
 
-        DataManager.Instance.SaveSessionData();
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            // 일반 모드 데이터 저장
+            DataManager.Instance.SaveSessionData();
+        }
+        else
+        {
+            // 무한 모드 데이터 저장
+            DataManager.Instance.SaveInfinityModeData();
+        }
+
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 

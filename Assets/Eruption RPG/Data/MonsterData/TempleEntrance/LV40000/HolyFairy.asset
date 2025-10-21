@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: HolyFairy
   health: 4260000
   attack: 96400
-  defense: 91000
+  defence: 62500
+  nextMapName: 

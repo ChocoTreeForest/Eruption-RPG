@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: RulerOfLight
   health: 50000000
   attack: 1100000
-  defense: 777777
+  defence: 1100000
+  nextMapName: 

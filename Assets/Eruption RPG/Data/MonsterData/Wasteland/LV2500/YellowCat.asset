@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: YellowCat
   health: 130000
   attack: 5900
-  defense: 1200
+  defence: 2800
+  nextMapName: 

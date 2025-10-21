@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DuskMeltDragon
   health: 5000000
   attack: 140000
-  defense: 120000
+  defence: 90000
+  nextMapName: 

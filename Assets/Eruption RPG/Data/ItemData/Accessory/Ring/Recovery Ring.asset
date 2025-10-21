@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Recovery Ring
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 1283791455720505084, guid: 9d87161c872c498438d6a1e1b62fc0f3,
+    type: 3}
   id: 227
   itemName: Recovery Ring
   itemType: 2

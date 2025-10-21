@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Pelican
   health: 180000
   attack: 5600
-  defense: 1200
+  defence: 2990
+  nextMapName: 

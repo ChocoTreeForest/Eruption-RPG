@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SuperiorAxer
   health: 14975500
   attack: 340000
-  defense: 300000
+  defence: 120000
+  nextMapName: 

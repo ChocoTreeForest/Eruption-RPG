@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DevilGirl
   health: 594000
   attack: 14600
-  defense: 7777
+  defence: 7200
+  nextMapName: 

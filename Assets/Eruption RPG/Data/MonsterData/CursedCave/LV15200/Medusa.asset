@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Medusa
   health: 970000
   attack: 28000
-  defense: 13000
+  defence: 15000
+  nextMapName: 

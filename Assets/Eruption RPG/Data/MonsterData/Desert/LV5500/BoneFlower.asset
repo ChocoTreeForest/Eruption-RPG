@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: BoneFlower
   health: 340000
   attack: 8000
-  defense: 4000
+  defence: 5500
+  nextMapName: 

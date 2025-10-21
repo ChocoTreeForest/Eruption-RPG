@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GuardianKnight
   health: 2667000
   attack: 64000
-  defense: 58000
+  defence: 37500
+  nextMapName: 

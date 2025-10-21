@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: RhinoKnight
   health: 2600000
   attack: 52000
-  defense: 50000
+  defence: 30000
+  nextMapName: 

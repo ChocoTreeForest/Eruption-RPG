@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightSworder
   health: 10240000
   attack: 240200
-  defense: 250000
+  defence: 144050
+  nextMapName: 

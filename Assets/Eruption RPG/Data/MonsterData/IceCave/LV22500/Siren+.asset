@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Siren+
   health: 1900000
   attack: 36000
-  defense: 18500
+  defence: 20000
+  nextMapName: 

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed7c4ff173a9e64e85bb46c3250edce, type: 3}
   m_Name: Grafox
   m_EditorClassIdentifier: 
-  monsterName: 
+  monsterName: Grafox
   health: 70000
   attack: 2000
-  defense: 440
+  defence: 860
+  nextMapName: 

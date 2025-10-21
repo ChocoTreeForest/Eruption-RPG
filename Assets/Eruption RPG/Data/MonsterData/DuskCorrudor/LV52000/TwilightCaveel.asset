@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightCaveel
   health: 6200000
   attack: 165000
-  defense: 160000
+  defence: 105000
+  nextMapName: 

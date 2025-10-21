@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DevilCat
   health: 18648000
   attack: 400000
-  defense: 350000
+  defence: 250000
+  nextMapName: 

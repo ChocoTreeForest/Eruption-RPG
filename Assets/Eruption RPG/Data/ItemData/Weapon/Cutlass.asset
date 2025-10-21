@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Cutlass
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 2919572326643461806, guid: b82c0a2ce21f2494f9394571e7f755f8,
+    type: 3}
   id: 7
   itemName: Cutlass
   itemType: 0
+  price: 0
   icon: {fileID: 2071518659, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
   bonusAttack: 700
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

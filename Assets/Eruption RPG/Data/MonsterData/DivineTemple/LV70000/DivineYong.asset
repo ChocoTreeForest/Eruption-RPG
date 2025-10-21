@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DivineYong
   health: 11500000
   attack: 297000
-  defense: 270000
+  defence: 185000
+  nextMapName: 

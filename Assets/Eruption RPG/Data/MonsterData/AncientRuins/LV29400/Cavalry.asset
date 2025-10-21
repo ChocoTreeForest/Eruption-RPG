@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Cavalry
   health: 2750000
   attack: 63500
-  defense: 58000
+  defence: 37500
+  nextMapName: 

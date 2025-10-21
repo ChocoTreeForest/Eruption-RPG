@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Rabbit
   health: 1000
   attack: 65
-  defense: 15
+  defence: 5
+  nextMapName: 

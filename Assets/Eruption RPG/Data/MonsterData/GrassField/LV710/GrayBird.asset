@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GrayBird
   health: 29000
   attack: 1300
-  defense: 315
+  defence: 500
+  nextMapName: 

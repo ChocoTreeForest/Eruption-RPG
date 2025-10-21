@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TreasureDragon
   health: 10000000
   attack: 350000
-  defense: 200000
+  defence: 150000
+  nextMapName: 

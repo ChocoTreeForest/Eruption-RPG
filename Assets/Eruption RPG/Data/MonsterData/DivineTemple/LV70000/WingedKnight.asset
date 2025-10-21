@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: WingedKnight
   health: 11000000
   attack: 310000
-  defense: 270000
+  defence: 200000
+  nextMapName: 

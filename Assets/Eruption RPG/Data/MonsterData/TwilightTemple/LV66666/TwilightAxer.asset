@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightAxer
   health: 9920000
   attack: 252000
-  defense: 250000
+  defence: 150000
+  nextMapName: 

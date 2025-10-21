@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Thief
   health: 28000
   attack: 1300
-  defense: 310
+  defence: 500
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GreenGiant
   health: 2468000
   attack: 57000
-  defense: 57000
+  defence: 32000
+  nextMapName: 

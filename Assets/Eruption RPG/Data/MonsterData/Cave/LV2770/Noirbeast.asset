@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Noirbeast
   health: 185000
   attack: 4600
-  defense: 1100
+  defence: 2770
+  nextMapName: 

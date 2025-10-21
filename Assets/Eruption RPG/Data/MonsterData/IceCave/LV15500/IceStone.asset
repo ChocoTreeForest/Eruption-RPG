@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: IceStone
   health: 1300000
   attack: 23000
-  defense: 13000
+  defence: 15000
+  nextMapName: 

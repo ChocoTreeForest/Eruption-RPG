@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: Runestone
   health: 4200000
   attack: 130000
-  defense: 100000
+  defence: 74500
   nextMapName: DuskCorridor

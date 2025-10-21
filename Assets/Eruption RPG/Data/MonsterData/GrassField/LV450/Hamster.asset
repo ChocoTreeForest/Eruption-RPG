@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Hamster
   health: 17000
   attack: 560
-  defense: 200
+  defence: 125
+  nextMapName: 

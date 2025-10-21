@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Centipede
   health: 9200
   attack: 350
-  defense: 50
+  defence: 50
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedArmor
   health: 1370000
   attack: 27800
-  defense: 15000
+  defence: 15500
+  nextMapName: 

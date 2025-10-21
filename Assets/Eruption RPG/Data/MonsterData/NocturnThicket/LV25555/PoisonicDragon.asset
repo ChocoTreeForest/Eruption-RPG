@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: PoisonicDragon
   health: 2500000
   attack: 100000
-  defense: 36000
+  defence: 66666
+  nextMapName: 

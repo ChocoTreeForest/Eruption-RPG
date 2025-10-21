@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Valkyrie
   health: 3568000
   attack: 78500
-  defense: 80000
+  defence: 50000
+  nextMapName: 

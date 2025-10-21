@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightWolf
   health: 20500000
   attack: 365000
-  defense: 350000
+  defence: 210000
+  nextMapName: 

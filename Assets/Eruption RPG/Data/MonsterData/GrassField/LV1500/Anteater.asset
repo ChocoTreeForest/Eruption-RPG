@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Anteater
   health: 85000
   attack: 2350
-  defense: 500
+  defence: 1120
+  nextMapName: 

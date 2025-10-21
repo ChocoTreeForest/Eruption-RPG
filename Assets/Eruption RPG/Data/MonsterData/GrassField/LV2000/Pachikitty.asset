@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: Pachikitty
   health: 155000
   attack: 7500
-  defense: 1000
+  defence: 4000
   nextMapName: Wasteland

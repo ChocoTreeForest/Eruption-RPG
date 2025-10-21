@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightWerewolf
   health: 2330000
   attack: 62000
-  defense: 60000
+  defence: 35700
+  nextMapName: 

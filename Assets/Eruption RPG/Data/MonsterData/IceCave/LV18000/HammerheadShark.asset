@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: HammerheadShark
   health: 1450000
   attack: 29000
-  defense: 14000
+  defence: 17000
+  nextMapName: 

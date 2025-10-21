@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Greedish
   health: 550000
   attack: 12000
-  defense: 6000
+  defence: 7000
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedRaven
   health: 1039000
   attack: 24500
-  defense: 13000
+  defence: 12250
+  nextMapName: 

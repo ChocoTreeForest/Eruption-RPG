@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedAnubis
   health: 2800000
   attack: 70000
-  defense: 60000
+  defence: 40000
+  nextMapName: 

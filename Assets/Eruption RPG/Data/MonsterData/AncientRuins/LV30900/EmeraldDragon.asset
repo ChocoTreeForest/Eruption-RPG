@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: EmeraldDragon
   health: 3000000
   attack: 140000
-  defense: 60000
+  defence: 77777
+  nextMapName: 

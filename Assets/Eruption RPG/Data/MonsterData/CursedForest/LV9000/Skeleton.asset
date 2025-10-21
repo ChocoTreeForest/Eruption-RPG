@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Skeleton
   health: 750000
   attack: 15000
-  defense: 8200
+  defence: 8440
+  nextMapName: 

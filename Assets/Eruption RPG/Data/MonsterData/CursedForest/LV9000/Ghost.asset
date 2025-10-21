@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Ghost
   health: 700000
   attack: 16600
-  defense: 8200
+  defence: 8600
+  nextMapName: 

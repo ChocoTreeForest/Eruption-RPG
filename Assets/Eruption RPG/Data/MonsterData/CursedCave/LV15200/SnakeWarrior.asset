@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SnakeWarrior
   health: 1120000
   attack: 25430
-  defense: 13000
+  defence: 13500
+  nextMapName: 

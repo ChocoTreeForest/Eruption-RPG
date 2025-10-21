@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Shark
   health: 1400000
   attack: 28000
-  defense: 14000
+  defence: 16500
+  nextMapName: 

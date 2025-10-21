@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightDragon
   health: 5200000
   attack: 120000
-  defense: 120000
+  defence: 77000
+  nextMapName: 

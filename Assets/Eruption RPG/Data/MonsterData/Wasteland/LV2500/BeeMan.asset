@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: BeeMan
   health: 138000
   attack: 6000
-  defense: 1200
+  defence: 2500
+  nextMapName: 

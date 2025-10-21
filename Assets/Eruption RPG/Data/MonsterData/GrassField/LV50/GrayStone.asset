@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GrayStone
   health: 1050
   attack: 65
-  defense: 10
+  defence: 5
+  nextMapName: 

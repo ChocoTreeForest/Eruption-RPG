@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GhostChest
   health: 634500
   attack: 11500
-  defense: 6000
+  defence: 6500
+  nextMapName: 

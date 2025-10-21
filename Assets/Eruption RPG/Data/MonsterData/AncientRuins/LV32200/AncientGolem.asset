@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: AncientGolem
   health: 5555555
   attack: 90000
-  defense: 62000
+  defence: 90000
   nextMapName: TempleEntrance

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: HolyWizard
   health: 6123400
   attack: 132600
-  defense: 150000
+  defence: 92300
+  nextMapName: 

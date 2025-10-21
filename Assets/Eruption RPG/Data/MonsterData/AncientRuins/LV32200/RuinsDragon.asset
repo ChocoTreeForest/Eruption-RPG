@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: RuinsDragon
   health: 3030000
   attack: 75500
-  defense: 62000
+  defence: 45000
+  nextMapName: 

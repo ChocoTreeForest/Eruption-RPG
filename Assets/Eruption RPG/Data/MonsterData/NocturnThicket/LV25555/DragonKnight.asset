@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DragonKnight
   health: 2100000
   attack: 42000
-  defense: 30000
+  defence: 26000
+  nextMapName: 

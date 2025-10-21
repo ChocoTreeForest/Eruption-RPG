@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: LightningAdventurer
   health: 2500000
   attack: 50000
-  defense: 46000
+  defence: 28000
+  nextMapName: 

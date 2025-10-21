@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Focus Pendant
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 2944310936278752230, guid: e0dd7181da5eac44f8ef0f9341b6355e,
+    type: 3}
   id: 238
   itemName: Focus Pendant
   itemType: 2

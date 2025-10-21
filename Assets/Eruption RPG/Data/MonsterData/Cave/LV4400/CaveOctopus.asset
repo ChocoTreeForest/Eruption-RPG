@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CaveOctopus
   health: 300000
   attack: 6900
-  defense: 2500
+  defence: 4400
+  nextMapName: 

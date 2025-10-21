@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightKnight
   health: 8456000
   attack: 200000
-  defense: 190000
+  defence: 120000
+  nextMapName: 

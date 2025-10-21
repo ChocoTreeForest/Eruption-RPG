@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GreatScorpion
   health: 430000
   attack: 9000
-  defense: 4300
+  defence: 5900
+  nextMapName: 

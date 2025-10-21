@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Deadowl
   health: 640000
   attack: 20000
-  defense: 8500
+  defence: 8500
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: BrownWolf
   health: 230000
   attack: 7000
-  defense: 2220
+  defence: 3600
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GreatCaveel
   health: 290000
   attack: 5300
-  defense: 2300
+  defence: 3700
+  nextMapName: 

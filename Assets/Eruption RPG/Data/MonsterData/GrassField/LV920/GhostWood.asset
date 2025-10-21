@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GhostWood
   health: 61000
   attack: 1200
-  defense: 430
+  defence: 700
+  nextMapName: 

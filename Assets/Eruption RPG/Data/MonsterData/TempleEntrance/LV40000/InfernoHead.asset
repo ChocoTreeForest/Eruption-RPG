@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: InfernoHead
   health: 4440000
   attack: 94400
-  defense: 94000
+  defence: 62000
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Lamper
   health: 1000000
   attack: 24470
-  defense: 14000
+  defence: 12235
+  nextMapName: 

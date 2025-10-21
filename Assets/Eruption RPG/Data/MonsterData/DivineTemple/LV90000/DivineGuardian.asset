@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DivineGuardian
   health: 22000000
   attack: 400000
-  defense: 400000
+  defence: 250000
+  nextMapName: 

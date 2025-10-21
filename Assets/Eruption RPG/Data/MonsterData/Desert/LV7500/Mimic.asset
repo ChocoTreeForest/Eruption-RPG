@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Mimic
   health: 596000
   attack: 13000
-  defense: 6000
+  defence: 6500
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Eggs
   health: 40000
   attack: 1600
-  defense: 390
+  defence: 700
+  nextMapName: 

@@ -61,9 +61,12 @@ public class BattleManager : MonoBehaviour
         Debug.Log($"몬스터 체력: {monster.GetCurrentHealth()}, 플레이어 체력: {PlayerStatus.Instance.GetCurrentHealth()}");
 
         string sceneName = SceneManager.GetActiveScene().name;
-        mapBGM = (AudioManager.BGM)System.Enum.Parse(typeof(AudioManager.BGM), sceneName);
 
-        StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.BattleBGM));
+        if (sceneName != "InfinityMode")
+        {
+            mapBGM = (AudioManager.BGM)System.Enum.Parse(typeof(AudioManager.BGM), sceneName);
+            StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.BattleBGM));
+        }
     }
 
     private IEnumerator Battle()
@@ -133,8 +136,6 @@ public class BattleManager : MonoBehaviour
                 Vector2 symbolPos = symbolEncounter.transform.position;
                 Vector2 belowSymbol = new Vector2(symbolPos.x, symbolPos.y - 2f);
                 PlayerStatus.Instance.transform.position = belowSymbol;
-
-                DataManager.Instance.SaveSessionData();
             }
         }
 
@@ -142,10 +143,19 @@ public class BattleManager : MonoBehaviour
 
         WinUIManager.Instance.winUI.gameObject.SetActive(false);
 
-        PlayerUIUpdater.Instance.UpdateEncounterGauge();
         PresetManager.Instance.DistributeStatByPreset();
 
-        DataManager.Instance.SaveSessionData();
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            PlayerUIUpdater.Instance.UpdateEncounterGauge();
+            DataManager.Instance.SaveSessionData();
+        }
+        else
+        {
+            InfinityModeManager.Instance.UpdateUI();
+            DataManager.Instance.SaveInfinityModeData();
+        }
+
         DataManager.Instance.SavePermanentData();
 
         if (PlayerStatus.Instance.gameOver)
@@ -156,7 +166,10 @@ public class BattleManager : MonoBehaviour
             yield break;
         }
 
-        StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
+        }
 
         yield return new WaitForSeconds(0.5f);
         isInBattle = false;
@@ -173,7 +186,13 @@ public class BattleManager : MonoBehaviour
             WinUIManager.Instance.ShowWinUI();
             PlayerStatus.Instance.AddMoney(monster.GetDropMoney());
             PlayerStatus.Instance.AddEXP(monster.GetDropEXP());
-            PlayerStatus.Instance.UpdateBP(monster.GetDropBP());
+
+            if (!GameCore.Instance.isInInfinityMode)
+            {
+                PlayerStatus.Instance.UpdateBP(monster.GetDropBP());
+                StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.Win));
+            }
+
             ShowWinLog();
 
             if (isBossBattle)
@@ -187,34 +206,48 @@ public class BattleManager : MonoBehaviour
                     PlayerStatus.Instance.pendingNextMap = monster.monsterStatData.nextMapName;
                 }
             }
-
-            StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.Win));
         }
         else
         {
-            Debug.Log("전투 패배!");
-            PlayerStatus.Instance.battlePoint -= 3;
-
-            // 배들포인트가 0 아래로 떨어지지 않도록
-            if (PlayerStatus.Instance.battlePoint < 0)
+            if (GameCore.Instance.isInInfinityMode)
             {
-                PlayerStatus.Instance.battlePoint = 0;
-            }
-
-            PlayerUIUpdater.Instance.UpdateBP();
-            ShowDefeatLog();
-            PlayerStatus.Instance.defeatCount++;
-            PlayerStatus.Instance.usedBP = PlayerStatus.Instance.usedBP + 3;
-
-            if (PlayerStatus.Instance.battlePoint <= 0)
-            {
+                ShowDefeatLog();
                 PlayerStatus.Instance.gameOver = true;
+            }
+            else
+            {
+                Debug.Log("전투 패배!");
+                PlayerStatus.Instance.battlePoint -= 3;
+
+                // 배들포인트가 0 아래로 떨어지지 않도록
+                if (PlayerStatus.Instance.battlePoint < 0)
+                {
+                    PlayerStatus.Instance.battlePoint = 0;
+                }
+
+                PlayerUIUpdater.Instance.UpdateBP();
+                ShowDefeatLog();
+                PlayerStatus.Instance.defeatCount++;
+                PlayerStatus.Instance.usedBP = PlayerStatus.Instance.usedBP + 3;
+
+                if (PlayerStatus.Instance.battlePoint <= 0)
+                {
+                    PlayerStatus.Instance.gameOver = true;
+                }
             }
         }
 
         PlayerStatus.Instance.battleCount++;
 
-        DataManager.Instance.SaveSessionData();
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            DataManager.Instance.SaveSessionData();
+        }
+        else
+        {
+            DataManager.Instance.SaveInfinityModeData();
+        }
+
         DataManager.Instance.SavePermanentData();
     }
 
@@ -223,19 +256,22 @@ public class BattleManager : MonoBehaviour
         battleLog.ClearLog();
         battleLog.AddLog("BattleWin", "WIN");
 
-        if (isBossBattle)
+        if (!GameCore.Instance.isInInfinityMode)
         {
-            battleLog.AddLog("BattleWin", "BPINC", monster.GetDropBP());
-        }
-        else
-        {
-            battleLog.AddLog("BattleWin", "BPDEC");
+            if (isBossBattle)
+            {
+                battleLog.AddLog("BattleWin", "BPINC", monster.GetDropBP());
+            }
+            else
+            {
+                battleLog.AddLog("BattleWin", "BPDEC");
+            }
         }
 
         battleLog.AddLog("BattleWin", "MONEY", (int)(monster.GetDropMoney() * PlayerStatus.Instance.GetMoneyMultiplier()));
         battleLog.AddLog("BattleWin", "EXP", (long)(monster.GetDropEXP() * PlayerStatus.Instance.GetEXPMultiplier()));
         battleLog.AddLog("BattleWin", "LEVELUP", PlayerStatus.Instance.GetPlayerLevel());
-        
+
         if (droppedItem != null)
         {
             Item itemComponent = droppedItem.GetComponent<Item>();
@@ -252,7 +288,12 @@ public class BattleManager : MonoBehaviour
     {
         battleLog.ClearLog();
         battleLog.AddLog("BattleDefeat", "DEFEAT");
-        battleLog.AddLog("BattleDefeat", "BP");
+
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            battleLog.AddLog("BattleDefeat", "BP");
+        }
+
         battleLog.AddLog("BattleDefeat", "CONTINUE");
     }
 
@@ -318,6 +359,10 @@ public class BattleManager : MonoBehaviour
         PlayerUIUpdater.Instance.UpdateEncounterGauge();
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
-        StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
+
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
+        }
     }
 }

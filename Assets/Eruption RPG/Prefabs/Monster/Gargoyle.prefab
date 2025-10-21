@@ -149,6 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22214ad818955b479ec9eec0001f259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleManager: {fileID: 0}
   monster: {fileID: 7884034694610744538}
   hasEncounter: 0

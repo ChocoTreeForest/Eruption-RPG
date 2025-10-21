@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: High-levelKnight+
   health: 2930000
   attack: 74500
-  defense: 62000
+  defence: 45000
+  nextMapName: 

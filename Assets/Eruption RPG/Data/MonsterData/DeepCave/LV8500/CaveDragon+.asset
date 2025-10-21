@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: GreatSnake
   health: 1355000
   attack: 28000
-  defense: 10000
+  defence: 12000
   nextMapName: CursedForest

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed7c4ff173a9e64e85bb46c3250edce, type: 3}
   m_Name: SnowFairy_L
   m_EditorClassIdentifier: 
-  monsterName: 
+  monsterName: SnowFairy_L
   health: 1000000
   attack: 20500
-  defense: 8000
+  defence: 10250
+  nextMapName: 

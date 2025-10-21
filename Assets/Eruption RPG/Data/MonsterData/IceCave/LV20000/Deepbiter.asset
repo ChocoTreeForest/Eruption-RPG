@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Deepbiter
   health: 1755000
   attack: 31000
-  defense: 16000
+  defence: 19500
+  nextMapName: 

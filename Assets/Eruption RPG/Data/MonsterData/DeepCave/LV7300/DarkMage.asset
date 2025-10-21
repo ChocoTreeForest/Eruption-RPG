@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DarkMage
   health: 580000
   attack: 12000
-  defense: 6000
+  defence: 6800
+  nextMapName: 

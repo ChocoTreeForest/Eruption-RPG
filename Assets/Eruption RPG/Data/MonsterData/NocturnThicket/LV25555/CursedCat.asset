@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedCat
   health: 2200000
   attack: 40000
-  defense: 36000
+  defence: 25000
+  nextMapName: 

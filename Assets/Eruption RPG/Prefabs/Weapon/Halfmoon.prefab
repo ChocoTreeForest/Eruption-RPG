@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1802505249242959793}
   - component: {fileID: 2915807930326406376}
   m_Layer: 0
-  m_Name: Halfmonn
+  m_Name: Halfmoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Brutaurus
   health: 350000
   attack: 8800
-  defense: 4000
+  defence: 5320
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CurseMagician
   health: 300000
   attack: 8000
-  defense: 3300
+  defence: 4780
+  nextMapName: 

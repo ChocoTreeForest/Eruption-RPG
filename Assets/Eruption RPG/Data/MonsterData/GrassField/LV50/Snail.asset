@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Snail
   health: 1000
   attack: 70
-  defense: 10
+  defence: 3
+  nextMapName: 

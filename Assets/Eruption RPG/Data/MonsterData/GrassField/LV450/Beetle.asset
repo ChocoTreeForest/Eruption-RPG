@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Beetle
   health: 14000
   attack: 660
-  defense: 210
+  defence: 200
+  nextMapName: 

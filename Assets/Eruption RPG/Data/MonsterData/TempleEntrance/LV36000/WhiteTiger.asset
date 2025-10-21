@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: WhiteTiger
   health: 3400000
   attack: 81500
-  defense: 80000
+  defence: 53000
+  nextMapName: 

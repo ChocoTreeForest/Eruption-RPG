@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GateKeeper
   health: 679000
   attack: 15000
-  defense: 7000
+  defence: 7250
+  nextMapName: 

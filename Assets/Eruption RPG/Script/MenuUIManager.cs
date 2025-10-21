@@ -17,6 +17,7 @@ public class MenuUIManager : MonoBehaviour
     public GameObject armorChangePanel;
     public GameObject accessoryChangePanel;
     public GameObject buyEquipPanel;
+    public GameObject settingPanel;
     public GameObject titleAlertPanel;
     public GameObject endAlertPanel;
     public GameObject raycastBlocker; // 창이 열려있을 때 클릭 방지용
@@ -211,6 +212,22 @@ public class MenuUIManager : MonoBehaviour
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 
+    public void OpenSettingPanel()
+    {
+        menuPanel.SetActive(false);
+        settingPanel.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
+    public void CloseSettingPanel()
+    {
+        menuPanel.SetActive(true);
+        settingPanel.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+    }
+
     public void OpenTitleAlertPanel()
     {
         titleAlertPanel.SetActive(true);
@@ -227,8 +244,17 @@ public class MenuUIManager : MonoBehaviour
 
     public void ApplyTitle()
     {
-        // 데이터 저장
-        DataManager.Instance.SaveSessionData();
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            // 일반 모드 데이터 저장
+            DataManager.Instance.SaveSessionData();
+        }
+        else
+        {
+            // 무한 모드 데이터 저장
+            DataManager.Instance.SaveInfinityModeData();
+        }
+
         DataManager.Instance.SavePermanentData();
 
         titleAlertPanel.SetActive(false);
@@ -268,12 +294,23 @@ public class MenuUIManager : MonoBehaviour
         menuPanel.SetActive(false);
         isPanelOpen = false;
         raycastBlocker.SetActive(false);
-        DataManager.Instance.SaveSessionData();
+
+        if (!GameCore.Instance.isInInfinityMode)
+        {
+            // 일반 모드 데이터 저장
+            DataManager.Instance.SaveSessionData();
+        }
+        else
+        {
+            // 무한 모드 데이터 저장
+            DataManager.Instance.SaveInfinityModeData();
+        }
+
         PlayerStatus.Instance.AddFreeEXP(PlayerStatus.Instance.GetPlayerLevel());
         GameOverUIManager.Instance.ShowGameOverPanel();
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
-        // 게임 오버 브금 틀기
+        // 게임 오버 브금 게임 오버 UI 매니저에서 틀기
     }
 
     public IEnumerator FadeOut()

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Elephant
   health: 270000
   attack: 7500
-  defense: 2500
+  defence: 4000
+  nextMapName: 

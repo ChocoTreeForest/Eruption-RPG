@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: DuskRuler
   health: 10000000
-  attack: 240000
-  defense: 170000
+  attack: 300000
+  defence: 150000
   nextMapName: 

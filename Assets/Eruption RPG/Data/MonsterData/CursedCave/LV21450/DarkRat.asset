@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DarkRat
   health: 1580000
   attack: 40000
-  defense: 20000
+  defence: 17000
+  nextMapName: 

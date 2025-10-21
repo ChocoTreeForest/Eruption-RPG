@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DarkWizard
   health: 1895000
   attack: 33400
-  defense: 18000
+  defence: 19500
+  nextMapName: 

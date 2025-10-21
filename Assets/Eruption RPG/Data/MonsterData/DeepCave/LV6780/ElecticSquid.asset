@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: ElecticSquid
   health: 500000
   attack: 10500
-  defense: 3000
+  defence: 6100
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: AngelCat
   health: 6950000
   attack: 185000
-  defense: 180000
+  defence: 120000
+  nextMapName: 

@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameCore : MonoBehaviour
 {
     public static GameCore Instance;
+    public RandomEncounter randomEncounter;
     private bool initialized = false;
 
     public GameObject gameCore;
+    public SettingManager settingManager;
+
+    public bool isInInfinityMode = false;
 
     void Awake()
     {
@@ -32,11 +36,25 @@ public class GameCore : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "Title" && !initialized)
+        if (scene.name != "Title" && scene.name != "InfinityMode" && !initialized)
         {
             gameCore.SetActive(true);
             DataManager.Instance.LoadSessionData();
             DataManager.Instance.LoadPermanentData();
+            settingManager.UpdateSetting();
+
+            StartCoroutine(MenuUIManager.Instance.FadeIn());
+            initialized = true;
+        }
+        else if (scene.name == "InfinityMode" && !initialized)
+        {
+            gameCore.SetActive(true);
+            isInInfinityMode = true;
+            DataManager.Instance.LoadInfinityModeData();
+            DataManager.Instance.LoadPermanentData();
+            settingManager.UpdateSetting();
+            StartCoroutine(SetInfinityModeUI());
+            StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.BattleBGM));
 
             StartCoroutine(MenuUIManager.Instance.FadeIn());
             initialized = true;
@@ -44,14 +62,29 @@ public class GameCore : MonoBehaviour
         else if (scene.name == "Title")
         {
             initialized = false;
+            isInInfinityMode = false;
+
+            if (randomEncounter != null)
+            {
+                randomEncounter.ResetEncounterChance();
+            }
+
             StartCoroutine(DisableGameCore());
         }
+    }
+
+    IEnumerator SetInfinityModeUI()
+    {
+        yield return new WaitUntil(() => PlayerStatus.Instance != null);
+        InfinityModeManager.Instance.SetInfinityModeUI();
     }
 
     IEnumerator DisableGameCore()
     {
         yield return null;
         DataManager.Instance.LoadPermanentData();
+        PlayerStatus.Instance.ResetStatus();
+        InfinityModeManager.Instance.RevertUI();
         AbilityUIUpdater.Instance.UpdateUI();
         gameCore.SetActive(false);
     }

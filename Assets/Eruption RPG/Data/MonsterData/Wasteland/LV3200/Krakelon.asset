@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Krakelon
   health: 218000
   attack: 5300
-  defense: 1400
+  defence: 3200
+  nextMapName: 

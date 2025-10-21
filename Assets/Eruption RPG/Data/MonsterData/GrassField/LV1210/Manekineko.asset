@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Manekineko
   health: 90000
   attack: 1600
-  defense: 450
+  defence: 880
+  nextMapName: 

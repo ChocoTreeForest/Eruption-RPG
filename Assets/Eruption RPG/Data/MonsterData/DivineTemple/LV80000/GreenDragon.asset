@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GreenDragon
   health: 16500000
   attack: 348000
-  defense: 330000
+  defence: 240000
+  nextMapName: 

@@ -17,6 +17,8 @@ public class SceneBGMPlayer : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "InfinityMode") return; // 무한 모드 씬에서는 BGM을 따로 재생하므로 무시
+
         string sceneName = scene.name;
 
         if (!gameObject.activeInHierarchy) return; // 비활성화 상태라면 그냥 무시

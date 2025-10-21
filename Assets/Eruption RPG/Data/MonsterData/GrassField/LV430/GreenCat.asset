@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GreenCat
   health: 16000
   attack: 550
-  defense: 175
+  defence: 150
+  nextMapName: 

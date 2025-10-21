@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed7c4ff173a9e64e85bb46c3250edce, type: 3}
   m_Name: Turtle
   m_EditorClassIdentifier: 
-  monsterName: 
+  monsterName: Turtle
   health: 71000
   attack: 1900
-  defense: 440
+  defence: 850
+  nextMapName: 

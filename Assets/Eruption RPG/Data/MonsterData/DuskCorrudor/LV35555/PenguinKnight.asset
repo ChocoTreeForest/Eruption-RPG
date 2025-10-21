@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: PenguinKnight
   health: 3505000
   attack: 78700
-  defense: 78700
+  defence: 50000
+  nextMapName: 

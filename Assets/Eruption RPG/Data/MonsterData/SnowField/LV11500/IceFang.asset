@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: IceFang
   health: 912000
   attack: 21000
-  defense: 10000
+  defence: 10500
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: BlueCat
   health: 6990000
   attack: 200000
-  defense: 180000
+  defence: 130000
+  nextMapName: 

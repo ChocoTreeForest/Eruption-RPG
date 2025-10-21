@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: CatWizard
   health: 1700000
   attack: 50000
-  defense: 35000
+  defence: 25000
   nextMapName: CursedCave

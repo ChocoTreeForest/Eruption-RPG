@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Guts Pendant
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 6871331288088218354, guid: e253c7cdb35ea8c40abfbd06807a58ca,
+    type: 3}
   id: 237
   itemName: Guts Pendant
   itemType: 2

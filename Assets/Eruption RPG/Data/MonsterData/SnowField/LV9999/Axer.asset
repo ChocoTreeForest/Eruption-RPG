@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Axer
   health: 1000000
   attack: 30000
-  defense: 50000
+  defence: 15000
+  nextMapName: 

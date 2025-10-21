@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: OrangeBubbo
   health: 290000
   attack: 6660
-  defense: 2300
+  defence: 4090
+  nextMapName: 

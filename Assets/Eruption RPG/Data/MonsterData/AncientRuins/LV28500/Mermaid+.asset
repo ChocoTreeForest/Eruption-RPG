@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Mermaid+
   health: 2397000
   attack: 60000
-  defense: 60000
+  defence: 35000
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Pinebear
   health: 42000
   attack: 1800
-  defense: 350
+  defence: 700
+  nextMapName: 

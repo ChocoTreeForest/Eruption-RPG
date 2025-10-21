@@ -9,13 +9,32 @@ public class SettingManager : MonoBehaviour
     public Text bgmVolumeText;
     public Text sfxVolumeText;
 
+    public Text statusOpenOnOffText;
+
+    private bool openStatusAfterBattle; // true면 On, false면 Off
+
     void Start()
     {
         AudioManager.Instance.bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
         AudioManager.Instance.sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
+        openStatusAfterBattle = PlayerPrefs.GetInt("OpenStatusAfterBattle", 1) == 1;
+
+        UpdateSetting();
+    }
+
+    public void UpdateSetting()
+    {
+        AudioManager.Instance.bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
+        AudioManager.Instance.sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+
+        openStatusAfterBattle = PlayerPrefs.GetInt("OpenStatusAfterBattle", 1) == 1;
+
         SaveBGMVolume(AudioManager.Instance.bgmVolume);
         SaveSFXVolume(AudioManager.Instance.sfxVolume);
+
+        PlayerPrefs.SetInt("OpenStatusAfterBattle", openStatusAfterBattle ? 1 : 0);
+        statusOpenOnOffText.text = openStatusAfterBattle ? "ON" : "OFF";
     }
 
     public void SetBGMVolume(float delta)
@@ -52,5 +71,19 @@ public class SettingManager : MonoBehaviour
         }
         PlayerPrefs.SetFloat("SFXVolume", volume);
         sfxVolumeText.text = $"{Mathf.RoundToInt(volume * 100f)} %";
+    }
+
+    public void OpenStatusAfterBattleOnOff()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+
+        openStatusAfterBattle = !openStatusAfterBattle; // 상태 반전
+        PlayerPrefs.SetInt("OpenStatusAfterBattle", openStatusAfterBattle ? 1 : 0);
+        statusOpenOnOffText.text = openStatusAfterBattle ? "ON" : "OFF";
+    }
+
+    public bool GetStatusOpenSetting()
+    {
+        return openStatusAfterBattle;
     }
 }

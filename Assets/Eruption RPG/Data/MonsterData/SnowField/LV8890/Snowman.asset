@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Snowman
   health: 720000
   attack: 16000
-  defense: 8000
+  defence: 8000
+  nextMapName: 

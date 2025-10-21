@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Mage Robe
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 1069700147432202385, guid: d169f344ec274684f9f92f851108d1a5,
+    type: 3}
   id: 110
   itemName: Mage Robe
   itemType: 1
+  price: 0
   icon: {fileID: 98022877, guid: e98a12f58f8a02648b272e5fe078a893, type: 3}
   bonusHealth: 0
   bonusAttack: 0
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

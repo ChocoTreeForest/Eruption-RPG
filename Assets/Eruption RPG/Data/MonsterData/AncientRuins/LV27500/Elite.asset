@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Elite
   health: 2500000
   attack: 50000
-  defense: 48000
+  defence: 28500
+  nextMapName: 

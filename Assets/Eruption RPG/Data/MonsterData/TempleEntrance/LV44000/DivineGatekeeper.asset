@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: DivineGatekeeper
   health: 5200000
-  attack: 11800
-  defense: 10000
+  attack: 118000
+  defence: 80000
+  nextMapName: 

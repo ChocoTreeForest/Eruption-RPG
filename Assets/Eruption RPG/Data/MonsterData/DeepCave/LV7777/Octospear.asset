@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Octospear
   health: 600000
   attack: 14000
-  defense: 6000
+  defence: 7200
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: BigSnail
   health: 34500
   attack: 860
-  defense: 285
+  defence: 500
+  nextMapName: 

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Shining Emerald
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 1498902858370298220, guid: 4edef5cd543ffb642bac2545449faddc,
+    type: 3}
   id: 204
   itemName: Shining Emerald
   itemType: 2
+  price: 0
   icon: {fileID: -1860862347, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 14000
   bonusAttack: 0
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

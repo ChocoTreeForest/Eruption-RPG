@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CentaurusKnight
   health: 1980000
   attack: 40000
-  defense: 19000
+  defence: 22000
+  nextMapName: 

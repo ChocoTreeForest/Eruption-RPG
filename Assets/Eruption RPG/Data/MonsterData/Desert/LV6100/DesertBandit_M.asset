@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DesertBandit_M
   health: 410000
   attack: 9500
-  defense: 4300
+  defence: 5800
+  nextMapName: 

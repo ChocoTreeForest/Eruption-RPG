@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: MaleAdventurer
   health: 110000
   attack: 4500
-  defense: 500
+  defence: 1900
+  nextMapName: 

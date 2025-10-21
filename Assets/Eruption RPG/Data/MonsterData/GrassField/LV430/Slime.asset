@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Slime
   health: 16000
   attack: 580
-  defense: 150
+  defence: 100
+  nextMapName: 

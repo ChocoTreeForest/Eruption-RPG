@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DuskSpearhead
   health: 6000000
   attack: 123000
-  defense: 130000
+  defence: 82000
+  nextMapName: 

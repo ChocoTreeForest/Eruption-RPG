@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DivineTiger
   health: 20000000
   attack: 450000
-  defense: 350000
+  defence: 300000
+  nextMapName: 

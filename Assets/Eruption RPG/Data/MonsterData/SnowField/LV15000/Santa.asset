@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Santa
   health: 1200000
   attack: 24600
-  defense: 12000
+  defence: 12300
+  nextMapName: 

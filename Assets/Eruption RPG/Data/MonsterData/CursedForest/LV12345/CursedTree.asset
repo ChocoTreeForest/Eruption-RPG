@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedTree
   health: 910000
   attack: 22300
-  defense: 11000
+  defence: 11150
+  nextMapName: 

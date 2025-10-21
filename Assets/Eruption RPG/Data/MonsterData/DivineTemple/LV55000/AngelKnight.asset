@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: AngelKnight
   health: 6760000
   attack: 210000
-  defense: 180000
+  defence: 135000
+  nextMapName: 

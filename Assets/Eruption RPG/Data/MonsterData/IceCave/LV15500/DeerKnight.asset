@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DeerKnight
   health: 1150000
   attack: 25000
-  defense: 13000
+  defence: 15000
+  nextMapName: 

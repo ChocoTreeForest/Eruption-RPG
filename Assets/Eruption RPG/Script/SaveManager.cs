@@ -6,6 +6,7 @@ using System.IO;
 public static class SaveManager
 {
     private static string sessionFilePath = Application.persistentDataPath + "/SessionSave.json";
+    private static string infinityModeFilePath = Application.persistentDataPath + "/InfinityModeSave.json";
     private static string permanentFilePath = Application.persistentDataPath + "/PermanentSave.json";
 
     public static void SaveSessionData(SessionData data)
@@ -29,6 +30,30 @@ public static class SaveManager
         if (File.Exists(sessionFilePath))
         {
             File.Delete(sessionFilePath);
+        }
+    }
+
+    public static void SaveInfinityModeData(InfinityModeData data)
+    {
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(infinityModeFilePath, json);
+    }
+
+    public static InfinityModeData LoadInfinityModeData()
+    {
+        if (File.Exists(infinityModeFilePath))
+        {
+            string json = File.ReadAllText(infinityModeFilePath);
+            return JsonUtility.FromJson<InfinityModeData>(json);
+        }
+        return null;
+    }
+
+    public static void DeleteInfinityModeData()
+    {
+        if (File.Exists(infinityModeFilePath))
+        {
+            File.Delete(infinityModeFilePath);
         }
     }
 

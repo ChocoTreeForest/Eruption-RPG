@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DivineAngel
   health: 8700000
   attack: 200000
-  defense: 200000
+  defence: 130000
+  nextMapName: 

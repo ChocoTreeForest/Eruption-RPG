@@ -60,6 +60,12 @@ public class PlayerUIUpdater : MonoBehaviour
 
     public void UpdateCurrentZone()
     {
+        if (playerZoneChecker.zoneTag == "Infinity Mode")
+        {
+            currentZone.text = "Infinity Mode";
+            return;
+        }
+
         currentZone.text = $"{playerZoneChecker.zoneTag} Zone";
     }
 }

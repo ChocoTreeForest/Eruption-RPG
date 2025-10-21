@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Lion
   health: 65000
   attack: 1500
-  defense: 450
+  defence: 750
+  nextMapName: 

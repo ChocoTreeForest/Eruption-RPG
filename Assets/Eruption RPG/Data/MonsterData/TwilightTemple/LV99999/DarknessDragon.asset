@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DarknessDragon
   health: 50000000
   attack: 1000000
-  defense: 700000
+  defence: 1000000
+  nextMapName: 

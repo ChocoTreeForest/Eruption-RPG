@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: LightValkyrie
   health: 21550000
   attack: 430000
-  defense: 400000
+  defence: 277777
+  nextMapName: 

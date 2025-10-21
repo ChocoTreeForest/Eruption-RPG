@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Lizardman
   health: 1200000
   attack: 25000
-  defense: 10000
+  defence: 10000
+  nextMapName: 

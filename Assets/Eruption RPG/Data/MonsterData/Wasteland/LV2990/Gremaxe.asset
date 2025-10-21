@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Gremaxe
   health: 150000
   attack: 6200
-  defense: 1600
+  defence: 2990
+  nextMapName: 

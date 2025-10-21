@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Oneeye
   health: 2774000
   attack: 68000
-  defense: 63000
+  defence: 39500
+  nextMapName: 

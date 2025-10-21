@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Holy Wing Gladius
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 7374108604147576717, guid: ac72eb0151b894f448774325d2d357d8,
+    type: 3}
   id: 32
   itemName: Holy Wing Gladius
   itemType: 0
@@ -32,3 +34,5 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

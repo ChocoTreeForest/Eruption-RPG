@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Bat
   health: 158000
   attack: 3700
-  defense: 900
+  defence: 2350
+  nextMapName: 

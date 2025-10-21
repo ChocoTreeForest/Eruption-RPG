@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightYong
   health: 26000000
   attack: 489000
-  defense: 450000
+  defence: 300000
+  nextMapName: 

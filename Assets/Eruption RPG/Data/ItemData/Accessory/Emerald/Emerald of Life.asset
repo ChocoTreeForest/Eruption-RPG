@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Emerald of Life
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 2509086775426330150, guid: 6fcdf00fdcbf5874fbfa80cb1d1accf2,
+    type: 3}
   id: 205
   itemName: Emerald of Life
   itemType: 2
+  price: 0
   icon: {fileID: 958023771, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 45000
   bonusAttack: 0
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

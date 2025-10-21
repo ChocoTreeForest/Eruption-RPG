@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Serpent+
   health: 1777000
   attack: 33400
-  defense: 18000
+  defence: 19000
+  nextMapName: 

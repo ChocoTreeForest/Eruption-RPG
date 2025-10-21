@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DivineKnight
   health: 12000000
   attack: 270000
-  defense: 270000
+  defence: 170000
+  nextMapName: 

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Stone Axe
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 8383516792775137293, guid: 72cf4c8aec0b0e04d821caec52b184fb,
+    type: 3}
   id: 3
   itemName: Stone Axe
   itemType: 0
@@ -30,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

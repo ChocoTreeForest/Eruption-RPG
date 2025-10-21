@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SnowFairy_R
   health: 990000
   attack: 23500
-  defense: 10000
+  defence: 11750
+  nextMapName: 

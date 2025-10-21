@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: ShadeDragon
   health: 15330000
   attack: 281290
-  defense: 300000
+  defence: 170000
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Zombie
   health: 770000
   attack: 16300
-  defense: 8800
+  defence: 9100
+  nextMapName: 

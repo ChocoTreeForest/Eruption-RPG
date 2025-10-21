@@ -56,7 +56,7 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    private IEnumerator LoadPlayerPosition(SessionData data)
+    IEnumerator LoadPlayerPosition(SessionData data)
     {
         AsyncOperation op = SceneManager.LoadSceneAsync(data.currentScene);
         yield return op;
@@ -75,6 +75,46 @@ public class DataManager : MonoBehaviour
         {
             StartCoroutine(GameCore.Instance.LoadNextMap());
         }
+    }
+
+    public void SaveInfinityModeData()
+    {
+        InfinityModeData data = PlayerStatus.Instance.ToInfinityModeData();
+
+        data.droppedItems.Clear();
+        foreach (var item in EquipmentManager.Instance.droppedItems)
+        {
+            data.droppedItems.Add(item.id);
+        }
+
+        SaveManager.SaveInfinityModeData(data);
+    }
+
+    public void LoadInfinityModeData()
+    {
+        var data = SaveManager.LoadInfinityModeData();
+
+        if (data != null)
+        {
+            EquipmentManager.Instance.droppedItems.Clear();
+            foreach (var itemID in data.droppedItems)
+            {
+                ItemData item = ItemIDManager.Instance.GetItemByID(itemID);
+                if (item != null)
+                {
+                    EquipmentManager.Instance.droppedItems.Add(item);
+                }
+            }
+
+            StartCoroutine(LoadInfinityMode(data));
+        }
+    }
+
+    IEnumerator LoadInfinityMode(InfinityModeData data)
+    {
+        yield return new WaitUntil(() => PlayerStatus.Instance != null);
+
+        PlayerStatus.Instance.LoadFromInfinityModeData(data);
     }
 
     public void SavePermanentData()
@@ -167,6 +207,23 @@ public class DataManager : MonoBehaviour
         data.statusPresetOn = PresetManager.Instance.IsPresetOn();
         data.selectedStatusPresetIndex = PresetManager.Instance.GetSelectedPresetIndex();
         data.lastStatusPresetIndex = PresetManager.Instance.GetLastPresetIndex();
+
+        // 무한 모드 최고 기록 저장
+        data.infinityModeBestRecord = PlayerStatus.Instance.infinityModeBestRecord;
+        data.infinityModeBestLevel = PlayerStatus.Instance.infinityModeBestLevel;
+
+        if (GameCore.Instance.isInInfinityMode)
+        {
+            if (data.infinityModeBestRecord < PlayerStatus.Instance.battleCount)
+            {
+                data.infinityModeBestRecord = PlayerStatus.Instance.battleCount;
+            }
+
+            if (data.infinityModeBestLevel < PlayerStatus.Instance.GetPlayerLevel())
+            {
+                data.infinityModeBestLevel = PlayerStatus.Instance.GetPlayerLevel();
+            }
+        }
 
         SaveManager.SavePermanentData(data);
     }
@@ -280,6 +337,10 @@ public class DataManager : MonoBehaviour
         {
             PresetManager.Instance.SetPresetOff();
         }
+
+        // 무한 모드 최고 기록 불러오기
+        PlayerStatus.Instance.infinityModeBestRecord = data.infinityModeBestRecord;
+        PlayerStatus.Instance.infinityModeBestLevel = data.infinityModeBestLevel;
 
         EquipmentManager.Instance.UpdateEquipmentUI();
         StatsUpdater.Instance.UpdateStats();

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Hook Sword
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 1239880288294367407, guid: 5ce702be2bfb11b439c87b03423c3863,
+    type: 3}
   id: 5
   itemName: Hook Sword
   itemType: 0
+  price: 0
   icon: {fileID: -789168121, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
   bonusAttack: 200
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

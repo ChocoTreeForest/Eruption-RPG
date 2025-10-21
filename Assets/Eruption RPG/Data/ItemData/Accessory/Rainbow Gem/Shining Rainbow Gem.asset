@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Shining Rainbow Gem
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 4515708531469712193, guid: 9b9df91dc4fa26c48ae6c66f30efde37,
+    type: 3}
   id: 221
   itemName: Shining Rainbow Gem
   itemType: 2

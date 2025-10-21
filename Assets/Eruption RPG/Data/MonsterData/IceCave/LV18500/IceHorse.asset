@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: IceHorse
   health: 1520000
   attack: 29500
-  defense: 14500
+  defence: 17700
+  nextMapName: 

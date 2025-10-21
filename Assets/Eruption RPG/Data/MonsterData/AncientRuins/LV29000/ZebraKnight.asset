@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: ZebraKnight
   health: 2613000
   attack: 62000
-  defense: 56000
+  defence: 35000
+  nextMapName: 

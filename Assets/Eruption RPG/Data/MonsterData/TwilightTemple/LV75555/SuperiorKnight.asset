@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SuperiorKnight
   health: 15990000
   attack: 276680
-  defense: 300000
+  defence: 170000
+  nextMapName: 

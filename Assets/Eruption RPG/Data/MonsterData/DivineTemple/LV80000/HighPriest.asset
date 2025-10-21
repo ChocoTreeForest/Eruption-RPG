@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: HighPriest
   health: 17000000
   attack: 330000
-  defense: 330000
+  defence: 220000
+  nextMapName: 

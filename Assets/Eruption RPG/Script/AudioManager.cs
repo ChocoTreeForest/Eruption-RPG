@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource[] bgmPlayers;
     int bgmIndex; // 가장 최근 재생한 플레이어의 인덱스
 
+    private Coroutine infinityModeBGMCoroutine;
+
     [Header("#SFX")]
     public AudioClip[] sfxClips;
     public float sfxVolume;
@@ -100,6 +102,19 @@ public class AudioManager : MonoBehaviour
 
     public IEnumerator PlayBGM(BGM bgm)
     {
+        // 무한 모드에서는 전투 BGM을 번갈아 재생
+        if (GameCore.Instance.isInInfinityMode && bgm == BGM.BattleBGM)
+        {
+            if (infinityModeBGMCoroutine != null)
+            {
+                StopCoroutine(infinityModeBGMCoroutine);
+            }
+
+            infinityModeBGMCoroutine = StartCoroutine(PlayInfinityModeBGM());
+            yield break;
+        }
+
+        // 일반 BGM 재생
         yield return StartCoroutine(BGMFadeOut());
 
         for (int index = 0; index < bgmPlayers.Length; index++)
@@ -133,6 +148,32 @@ public class AudioManager : MonoBehaviour
         }
 
         yield return StartCoroutine(BGMFadeIn());
+    }
+
+    IEnumerator PlayInfinityModeBGM()
+    {
+        int infinityModeBGMIndex = 0;
+
+        yield return StartCoroutine(BGMFadeOut());
+
+        while (GameCore.Instance.isInInfinityMode)
+        {
+            int clipIndex = (int)BGM.BattleBGM + (infinityModeBGMIndex % 4);
+            infinityModeBGMIndex++;
+
+            var player = bgmPlayers[0];
+            player.clip = bgmClips[clipIndex];
+            player.loop = false;
+            player.volume = 0f;
+            player.Play();
+
+            yield return StartCoroutine(BGMFadeIn());
+
+            // 브금이 끝날 때까지 대기
+            yield return new WaitForSeconds(player.clip.length - 0.5f);
+
+            yield return StartCoroutine(BGMFadeOut());
+        }
     }
 
     public void PlaySFX(SFX sfx)

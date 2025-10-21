@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: AncientPriest+
   health: 2450000
   attack: 48000
-  defense: 45000
+  defence: 28000
+  nextMapName: 

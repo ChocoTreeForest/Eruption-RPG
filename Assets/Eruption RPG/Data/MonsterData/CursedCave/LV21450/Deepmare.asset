@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Deepmare
   health: 1790000
   attack: 32000
-  defense: 20000
+  defence: 18500
+  nextMapName: 

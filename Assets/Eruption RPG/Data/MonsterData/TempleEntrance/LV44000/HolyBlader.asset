@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: HolyBlader
   health: 5178000
-  attack: 11000
-  defense: 10000
+  attack: 110000
+  defence: 77777
+  nextMapName: 

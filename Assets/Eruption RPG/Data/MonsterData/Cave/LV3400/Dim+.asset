@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Dim+
   health: 220000
   attack: 5400
-  defense: 2000
+  defence: 4000
+  nextMapName: 

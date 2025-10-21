@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedGull
   health: 940000
   attack: 20000
-  defense: 11500
+  defence: 10000
+  nextMapName: 

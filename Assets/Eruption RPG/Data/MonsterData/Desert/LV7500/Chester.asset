@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Chester
   health: 600000
   attack: 13000
-  defense: 7200
+  defence: 6500
+  nextMapName: 

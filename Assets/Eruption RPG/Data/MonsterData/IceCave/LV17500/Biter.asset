@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Biter
   health: 1420000
   attack: 27600
-  defense: 14000
+  defence: 16000
+  nextMapName: 

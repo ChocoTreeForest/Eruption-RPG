@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Golden Ring
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 4004104552887846495, guid: 4a9c2636a1163e94c859bb6cb036005c,
+    type: 3}
   id: 226
   itemName: Golden Ring
   itemType: 2
@@ -32,3 +34,5 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 1
   criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

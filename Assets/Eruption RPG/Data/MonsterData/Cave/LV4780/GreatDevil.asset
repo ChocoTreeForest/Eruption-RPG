@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GreatDevil
   health: 310000
   attack: 7700
-  defense: 3100
+  defence: 4780
+  nextMapName: 

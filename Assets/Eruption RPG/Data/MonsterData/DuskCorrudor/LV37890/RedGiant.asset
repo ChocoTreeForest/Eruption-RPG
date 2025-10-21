@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: RedGiant
   health: 3770000
   attack: 90000
-  defense: 90000
+  defence: 62000
+  nextMapName: 

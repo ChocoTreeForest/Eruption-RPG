@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TombRaider
   health: 2155000
   attack: 41000
-  defense: 34000
+  defence: 25000
+  nextMapName: 

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Frozen Axe
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 6541355588818532658, guid: c3b63849aea77c540b269911e85792bf,
+    type: 3}
   id: 19
   itemName: Frozen Axe
   itemType: 0
+  price: 0
   icon: {fileID: 1686818189, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
   bonusAttack: 10000
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

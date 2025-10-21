@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GreatSnake
   health: 700000
   attack: 16000
-  defense: 8000
+  defence: 7600
+  nextMapName: 

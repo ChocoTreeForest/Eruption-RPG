@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: FireImp
   health: 170000
   attack: 4200
-  defense: 900
+  defence: 2480
+  nextMapName: 

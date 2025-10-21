@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Dagger
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 386900745884642035, guid: 2ae3693edbf28df478a7703f0db75982,
+    type: 3}
   id: 2
   itemName: Dagger
   itemType: 0
+  price: 0
   icon: {fileID: -73793286, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
   bonusAttack: 50
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

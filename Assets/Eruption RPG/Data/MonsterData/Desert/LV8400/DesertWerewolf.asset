@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DesertWerewolf
   health: 754000
   attack: 13450
-  defense: 7500
+  defence: 7000
+  nextMapName: 

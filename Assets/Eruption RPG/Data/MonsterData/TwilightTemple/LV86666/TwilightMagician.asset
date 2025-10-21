@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightMagician
   health: 20000000
   attack: 360000
-  defense: 350000
+  defence: 200000
+  nextMapName: 

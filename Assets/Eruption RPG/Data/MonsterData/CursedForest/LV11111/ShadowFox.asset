@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: ShadowFox
   health: 880000
   attack: 20000
-  defense: 10000
+  defence: 10000
+  nextMapName: 

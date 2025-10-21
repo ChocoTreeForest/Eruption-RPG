@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Gull
   health: 17500
   attack: 560
-  defense: 195
+  defence: 120
+  nextMapName: 

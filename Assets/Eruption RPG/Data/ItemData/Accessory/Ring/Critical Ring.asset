@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Critical Ring
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 6204355838561670477, guid: 5ae739ab0ac982d439197bdce9998a7d,
+    type: 3}
   id: 222
   itemName: Critical Ring
   itemType: 2
@@ -32,3 +34,5 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 1
+  specialEffectType: 0
+  effectValue: 0

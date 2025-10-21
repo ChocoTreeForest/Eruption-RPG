@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CyanDragon
   health: 20000000
   attack: 475000
-  defense: 400000
+  defence: 290000
+  nextMapName: 

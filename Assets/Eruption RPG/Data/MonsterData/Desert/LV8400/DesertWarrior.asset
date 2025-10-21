@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DesertWarrior
   health: 650000
   attack: 14500
-  defense: 7500
+  defence: 7500
+  nextMapName: 

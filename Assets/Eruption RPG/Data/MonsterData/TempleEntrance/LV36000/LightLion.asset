@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: LightLion
   health: 3470000
   attack: 80000
-  defense: 80000
+  defence: 51000
+  nextMapName: 

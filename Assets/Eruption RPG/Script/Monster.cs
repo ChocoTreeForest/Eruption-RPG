@@ -8,6 +8,9 @@ public class Monster : MonoBehaviour
     public DropTable dropTable;
     public Sprite monsterSprite;
 
+    private MonsterStatData originalStatData;
+    private DropTable originalDropTable;
+
     private int maxHealth;
     private int currentHealth;
     private int previousHealth;
@@ -100,7 +103,7 @@ public class Monster : MonoBehaviour
         {
             BattleEffectManager.Instance.PlayCriticalHitEffect(
                 BattleEffectManager.Instance.criticalHitEffects,
-                BattleUIManager.Instance.monsterImage.rectTransform);            
+                BattleUIManager.Instance.monsterImage.rectTransform);
             Debug.Log("즉사 효과 발동!");
             battleLog.AddLog("InBattle", "INSTKILL");
             return; // 몬스터가 이미 죽었으면 데미지 계산을 하지 않음
@@ -117,7 +120,7 @@ public class Monster : MonoBehaviour
         if (isCritical)
         {
             BattleEffectManager.Instance.PlayCriticalHitEffect(
-                BattleEffectManager.Instance.criticalHitEffects, 
+                BattleEffectManager.Instance.criticalHitEffects,
                 BattleUIManager.Instance.monsterImage.rectTransform);
             finalDamage = (int)(finalDamage * criticalMultiplier);
             battleLog.AddLog("InBattle", "CRITICAL", finalDamage);
@@ -157,6 +160,18 @@ public class Monster : MonoBehaviour
     public void RestoreHealth()
     {
         currentHealth = maxHealth;
+    }
+
+    public void BackupOriginalData()
+    {
+        originalStatData = monsterStatData;
+        originalDropTable = dropTable;
+    }
+
+    public void RestoreOriginalData()
+    {
+        monsterStatData = originalStatData;
+        dropTable = originalDropTable;
     }
 
     public int GetMaxHealth() => maxHealth;

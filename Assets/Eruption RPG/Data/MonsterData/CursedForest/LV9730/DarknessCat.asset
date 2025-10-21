@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DarknessCat
   health: 760000
   attack: 16800
-  defense: 8800
+  defence: 9000
+  nextMapName: 

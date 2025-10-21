@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: MutantSlime
   health: 400000
   attack: 9500
-  defense: 4400
+  defence: 5800
+  nextMapName: 

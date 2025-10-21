@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: AncientGuardian
   health: 2820000
   attack: 65000
-  defense: 58000
+  defence: 37500
+  nextMapName: 

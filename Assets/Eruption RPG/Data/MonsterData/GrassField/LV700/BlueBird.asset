@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: BlueBird
   health: 34000
   attack: 840
-  defense: 280
+  defence: 500
+  nextMapName: 

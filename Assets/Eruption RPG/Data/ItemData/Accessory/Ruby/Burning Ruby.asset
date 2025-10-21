@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Burning Ruby
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 1475530162850971919, guid: 758c04ceefb749341815f5e7ba5e9a83,
+    type: 3}
   id: 210
   itemName: Burning Ruby
   itemType: 2
@@ -30,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

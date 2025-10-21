@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: IceWizard
   health: 2000000
   attack: 50000
-  defense: 30000
+  defence: 25000
   nextMapName: IceCave

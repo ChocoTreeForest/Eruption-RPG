@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TwilightArchmage
   health: 8000000
   attack: 235500
-  defense: 190000
+  defence: 144444
+  nextMapName: 

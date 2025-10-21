@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CaveSeahorse
   health: 230000
   attack: 7500
-  defense: 2800
+  defence: 5000
+  nextMapName: 

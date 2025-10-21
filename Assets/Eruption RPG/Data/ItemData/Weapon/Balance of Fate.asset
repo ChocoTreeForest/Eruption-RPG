@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Balance of Fate
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 6626832466221751153, guid: 3259eb8112a4b8c4196d2a035b1cb5b1,
+    type: 3}
   id: 22
   itemName: Balance of Fate
   itemType: 0
+  price: 0
   icon: {fileID: 811178056, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
   bonusAttack: 4560
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

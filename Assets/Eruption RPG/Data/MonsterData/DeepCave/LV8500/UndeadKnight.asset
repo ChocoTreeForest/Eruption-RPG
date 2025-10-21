@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: UndeadKnight
   health: 666700
   attack: 14900
-  defense: 7000
+  defence: 8500
+  nextMapName: 

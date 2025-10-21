@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DarkCat
   health: 380000
   attack: 7800
-  defense: 4000
+  defence: 5600
+  nextMapName: 

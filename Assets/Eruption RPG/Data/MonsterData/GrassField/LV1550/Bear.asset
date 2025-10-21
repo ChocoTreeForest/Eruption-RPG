@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Bear
   health: 72000
   attack: 3200
-  defense: 550
+  defence: 1400
+  nextMapName: 

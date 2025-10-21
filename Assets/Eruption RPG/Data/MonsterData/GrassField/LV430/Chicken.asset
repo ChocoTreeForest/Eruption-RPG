@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Chicken
   health: 17000
   attack: 550
-  defense: 200
+  defence: 110
+  nextMapName: 

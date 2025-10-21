@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Archer
   health: 88000
   attack: 1600
-  defense: 450
+  defence: 900
+  nextMapName: 

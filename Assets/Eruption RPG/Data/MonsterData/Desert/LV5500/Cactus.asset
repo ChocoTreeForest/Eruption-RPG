@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Cactus
   health: 350000
   attack: 7700
-  defense: 3800
+  defence: 5700
+  nextMapName: 

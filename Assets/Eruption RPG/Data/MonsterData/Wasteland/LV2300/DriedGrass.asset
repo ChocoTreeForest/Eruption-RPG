@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DriedGrass
   health: 110000
   attack: 5500
-  defense: 1000
+  defence: 2300
+  nextMapName: 

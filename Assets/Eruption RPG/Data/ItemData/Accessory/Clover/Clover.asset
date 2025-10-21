@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Clover
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 4853370357813350752, guid: b3937788c4a3c3744ba779b9bd0f96e8,
+    type: 3}
   id: 216
   itemName: Clover
   itemType: 2
+  price: 0
   icon: {fileID: 224485591, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 0
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

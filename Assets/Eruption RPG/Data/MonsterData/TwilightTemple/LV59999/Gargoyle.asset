@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Gargoyle
   health: 14000000
   attack: 385000
-  defense: 250000
+  defence: 222222
+  nextMapName: 

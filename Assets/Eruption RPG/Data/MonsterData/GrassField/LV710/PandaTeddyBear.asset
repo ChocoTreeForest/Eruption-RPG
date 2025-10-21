@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: PandaTeddyBear
   health: 31500
   attack: 1150
-  defense: 305
+  defence: 500
+  nextMapName: 

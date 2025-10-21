@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Monsturtle+
   health: 290000
   attack: 8300
-  defense: 3700
+  defence: 4700
+  nextMapName: 

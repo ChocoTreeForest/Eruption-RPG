@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SnowAxeMan
   health: 720000
   attack: 22000
-  defense: 40000
+  defence: 14000
+  nextMapName: 

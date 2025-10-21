@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
-  m_Name: Shimmeing Armor
+  m_Name: Shimmering Armor
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 1116029759464640012, guid: 556d2992e4442b244953534b9aef483c,
+    type: 3}
   id: 115
-  itemName: Shimmeing Armor
+  itemName: Shimmering Armor
   itemType: 1
+  price: 0
   icon: {fileID: 1830579540, guid: e98a12f58f8a02648b272e5fe078a893, type: 3}
   bonusHealth: 10000
   bonusAttack: 0
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

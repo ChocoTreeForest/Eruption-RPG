@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Centaurus_F
   health: 400000
   attack: 9300
-  defense: 4300
+  defence: 6000
+  nextMapName: 

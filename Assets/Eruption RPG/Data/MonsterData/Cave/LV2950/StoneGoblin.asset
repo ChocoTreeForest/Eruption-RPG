@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: StoneGoblin
   health: 200000
   attack: 4700
-  defense: 1200
+  defence: 2950
+  nextMapName: 

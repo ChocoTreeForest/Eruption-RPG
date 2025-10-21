@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: MagicalStone
   health: 2770000
   attack: 67000
-  defense: 59000
+  defence: 38500
+  nextMapName: 

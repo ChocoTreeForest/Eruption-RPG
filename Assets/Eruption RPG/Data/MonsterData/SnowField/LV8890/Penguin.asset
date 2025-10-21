@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Penguin
   health: 700000
   attack: 16500
-  defense: 8000
+  defence: 8250
+  nextMapName: 

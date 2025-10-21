@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class RandomEncounter : MonoBehaviour
@@ -19,6 +21,9 @@ public class RandomEncounter : MonoBehaviour
     {
         public string zoneTag;
         public List<GameObject> monsters;
+        // 아래 두개 지워도 될듯
+        public List<MonsterStatData> monsterStatDatas;
+        public List<DropTable> dropTables;
     }
     public List<ZoneMonsterData> zoneMonsterList;
 
@@ -50,7 +55,7 @@ public class RandomEncounter : MonoBehaviour
     //플레이어가 현재 위치한 구역 설정
     public void SetCurrentZone(string zoneTag)
     {
-        if(currentZone == zoneTag) return;
+        if (currentZone == zoneTag) return;
 
         currentZone = zoneTag;
         if (monsterDictionary.ContainsKey(zoneTag))
@@ -76,6 +81,12 @@ public class RandomEncounter : MonoBehaviour
     {
         float increaseRate = 0.002f; //초당 10%씩 확률 증가
         encounterChance = Mathf.Min(encounterChance + increaseRate, 1f); //확률이 최대 100%까지 증가
+
+        if (GameCore.Instance.isInInfinityMode)
+        {
+            encounterChance = 1f; //무한 모드에서는 즉시 인카운터
+        }
+
         PlayerUIUpdater.Instance.UpdateEncounterGauge();
         Debug.Log($"현재 전투 확률: {encounterChance * 100}% (목표: {randomValue * 100}%)");
     }
@@ -90,7 +101,7 @@ public class RandomEncounter : MonoBehaviour
             MonsterEncounter();
         }
     }
-    
+
     void MonsterEncounter()
     {
         int randomIndex = Random.Range(0, currentMonsters.Count);
@@ -98,18 +109,36 @@ public class RandomEncounter : MonoBehaviour
 
         Debug.Log($"Encounter! {selectedMonster.name} appeared in {currentZone}!");
 
-        Monster monster = selectedMonster.GetComponent<Monster>(); //selectedMonster에서 Monster 컴포넌트 가져오기
+        // 전투 용 몬스터 인스턴스 생성
+        GameObject monsterInstance = Instantiate(selectedMonster);
+        monsterInstance.SetActive(false); // 안보이게
+
+        Monster monster = monsterInstance.GetComponent<Monster>();
         if (monster == null)
         {
             Debug.LogError("선택된 몬스터 오브젝트에 Monster 컴포넌트 없음");
             return;
         }
 
+        if (GameCore.Instance.isInInfinityMode)
+        {
+            // 여기에 무한 모드 스탯/드랍 적용
+            monster.monsterStatData = InfinityModeManager.Instance.GetScaledMonsterStat(monster.monsterStatData);
+            monster.dropTable = InfinityModeManager.Instance.GetUpdateDropTable();
+        }
+
         monster.InitializeMonsterStat();
         monster.DropMoneyAndEXP();
         monster.DropBP();
 
-        BattleManager.Instance.StartBattle(monster, isBoss:false);
+        BattleManager.Instance.StartBattle(monster, isBoss: false);
+        StartCoroutine(DestroyMonsterInstance(monsterInstance));
+    }
+
+    IEnumerator DestroyMonsterInstance(GameObject monster)
+    {
+        yield return new WaitUntil(() => !BattleManager.Instance.isInBattle);
+        Destroy(monster);
     }
 
     public void OnClickEncounterButton()

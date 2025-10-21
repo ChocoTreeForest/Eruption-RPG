@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Gilter
   health: 320000
   attack: 7700
-  defense: 3800
+  defence: 4700
+  nextMapName: 

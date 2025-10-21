@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: DevilKnight
   health: 27000000
   attack: 450600
-  defense: 450000
+  defence: 286000
+  nextMapName: 

@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: AbyssMage
   health: 3500000
   attack: 74000
-  defense: 40000
+  defence: 42500
   nextMapName: NocturnThicket

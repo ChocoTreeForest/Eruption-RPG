@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CelestialDragon
   health: 15000000
   attack: 350000
-  defense: 250000
+  defence: 200000
+  nextMapName: 

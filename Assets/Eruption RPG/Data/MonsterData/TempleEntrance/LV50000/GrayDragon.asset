@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: GrayDragon
   health: 6660000
   attack: 130000
-  defense: 150000
+  defence: 90000
+  nextMapName: 

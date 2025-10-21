@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: Raven
   health: 150000
   attack: 8000
-  defense: 1000
+  defence: 4000
   nextMapName: Cave

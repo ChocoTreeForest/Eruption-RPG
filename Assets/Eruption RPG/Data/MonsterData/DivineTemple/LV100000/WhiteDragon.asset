@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: WhiteDragon
   health: 27000000
   attack: 530000
-  defense: 500000
+  defence: 300000
+  nextMapName: 

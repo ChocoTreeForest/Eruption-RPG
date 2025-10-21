@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82564c3332775468d0332378e26624, type: 3}
   m_Name: Iron Sword
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 760681157352709542, guid: 7bbee31cbd8c3e8459b5bbe3165b0f0c,
+    type: 3}
   id: 6
   itemName: Iron Sword
   itemType: 0
+  price: 0
   icon: {fileID: -206633750, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
   bonusAttack: 370
@@ -29,3 +32,7 @@ MonoBehaviour:
   speedMultiplier: 0
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
+  specialItem: 0
+  criticalRing: 0
+  specialEffectType: 0
+  effectValue: 0

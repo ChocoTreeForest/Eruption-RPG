@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: SeaDragon+
   health: 2000000
   attack: 39000
-  defense: 19000
+  defence: 21000
+  nextMapName: 

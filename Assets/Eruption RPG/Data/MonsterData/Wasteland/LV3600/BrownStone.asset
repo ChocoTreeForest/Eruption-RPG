@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: BrownStone
   health: 250000
   attack: 6000
-  defense: 2000
+  defence: 3600
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: CursedCaveDragon
   health: 2000000
   attack: 40000
-  defense: 25000
+  defence: 22000
+  nextMapName: 

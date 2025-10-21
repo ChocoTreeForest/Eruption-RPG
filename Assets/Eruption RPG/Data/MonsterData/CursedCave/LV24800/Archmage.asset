@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Archmage
   health: 2004000
   attack: 38000
-  defense: 22000
+  defence: 20000
+  nextMapName: 

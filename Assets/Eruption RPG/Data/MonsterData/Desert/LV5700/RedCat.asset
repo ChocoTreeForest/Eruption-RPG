@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: RedCat
   health: 467000
   attack: 7800
-  defense: 3500
+  defence: 5700
+  nextMapName: 

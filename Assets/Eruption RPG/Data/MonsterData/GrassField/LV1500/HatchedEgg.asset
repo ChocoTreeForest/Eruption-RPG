@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: HatchedEgg
   health: 80000
   attack: 2400
-  defense: 500
+  defence: 1500
+  nextMapName: 

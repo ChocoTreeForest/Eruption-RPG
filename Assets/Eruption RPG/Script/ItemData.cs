@@ -16,6 +16,7 @@ public enum SpecialEffectType
 [CreateAssetMenu(fileName = "NewItemData", menuName = "Item/Item Data")]
 public class ItemData : ScriptableObject
 {
+    public GameObject itemPrefab;
     public int id;
     public string itemName;
     public ItemType itemType;

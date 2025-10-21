@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Caveel
   health: 185000
   attack: 4600
-  defense: 1200
+  defence: 2770
+  nextMapName: 

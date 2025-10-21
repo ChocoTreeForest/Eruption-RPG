@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: MagicalGem
   health: 2250000
   attack: 43000
-  defense: 37000
+  defence: 26500
+  nextMapName: 

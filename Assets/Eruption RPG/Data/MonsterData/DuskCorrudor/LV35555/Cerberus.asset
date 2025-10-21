@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: Cerberus
   health: 3480000
   attack: 78000
-  defense: 78000
+  defence: 50000
+  nextMapName: 

@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: TeddyBear
   health: 8000
   attack: 340
-  defense: 80
+  defence: 70
+  nextMapName: 

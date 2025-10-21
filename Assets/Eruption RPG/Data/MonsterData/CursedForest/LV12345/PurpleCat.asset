@@ -15,4 +15,5 @@ MonoBehaviour:
   monsterName: PurpleCat
   health: 934600
   attack: 21700
-  defense: 11200
+  defence: 10850
+  nextMapName: 
