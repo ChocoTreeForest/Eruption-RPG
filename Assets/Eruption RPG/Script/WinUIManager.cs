@@ -59,8 +59,18 @@ public class WinUIManager : MonoBehaviour
         if (dropTable != null)
         {
             long gainedEXP = (long)(dropTable.exp * PlayerStatus.Instance.GetEXPMultiplier());
+            if (BonusManager.Instance.HasBonus(BonusManager.BonusType.EXP))
+            {
+                gainedEXP = gainedEXP * 2;
+            }
 
-            earnedMoney.text = $"+ {(int)(dropTable.money * PlayerStatus.Instance.GetMoneyMultiplier()):N0} RUP";
+            int gainedMoney = (int)(dropTable.money * PlayerStatus.Instance.GetMoneyMultiplier());
+            if (BonusManager.Instance.HasBonus(BonusManager.BonusType.Money))
+            {
+                gainedMoney = gainedMoney * 5;
+            }
+
+            earnedMoney.text = $"+ {gainedMoney:N0} RUP";
             earnedEXP.text = $"+ {gainedEXP:N0}";
 
             // 레벨 몇 올랐는지 계산

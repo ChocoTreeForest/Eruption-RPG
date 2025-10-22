@@ -82,7 +82,7 @@ public class GameOverUIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        levelValue.text = $"LV {PlayerStatus.Instance.GetPlayerLevel().ToString("N0")}";
+        levelValue.text = $"LV {PlayerStatus.Instance.GetPlayerLevel():N0}";
         abilityLevelValue.text = PlayerStatus.Instance.prevAbilityLevel.ToString();
 
         if (PlayerStatus.Instance.prevAbilityLevel == PlayerStatus.Instance.abilityLevel)
@@ -94,7 +94,7 @@ public class GameOverUIManager : MonoBehaviour
             IncresedAbilityLevelValue.text = $"+ {PlayerStatus.Instance.abilityLevel - PlayerStatus.Instance.prevAbilityLevel}";
         }
 
-        freeEXPValue.text = PlayerStatus.Instance.GetPlayerLevel().ToString("N0");
+        freeEXPValue.text = $"+ {PlayerStatus.Instance.GetPlayerLevel():N0}";
         freeEXPBar.value = (float)PlayerStatus.Instance.freeEXP / freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel];
         freeEXPBarValue.text = $"Free EXP: {PlayerStatus.Instance.freeEXP}/{freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel]}";
 
@@ -111,11 +111,11 @@ public class GameOverUIManager : MonoBehaviour
 
             if (PlayerStatus.Instance.infinityModeBestLevel < PlayerStatus.Instance.GetPlayerLevel())
             {
-                bestLevelValue.text = $"LV {PlayerStatus.Instance.GetPlayerLevel().ToString("N0")}";
+                bestLevelValue.text = $"LV {PlayerStatus.Instance.GetPlayerLevel():N0}";
             }
             else
             {
-                bestLevelValue.text = $"LV {PlayerStatus.Instance.infinityModeBestLevel.ToString("N0")}";
+                bestLevelValue.text = $"LV {PlayerStatus.Instance.infinityModeBestLevel:N0}";
             }
 
             infinityModeBattleCountValue.text = PlayerStatus.Instance.battleCount.ToString();

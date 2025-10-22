@@ -31,4 +31,7 @@ public class SessionData
     public string pendingNextMap;
 
     public List<int> droppedItems = new List<int>(); // 이번 세션에서 획득한 아이템 ID 목록
+
+    public int currentBonus; // 현재 보너스 (enum을 int로 저장)
+    public int battleCountSinceBonus;
 }

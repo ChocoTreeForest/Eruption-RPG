@@ -33,6 +33,9 @@ public class DataManager : MonoBehaviour
             data.droppedItems.Add(item.id);
         }
 
+        data.currentBonus = (int)BonusManager.Instance.currentBonus;
+        data.battleCountSinceBonus = BonusManager.Instance.battleCountSinceBonus;
+
         SaveManager.SaveSessionData(data);
     }
 
@@ -51,6 +54,9 @@ public class DataManager : MonoBehaviour
                     EquipmentManager.Instance.droppedItems.Add(item);
                 }
             }
+
+            BonusManager.Instance.currentBonus = (BonusManager.BonusType)data.currentBonus;
+            BonusManager.Instance.battleCountSinceBonus = data.battleCountSinceBonus;
 
             StartCoroutine(LoadPlayerPosition(data));
         }

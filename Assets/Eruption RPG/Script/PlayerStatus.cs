@@ -114,7 +114,7 @@ public class PlayerStatus : MonoBehaviour
         currentCriticalMultiplier = baseCriticalMultiplier;
         currentSpeed = player.speed;
         currentMoney = 0;
-        battlePoint = 20;
+        battlePoint = 1;
         battleCount = 0;
         killedBossCount = 0;
         defeatCount = 0;
@@ -186,6 +186,11 @@ public class PlayerStatus : MonoBehaviour
     public void AddMoney(int dropMoney)
     {
         int earnMoney = (int)(dropMoney * moneyMultiplier);
+        if (BonusManager.Instance.HasBonus(BonusManager.BonusType.Money))
+        {
+            earnMoney = earnMoney * 5;
+        }
+
         earnedMoney += earnMoney;
         currentMoney += earnMoney;
         PlayerUIUpdater.Instance.UpdateLV();
@@ -205,7 +210,13 @@ public class PlayerStatus : MonoBehaviour
 
     public void AddEXP(long dropEXP)
     {
-        currentEXP += (long)(dropEXP * expMultiplier);
+        long earnEXP = (long)(dropEXP * expMultiplier);
+        if (BonusManager.Instance.HasBonus(BonusManager.BonusType.EXP))
+        {
+            earnEXP = earnEXP * 2;
+        }
+
+        currentEXP += earnEXP;
 
         while (currentEXP >= GetRequiredEXP())
         {
@@ -280,15 +291,29 @@ public class PlayerStatus : MonoBehaviour
 
     public void InstantKill(Monster monster)
     {
+        float totalChance = 0f;
+
+        // 장비 효과로 인한 즉사 확률
         foreach (var acc in EquipmentManager.Instance.accessorySlots)
         {
             if (acc != null && acc.specialEffectType == SpecialEffectType.InstanceKill)
             {
-                if (Random.Range(0f, 100f) <= acc.effectValue)
-                {
-                    monster.TryInstantKill(acc.effectValue);
-                }
+                totalChance += acc.effectValue;
             }
+        }
+
+        // 보너스로 인한 즉사 확률
+        if (BonusManager.Instance.HasBonus(BonusManager.BonusType.InstantKill))
+        {
+            totalChance += 10f;
+        }
+
+        totalChance = Mathf.Clamp(totalChance, 0f, 100f); // 최대 100%
+
+        // 즉사 확률 적용
+        if (Random.Range(0f, 100f) <= totalChance)
+        {
+            monster.TryInstantKill(totalChance);
         }
     }
 
@@ -338,6 +363,10 @@ public class PlayerStatus : MonoBehaviour
         float damageRNG = Random.Range(0.75f, 1.25f);
 
         int finalDamage = (int)(baseDamage * damageRNG);
+        if (BonusManager.Instance.HasBonus(BonusManager.BonusType.DamageReduction))
+        {
+            finalDamage = (int)(finalDamage * 0.75f);
+        }
 
         currentHealth -= finalDamage;
         EndureAttack();

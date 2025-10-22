@@ -84,6 +84,7 @@ public class GameCore : MonoBehaviour
         yield return null;
         DataManager.Instance.LoadPermanentData();
         PlayerStatus.Instance.ResetStatus();
+        BonusManager.Instance.InitializeBonus();
         InfinityModeManager.Instance.RevertUI();
         AbilityUIUpdater.Instance.UpdateUI();
         gameCore.SetActive(false);

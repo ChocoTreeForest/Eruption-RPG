@@ -160,6 +160,7 @@ public class BattleManager : MonoBehaviour
 
         if (PlayerStatus.Instance.gameOver)
         {
+            isInBattle = false;
             PlayerStatus.Instance.AddFreeEXP(PlayerStatus.Instance.GetPlayerLevel());
             GameOverUIManager.Instance.ShowGameOverPanel();
             // 게임 오버 브금은 GameOverUIManager에서 재생
@@ -241,6 +242,7 @@ public class BattleManager : MonoBehaviour
 
         if (!GameCore.Instance.isInInfinityMode)
         {
+            BonusManager.Instance.OnBattleEnd();
             DataManager.Instance.SaveSessionData();
         }
         else
@@ -268,8 +270,20 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        battleLog.AddLog("BattleWin", "MONEY", (int)(monster.GetDropMoney() * PlayerStatus.Instance.GetMoneyMultiplier()));
-        battleLog.AddLog("BattleWin", "EXP", (long)(monster.GetDropEXP() * PlayerStatus.Instance.GetEXPMultiplier()));
+        int earnMoney = (int)(monster.GetDropMoney() * PlayerStatus.Instance.GetMoneyMultiplier());
+        if (BonusManager.Instance.HasBonus(BonusManager.BonusType.Money))
+        {
+            earnMoney = earnMoney * 5;
+        }
+
+        long earnEXP = (long)(monster.GetDropEXP() * PlayerStatus.Instance.GetEXPMultiplier());
+        if (BonusManager.Instance.HasBonus(BonusManager.BonusType.EXP))
+        {
+            earnEXP = earnEXP * 2;
+        }
+
+        battleLog.AddLog("BattleWin", "MONEY", earnMoney);
+        battleLog.AddLog("BattleWin", "EXP", earnEXP);
         battleLog.AddLog("BattleWin", "LEVELUP", PlayerStatus.Instance.GetPlayerLevel());
 
         if (droppedItem != null)

@@ -14,6 +14,7 @@ public class PlayerUIUpdater : MonoBehaviour
     public Text currentMoney;
     public Text currentBP;
     public Text currentZone;
+    public Text currentBonus;
     public Slider encounterGauge;
 
     void Awake()
@@ -35,6 +36,7 @@ public class PlayerUIUpdater : MonoBehaviour
         UpdateBP();
         UpdateEncounterGauge();
         UpdateCurrentZone();
+        UpdateBonus();
     }
 
     public void UpdateLV()
@@ -67,5 +69,29 @@ public class PlayerUIUpdater : MonoBehaviour
         }
 
         currentZone.text = $"{playerZoneChecker.zoneTag} Zone";
+    }
+
+    public void UpdateBonus()
+    {
+        if (BonusManager.Instance.currentBonus == BonusManager.BonusType.EXP)
+        {
+            currentBonus.text = "EXP × 2";
+        }
+        else if (BonusManager.Instance.currentBonus == BonusManager.BonusType.Money)
+        {
+            currentBonus.text = "RUP × 5";
+        }
+        else if (BonusManager.Instance.currentBonus == BonusManager.BonusType.CriticalDamage)
+        {
+            currentBonus.text = "CRIT DMG + 50%";
+        }
+        else if (BonusManager.Instance.currentBonus == BonusManager.BonusType.DamageReduction)
+        {
+            currentBonus.text = "받는 데미지 - 25%";
+        }
+        else if (BonusManager.Instance.currentBonus == BonusManager.BonusType.InstantKill)
+        {
+            currentBonus.text = "적 즉사 확률 + 10%";
+        }
     }
 }

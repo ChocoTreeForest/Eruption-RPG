@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour
 
     private int maxHealth;
     private int currentHealth;
-    private int previousHealth;
+    //private int previousHealth; // ¿Ã∞≈ æ∏?
     private int currentAttack;
     private int currentDefence;
 
@@ -95,7 +95,7 @@ public class Monster : MonoBehaviour
     {
         BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
 
-        previousHealth = currentHealth;
+        //previousHealth = currentHealth;
 
         PlayerStatus.Instance.InstantKill(this);
 
@@ -122,6 +122,11 @@ public class Monster : MonoBehaviour
             BattleEffectManager.Instance.PlayCriticalHitEffect(
                 BattleEffectManager.Instance.criticalHitEffects,
                 BattleUIManager.Instance.monsterImage.rectTransform);
+
+            if (BonusManager.Instance.HasBonus(BonusManager.BonusType.CriticalDamage))
+            {
+                criticalMultiplier += 0.5f;
+            }
             finalDamage = (int)(finalDamage * criticalMultiplier);
             battleLog.AddLog("InBattle", "CRITICAL", finalDamage);
 
@@ -176,7 +181,7 @@ public class Monster : MonoBehaviour
 
     public int GetMaxHealth() => maxHealth;
     public int GetCurrentHealth() => currentHealth;
-    public int GetPreviousHealth() => previousHealth;
+    //public int GetPreviousHealth() => previousHealth;
     public int GetCurrentAttack() => currentAttack;
     public int GetCurrentDefence() => currentDefence;
     public int GetDropMoney() => money;
