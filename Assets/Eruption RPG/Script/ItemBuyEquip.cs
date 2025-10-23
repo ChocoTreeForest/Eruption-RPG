@@ -109,10 +109,33 @@ public class ItemBuyEquip : MonoBehaviour
                     maxEquipped = true;
                 }
 
-                if (itemData.criticalRing && EquipmentManager.Instance.accessorySlots.Any(item => item != null && item.criticalRing))
+                if (itemData.criticalRing)
                 {
-                    maxEquipped = true;
+                    // 현재 슬롯을 제외한 나머지 슬롯에 크리티컬 링류 템이 장착되어 있다면
+                    bool otherCriticalRingEquipped = EquipmentManager.Instance.accessorySlots
+                        .Where((item, index) => index != slotIndex)
+                        .Any(item => item != null && item.criticalRing);
+
+                    // 장착할 수 없게 (같은 슬롯에서 다른 크리티컬 링으로 교체할 수 있어야하므로)
+                    if (otherCriticalRingEquipped)
+                    {
+                        maxEquipped = true;
+                    }
                 }
+
+                if (itemData.charm)
+                {
+                    // 크리티컬 링류와 같음
+                    bool otherCharmEquipped = EquipmentManager.Instance.accessorySlots
+                        .Where((item, index) => index != slotIndex)
+                        .Any(item => item != null && item.charm);
+
+                    if (otherCharmEquipped)
+                    {
+                        maxEquipped = true;
+                    }
+                }
+
                 break;
         }
 

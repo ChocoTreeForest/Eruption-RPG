@@ -114,7 +114,7 @@ public class PlayerStatus : MonoBehaviour
         currentCriticalMultiplier = baseCriticalMultiplier;
         currentSpeed = player.speed;
         currentMoney = 0;
-        battlePoint = 1;
+        battlePoint = 20;
         battleCount = 0;
         killedBossCount = 0;
         defeatCount = 0;

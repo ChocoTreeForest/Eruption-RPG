@@ -2450,6 +2450,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Props - Altar 01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7947911505737750455, guid: c5bdca1933fde624698bb8c6d6daa44b,
+        type: 3}
+      propertyPath: m_TagString
+      value: LV86666
+      objectReference: {fileID: 0}
     - target: {fileID: 9183256227791019032, guid: c5bdca1933fde624698bb8c6d6daa44b,
         type: 3}
       propertyPath: m_Color.b
@@ -2682,6 +2687,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Props - Altar 01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947911505737750455, guid: c5bdca1933fde624698bb8c6d6daa44b,
+        type: 3}
+      propertyPath: m_TagString
+      value: LV59999
       objectReference: {fileID: 0}
     - target: {fileID: 9183256227791019032, guid: c5bdca1933fde624698bb8c6d6daa44b,
         type: 3}
@@ -8730,6 +8740,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Props - Altar 01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947911505737750455, guid: c5bdca1933fde624698bb8c6d6daa44b,
+        type: 3}
+      propertyPath: m_TagString
+      value: LV99999
       objectReference: {fileID: 0}
     - target: {fileID: 7947911505844789838, guid: c5bdca1933fde624698bb8c6d6daa44b,
         type: 3}
@@ -15350,6 +15365,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Props - Altar 01
       objectReference: {fileID: 0}
+    - target: {fileID: 7947911505737750455, guid: c5bdca1933fde624698bb8c6d6daa44b,
+        type: 3}
+      propertyPath: m_TagString
+      value: LV55555
+      objectReference: {fileID: 0}
     - target: {fileID: 9183256227791019032, guid: c5bdca1933fde624698bb8c6d6daa44b,
         type: 3}
       propertyPath: m_Color.b
@@ -17682,7 +17702,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

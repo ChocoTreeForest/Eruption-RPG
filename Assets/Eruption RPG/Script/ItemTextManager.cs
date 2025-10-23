@@ -80,6 +80,15 @@ public static class ItemTextManager
         if (itemData.specialEffectType == SpecialEffectType.Focus) lines.Add("전투 당 한 번 치명적인 공격을 받아도 HP 1로 버틴다.");
         if (itemData.specialEffectType == SpecialEffectType.Guts) lines.Add($"치명적인 공격을 받았을 때 {itemData.effectValue}%의 확률로 HP 1로 버틴다.");
         if (itemData.specialEffectType == SpecialEffectType.InstanceKill) lines.Add($"공격 시 {itemData.effectValue}%의 확률로 적이 즉사한다.");
+        if (itemData.specialEffectType == SpecialEffectType.Charm)
+        {
+            lines.Add("인카운터 게이지 증가 속도가 감소한다.");
+            
+            if (itemData.effectValue > 0)
+            {
+                lines.Add($"인카운터 게이지가 {itemData.effectValue}% 미만일 때 인카운터 되지 않는다.");
+            }
+        }
 
         return string.Join("\n", lines);
     }

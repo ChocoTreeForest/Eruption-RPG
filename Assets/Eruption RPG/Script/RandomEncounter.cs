@@ -71,15 +71,33 @@ public class RandomEncounter : MonoBehaviour
     }
 
     //랜덤 값 설정
-    void SetRandomValue()
+    public void SetRandomValue()
     {
         randomValue = Random.value;
+
+        foreach (var acc in EquipmentManager.Instance.accessorySlots)
+        {
+            if (acc != null && acc.specialEffectType == SpecialEffectType.Charm)
+            {
+                randomValue = Random.Range(acc.effectValue / 100f, 1f); // 부적류 장착 시 effectValue 이상으로 설정
+            }
+        }
+
         Debug.Log($"설정된 랜덤 값: {randomValue}");
     }
 
     void IncreaseEncounterChance()
     {
         float increaseRate = 0.002f; //초당 10%씩 확률 증가
+        
+        foreach (var acc in EquipmentManager.Instance.accessorySlots)
+        {
+            if (acc != null && acc.specialEffectType == SpecialEffectType.Charm)
+            {
+                increaseRate = increaseRate / 1.5f; // 부적류 장착 시 확률 증가 속도 감소
+            }
+        }
+
         encounterChance = Mathf.Min(encounterChance + increaseRate, 1f); //확률이 최대 100%까지 증가
 
         if (GameCore.Instance.isInInfinityMode)

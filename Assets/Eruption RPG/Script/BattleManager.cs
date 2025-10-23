@@ -121,6 +121,11 @@ public class BattleManager : MonoBehaviour
             else
             {
                 BattleUIManager.Instance.OpenStatus();
+
+                if (!GameCore.Instance.isInInfinityMode && !PlayerStatus.Instance.gameOver)
+                {
+                    StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
+                }
             }
         }
         else
@@ -136,6 +141,11 @@ public class BattleManager : MonoBehaviour
                 Vector2 symbolPos = symbolEncounter.transform.position;
                 Vector2 belowSymbol = new Vector2(symbolPos.x, symbolPos.y - 2f);
                 PlayerStatus.Instance.transform.position = belowSymbol;
+            }
+
+            if (!GameCore.Instance.isInInfinityMode && !PlayerStatus.Instance.gameOver)
+            {
+                StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
             }
         }
 
@@ -165,11 +175,6 @@ public class BattleManager : MonoBehaviour
             GameOverUIManager.Instance.ShowGameOverPanel();
             // 게임 오버 브금은 GameOverUIManager에서 재생
             yield break;
-        }
-
-        if (!GameCore.Instance.isInInfinityMode)
-        {
-            StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -337,6 +342,11 @@ public class BattleManager : MonoBehaviour
         else
         {
             BattleUIManager.Instance.OpenStatus();
+
+            if (!GameCore.Instance.isInInfinityMode && !PlayerStatus.Instance.gameOver)
+            {
+                StartCoroutine(AudioManager.Instance.PlayBGM(mapBGM));
+            }
         }
     }
 

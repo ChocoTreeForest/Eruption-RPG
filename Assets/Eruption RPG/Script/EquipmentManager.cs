@@ -9,6 +9,7 @@ public class EquipmentManager : MonoBehaviour
     public static EquipmentManager Instance;
 
     public PlayerStatus playerStatus;
+    public RandomEncounter randomEncounter;
 
     public ItemData weaponSlot; // ¹«±â ½½·Ô
     public ItemData armorSlot; // ¹æ¾î±¸ ½½·Ô
@@ -143,6 +144,11 @@ public class EquipmentManager : MonoBehaviour
                     accessorySlots[slotIndex] = newItem;
 
                     StatsUpdater.Instance.UpdateStats();
+
+                    if (newItem.specialEffectType == SpecialEffectType.Charm)
+                    {
+                        randomEncounter.SetRandomValue();
+                    }
 
                     if (!isLoadingPreset)
                     {

@@ -11,6 +11,7 @@ public enum SpecialEffectType
     Focus, // 피 1로 한 번 버티기
     Guts, // 일정 확률로 체력 1로 버티기
     InstanceKill, // 일정 확률로 적 즉사
+    Charm // 인카운터 관련 템
 }
 
 [CreateAssetMenu(fileName = "NewItemData", menuName = "Item/Item Data")]
@@ -41,7 +42,8 @@ public class ItemData : ScriptableObject
 
     public bool specialItem;
     public bool criticalRing;
+    public bool charm;
 
     public SpecialEffectType specialEffectType = SpecialEffectType.None;
-    public float effectValue; // 회복 비율, 버티기 확률 등
+    public float effectValue; // 회복 비율, 버티기 확률 등 특수 효과 관련
 }

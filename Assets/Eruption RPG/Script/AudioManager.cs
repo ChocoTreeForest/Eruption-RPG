@@ -42,7 +42,8 @@ public class AudioManager : MonoBehaviour
         Title,
         TwilightTemple,
         Wasteland,
-        Win
+        Win,
+        GameOver
     }
 
     public enum SFX
@@ -133,8 +134,8 @@ public class AudioManager : MonoBehaviour
             bgmIndex = loopIndex;
             bgmPlayers[loopIndex].clip = bgmClips[(int)bgm + randomIndex];
 
-            // 승리 브금은 루프 끄기
-            if (bgm == BGM.Win)
+            // 승리 브금 및 게임 오버 브금은 반복 재생 X
+            if (bgm == BGM.Win || bgm == BGM.GameOver)
             {
                 bgmPlayers[loopIndex].loop = false;
             }

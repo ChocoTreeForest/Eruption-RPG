@@ -69,7 +69,6 @@ public class MenuUIManager : MonoBehaviour
 
         menuPanel.SetActive(false);
         statusPanel.SetActive(true);
-        isPanelOpen = true;
         raycastBlocker.SetActive(true);
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
@@ -77,6 +76,11 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseStatusPanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            statusPanel.GetComponent<Image>().color = previousColor;
+        }
+
         if (!PlayerStatus.Instance.gameOver) menuPanel.SetActive(true);
         if (PlayerStatus.Instance.gameOver) raycastBlocker.SetActive(false);
 
@@ -100,6 +104,11 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseEquipmentPanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            equipmentPanel.GetComponent<Image>().color = previousColor;
+        }
+
         if (!PlayerStatus.Instance.gameOver) menuPanel.SetActive(true);
         if (PlayerStatus.Instance.gameOver) raycastBlocker.SetActive(false);
 
@@ -146,6 +155,11 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseStatusPresetPanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            statusPresetPanel.GetComponent<Image>().color = previousColor;
+        }
+
         statusPanel.SetActive(true);
         statusPresetPanel.SetActive(false);
 
@@ -168,6 +182,11 @@ public class MenuUIManager : MonoBehaviour
     }
     public void CloseWeaponChangePanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            weaponChangePanel.GetComponent<Image>().color = previousColor;
+        }
+
         equipmentPanel.SetActive(true);
         weaponChangePanel.SetActive(false);
 
@@ -191,6 +210,11 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseArmorChangePanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            armorChangePanel.GetComponent<Image>().color = previousColor;
+        }
+
         equipmentPanel.SetActive(true);
         armorChangePanel.SetActive(false);
 
@@ -199,6 +223,11 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseAccessoryChangePanel()
     {
+        if (PlayerStatus.Instance.gameOver)
+        {
+            accessoryChangePanel.GetComponent<Image>().color = previousColor;
+        }
+
         equipmentPanel.SetActive(true);
         accessoryChangePanel.SetActive(false);
 

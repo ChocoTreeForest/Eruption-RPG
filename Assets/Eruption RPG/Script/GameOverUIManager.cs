@@ -57,6 +57,8 @@ public class GameOverUIManager : MonoBehaviour
     {
         if (PlayerStatus.Instance.gameOver)
         {
+            StartCoroutine(AudioManager.Instance.PlayBGM(AudioManager.BGM.GameOver));
+
             gameOverPanel.SetActive(true);
             topPanels.SetActive(false);
             bottomPanels.SetActive(false);
