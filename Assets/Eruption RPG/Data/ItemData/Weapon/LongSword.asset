@@ -17,7 +17,7 @@ MonoBehaviour:
   id: 12
   itemName: LongSword
   itemType: 0
-  price: 0
+  price: 200000
   icon: {fileID: 66996471, guid: f578eb58400b6374fb4d45b8bcf4a05c, type: 3}
   bonusHealth: 0
   bonusAttack: 1000
@@ -34,5 +34,6 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 0
+  charm: 0
   specialEffectType: 0
   effectValue: 0

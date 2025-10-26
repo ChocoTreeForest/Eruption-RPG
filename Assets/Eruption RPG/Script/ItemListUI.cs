@@ -49,7 +49,7 @@ public class ItemListUI : MonoBehaviour
 
             GameObject slot = Instantiate(itemSlotPrefab, weaponContentParent);
             ItemSlotUI slotUI = slot.GetComponent<ItemSlotUI>();
-            slotUI.SetData(item, false);
+            slotUI.SetData(item);
         }
     }
 
@@ -70,7 +70,7 @@ public class ItemListUI : MonoBehaviour
 
             GameObject slot = Instantiate(itemSlotPrefab, armorContentParent);
             ItemSlotUI slotUI = slot.GetComponent<ItemSlotUI>();
-            slotUI.SetData(item, false);
+            slotUI.SetData(item);
         }
     }
 
@@ -91,7 +91,7 @@ public class ItemListUI : MonoBehaviour
 
             GameObject slot = Instantiate(itemSlotPrefab, accessoryContentParent);
             ItemSlotUI slotUI = slot.GetComponent<ItemSlotUI>();
-            slotUI.SetData(item, false);
+            slotUI.SetData(item);
         }
     }
 }

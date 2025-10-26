@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 public class ItemBuyEquip : MonoBehaviour
 {
     public static ItemBuyEquip Instance;
@@ -74,7 +75,7 @@ public class ItemBuyEquip : MonoBehaviour
         int slotIndex = AccessoryUIManager.Instance.GetCurrentSlotIndex();
         bool isEquipped = false;
         bool maxEquipped = false;
-        
+
 
         switch (itemData.itemType)
         {
@@ -190,9 +191,33 @@ public class ItemBuyEquip : MonoBehaviour
     void UpdateBuyEquipPanel()
     {
         int price = EquipmentManager.Instance.GetCurrentPrice(itemData);
+        int ownedCount = EquipmentManager.Instance.GetItemCount(itemData);
 
-        buyEquipPanelText.text = $"{itemData.itemName}\n" +
-                                 $"보유 RUP: {PlayerStatus.Instance.GetCurrentMoney():N0} RUP\n" +
-                                 $"가격: {price:N0} RUP";
+        string tableName = "UIText";
+        string key = price == 0 ? "UnavailableBuy" : "AvailableBuy";
+
+        if (ownedCount >= EquipmentManager.Instance.MaxItemCount(itemData.itemType))
+        {
+            key = "UnavailableBuy";
+        }
+
+        var localizedString = new LocalizedString(tableName, key);
+
+        localizedString.Arguments = new object[]
+        {
+            new
+            {
+                itemName = itemData.itemName,
+                money = PlayerStatus.Instance.GetCurrentMoney().ToString("N0"),
+                price = price.ToString("N0")
+            }
+        };
+
+        localizedString.StringChanged += (localizedText) =>
+        {
+            buyEquipPanelText.text = localizedText;
+        };
+
+        localizedString.RefreshString();
     }
 }

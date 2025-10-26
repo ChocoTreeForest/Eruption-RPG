@@ -17,10 +17,10 @@ MonoBehaviour:
   id: 207
   itemName: Small Ruby
   itemType: 2
-  price: 0
+  price: 65000
   icon: {fileID: 70287351, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
-  bonusAttack: 800
+  bonusAttack: 1500
   bonusDefence: 0
   bonusLuck: 0
   bonusCriticalChance: 0
@@ -34,5 +34,6 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 0
+  charm: 0
   specialEffectType: 0
   effectValue: 0

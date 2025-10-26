@@ -17,7 +17,7 @@ MonoBehaviour:
   id: 233
   itemName: Old Charm
   itemType: 2
-  price: 1
+  price: 100000
   icon: {fileID: 63987472, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 0

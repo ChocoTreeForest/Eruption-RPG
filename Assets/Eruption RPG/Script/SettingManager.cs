@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 public class SettingManager : MonoBehaviour
 {
@@ -13,12 +14,27 @@ public class SettingManager : MonoBehaviour
 
     private bool openStatusAfterBattle; // true면 On, false면 Off
 
+    public Toggle koreanToggle;
+    public Toggle englishToggle;
+
+    private string currentLocaleCode;
+    private bool isChangingLocale = false;
+
     void Start()
     {
         AudioManager.Instance.bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
         AudioManager.Instance.sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
         openStatusAfterBattle = PlayerPrefs.GetInt("OpenStatusAfterBattle", 1) == 1;
+
+        currentLocaleCode = PlayerPrefs.GetString("Language", "ko");
+        SetLocale(currentLocaleCode);
+
+        koreanToggle.isOn = currentLocaleCode == "ko";
+        englishToggle.isOn = currentLocaleCode == "en";
+
+        koreanToggle.onValueChanged.AddListener((isOn) => { if (isOn) ChangeLanguage("ko"); });
+        englishToggle.onValueChanged.AddListener((isOn) => { if (isOn) ChangeLanguage("en"); });
 
         UpdateSetting();
     }
@@ -85,5 +101,33 @@ public class SettingManager : MonoBehaviour
     public bool GetStatusOpenSetting()
     {
         return openStatusAfterBattle;
+    }
+
+    public void ChangeLanguage(string code)
+    {
+        if (isChangingLocale) return;
+        isChangingLocale = true;
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
+
+        // 로케일 변경
+        var locale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == code);
+        if (locale != null)
+        {
+            LocalizationSettings.SelectedLocale = locale;
+            PlayerPrefs.SetString("Language", code);
+            currentLocaleCode = code;
+        }
+
+        isChangingLocale = false;
+    }
+
+    private void SetLocale(string code)
+    {
+        var locale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == code);
+        if (locale != null)
+        {
+            LocalizationSettings.SelectedLocale = locale;
+        }
     }
 }

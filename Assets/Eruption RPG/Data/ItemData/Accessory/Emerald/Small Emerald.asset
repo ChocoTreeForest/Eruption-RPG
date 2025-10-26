@@ -17,9 +17,9 @@ MonoBehaviour:
   id: 202
   itemName: Small Emerald
   itemType: 2
-  price: 0
+  price: 54000
   icon: {fileID: -1233677106, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
-  bonusHealth: 1500
+  bonusHealth: 3000
   bonusAttack: 0
   bonusDefence: 0
   bonusLuck: 0
@@ -34,5 +34,6 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 0
+  charm: 0
   specialEffectType: 0
   effectValue: 0

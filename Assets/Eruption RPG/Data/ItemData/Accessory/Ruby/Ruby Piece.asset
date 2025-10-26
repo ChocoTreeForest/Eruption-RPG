@@ -17,7 +17,7 @@ MonoBehaviour:
   id: 206
   itemName: Ruby Piece
   itemType: 2
-  price: 0
+  price: 4200
   icon: {fileID: -815112938, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 300
@@ -34,5 +34,6 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 0
+  charm: 0
   specialEffectType: 0
   effectValue: 0

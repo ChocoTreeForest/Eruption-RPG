@@ -45,6 +45,13 @@ public class RandomEncounter : MonoBehaviour
     {
         if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen || PlayerStatus.Instance.gameOver || BattleManager.Instance.sceneChanging) return;
 
+        StartCoroutine(Wait1Frame());
+    }
+
+    IEnumerator Wait1Frame()
+    {
+        yield return null;
+
         if (playerController.inputVec.magnitude > 0f)
         {
             IncreaseEncounterChance();

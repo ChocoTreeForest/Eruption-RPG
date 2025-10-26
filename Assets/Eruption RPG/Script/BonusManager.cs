@@ -36,6 +36,7 @@ public class BonusManager : MonoBehaviour
     {
         currentBonus = BonusType.EXP;
         battleCountSinceBonus = 0;
+        PlayerUIUpdater.Instance.UpdateBonus();
     }
 
     // 전투 종료 시 호출

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class BattleLogManager : MonoBehaviour
@@ -45,29 +46,59 @@ public class BattleLogManager : MonoBehaviour
         {
             if (entry.ContainsKey(key))
             {
-                string rawText = entry[key];
-                string formattedText = string.Format(rawText, values);
+                string localizationKey = entry[key];
+                var localizedString = new LocalizedString("BattleLog", localizationKey);
 
-                Debug.Log($"[BattleLogManager] {category} - {key} ¡æ {formattedText}");
-                logQueue.Enqueue(formattedText);
-
-                if (logQueue.Count > maxLogcount)
+                if (values != null && values.Length > 0)
                 {
-                    logQueue.Dequeue();
+                    localizedString.Arguments = values;
                 }
 
-                if (category == "BattleWin" || category == "BattleDefeat")
+                localizedString.GetLocalizedStringAsync().Completed += handle =>
                 {
-                    if (typingCoroutine == null)
+                    string text = handle.Result;
+                    logQueue.Enqueue(text);
+
+                    if (logQueue.Count > maxLogcount)
                     {
-                        typingCoroutine = StartCoroutine(TypeEffect());
+                        logQueue.Dequeue();
                     }
-                }
-                else
-                {
-                    battleLog.text = string.Join("\n", logQueue.ToArray());
-                }
-                return;
+
+                    if (category == "BattleWin" || category == "BattleDefeat")
+                    {
+                        if (typingCoroutine == null)
+                        {
+                            typingCoroutine = StartCoroutine(TypeEffect());
+                        }
+                    }
+                    else
+                    {
+                        battleLog.text = string.Join("\n", logQueue.ToArray());
+                    }
+                };
+                //string rawText = entry[key];
+                //string formattedText = string.Format(rawText, values);
+
+                //Debug.Log($"[BattleLogManager] {category} - {key} ¡æ {formattedText}");
+                //logQueue.Enqueue(formattedText);
+
+                //if (logQueue.Count > maxLogcount)
+                //{
+                //    logQueue.Dequeue();
+                //}
+
+                //if (category == "BattleWin" || category == "BattleDefeat")
+                //{
+                //    if (typingCoroutine == null)
+                //    {
+                //        typingCoroutine = StartCoroutine(TypeEffect());
+                //    }
+                //}
+                //else
+                //{
+                //    battleLog.text = string.Join("\n", logQueue.ToArray());
+                //}
+                //return;
             }
         }
     }

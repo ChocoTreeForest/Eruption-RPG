@@ -1,30 +1,30 @@
 {
   "BattleStart": [
-    { "START": "적 등장!" },
-    { "CONTINUE": "계속하려면 화면을 터치하세요." }
+    { "START": "BattleStart_START" },
+    { "CONTINUE": "BattleStart_CONTINUE" }
   ],
   "InBattle": [
-    { "ATTACK": "적에게 {0}의 데미지!" },
-    { "DAMAGED": "적으로부터 {0}의 데미지!" },
-    { "CRITICAL": "적에게 {0}의 크리티컬 데미지!" },
-    { "HEAL": "체력 {0} 회복!" },
-    { "FOCUS": "기합의 펜던트로 버텼다!" },
-    { "GUTS": "근성의 펜던트로 버텼다!" },
-    { "INSTKILL": "적 즉사!" }
+    { "ATTACK": "InBattle_ATTACK" },
+    { "DAMAGED": "InBattle_DAMAGED" },
+    { "CRITICAL": "InBattle_CRITICAL" },
+    { "HEAL": "InBattle_HEAL" },
+    { "FOCUS": "InBattle_FOCUS" },
+    { "GUTS": "InBattle_GUTS" },
+    { "INSTKILL": "InBattle_INSTKILL" }
   ],
   "BattleWin": [
-    { "WIN": "승리!" },
-    { "BPDEC": "BP 1 감소" },
-    { "BPINC": "BP {0} 획득!" },
-    { "MONEY": "{0} RUP 획득!" },
-    { "EXP": "{0} EXP 획득!" },
-    { "LEVELUP": "레벨 업! {0} LV이 됐습니다!" },
-    { "ITEM": "{0} 획득!" },
-    { "CONTINUE": "계속하려면 화면을 터치하세요." }
+    { "WIN": "BattleWin_WIN" },
+    { "BPDEC": "BattleWin_BPDEC" },
+    { "BPINC": "BattleWin_BPINC" },
+    { "MONEY": "BattleWin_MONEY" },
+    { "EXP": "BattleWin_EXP" },
+    { "LEVELUP": "BattleWin_LEVELUP" },
+    { "ITEM": "BattleWin_ITEM" },
+    { "CONTINUE": "BattleWin_CONTINUE" }
   ],
   "BattleDefeat": [
-    { "DEFEAT": "패배..." },
-    { "BP": "BP 3 감소" },
-    { "CONTINUE": "계속하려면 화면을 터치하세요." }
+    { "DEFEAT": "BattleDefeat_DEFEAT" },
+    { "BP": "BattleDefeat_BP" },
+    { "CONTINUE": "BattleDefeat_CONTINUE" }
   ]
 }

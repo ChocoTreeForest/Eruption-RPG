@@ -17,7 +17,7 @@ MonoBehaviour:
   id: 107
   itemName: Knight Armor
   itemType: 1
-  price: 0
+  price: 99000
   icon: {fileID: -998586830, guid: e98a12f58f8a02648b272e5fe078a893, type: 3}
   bonusHealth: 0
   bonusAttack: 0
@@ -34,5 +34,6 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 0
+  charm: 0
   specialEffectType: 0
   effectValue: 0

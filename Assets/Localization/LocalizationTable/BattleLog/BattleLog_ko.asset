@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: BattleLog_ko
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: de1cef2147eb103499d7e7e36d8e9305, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 181678372668309527
+  m_TableData:
+  - m_Id: 128999555072
+    m_Localized: "\uC801 \uB4F1\uC7A5!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425780117504
+    m_Localized: "\uACC4\uC18D\uD558\uB824\uBA74 \uD654\uBA74\uC744 \uD130\uCE58\uD558\uC138\uC694."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 581619482624
+    m_Localized: "\uC801\uC5D0\uAC8C {0}\uC758 \uB370\uBBF8\uC9C0!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 859274018816
+    m_Localized: "\uC801\uC73C\uB85C\uBD80\uD130 {0}\uC758 \uB370\uBBF8\uC9C0!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 933227986944
+    m_Localized: "\uC801\uC5D0\uAC8C {0}\uC758 \uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 1009027448832
+    m_Localized: "\uCCB4\uB825 {0} \uD68C\uBCF5!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 1059854024704
+    m_Localized: "\uAE30\uD569\uC758 \uD39C\uB358\uD2B8\uB85C \uBC84\uD17C\uB2E4!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1122147827712
+    m_Localized: "\uADFC\uC131\uC758 \uD39C\uB358\uD2B8\uB85C \uBC84\uD17C\uB2E4!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1166590672896
+    m_Localized: "\uC801 \uC989\uC0AC!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1208638570496
+    m_Localized: "\uC2B9\uB9AC!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1263172911104
+    m_Localized: "BP 1 \uAC10\uC18C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1331141607424
+    m_Localized: "BP {0} \uD68D\uB4DD!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 1387353669632
+    m_Localized: "{0} RUP \uD68D\uB4DD!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 1441120452608
+    m_Localized: "{0} EXP \uD68D\uB4DD!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 1483063492608
+    m_Localized: "\uB808\uBCA8 \uC5C5! {0} LV\uC774 \uB410\uC2B5\uB2C8\uB2E4!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 1566572085248
+    m_Localized: "{0} \uD68D\uB4DD!"
+    m_Metadata:
+      m_Items:
+      - rid: 181678372668309527
+  - m_Id: 1814111518720
+    m_Localized: "\uACC4\uC18D\uD558\uB824\uBA74 \uD654\uBA74\uC744 \uD130\uCE58\uD558\uC138\uC694."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1883028127744
+    m_Localized: "\uD328\uBC30..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1951919570944
+    m_Localized: "BP 3 \uAC10\uC18C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1981170647040
+    m_Localized: "\uACC4\uC18D\uD558\uB824\uBA74 \uD654\uBA74\uC744 \uD130\uCE58\uD558\uC138\uC694."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 181678372668309527
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0000396b870000000000b910c80000000000b948d90000000000b9eeea000000000039ee350100000000b90443010000000079894f0100000000794d590100000000f9be6c010000

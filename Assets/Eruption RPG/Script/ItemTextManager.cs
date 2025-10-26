@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public static class ItemTextManager
 {
@@ -61,12 +62,30 @@ public static class ItemTextManager
             itemData.bonusDefence != 0 && itemData.bonusLuck != 0)
         {
             lines.Clear();
-            lines.Add($"모든 스테이터스 {itemData.bonusAttack}");
+
+            LocalizedString allStatsText = new LocalizedString("ItemDescription", "AllStats");
+
+            allStatsText.Arguments = new object[] { itemData.bonusAttack };
+
+            lines.Add(allStatsText.GetLocalizedString());
         }
         if (itemData.healthMultiplier != 0 && itemData.attackMultiplier != 0 &&
             itemData.defenceMultiplier != 0 && itemData.luckMultiplier != 0)
         {
-            lines.Add($"모든 스테이터스% {itemData.attackMultiplier}%");
+            LocalizedString allStatsMulText = new LocalizedString("ItemDescription", "AllStatsMul");
+
+            allStatsMulText.Arguments = new object[] { itemData.attackMultiplier };
+
+            lines.Add(allStatsMulText.GetLocalizedString());
+        }
+
+        if (itemData.specialEffectType != SpecialEffectType.None)
+        {
+            string effectText = GetEffectText(itemData.specialEffectType, itemData.effectValue);
+            if (!string.IsNullOrEmpty(effectText))
+            {
+                lines.Add(effectText);
+            }
         }
 
         if (itemData.bonusCriticalChance != 0) lines.Add($"CRIT% {itemData.bonusCriticalChance}%");
@@ -75,21 +94,50 @@ public static class ItemTextManager
         if (itemData.speedMultiplier != 0) lines.Add($"Speed {itemData.speedMultiplier}%");
         if (itemData.bonusEXPMultiplier != 0) lines.Add($"EXP Drop {itemData.bonusEXPMultiplier}%");
         if (itemData.bonusMoneyMultiplier != 0) lines.Add($"RUP Drop {itemData.bonusMoneyMultiplier}%");
-        
-        if (itemData.specialEffectType == SpecialEffectType.Recovery) lines.Add($"공격 시 데미지의 {itemData.effectValue}%를 회복한다.");
-        if (itemData.specialEffectType == SpecialEffectType.Focus) lines.Add("전투 당 한 번 치명적인 공격을 받아도 HP 1로 버틴다.");
-        if (itemData.specialEffectType == SpecialEffectType.Guts) lines.Add($"치명적인 공격을 받았을 때 {itemData.effectValue}%의 확률로 HP 1로 버틴다.");
-        if (itemData.specialEffectType == SpecialEffectType.InstanceKill) lines.Add($"공격 시 {itemData.effectValue}%의 확률로 적이 즉사한다.");
-        if (itemData.specialEffectType == SpecialEffectType.Charm)
-        {
-            lines.Add("인카운터 게이지 증가 속도가 감소한다.");
-            
-            if (itemData.effectValue > 0)
-            {
-                lines.Add($"인카운터 게이지가 {itemData.effectValue}% 미만일 때 인카운터 되지 않는다.");
-            }
-        }
+
 
         return string.Join("\n", lines);
+    }
+
+    private static string GetEffectText(SpecialEffectType type, float value)
+    {
+        LocalizedString effectText = null;
+
+        switch (type)
+        {
+            case SpecialEffectType.Recovery:
+                effectText = new LocalizedString("ItemDescription", "Recovery");
+                effectText.Arguments = new object[] { value };
+                break;
+
+            case SpecialEffectType.Focus:
+                effectText = new LocalizedString("ItemDescription", "Focus");
+                break;
+
+            case SpecialEffectType.Guts:
+                effectText = new LocalizedString("ItemDescription", "Guts");
+                effectText.Arguments = new object[] { value };
+                break;
+
+            case SpecialEffectType.InstanceKill:
+                effectText = new LocalizedString("ItemDescription", "InstantKill");
+                effectText.Arguments = new object[] { value };
+                break;
+
+            case SpecialEffectType.Charm:
+                LocalizedString baseText = new LocalizedString("ItemDescription", "Charm");
+                string result = baseText.GetLocalizedString();
+
+                if (value > 0)
+                {
+                    LocalizedString valueText = new LocalizedString("ItemDescription", "CharmEffect");
+                    valueText.Arguments = new object[] { value };
+                    result += "\n" + valueText.GetLocalizedString();
+                }
+
+                return result;
+        }
+
+        return effectText?.GetLocalizedString();
     }
 }

@@ -42,6 +42,7 @@ public class GameCore : MonoBehaviour
             DataManager.Instance.LoadSessionData();
             DataManager.Instance.LoadPermanentData();
             settingManager.UpdateSetting();
+            PlayerUIUpdater.Instance.UpdateBonus();
 
             StartCoroutine(MenuUIManager.Instance.FadeIn());
             initialized = true;

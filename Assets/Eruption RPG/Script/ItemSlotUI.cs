@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class ItemSlotUI : MonoBehaviour
 {
@@ -17,15 +19,16 @@ public class ItemSlotUI : MonoBehaviour
     private ItemData itemData;
     private bool isUnlocked;
     private bool canBuy;
-    private bool isEquipped;
 
+    private LocalizedString cannotBuyText = new LocalizedString("UIText", "CannotBuyInSlotUI");
+    private LocalizedString equippedItemText = new LocalizedString("UIText", "EquippedText");
+    private LocalizedString equippedCountText = new LocalizedString("UIText", "AccessoryEquippedText");
 
-    public void SetData(ItemData data, bool equipped = false)
+    public void SetData(ItemData data)
     {
         itemData = data;
         isUnlocked = EquipmentManager.Instance.HasItem(data);
         canBuy = itemData.price > 0;
-        isEquipped = equipped;
 
         buyEquipButton.onClick.RemoveAllListeners();
         buyEquipButton.onClick.AddListener(OnClickSlot);
@@ -34,11 +37,18 @@ public class ItemSlotUI : MonoBehaviour
 
     private void UpdateUI()
     {
+        int itemCount = EquipmentManager.Instance.GetItemCount(itemData);
+
         if (isUnlocked || canBuy)
         {
             icon.sprite = itemData.icon;
 
             itemStatus.text = GetItemStatusText();
+
+            if (itemCount >= EquipmentManager.Instance.MaxItemCount(itemData.itemType))
+            {
+                canBuy = false;
+            }
 
             if (canBuy)
             {
@@ -47,19 +57,29 @@ public class ItemSlotUI : MonoBehaviour
             }
             else
             {
-                priceText.text = "구매 불가";
+                var handle = cannotBuyText.GetLocalizedStringAsync();
+                handle.Completed += (operation) =>
+                {
+                    priceText.GetComponent<Text>().text = operation.Result;
+                };
             }
+
             buyEquipButton.interactable = true;
         }
         else
         {
             icon.sprite = unknownSprite;
             itemStatus.text = "";
-            priceText.text = "구매 불가";
+
+            var handle = cannotBuyText.GetLocalizedStringAsync();
+            handle.Completed += (operation) =>
+            {
+                priceText.GetComponent<Text>().text = operation.Result;
+            };
+
             buyEquipButton.interactable = false;
         }
 
-        int itemCount = EquipmentManager.Instance.GetItemCount(itemData);
         itemCountText.text = $"x {itemCount}";
 
         UpdateEquippedText();
@@ -79,11 +99,21 @@ public class ItemSlotUI : MonoBehaviour
         if (EquipmentManager.Instance.weaponSlot == itemData)
         {
             isEquipped = true;
+            var handle = equippedItemText.GetLocalizedStringAsync();
+            handle.Completed += (operation) =>
+            {
+                equippedText.GetComponent<Text>().text = operation.Result;
+            };
         }
 
         if (EquipmentManager.Instance.armorSlot == itemData)
         {
             isEquipped = true;
+            var handle = equippedItemText.GetLocalizedStringAsync();
+            handle.Completed += (operation) =>
+            {
+                equippedText.GetComponent<Text>().text = operation.Result;
+            };
         }
 
         if (itemData.itemType == ItemType.Accessory)
@@ -94,18 +124,12 @@ public class ItemSlotUI : MonoBehaviour
                 {
                     int equippedCount = EquipmentManager.Instance.accessorySlots.Count(item => item == itemData);
 
-                    if (equippedCount == 1)
+                    equippedCountText.Arguments = new object[] { equippedCount };
+                    var handle = equippedCountText.GetLocalizedStringAsync();
+                    handle.Completed += (operation) =>
                     {
-                        equippedText.GetComponent<Text>().text = "장착 중(1)";
-                    }
-                    else if (equippedCount == 2)
-                    {
-                        equippedText.GetComponent<Text>().text = "장착 중(2)";
-                    }
-                    else if (equippedCount >= 3)
-                    {
-                        equippedText.GetComponent<Text>().text = "장착 중(3)";
-                    }
+                        equippedText.GetComponent<Text>().text = operation.Result;
+                    };
 
                     isEquipped = true;
                     break;

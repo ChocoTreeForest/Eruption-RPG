@@ -1,0 +1,377 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UIText Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UIText
+  m_TableCollectionNameGuidString: ba0609009bd59f04892bd21b8c8a1698
+  m_Entries:
+  - m_Id: 221098082304
+    m_Key: PlayButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389751046144
+    m_Key: InfinityModeButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 531933757440
+    m_Key: AbilityButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 589836124160
+    m_Key: SettingButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 637030432768
+    m_Key: ExitButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1556811939840
+    m_Key: StatusButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2009566085120
+    m_Key: EquipmentButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2073277562880
+    m_Key: SettingButtonInMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2259995394048
+    m_Key: TitleButtonInMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2438085541888
+    m_Key: EndButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4582540902400
+    m_Key: StatusText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4816490790912
+    m_Key: APText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6873612353536
+    m_Key: OKButtonInStatus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6962485460992
+    m_Key: CancelButtonInStatus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7176847949824
+    m_Key: PresetButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7256690720768
+    m_Key: StatusPresetText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7437867876352
+    m_Key: StatusPresetDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7809055391744
+    m_Key: StatusPresetSettingText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8339454492672
+    m_Key: Preset1Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8395561697280
+    m_Key: Preset2Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8441292193792
+    m_Key: Preset3Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8706430926848
+    m_Key: ApplyButtonInStatusPreset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8952292638720
+    m_Key: EquipmentText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9475536257024
+    m_Key: WeaponText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9596789391360
+    m_Key: ArmorText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9970724175872
+    m_Key: AccessoryText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10236538191872
+    m_Key: UnequipAccessoryButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11172924948480
+    m_Key: UnequipAlertText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12477160554496
+    m_Key: ApplyButtonInUnequip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12614310100992
+    m_Key: CancelButtonInUnequip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12694006071296
+    m_Key: ChangeWeaponText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14069305769984
+    m_Key: ChangeArmorText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14145453359104
+    m_Key: ChangeAccessoryText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16635548729344
+    m_Key: EquipmentBuyEquipText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16889048268800
+    m_Key: BuyButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16974666596352
+    m_Key: EquipButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17124499718144
+    m_Key: EquippedText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18272858210304
+    m_Key: SettingText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18854713032704
+    m_Key: BattleWinSettingText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19101522657280
+    m_Key: LanguageText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21001299099648
+    m_Key: SaveDataText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22019944546304
+    m_Key: OkButtonInAlert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22167684710400
+    m_Key: CancelButtonInAlert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22228128825344
+    m_Key: LoadDataText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23475405783040
+    m_Key: SaveDataButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23532112773120
+    m_Key: LoadDataButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24126730862592
+    m_Key: CreditsButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24621415464960
+    m_Key: AbilityText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24744186937344
+    m_Key: AbilityDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27593998401536
+    m_Key: AbilityLVText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27947569840128
+    m_Key: PointText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28551809662976
+    m_Key: ResetButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29584380198912
+    m_Key: AreaInfoText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29816652365824
+    m_Key: BonusText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29866531028992
+    m_Key: EncounterGaugeText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29944901599232
+    m_Key: EncounterButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30366747918336
+    m_Key: GameOverText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30414508457984
+    m_Key: FreeEXPText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30786484502528
+    m_Key: BattleCountText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30896337518592
+    m_Key: KilledBossText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31019918491648
+    m_Key: DefeatCountText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31108401528832
+    m_Key: UsedBPText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31171106373632
+    m_Key: EarnedRUPText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31333987975168
+    m_Key: DroppedItemText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31512245895168
+    m_Key: CurrentRUPText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31846334791680
+    m_Key: HelpText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33608240267264
+    m_Key: BattleButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33655556210688
+    m_Key: RunButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33866705862656
+    m_Key: WinText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33995772985344
+    m_Key: DropText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34349872906240
+    m_Key: BattleLogText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35068982132736
+    m_Key: WinLogText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35137567391744
+    m_Key: DefeatLogText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36047781691392
+    m_Key: MenuText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36286940905472
+    m_Key: BestRecordText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36376308940800
+    m_Key: BestLevelText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37734151946240
+    m_Key: HowToBattleText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38479752396800
+    m_Key: BattleCountInInfinityMode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350476477988864
+    m_Key: AvailableBuy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350991442051072
+    m_Key: UnavailableBuy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358597854298112
+    m_Key: CannotBuyInSlotUI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364958877024256
+    m_Key: AccessoryEquippedText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 406448173023232
+    m_Key: EndAlert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 407151486500864
+    m_Key: TitleAlert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 409287444201472
+    m_Key: CurrentPreset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 741226403397632
+    m_Key: DamageReductionBonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 741409509933056
+    m_Key: InstantKillBonus
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 181678350997651483
+  references:
+    version: 2
+    RefIds:
+    - rid: 181678350997651483
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1761278697897

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class PlayerUIUpdater : MonoBehaviour
@@ -87,11 +88,25 @@ public class PlayerUIUpdater : MonoBehaviour
         }
         else if (BonusManager.Instance.currentBonus == BonusManager.BonusType.DamageReduction)
         {
-            currentBonus.text = "받는 데미지 - 25%";
+            LocalizedString damageReductionBonus = new LocalizedString("UIText", "DamageReductionBonus");
+
+            damageReductionBonus.StringChanged += (localizedText) =>
+            {
+                currentBonus.text = localizedText;
+            };
+
+            damageReductionBonus.RefreshString();
         }
         else if (BonusManager.Instance.currentBonus == BonusManager.BonusType.InstantKill)
         {
-            currentBonus.text = "적 즉사 확률 + 10%";
+            LocalizedString instantKillBonus = new LocalizedString("UIText", "InstantKillBonus");
+
+            instantKillBonus.StringChanged += (localizedText) =>
+            {
+                currentBonus.text = localizedText;
+            };
+
+            instantKillBonus.RefreshString();
         }
     }
 }
