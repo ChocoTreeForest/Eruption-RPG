@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using static UnityEditor.Progress;
+#endif
 
 //드랍템 목록을 유니티 인스펙터에서 추가할 수 있게 하기
 [System.Serializable]

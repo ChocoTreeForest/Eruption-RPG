@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.U2D.Aseprite;
+#endif
 using UnityEngine;
 
 public class RandomEncounter : MonoBehaviour
@@ -50,7 +52,7 @@ public class RandomEncounter : MonoBehaviour
 
     IEnumerator Wait1Frame()
     {
-        yield return null;
+        yield return new WaitForFixedUpdate();
 
         if (playerController.inputVec.magnitude > 0f)
         {

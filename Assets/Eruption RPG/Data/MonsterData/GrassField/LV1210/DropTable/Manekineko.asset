@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a29939e9bd9c9e449f6c0a004ad2d39, type: 3}
   m_Name: Manekineko
   m_EditorClassIdentifier: 
-  money: 840
+  money: 1200
   exp: 14272883
   battlePoint: -1
   dropItems:
   - itemPrefab: {fileID: 4853370357813350752, guid: b3937788c4a3c3744ba779b9bd0f96e8,
       type: 3}
-    dropChance: 5
+    dropChance: 10
   - itemPrefab: {fileID: 2209123918240236415, guid: af171f0bf23f49742a7c6be3541741bc,
       type: 3}
-    dropChance: 3
+    dropChance: 7
   - itemPrefab: {fileID: 3094173581372787020, guid: f921cb49e153373498d1415cb8bc0ac4,
       type: 3}
-    dropChance: 5
+    dropChance: 15
   - itemPrefab: {fileID: 4414211542031584450, guid: 83c88b61cfdfef541a2bfaf50bbffaf5,
       type: 3}
-    dropChance: 5
+    dropChance: 15
   - itemPrefab: {fileID: 6794784210236786078, guid: 7b7d43e7fa73cc746aa965d5257cd302,
       type: 3}
-    dropChance: 5
+    dropChance: 15

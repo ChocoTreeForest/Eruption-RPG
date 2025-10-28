@@ -20,6 +20,11 @@ public class SettingManager : MonoBehaviour
     private string currentLocaleCode;
     private bool isChangingLocale = false;
 
+    void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         AudioManager.Instance.bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);

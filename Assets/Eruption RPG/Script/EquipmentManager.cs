@@ -81,6 +81,16 @@ public class EquipmentManager : MonoBehaviour
             Debug.Log($"기본 방어구 장착: {armorSlot.itemName}");
         }
 
+        if (!ownedItemCounts.ContainsKey(defaultWeapon))
+        {
+            ownedItemCounts[defaultWeapon] = 1;
+        }
+
+        if (!ownedItemCounts.ContainsKey(defaultArmor))
+        {
+            ownedItemCounts[defaultArmor] = 1;
+        }
+
         StatsUpdater.Instance.UpdateStats();
 
         UpdateEquipmentUI();

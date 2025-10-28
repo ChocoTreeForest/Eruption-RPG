@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 956470ca4200a324b9fa50d4e0dab465
   m_SerializeEntries:
+  - m_GUID: 90ebccb8a558aa74fabafa7ad169e88d
+    m_Address: BattleLog_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ab08616647573654395570148219bfbb
     m_Address: UIText_en
     m_ReadOnly: 1
@@ -25,12 +31,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: acad21a33e43ac54ab8589e541bc4b56
     m_Address: ItemDescription_en
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 90ebccb8a558aa74fabafa7ad169e88d
-    m_Address: BattleLog_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

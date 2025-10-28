@@ -17,7 +17,7 @@ MonoBehaviour:
   id: 210
   itemName: Burning Ruby
   itemType: 2
-  price: 1
+  price: 0
   icon: {fileID: -1404987294, guid: c7da35caa2d9c6b459d00f0bcd8a373a, type: 3}
   bonusHealth: 0
   bonusAttack: 35000
@@ -25,7 +25,7 @@ MonoBehaviour:
   bonusLuck: 0
   bonusCriticalChance: 0
   healthMultiplier: 0
-  attackMultiplier: 5
+  attackMultiplier: 10
   defenceMultiplier: 0
   luckMultiplier: 0
   bonusCriticalMultiplier: 0

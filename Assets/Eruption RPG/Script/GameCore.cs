@@ -83,6 +83,7 @@ public class GameCore : MonoBehaviour
     IEnumerator DisableGameCore()
     {
         yield return null;
+        yield return new WaitUntil(() => PlayerStatus.Instance != null && AbilityManager.Instance != null);
         DataManager.Instance.LoadPermanentData();
         PlayerStatus.Instance.ResetStatus();
         BonusManager.Instance.InitializeBonus();

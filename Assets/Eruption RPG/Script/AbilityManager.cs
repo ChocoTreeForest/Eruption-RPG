@@ -36,7 +36,7 @@ public class AbilityManager : MonoBehaviour
     {
         if (PlayerStatus.Instance.points > 0 || hpLevel < 7)
         {
-            hpMultiplier += 2f;
+            hpMultiplier += 5f;
             hpLevel++;
             PlayerStatus.Instance.points--;
 
@@ -50,7 +50,7 @@ public class AbilityManager : MonoBehaviour
     {
         if (PlayerStatus.Instance.points > 0 || atkLevel < 7)
         {
-            atkMultiplier += 2f;
+            atkMultiplier += 5f;
             atkLevel++;
             PlayerStatus.Instance.points--;
 
@@ -64,7 +64,7 @@ public class AbilityManager : MonoBehaviour
     {
         if (PlayerStatus.Instance.points > 0 || defLevel < 7)
         {
-            defMultiplier += 2f;
+            defMultiplier += 5f;
             defLevel++;
             PlayerStatus.Instance.points--;
 
@@ -78,7 +78,7 @@ public class AbilityManager : MonoBehaviour
     {
         if (PlayerStatus.Instance.points > 0 || lukLevel < 7)
         {
-            lukMultiplier += 2f;
+            lukMultiplier += 5f;
             lukLevel++;
             PlayerStatus.Instance.points--;
 
@@ -92,7 +92,7 @@ public class AbilityManager : MonoBehaviour
     {
         if (PlayerStatus.Instance.points > 0 || critDmgLevel < 7)
         {
-            criticalMultiplier += 2f;
+            criticalMultiplier += 5f;
             critDmgLevel++;
             PlayerStatus.Instance.points--;
 

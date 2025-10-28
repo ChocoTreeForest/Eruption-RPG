@@ -357,12 +357,12 @@ public class PlayerStatus : MonoBehaviour
     public void TakeDamage(int monsterDamage)
     {
         BattleEffectManager.Instance.PlayPlayerHitEffect(BattleUIManager.Instance.playerPosition);
-        int minDamage = (int)(monsterDamage * 0.5f);
-        int baseDamage = monsterDamage - Mathf.Min(currentDefence, minDamage); // 방어력의 최대 효율은 몬스터 공격력의 50%
+
+        float reduction = (currentDefence) / (currentDefence + monsterDamage) * 0.75f; // 방어력이 아무리 높아도 몬스터 데미지의 최대 75% 까지만 줄어듦
 
         float damageRNG = Random.Range(0.75f, 1.25f);
 
-        int finalDamage = (int)(baseDamage * damageRNG);
+        int finalDamage = (int)(monsterDamage * reduction * damageRNG);
         if (BonusManager.Instance.HasBonus(BonusManager.BonusType.DamageReduction))
         {
             finalDamage = (int)(finalDamage * 0.75f);

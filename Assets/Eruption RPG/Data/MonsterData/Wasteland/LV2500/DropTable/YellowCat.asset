@@ -18,7 +18,7 @@ MonoBehaviour:
   dropItems:
   - itemPrefab: {fileID: 2209123918240236415, guid: af171f0bf23f49742a7c6be3541741bc,
       type: 3}
-    dropChance: 3
+    dropChance: 7
   - itemPrefab: {fileID: 3623567923054579497, guid: 894cd4ad3cd3e4c449fd7cdd0cda0475,
       type: 3}
-    dropChance: 2
+    dropChance: 15

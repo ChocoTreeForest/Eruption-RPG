@@ -22,14 +22,14 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f3bc99cd101c79249b24374ea73eb365
-    m_Address: Assets/Localization/LocalizationTable/ItemDecription/ItemDescription
-      Shared Data.asset
+  - m_GUID: de1cef2147eb103499d7e7e36d8e9305
+    m_Address: Assets/Localization/LocalizationTable/BattleLog/BattleLog Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: de1cef2147eb103499d7e7e36d8e9305
-    m_Address: Assets/Localization/LocalizationTable/BattleLog/BattleLog Shared Data.asset
+  - m_GUID: f3bc99cd101c79249b24374ea73eb365
+    m_Address: Assets/Localization/LocalizationTable/ItemDecription/ItemDescription
+      Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

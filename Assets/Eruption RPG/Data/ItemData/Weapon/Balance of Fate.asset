@@ -25,7 +25,7 @@ MonoBehaviour:
   bonusLuck: 0
   bonusCriticalChance: 0
   healthMultiplier: 10
-  attackMultiplier: 250
+  attackMultiplier: 300
   defenceMultiplier: 10
   luckMultiplier: 10
   bonusCriticalMultiplier: 0

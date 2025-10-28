@@ -9,7 +9,7 @@
                     "name": "TouchPress",
                     "type": "Button",
                     "id": "b496211d-5438-42a3-8497-e3342f5fa8c3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -29,6 +29,17 @@
                     "name": "",
                     "id": "9f293afe-5e01-4b1b-924e-66bc1fde88b9",
                     "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff07f9bd-4e07-4720-8282-36c5770d4fbf",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

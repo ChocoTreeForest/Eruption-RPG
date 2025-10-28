@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class TitleDirector : MonoBehaviour
 {
     public Image fadeImage;
+    public Image logo;
     public float fadeDuration = 0.5f;
+    public float logoFadeDuration = 1.0f;
 
     public Transform player; // 플레이어 위치
     public Transform targetPoint; // 도착 지점
@@ -26,6 +28,8 @@ public class TitleDirector : MonoBehaviour
 
     IEnumerator FadeInThenMove()
     {
+        yield return new WaitForSeconds(0.5f);
+
         Color color = fadeImage.color;
 
         float t = 0f;
@@ -58,5 +62,25 @@ public class TitleDirector : MonoBehaviour
         isMoving = false;
 
         // 이후 로고 띄우는 로직 추가하기
+        StartCoroutine(FadeInLogo());
+    }
+
+    IEnumerator FadeInLogo()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        Color color = logo.color;
+
+        float t = 0f;
+        while (t < logoFadeDuration)
+        {
+            t += Time.deltaTime;
+            color.a = Mathf.Lerp(0, 1, t / logoFadeDuration);
+            logo.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        logo.color = color;
     }
 }

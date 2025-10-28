@@ -5,7 +5,8 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static AudioManager;
+using UnityEngine.InputSystem;
+using static AudioManager; // ÀÌ°Ç ¹¹¾ß
 
 public class BattleManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class BattleManager : MonoBehaviour
 
     public bool sceneChanging = false;
 
+    private TouchControls touchControls;
+
     void Awake()
     {
         if (Instance == null)
@@ -39,6 +42,18 @@ public class BattleManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        touchControls = new TouchControls();
+    }
+
+    void OnEnable()
+    {
+        touchControls.Enable();
+    }
+
+    void OnDisable()
+    {
+        touchControls.Disable();
     }
 
     public void StartBattle(Monster encounterMonster, bool isBoss, SymbolEncounter encounterSource = null)
@@ -97,17 +112,17 @@ public class BattleManager : MonoBehaviour
 
         EndBattle();
 
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return new WaitUntil(() => touchControls.Touch.TouchPress.triggered);
 
         if (battleLog.isTyping)
         {
-            yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+            yield return new WaitUntil(() => touchControls.Touch.TouchPress.triggered);
 
             battleLog.SkipTypeEffect();
             AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
 
             yield return new WaitForSeconds(1f);
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return new WaitUntil(() => touchControls.Touch.TouchPress.triggered);
         }
 
         if (PlayerStatus.Instance.IsAlive())

@@ -73,12 +73,12 @@ public class BattleUIManager : MonoBehaviour
 
     public void OpenStatus()
     {
-        // 나중에 설정 만들 때 스테이터스 창 켜지게 할지 말지 고를 수 있게 하기
         if (!PlayerStatus.Instance.gameOver)
         {
             if (settingManager.GetStatusOpenSetting())
             {
                 MenuUIManager.Instance.OpenStatusPanel();
+                MenuUIManager.Instance.isPanelOpen = true;
             }
         }
     }
