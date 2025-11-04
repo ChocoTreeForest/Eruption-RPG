@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaveSquid
   m_EditorClassIdentifier: 
   monsterName: CaveSquid
-  health: 280000
-  attack: 7300
+  health: 260000
+  attack: 7000
   defence: 4400
   nextMapName: 

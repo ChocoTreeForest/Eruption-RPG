@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Anteater
   m_EditorClassIdentifier: 
   monsterName: Anteater
-  health: 85000
-  attack: 2350
+  health: 80000
+  attack: 2000
   defence: 1120
   nextMapName: 

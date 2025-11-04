@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Werewolf
   m_EditorClassIdentifier: 
   monsterName: Werewolf
-  health: 39200
-  attack: 1720
+  health: 34200
+  attack: 1420
   defence: 700
   nextMapName: 

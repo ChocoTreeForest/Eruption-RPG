@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DriedGrass
   m_EditorClassIdentifier: 
   monsterName: DriedGrass
-  health: 110000
-  attack: 5500
+  health: 100000
+  attack: 4500
   defence: 2300
   nextMapName: 

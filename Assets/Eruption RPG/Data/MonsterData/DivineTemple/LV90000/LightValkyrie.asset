@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightValkyrie
   m_EditorClassIdentifier: 
   monsterName: LightValkyrie
-  health: 21550000
-  attack: 430000
+  health: 31550000
+  attack: 530000
   defence: 277777
   nextMapName: 

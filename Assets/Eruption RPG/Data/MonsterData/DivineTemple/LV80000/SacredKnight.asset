@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SacredKnight
   m_EditorClassIdentifier: 
   monsterName: SacredKnight
-  health: 17880000
-  attack: 320000
+  health: 25880000
+  attack: 400000
   defence: 212000
   nextMapName: 

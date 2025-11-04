@@ -25,7 +25,6 @@ public class GameCore : MonoBehaviour
             Destroy(gameObject);
         }
 
-        gameCore.SetActive(false);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -47,7 +46,8 @@ public class GameCore : MonoBehaviour
             StartCoroutine(MenuUIManager.Instance.FadeIn());
             initialized = true;
         }
-        else if (scene.name == "InfinityMode" && !initialized)
+
+        if (scene.name == "InfinityMode" && !initialized)
         {
             gameCore.SetActive(true);
             isInInfinityMode = true;
@@ -60,7 +60,8 @@ public class GameCore : MonoBehaviour
             StartCoroutine(MenuUIManager.Instance.FadeIn());
             initialized = true;
         }
-        else if (scene.name == "Title")
+
+        if (scene.name == "Title")
         {
             initialized = false;
             isInInfinityMode = false;
@@ -70,7 +71,7 @@ public class GameCore : MonoBehaviour
                 randomEncounter.ResetEncounterChance();
             }
 
-            StartCoroutine(DisableGameCore());
+            StartCoroutine(LoadTitle());
         }
     }
 
@@ -80,12 +81,14 @@ public class GameCore : MonoBehaviour
         InfinityModeManager.Instance.SetInfinityModeUI();
     }
 
-    IEnumerator DisableGameCore()
+    IEnumerator LoadTitle()
     {
         yield return null;
-        yield return new WaitUntil(() => PlayerStatus.Instance != null && AbilityManager.Instance != null);
+
         DataManager.Instance.LoadPermanentData();
         PlayerStatus.Instance.ResetStatus();
+        EquipmentManager.Instance.InitializeEquipment();
+        ItemListUI.Instance.UpdateList();
         BonusManager.Instance.InitializeBonus();
         InfinityModeManager.Instance.RevertUI();
         AbilityUIUpdater.Instance.UpdateUI();
@@ -97,9 +100,8 @@ public class GameCore : MonoBehaviour
         if (!string.IsNullOrEmpty(PlayerStatus.Instance.pendingNextMap))
         {
             string nextMap = PlayerStatus.Instance.pendingNextMap;
-            Debug.Log($"다음 맵 {PlayerStatus.Instance.pendingNextMap}");
+
             PlayerStatus.Instance.pendingNextMap = null; // 초기화
-            Debug.Log($"다음 맵 {PlayerStatus.Instance.pendingNextMap}로 초기화");
 
             if (SceneManager.GetActiveScene().name == nextMap)
             {
@@ -111,9 +113,7 @@ public class GameCore : MonoBehaviour
             AsyncOperation op = SceneManager.LoadSceneAsync(nextMap);
             yield return op;
 
-            Debug.Log($"플레이어 이전 위치: {PlayerStatus.Instance.transform.position}");
             PlayerStatus.Instance.transform.position = new Vector3(0f, 0f, 0f);
-            Debug.Log($"플레이어 새로운 위치: {PlayerStatus.Instance.transform.position}");
 
             DataManager.Instance.SaveSessionData();
             DataManager.Instance.SavePermanentData();

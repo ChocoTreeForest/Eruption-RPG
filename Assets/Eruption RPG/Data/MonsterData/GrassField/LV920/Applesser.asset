@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Applesser
   m_EditorClassIdentifier: 
   monsterName: Applesser
-  health: 60000
-  attack: 1150
+  health: 55000
+  attack: 950
   defence: 700
   nextMapName: 

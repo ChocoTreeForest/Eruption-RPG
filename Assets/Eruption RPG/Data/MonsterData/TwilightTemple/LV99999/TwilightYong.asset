@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TwilightYong
   m_EditorClassIdentifier: 
   monsterName: TwilightYong
-  health: 26000000
-  attack: 489000
+  health: 36000000
+  attack: 589000
   defence: 300000
   nextMapName: 

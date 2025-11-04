@@ -92,10 +92,6 @@ public class StatsUpdater : MonoBehaviour
         PlayerStatus.Instance.UpdateEXPMultiplier(totalEXPMultiplier);
 
         statusUIManager.UpdateStatus();
-
-        Debug.Log($"증가한 스텟: 체력 {totalBonusHealth}, 체력 {totalHealthMultiplier}%, 공격력 {totalBonusAttack}, 공격력 {totalAttackMultiplier}%, " +
-            $"방어력 {totalBonusDefence}, 방어력 {totalDefenceMultiplier}%, 럭 {totalBonusLuck}, 럭 {totalLuckMultiplier}%, 크리티컬 확률 {totalBonusCriticalChance}%, " +
-            $"크리티컬 데미지 {totalCriticalMultiplier}%, 스피드 {totalSpeedMultiplier}%, 돈 획득량 {totalMoneyMultiplier}%, 경험치 획득량 {totalEXPMultiplier}%");
     }
 
     void ApplyItemStats(ItemData data, int count)

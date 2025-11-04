@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pinebear
   m_EditorClassIdentifier: 
   monsterName: Pinebear
-  health: 42000
-  attack: 1800
+  health: 37000
+  attack: 1500
   defence: 700
   nextMapName: 

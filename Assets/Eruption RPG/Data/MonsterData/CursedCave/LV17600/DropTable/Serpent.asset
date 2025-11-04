@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Serpent
   m_EditorClassIdentifier: 
   money: 3100
-  exp: 14190211704
+  exp: 1419021170
   battlePoint: -1
   dropItems: []

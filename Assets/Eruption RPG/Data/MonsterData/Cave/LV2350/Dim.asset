@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dim
   m_EditorClassIdentifier: 
   monsterName: Dim
-  health: 145000
-  attack: 4400
+  health: 125000
+  attack: 4000
   defence: 2350
   nextMapName: 

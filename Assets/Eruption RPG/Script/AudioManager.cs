@@ -50,8 +50,8 @@ public class AudioManager : MonoBehaviour
     {
         Attack,
         Click,
-        CriAttackFire,
         CriAttack,
+        CriAttackFire,
         CriAttackWind,
         Hit
     }

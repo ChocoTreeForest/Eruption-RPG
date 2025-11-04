@@ -32,7 +32,29 @@ public class SettingManager : MonoBehaviour
 
         openStatusAfterBattle = PlayerPrefs.GetInt("OpenStatusAfterBattle", 1) == 1;
 
-        currentLocaleCode = PlayerPrefs.GetString("Language", "ko");
+        if (!PlayerPrefs.HasKey("Language"))
+        {
+            SystemLanguage syslang = Application.systemLanguage;
+            string defaultLang = "en";
+
+            switch (syslang)
+            {
+                case SystemLanguage.Korean:
+                    defaultLang = "ko";
+                    break;
+                case SystemLanguage.English:
+                    defaultLang = "en";
+                    break;
+                default:
+                    defaultLang = "en";
+                    break;
+            }
+
+            PlayerPrefs.SetString("Language", defaultLang);
+            PlayerPrefs.Save();
+        }
+
+        currentLocaleCode = PlayerPrefs.GetString("Language");
         SetLocale(currentLocaleCode);
 
         koreanToggle.isOn = currentLocaleCode == "ko";
@@ -56,6 +78,11 @@ public class SettingManager : MonoBehaviour
 
         PlayerPrefs.SetInt("OpenStatusAfterBattle", openStatusAfterBattle ? 1 : 0);
         statusOpenOnOffText.text = openStatusAfterBattle ? "ON" : "OFF";
+
+        currentLocaleCode = PlayerPrefs.GetString("Language");
+
+        koreanToggle.isOn = currentLocaleCode == "ko";
+        englishToggle.isOn = currentLocaleCode == "en";
     }
 
     public void SetBGMVolume(float delta)

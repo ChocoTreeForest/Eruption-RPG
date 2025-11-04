@@ -42,9 +42,5 @@ public class SceneBGMPlayer : MonoBehaviour
         {
             StartCoroutine(AudioManager.Instance.PlayBGM(bgm));
         }
-        else
-        {
-            Debug.LogWarning($"No matching BGM found for scene: {sceneName}");
-        }
     }
 }

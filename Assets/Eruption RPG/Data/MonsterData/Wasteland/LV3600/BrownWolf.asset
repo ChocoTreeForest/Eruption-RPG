@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BrownWolf
   m_EditorClassIdentifier: 
   monsterName: BrownWolf
-  health: 230000
-  attack: 7000
+  health: 210000
+  attack: 6300
   defence: 3600
   nextMapName: 

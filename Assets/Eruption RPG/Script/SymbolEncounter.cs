@@ -10,9 +10,9 @@ public class SymbolEncounter : MonoBehaviour
 
     void Start()
     {
+        // 이미 잡은 보스 몬스터 제거
         if (PlayerStatus.Instance.defeatedBosses.Contains(monster.name))
         {
-            Debug.Log($"이미 처치한 보스 {monster.name} 제거");
             Destroy(gameObject);
         }
     }
@@ -24,7 +24,6 @@ public class SymbolEncounter : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hasEncounter = true;
-            Debug.Log($"심볼 인카운터 발생! {monster.name}");
 
             BattleManager.Instance.StartBattle(monster, isBoss:true, this);
         }

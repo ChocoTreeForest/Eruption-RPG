@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueBird
   m_EditorClassIdentifier: 
   monsterName: BlueBird
-  health: 34000
-  attack: 840
+  health: 30000
+  attack: 690
   defence: 500
   nextMapName: 

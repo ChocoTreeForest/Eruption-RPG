@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AbyssMage
   m_EditorClassIdentifier: 
   monsterName: AbyssMage
-  health: 3500000
-  attack: 74000
+  health: 2800000
+  attack: 55000
   defence: 42500
   nextMapName: NocturnThicket

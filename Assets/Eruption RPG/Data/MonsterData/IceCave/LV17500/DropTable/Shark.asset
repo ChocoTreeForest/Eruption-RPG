@@ -15,6 +15,4 @@ MonoBehaviour:
   money: 3100
   exp: 1408950063
   battlePoint: -1
-  dropItems:
-  - itemPrefab: {fileID: 0}
-    dropChance: 0
+  dropItems: []

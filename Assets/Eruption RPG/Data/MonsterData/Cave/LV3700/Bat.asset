@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bat
   m_EditorClassIdentifier: 
   monsterName: Bat
-  health: 250000
+  health: 230000
   attack: 6000
   defence: 3700
   nextMapName: 

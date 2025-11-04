@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DevilKnight
   m_EditorClassIdentifier: 
   monsterName: DevilKnight
-  health: 27000000
-  attack: 450600
+  health: 37000000
+  attack: 550600
   defence: 286000
   nextMapName: 

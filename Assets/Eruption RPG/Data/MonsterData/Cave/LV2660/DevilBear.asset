@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DevilBear
   m_EditorClassIdentifier: 
   monsterName: DevilBear
-  health: 190000
-  attack: 4000
+  health: 170000
+  attack: 3700
   defence: 2660
   nextMapName: 

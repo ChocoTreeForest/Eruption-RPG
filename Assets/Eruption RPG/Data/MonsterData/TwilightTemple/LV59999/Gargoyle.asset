@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gargoyle
   m_EditorClassIdentifier: 
   monsterName: Gargoyle
-  health: 14000000
-  attack: 385000
+  health: 11000000
+  attack: 355000
   defence: 222222
   nextMapName: 

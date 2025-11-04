@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceWizard
   m_EditorClassIdentifier: 
   monsterName: IceWizard
-  health: 2000000
-  attack: 50000
+  health: 1600000
+  attack: 30000
   defence: 25000
   nextMapName: IceCave

@@ -25,7 +25,7 @@ public class ItemListUI : MonoBehaviour
         }
     }
 
-    void Start()
+    public void UpdateList()
     {
         WeaponList();
         ArmorList();

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Swiftwing
   m_EditorClassIdentifier: 
   monsterName: Swiftwing
-  health: 110000
-  attack: 5800
+  health: 100000
+  attack: 4800
   defence: 2300
   nextMapName: 

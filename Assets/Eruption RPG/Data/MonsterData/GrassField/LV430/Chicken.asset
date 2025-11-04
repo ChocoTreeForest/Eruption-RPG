@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chicken
   m_EditorClassIdentifier: 
   monsterName: Chicken
-  health: 17000
-  attack: 550
+  health: 13000
+  attack: 400
   defence: 110
   nextMapName: 

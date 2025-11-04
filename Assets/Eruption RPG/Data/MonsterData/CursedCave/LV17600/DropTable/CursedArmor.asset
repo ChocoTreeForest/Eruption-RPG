@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CursedArmor
   m_EditorClassIdentifier: 
   money: 2777
-  exp: 14190211704
+  exp: 1419021170
   battlePoint: -1
   dropItems:
   - itemPrefab: {fileID: 5827763959347504882, guid: f416adf4ef8014c498746cf62277701d,
       type: 3}
-    dropChance: 3
+    dropChance: 5

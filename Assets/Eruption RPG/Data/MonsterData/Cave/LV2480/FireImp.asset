@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireImp
   m_EditorClassIdentifier: 
   monsterName: FireImp
-  health: 170000
-  attack: 4200
+  health: 150000
+  attack: 3800
   defence: 2480
   nextMapName: 

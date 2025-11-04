@@ -86,6 +86,7 @@ public class PlayerStatus : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         player = GetComponent<PlayerController>();
@@ -243,7 +244,6 @@ public class PlayerStatus : MonoBehaviour
             abilityLevel++;
             points++;
         }
-        Debug.Log($"자유 경험치: {freeEXP}");
     }
 
     public void UpdateBP(int dropBP)
@@ -281,7 +281,6 @@ public class PlayerStatus : MonoBehaviour
 
                 BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
                 battleLog.AddLog("InBattle", "HEAL", heal);
-                Debug.Log($"회복 발동! {heal} HP 회복 (현재 체력: {currentHealth})");
 
                 BattleEffectManager.Instance.ShowDamageText(heal, BattleUIManager.Instance.playerPosition, isHeal: true);
                 break;
@@ -358,11 +357,11 @@ public class PlayerStatus : MonoBehaviour
     {
         BattleEffectManager.Instance.PlayPlayerHitEffect(BattleUIManager.Instance.playerPosition);
 
-        float reduction = (currentDefence) / (currentDefence + monsterDamage) * 0.75f; // 방어력이 아무리 높아도 몬스터 데미지의 최대 75% 까지만 줄어듦
+        float reduction = (float)currentDefence / (currentDefence + monsterDamage) * 0.7f; // 방어력이 아무리 높아도 몬스터 데미지의 70% 언저리 까지만 줄어듦
 
         float damageRNG = Random.Range(0.75f, 1.25f);
 
-        int finalDamage = (int)(monsterDamage * reduction * damageRNG);
+        int finalDamage = (int)(monsterDamage * (1f - reduction) * damageRNG);
         if (BonusManager.Instance.HasBonus(BonusManager.BonusType.DamageReduction))
         {
             finalDamage = (int)(finalDamage * 0.75f);
@@ -373,7 +372,6 @@ public class PlayerStatus : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
         battleLog.AddLog("InBattle", "DAMAGED", finalDamage);
-        Debug.Log($"몬스터의 공격으로 {finalDamage}의 데미지!");
 
         BattleEffectManager.Instance.ShowDamageText(finalDamage, BattleUIManager.Instance.playerPosition);
     }
@@ -381,7 +379,6 @@ public class PlayerStatus : MonoBehaviour
     public bool IsAlive()
     {
         return currentHealth > 0;
-        // 무한 모드를 만든다면 죽으면 바로 끝나게 (죽으면 currentBattlePoint -= currentBattlePoint 라던가)
     }
 
     public void IncreaseStat(string stat, int useAP)
@@ -650,12 +647,6 @@ public class PlayerStatus : MonoBehaviour
         StatsUpdater.Instance.UpdateStats();
         UpdateUI();
     }
-
-    void OnDestroy()
-    {
-        Debug.LogError("PlayerStatus가 파괴됨! 현재 씬: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-    }
-
     public int GetPlayerLevel() => level;
     public int GetCurrentMoney() => currentMoney;
     public long GetCurrentEXP() => currentEXP;

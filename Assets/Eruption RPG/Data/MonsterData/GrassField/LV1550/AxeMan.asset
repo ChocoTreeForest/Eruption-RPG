@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: AxeMan
   health: 70000
-  attack: 3500
+  attack: 3000
   defence: 1350
   nextMapName: 

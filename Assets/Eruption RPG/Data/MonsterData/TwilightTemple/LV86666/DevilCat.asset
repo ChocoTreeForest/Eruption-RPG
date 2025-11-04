@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DevilCat
   m_EditorClassIdentifier: 
   monsterName: DevilCat
-  health: 18648000
-  attack: 400000
+  health: 28648000
+  attack: 470000
   defence: 250000
   nextMapName: 

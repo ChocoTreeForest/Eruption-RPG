@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HighPriest
   m_EditorClassIdentifier: 
   monsterName: HighPriest
-  health: 17000000
-  attack: 330000
+  health: 24000000
+  attack: 390000
   defence: 220000
   nextMapName: 

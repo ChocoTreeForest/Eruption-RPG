@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TwilightSworder
   m_EditorClassIdentifier: 
   monsterName: TwilightSworder
-  health: 10240000
-  attack: 240200
+  health: 13540000
+  attack: 340200
   defence: 144050
   nextMapName: 

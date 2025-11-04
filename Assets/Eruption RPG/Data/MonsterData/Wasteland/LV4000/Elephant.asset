@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Elephant
   m_EditorClassIdentifier: 
   monsterName: Elephant
-  health: 270000
-  attack: 7500
+  health: 250000
+  attack: 7000
   defence: 4000
   nextMapName: 

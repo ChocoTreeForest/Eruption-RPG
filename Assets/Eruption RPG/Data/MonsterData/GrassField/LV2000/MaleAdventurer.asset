@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MaleAdventurer
   m_EditorClassIdentifier: 
   monsterName: MaleAdventurer
-  health: 110000
-  attack: 4500
+  health: 95000
+  attack: 3600
   defence: 1900
   nextMapName: 

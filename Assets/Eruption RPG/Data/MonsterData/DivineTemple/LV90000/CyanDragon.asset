@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CyanDragon
   m_EditorClassIdentifier: 
   monsterName: CyanDragon
-  health: 20000000
-  attack: 475000
+  health: 30000000
+  attack: 575000
   defence: 290000
   nextMapName: 

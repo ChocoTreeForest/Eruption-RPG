@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   monsterName: Archer
-  health: 88000
-  attack: 1600
+  health: 80000
+  attack: 1400
   defence: 900
   nextMapName: 

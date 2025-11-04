@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CelestialDragon
   m_EditorClassIdentifier: 
   monsterName: CelestialDragon
-  health: 15000000
+  health: 12000000
   attack: 350000
   defence: 200000
   nextMapName: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dim+
   m_EditorClassIdentifier: 
   monsterName: Dim+
-  health: 220000
-  attack: 5400
+  health: 200000
+  attack: 5100
   defence: 4000
   nextMapName: 

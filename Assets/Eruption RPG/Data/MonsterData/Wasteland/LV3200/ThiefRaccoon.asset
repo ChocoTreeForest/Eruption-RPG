@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ThiefRaccoon
   m_EditorClassIdentifier: 
   monsterName: ThiefRaccoon
-  health: 198000
-  attack: 6500
+  health: 178000
+  attack: 5900
   defence: 3200
   nextMapName: 

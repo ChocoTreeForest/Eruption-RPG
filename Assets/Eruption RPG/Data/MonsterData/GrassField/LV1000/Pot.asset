@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pot
   m_EditorClassIdentifier: 
   monsterName: Pot
-  health: 65500
-  attack: 1600
+  health: 60500
+  attack: 1300
   defence: 720
   nextMapName: 

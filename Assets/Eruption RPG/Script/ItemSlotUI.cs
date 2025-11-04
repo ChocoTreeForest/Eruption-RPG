@@ -37,6 +37,7 @@ public class ItemSlotUI : MonoBehaviour
 
     private void UpdateUI()
     {
+
         int itemCount = EquipmentManager.Instance.GetItemCount(itemData);
 
         if (isUnlocked || canBuy)

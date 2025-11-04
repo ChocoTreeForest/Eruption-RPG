@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaveHorse
   m_EditorClassIdentifier: 
   monsterName: CaveHorse
-  health: 320000
+  health: 305000
   attack: 9000
   defence: 5320
   nextMapName: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaveDragon+
   m_EditorClassIdentifier: 
   monsterName: GreatSnake
-  health: 1355000
-  attack: 28000
+  health: 955000
+  attack: 19000
   defence: 12000
   nextMapName: CursedForest

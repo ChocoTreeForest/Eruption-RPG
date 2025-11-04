@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: RockDragon
   m_EditorClassIdentifier: 
   money: 2888
-  exp: 14190211704
+  exp: 1419021170
   battlePoint: -1
   dropItems:
   - itemPrefab: {fileID: 3849758013428408845, guid: 0d7d5fa1a47ea2442aa1bffc1d72546b,
       type: 3}
-    dropChance: 1
+    dropChance: 3

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Raven
   m_EditorClassIdentifier: 
   monsterName: Raven
-  health: 150000
-  attack: 8000
+  health: 120000
+  attack: 6000
   defence: 4000
   nextMapName: Cave

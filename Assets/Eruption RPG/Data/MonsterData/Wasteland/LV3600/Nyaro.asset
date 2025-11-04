@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nyaro
   m_EditorClassIdentifier: 
   monsterName: Nyaro
-  health: 200000
-  attack: 8400
+  health: 180000
+  attack: 7400
   defence: 3600
   nextMapName: 

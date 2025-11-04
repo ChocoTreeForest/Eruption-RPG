@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaveOctopus
   m_EditorClassIdentifier: 
   monsterName: CaveOctopus
-  health: 300000
+  health: 280000
   attack: 6900
   defence: 4400
   nextMapName: 

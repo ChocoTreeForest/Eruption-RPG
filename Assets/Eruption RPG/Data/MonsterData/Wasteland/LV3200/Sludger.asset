@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sludger
   m_EditorClassIdentifier: 
   monsterName: Sludger
-  health: 190000
-  attack: 6600
+  health: 177000
+  attack: 6000
   defence: 3200
   nextMapName: 

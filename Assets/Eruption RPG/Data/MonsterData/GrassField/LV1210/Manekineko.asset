@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Manekineko
   m_EditorClassIdentifier: 
   monsterName: Manekineko
-  health: 90000
-  attack: 1600
+  health: 84000
+  attack: 1400
   defence: 880
   nextMapName: 

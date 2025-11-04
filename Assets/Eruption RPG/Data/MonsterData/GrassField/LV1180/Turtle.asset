@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Turtle
   m_EditorClassIdentifier: 
   monsterName: Turtle
-  health: 71000
-  attack: 1900
+  health: 66000
+  attack: 1600
   defence: 850
   nextMapName: 

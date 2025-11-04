@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GrayBird
   m_EditorClassIdentifier: 
   monsterName: GrayBird
-  health: 29000
-  attack: 1300
+  health: 25000
+  attack: 1100
   defence: 500
   nextMapName: 

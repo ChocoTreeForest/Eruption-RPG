@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AncientGolem
   m_EditorClassIdentifier: 
   monsterName: AncientGolem
-  health: 5555555
-  attack: 90000
+  health: 4555555
+  attack: 85000
   defence: 90000
   nextMapName: TempleEntrance

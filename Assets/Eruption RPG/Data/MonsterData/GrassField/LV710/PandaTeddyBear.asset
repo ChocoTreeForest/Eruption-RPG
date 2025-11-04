@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PandaTeddyBear
   m_EditorClassIdentifier: 
   monsterName: PandaTeddyBear
-  health: 31500
-  attack: 1150
+  health: 27500
+  attack: 950
   defence: 500
   nextMapName: 

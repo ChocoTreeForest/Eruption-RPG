@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaveDragon
   m_EditorClassIdentifier: 
   monsterName: CaveDragon
-  health: 450000
-  attack: 14000
+  health: 420000
+  attack: 10000
   defence: 6000
   nextMapName: DeepCave

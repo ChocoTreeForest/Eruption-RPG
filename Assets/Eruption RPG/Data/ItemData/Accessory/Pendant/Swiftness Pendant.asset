@@ -29,7 +29,7 @@ MonoBehaviour:
   defenceMultiplier: 0
   luckMultiplier: 0
   bonusCriticalMultiplier: 0
-  speedMultiplier: 100
+  speedMultiplier: 50
   bonusMoneyMultiplier: 0
   bonusEXPMultiplier: 0
   specialItem: 1

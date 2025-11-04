@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BigSnail
   m_EditorClassIdentifier: 
   monsterName: BigSnail
-  health: 34500
-  attack: 860
+  health: 30500
+  attack: 710
   defence: 500
   nextMapName: 

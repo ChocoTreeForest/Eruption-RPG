@@ -153,14 +153,12 @@ public class PresetManager : MonoBehaviour
     {
         if (index < 0 || index >= presets.Length)
         {
-            Debug.LogError($"[PresetManager] 잘못된 preset index: {index}");
             return;
         }
 
         if (index >= presetHPTexts.Length || index >= presetATKTexts.Length ||
             index >= presetDEFTexts.Length || index >= presetLUKTexts.Length)
         {
-            Debug.LogError($"[PresetManager] 잘못된 UI 배열 인덱스 접근: {index}");
             return;
         }
 

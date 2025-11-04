@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Daikon
   m_EditorClassIdentifier: 
   monsterName: Daikon
-  health: 9900
-  attack: 370
+  health: 7900
+  attack: 270
   defence: 20
   nextMapName: 

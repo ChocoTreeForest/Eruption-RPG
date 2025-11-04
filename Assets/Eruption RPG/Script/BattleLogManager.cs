@@ -38,7 +38,6 @@ public class BattleLogManager : MonoBehaviour
                 logList = logData.BattleDefeat;
                 break;
             default:
-                Debug.LogWarning("알 수 없는 카테고리: " + category);
                 return;
         }
 
@@ -78,29 +77,6 @@ public class BattleLogManager : MonoBehaviour
                         battleLog.text = string.Join("\n", logQueue.ToArray());
                     }
                 };
-                //string rawText = entry[key];
-                //string formattedText = string.Format(rawText, values);
-
-                //Debug.Log($"[BattleLogManager] {category} - {key} → {formattedText}");
-                //logQueue.Enqueue(formattedText);
-
-                //if (logQueue.Count > maxLogcount)
-                //{
-                //    logQueue.Dequeue();
-                //}
-
-                //if (category == "BattleWin" || category == "BattleDefeat")
-                //{
-                //    if (typingCoroutine == null)
-                //    {
-                //        typingCoroutine = StartCoroutine(TypeEffect());
-                //    }
-                //}
-                //else
-                //{
-                //    battleLog.text = string.Join("\n", logQueue.ToArray());
-                //}
-                //return;
             }
         }
     }

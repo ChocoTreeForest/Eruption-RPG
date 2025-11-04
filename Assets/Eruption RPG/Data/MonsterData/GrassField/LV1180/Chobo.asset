@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chobo
   m_EditorClassIdentifier: 
   monsterName: Chobo
-  health: 67000
-  attack: 2200
+  health: 62000
+  attack: 1800
   defence: 800
   nextMapName: 

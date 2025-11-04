@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Intermediater
   m_EditorClassIdentifier: 
   monsterName: Intermediater
-  health: 385000
+  health: 355000
   attack: 7770
   defence: 5320
   nextMapName: 

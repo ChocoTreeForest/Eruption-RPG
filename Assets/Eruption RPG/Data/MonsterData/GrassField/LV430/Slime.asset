@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: 
   monsterName: Slime
-  health: 16000
-  attack: 580
+  health: 13000
+  attack: 430
   defence: 100
   nextMapName: 

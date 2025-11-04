@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CatWizard
   m_EditorClassIdentifier: 
   monsterName: CatWizard
-  health: 1700000
-  attack: 50000
+  health: 1500000
+  attack: 29000
   defence: 25000
   nextMapName: CursedCave

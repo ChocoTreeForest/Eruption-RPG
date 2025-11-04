@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CurseMagician
   m_EditorClassIdentifier: 
   monsterName: CurseMagician
-  health: 300000
+  health: 290000
   attack: 8000
   defence: 4780
   nextMapName: 

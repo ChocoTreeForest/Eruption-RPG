@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Frog
   m_EditorClassIdentifier: 
   monsterName: Frog
-  health: 31000
-  attack: 1100
+  health: 27000
+  attack: 900
   defence: 500
   nextMapName: 

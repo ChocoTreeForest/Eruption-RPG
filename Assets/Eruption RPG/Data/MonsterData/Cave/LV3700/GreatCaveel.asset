@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreatCaveel
   m_EditorClassIdentifier: 
   monsterName: GreatCaveel
-  health: 290000
+  health: 270000
   attack: 5300
   defence: 3700
   nextMapName: 

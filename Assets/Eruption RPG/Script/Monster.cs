@@ -13,7 +13,6 @@ public class Monster : MonoBehaviour
 
     private int maxHealth;
     private int currentHealth;
-    //private int previousHealth; // 이거 씀?
     private int currentAttack;
     private int currentDefence;
 
@@ -28,74 +27,42 @@ public class Monster : MonoBehaviour
         {
             InitializeMonsterStat();
         }
-        else
-        {
-            Debug.LogWarning("MonsterStatData가 연결되지 않았습니다!");
-        }
 
         if (dropTable != null)
         {
             DropMoneyAndEXP();
             DropBP();
         }
-        else
-        {
-            Debug.LogWarning("DropTable이 연결되지 않았습니다!");
-        }
     }
 
     public void InitializeMonsterStat()
     {
-        if (monsterStatData == null)
-        {
-            Debug.LogWarning("MonsterStatData가 연결되지 않았습니다!");
-        }
-
         gameObject.name = monsterStatData.monsterName;
         maxHealth = monsterStatData.health;
         currentHealth = monsterStatData.health;
         currentAttack = monsterStatData.attack;
         currentDefence = monsterStatData.defence;
-
-        Debug.Log($"[몬스터 생성] 이름: {monsterStatData.monsterName}, 체력: {monsterStatData.health}, 공격력: {monsterStatData.attack}, 방어력: {monsterStatData.defence}");
     }
 
     public void DropMoneyAndEXP()
     {
-        if (dropTable == null)
-        {
-            Debug.LogWarning("DropTable이 연결되지 않았습니다!");
-        }
-
         money = dropTable.money;
         exp = dropTable.exp;
     }
 
     public void DropBP()
     {
-        if (dropTable == null)
-        {
-            Debug.LogWarning("DropTable이 연결되지 않았습니다!");
-        }
-
         battlePoint = dropTable.battlePoint;
     }
 
     public GameObject TryDropItem()
     {
-        if (dropTable == null)
-        {
-            Debug.LogWarning("DropTable이 연결되지 않았습니다!");
-        }
-
         return dropTable.RandomDrop();
     }
 
     public void TakeDamage(int playerDamage, int criticalChance, float criticalMultiplier)
     {
         BattleLogManager battleLog = FindObjectOfType<BattleLogManager>();
-
-        //previousHealth = currentHealth;
 
         PlayerStatus.Instance.InstantKill(this);
 
@@ -104,7 +71,6 @@ public class Monster : MonoBehaviour
             BattleEffectManager.Instance.PlayCriticalHitEffect(
                 BattleEffectManager.Instance.criticalHitEffects,
                 BattleUIManager.Instance.monsterImage.rectTransform);
-            Debug.Log("즉사 효과 발동!");
             battleLog.AddLog("InBattle", "INSTKILL");
             return; // 몬스터가 이미 죽었으면 데미지 계산을 하지 않음
         }
@@ -144,7 +110,6 @@ public class Monster : MonoBehaviour
 
         currentHealth -= finalDamage;
         currentHealth = Mathf.Clamp(currentHealth, 0, monsterStatData.health);
-        Debug.Log($"플레이어의 공격으로 {finalDamage}의 데미지!");
 
         PlayerStatus.Instance.Heal(finalDamage);
     }
@@ -181,7 +146,6 @@ public class Monster : MonoBehaviour
 
     public int GetMaxHealth() => maxHealth;
     public int GetCurrentHealth() => currentHealth;
-    //public int GetPreviousHealth() => previousHealth;
     public int GetCurrentAttack() => currentAttack;
     public int GetCurrentDefence() => currentDefence;
     public int GetDropMoney() => money;

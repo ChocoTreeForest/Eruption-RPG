@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lizardman
   m_EditorClassIdentifier: 
   monsterName: Lizardman
-  health: 1200000
-  attack: 25000
+  health: 800000
+  attack: 12500
   defence: 10000
   nextMapName: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterDragon
   m_EditorClassIdentifier: 
   monsterName: WaterDragon
-  health: 3750000
-  attack: 77000
+  health: 3000000
+  attack: 52000
   defence: 30000
   nextMapName: AncientRuins

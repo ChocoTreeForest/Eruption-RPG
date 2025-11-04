@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Deer
   m_EditorClassIdentifier: 
   monsterName: Deer
-  health: 160000
-  attack: 6000
+  health: 145000
+  attack: 5500
   defence: 2990
   nextMapName: 

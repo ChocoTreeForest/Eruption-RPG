@@ -41,6 +41,7 @@ public class BattleManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         touchControls = new TouchControls();
@@ -53,7 +54,8 @@ public class BattleManager : MonoBehaviour
 
     void OnDisable()
     {
-        touchControls.Disable();
+        if (touchControls != null)
+            touchControls.Disable();
     }
 
     public void StartBattle(Monster encounterMonster, bool isBoss, SymbolEncounter encounterSource = null)
@@ -68,12 +70,10 @@ public class BattleManager : MonoBehaviour
         runButton.SetActive(true);
         BattleUIManager.Instance.ShowBattleUI(encounterMonster.monsterSprite);
 
-        Debug.Log("전투 시작!");
         battleLog.ClearLog();
         battleLog.AddLog("BattleStart", "START");
         BattleUIManager.Instance.MonsterHPUpdater(monster);
         BattleUIManager.Instance.PlayerHPUpdate();
-        Debug.Log($"몬스터 체력: {monster.GetCurrentHealth()}, 플레이어 체력: {PlayerStatus.Instance.GetCurrentHealth()}");
 
         string sceneName = SceneManager.GetActiveScene().name;
 
@@ -95,14 +95,12 @@ public class BattleManager : MonoBehaviour
             {
                 monster.TakeDamage(PlayerStatus.Instance.GetCurrentAttack(), PlayerStatus.Instance.GetCurrentCriticalChance(), PlayerStatus.Instance.GetCurrentCriticalMultiplier());
                 BattleUIManager.Instance.MonsterHPUpdater(monster);
-                Debug.Log($"남은 몬스터 체력: {monster.GetCurrentHealth()}");
                 BattleUIManager.Instance.PlayerHPUpdate(); // 회복할 수도 있으니 플레이어 체력도 갱신
             }
             else
             {
                 PlayerStatus.Instance.TakeDamage(monster.GetCurrentAttack());
                 BattleUIManager.Instance.PlayerHPUpdate();
-                Debug.Log($"남은 플레이어 체력: {PlayerStatus.Instance.GetCurrentHealth()}");
             }
 
             yield return new WaitForSeconds(0.3f);
@@ -202,7 +200,6 @@ public class BattleManager : MonoBehaviour
         if (PlayerStatus.Instance.IsAlive())
         {
             BattleUIManager.Instance.HideMonsterUI();
-            Debug.Log("전투 승리!");
             droppedItem = monster.TryDropItem();
             WinUIManager.Instance.ShowWinUI();
             PlayerStatus.Instance.AddMoney(monster.GetDropMoney());
@@ -237,7 +234,6 @@ public class BattleManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("전투 패배!");
                 PlayerStatus.Instance.battlePoint -= 3;
 
                 // 배들포인트가 0 아래로 떨어지지 않도록
@@ -346,13 +342,12 @@ public class BattleManager : MonoBehaviour
                 vcam.OnTargetObjectWarped(PlayerStatus.Instance.transform, PlayerStatus.Instance.transform.position - vcam.transform.position);
             }
 
-            yield return null;
-            DataManager.Instance.SaveSessionData();
-            DataManager.Instance.SavePermanentData();
-
             BattleUIManager.Instance.OpenStatus();
             yield return StartCoroutine(BattleUIManager.Instance.FadeIn());
             sceneChanging = false;
+
+            DataManager.Instance.SaveSessionData();
+            DataManager.Instance.SavePermanentData();
         }
         else
         {

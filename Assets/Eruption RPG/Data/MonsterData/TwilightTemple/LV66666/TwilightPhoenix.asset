@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TwilightPhoenix
   m_EditorClassIdentifier: 
   monsterName: TwilightPhoenix
-  health: 9842000
-  attack: 275500
+  health: 13842000
+  attack: 315500
   defence: 167000
   nextMapName: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LizardKnight
   m_EditorClassIdentifier: 
   monsterName: LizardKnight
-  health: 465000
-  attack: 12500
+  health: 405000
+  attack: 9500
   defence: 5500
   nextMapName: Desert

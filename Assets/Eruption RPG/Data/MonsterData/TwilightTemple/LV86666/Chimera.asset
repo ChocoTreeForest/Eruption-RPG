@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chimera
   m_EditorClassIdentifier: 
   monsterName: Chimera
-  health: 40000000
-  attack: 700000
+  health: 35000000
+  attack: 650000
   defence: 500000
   nextMapName: 

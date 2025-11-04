@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaveCrab
   m_EditorClassIdentifier: 
   monsterName: CaveCrab
-  health: 182000
-  attack: 4500
+  health: 162000
+  attack: 4100
   defence: 2660
   nextMapName: 

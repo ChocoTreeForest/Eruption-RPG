@@ -17,13 +17,11 @@ public class RandomEncounter : MonoBehaviour
     private float encounterChance = 0f; //초기 인카운터 확률
     private float randomValue; //인카운터를 위한 랜덤 값
 
-    //유니티 인스펙터에서 구역별 몬스터 리스트 추가할 수 있게 하기
     [System.Serializable]
     public class ZoneMonsterData
     {
         public string zoneTag;
         public List<GameObject> monsters;
-        // 아래 두개 지워도 될듯
         public List<MonsterStatData> monsterStatDatas;
         public List<DropTable> dropTables;
     }
@@ -39,20 +37,16 @@ public class RandomEncounter : MonoBehaviour
                 monsterDictionary.Add(zoneData.zoneTag, zoneData.monsters);
             }
         }
+    }
 
+    void Start()
+    {
         SetRandomValue();
     }
 
     void FixedUpdate()
     {
         if (BattleManager.Instance.isInBattle || MenuUIManager.Instance.isPanelOpen || PlayerStatus.Instance.gameOver || BattleManager.Instance.sceneChanging) return;
-
-        StartCoroutine(Wait1Frame());
-    }
-
-    IEnumerator Wait1Frame()
-    {
-        yield return new WaitForFixedUpdate();
 
         if (playerController.inputVec.magnitude > 0f)
         {
@@ -75,8 +69,6 @@ public class RandomEncounter : MonoBehaviour
         {
             currentMonsters.Clear();
         }
-
-        Debug.Log($"현재 구역: {currentZone} / 등장 몬스터 수: {currentMonsters.Count}");
     }
 
     //랜덤 값 설정
@@ -91,8 +83,6 @@ public class RandomEncounter : MonoBehaviour
                 randomValue = Random.Range(acc.effectValue / 100f, 1f); // 부적류 장착 시 effectValue 이상으로 설정
             }
         }
-
-        Debug.Log($"설정된 랜덤 값: {randomValue}");
     }
 
     void IncreaseEncounterChance()
@@ -115,7 +105,6 @@ public class RandomEncounter : MonoBehaviour
         }
 
         PlayerUIUpdater.Instance.UpdateEncounterGauge();
-        Debug.Log($"현재 전투 확률: {encounterChance * 100}% (목표: {randomValue * 100}%)");
     }
 
     void TryEncounter()
@@ -134,8 +123,6 @@ public class RandomEncounter : MonoBehaviour
         int randomIndex = Random.Range(0, currentMonsters.Count);
         GameObject selectedMonster = currentMonsters[randomIndex];
 
-        Debug.Log($"Encounter! {selectedMonster.name} appeared in {currentZone}!");
-
         // 전투 용 몬스터 인스턴스 생성
         GameObject monsterInstance = Instantiate(selectedMonster);
         monsterInstance.SetActive(false); // 안보이게
@@ -143,7 +130,6 @@ public class RandomEncounter : MonoBehaviour
         Monster monster = monsterInstance.GetComponent<Monster>();
         if (monster == null)
         {
-            Debug.LogError("선택된 몬스터 오브젝트에 Monster 컴포넌트 없음");
             return;
         }
 

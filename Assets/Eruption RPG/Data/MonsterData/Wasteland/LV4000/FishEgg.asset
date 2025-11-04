@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FishEgg
   m_EditorClassIdentifier: 
   monsterName: FishEgg
-  health: 290000
-  attack: 6500
+  health: 270000
+  attack: 6200
   defence: 4000
   nextMapName: 

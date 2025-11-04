@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreatDevil
   m_EditorClassIdentifier: 
   monsterName: GreatDevil
-  health: 310000
+  health: 296000
   attack: 7700
   defence: 4780
   nextMapName: 

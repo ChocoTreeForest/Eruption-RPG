@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OrangeBubbo
   m_EditorClassIdentifier: 
   monsterName: OrangeBubbo
-  health: 290000
+  health: 280000
   attack: 6660
   defence: 4090
   nextMapName: 

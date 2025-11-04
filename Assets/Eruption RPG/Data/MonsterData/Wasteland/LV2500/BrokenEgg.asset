@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BrokenEgg
   m_EditorClassIdentifier: 
   monsterName: BrokenEgg
-  health: 150000
-  attack: 4600
+  health: 135000
+  attack: 4000
   defence: 2500
   nextMapName: 

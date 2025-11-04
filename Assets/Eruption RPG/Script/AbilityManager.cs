@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,6 +44,8 @@ public class AbilityManager : MonoBehaviour
             StatsUpdater.Instance.UpdateStats();
             AbilityUIUpdater.Instance.UpdateUI();
             DataManager.Instance.SavePermanentData();
+
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
         }
     }
 
@@ -57,6 +60,8 @@ public class AbilityManager : MonoBehaviour
             StatsUpdater.Instance.UpdateStats();
             AbilityUIUpdater.Instance.UpdateUI();
             DataManager.Instance.SavePermanentData();
+
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
         }
     }
 
@@ -71,6 +76,8 @@ public class AbilityManager : MonoBehaviour
             StatsUpdater.Instance.UpdateStats();
             AbilityUIUpdater.Instance.UpdateUI();
             DataManager.Instance.SavePermanentData();
+
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
         }
     }
 
@@ -85,6 +92,8 @@ public class AbilityManager : MonoBehaviour
             StatsUpdater.Instance.UpdateStats();
             AbilityUIUpdater.Instance.UpdateUI();
             DataManager.Instance.SavePermanentData();
+
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
         }
     }
 
@@ -99,6 +108,8 @@ public class AbilityManager : MonoBehaviour
             StatsUpdater.Instance.UpdateStats();
             AbilityUIUpdater.Instance.UpdateUI();
             DataManager.Instance.SavePermanentData();
+
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
         }
     }
 
@@ -121,5 +132,7 @@ public class AbilityManager : MonoBehaviour
         StatsUpdater.Instance.UpdateStats();
         AbilityUIUpdater.Instance.UpdateUI();
         DataManager.Instance.SavePermanentData();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 }

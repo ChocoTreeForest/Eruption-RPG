@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Brutaurus
   m_EditorClassIdentifier: 
   monsterName: Brutaurus
-  health: 350000
+  health: 320000
   attack: 8800
   defence: 5320
   nextMapName: 

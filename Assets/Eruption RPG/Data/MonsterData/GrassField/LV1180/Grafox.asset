@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Grafox
   m_EditorClassIdentifier: 
   monsterName: Grafox
-  health: 70000
-  attack: 2000
+  health: 65000
+  attack: 1700
   defence: 860
   nextMapName: 

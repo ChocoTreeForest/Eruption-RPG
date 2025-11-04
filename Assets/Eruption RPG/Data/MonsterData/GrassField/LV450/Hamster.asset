@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hamster
   m_EditorClassIdentifier: 
   monsterName: Hamster
-  health: 17000
-  attack: 560
+  health: 13000
+  attack: 410
   defence: 125
   nextMapName: 

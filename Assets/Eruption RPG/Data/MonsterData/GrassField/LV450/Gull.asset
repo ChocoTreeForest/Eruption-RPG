@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gull
   m_EditorClassIdentifier: 
   monsterName: Gull
-  health: 17500
-  attack: 560
+  health: 13500
+  attack: 410
   defence: 120
   nextMapName: 

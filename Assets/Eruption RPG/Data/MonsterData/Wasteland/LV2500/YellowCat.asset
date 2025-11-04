@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: YellowCat
   m_EditorClassIdentifier: 
   monsterName: YellowCat
-  health: 130000
-  attack: 5900
+  health: 120000
+  attack: 5400
   defence: 2800
   nextMapName: 

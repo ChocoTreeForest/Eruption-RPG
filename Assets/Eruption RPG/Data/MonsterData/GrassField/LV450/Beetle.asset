@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beetle
   m_EditorClassIdentifier: 
   monsterName: Beetle
-  health: 14000
-  attack: 660
+  health: 11000
+  attack: 500
   defence: 200
   nextMapName: 

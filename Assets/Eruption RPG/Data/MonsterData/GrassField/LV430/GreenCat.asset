@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreenCat
   m_EditorClassIdentifier: 
   monsterName: GreenCat
-  health: 16000
-  attack: 550
+  health: 12000
+  attack: 400
   defence: 150
   nextMapName: 

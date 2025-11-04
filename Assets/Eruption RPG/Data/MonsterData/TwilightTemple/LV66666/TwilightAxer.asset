@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TwilightAxer
   m_EditorClassIdentifier: 
   monsterName: TwilightAxer
-  health: 9920000
-  attack: 252000
+  health: 13920000
+  attack: 302000
   defence: 150000
   nextMapName: 

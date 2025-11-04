@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gilter
   m_EditorClassIdentifier: 
   monsterName: Gilter
-  health: 320000
-  attack: 7700
+  health: 290000
+  attack: 7300
   defence: 4700
   nextMapName: 

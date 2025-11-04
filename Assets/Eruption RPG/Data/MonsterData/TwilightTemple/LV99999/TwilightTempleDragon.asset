@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TwilightTempleDragon
   m_EditorClassIdentifier: 
   monsterName: TwilightTempleDragon
-  health: 25500000
-  attack: 536000
+  health: 35500000
+  attack: 636000
   defence: 300000
   nextMapName: 

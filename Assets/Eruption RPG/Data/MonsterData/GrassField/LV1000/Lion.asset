@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lion
   m_EditorClassIdentifier: 
   monsterName: Lion
-  health: 65000
-  attack: 1500
+  health: 60000
+  attack: 1200
   defence: 750
   nextMapName: 

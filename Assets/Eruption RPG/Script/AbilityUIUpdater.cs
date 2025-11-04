@@ -34,17 +34,45 @@ public class AbilityUIUpdater : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void Start()
+    void OnEnable()
     {
+        StartCoroutine(Initialize());
+    }
+
+    IEnumerator Initialize()
+    {
+        yield return new WaitUntil(() =>
+            AbilityManager.Instance != null &&
+            PlayerStatus.Instance != null &&
+            DataManager.Instance != null
+        );
+
+        // 리스너 중복 방지
+        hpUpButton.onClick.RemoveAllListeners();
+        atkUpButton.onClick.RemoveAllListeners();
+        defUpButton.onClick.RemoveAllListeners();
+        lukUpButton.onClick.RemoveAllListeners();
+        critDmgUpButton.onClick.RemoveAllListeners();
+        resetButton.onClick.RemoveAllListeners();
+
         hpUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickHPUPButton());
         atkUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickATKUPButton());
         defUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickDEFUPButton());
         lukUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickLUKUPButton());
         critDmgUpButton.onClick.AddListener(() => AbilityManager.Instance.OnClickCRITDMGUPButton());
         resetButton.onClick.AddListener(() => AbilityManager.Instance.OnClickResetButton());
+
+        UpdateUI();
     }
 
     public void UpdateUI()
@@ -52,7 +80,6 @@ public class AbilityUIUpdater : MonoBehaviour
         abilityLevelText.text = PlayerStatus.Instance.abilityLevel.ToString();
         pointsText.text = PlayerStatus.Instance.points.ToString();
         freeEXPText.text = $"Free EXP: {PlayerStatus.Instance.freeEXP}/{freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel]}";
-        Debug.Log($"자유 경험치: {PlayerStatus.Instance.freeEXP}");
         freeEXPBar.value = (float)PlayerStatus.Instance.freeEXP / freeEXPTable.requiredFreeEXP[PlayerStatus.Instance.abilityLevel];
 
         hpValue.text = $"HP + {AbilityManager.Instance.hpMultiplier}%";

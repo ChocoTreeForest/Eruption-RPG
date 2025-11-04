@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GhostWood
   m_EditorClassIdentifier: 
   monsterName: GhostWood
-  health: 61000
-  attack: 1200
+  health: 56000
+  attack: 950
   defence: 700
   nextMapName: 

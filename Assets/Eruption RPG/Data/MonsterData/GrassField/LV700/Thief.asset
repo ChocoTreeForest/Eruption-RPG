@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Thief
   m_EditorClassIdentifier: 
   monsterName: Thief
-  health: 28000
-  attack: 1300
+  health: 24000
+  attack: 1100
   defence: 500
   nextMapName: 

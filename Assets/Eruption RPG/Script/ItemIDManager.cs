@@ -37,7 +37,6 @@ public class ItemIDManager : MonoBehaviour
             return item;
         }
 
-        Debug.LogWarning($"Item with ID {id} not found.");
         return null;
     }
 }

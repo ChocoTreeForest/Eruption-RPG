@@ -61,40 +61,36 @@ public class EquipmentManager : MonoBehaviour
 
     void Start()
     {
-        InitializeEquipment();
-
         foreach (var button in presetButtons)
         {
             button.interactable = button != presetButtons[currentPresetIndex];
         }
     }
 
-    void InitializeEquipment()
+    public void InitializeEquipment()
     {
         if (weaponSlot == null || armorSlot == null)
         {
             weaponSlot = defaultWeapon;
             armorSlot = defaultArmor;
             accessorySlots = new ItemData[maxAccessorySlots]; // 악세서리 슬롯 초기화
-
-            Debug.Log($"기본 무기 장착: {weaponSlot.itemName}");
-            Debug.Log($"기본 방어구 장착: {armorSlot.itemName}");
         }
 
-        if (!ownedItemCounts.ContainsKey(defaultWeapon))
+        if (GetItemCount(defaultWeapon) == 0)
         {
-            ownedItemCounts[defaultWeapon] = 1;
+            AddItem(defaultWeapon);
+            DataManager.Instance.SavePermanentData();
         }
 
-        if (!ownedItemCounts.ContainsKey(defaultArmor))
+        if (GetItemCount(defaultArmor) == 0)
         {
-            ownedItemCounts[defaultArmor] = 1;
+            AddItem(defaultArmor);
+            DataManager.Instance.SavePermanentData();
         }
 
         StatsUpdater.Instance.UpdateStats();
 
         UpdateEquipmentUI();
-        Debug.Log($"플레이어 공격력: {playerStatus.GetCurrentAttack()}");
     }
 
     public bool EquipItem(ItemData newItem, int slotIndex = -1)
@@ -102,10 +98,6 @@ public class EquipmentManager : MonoBehaviour
         switch (newItem.itemType)
         {
             case ItemType.Weapon:
-                if (weaponSlot != null) // UI 만들면 지우기
-                {
-                    Debug.Log($"[{weaponSlot.itemName}] -> [{newItem.itemName}] 교체");
-                }
                 weaponSlot = newItem;
 
                 StatsUpdater.Instance.UpdateStats();
@@ -119,10 +111,6 @@ public class EquipmentManager : MonoBehaviour
                 return true;
 
             case ItemType.Armor:
-                if (armorSlot != null)
-                {
-                    Debug.Log($"[{armorSlot.itemName}] -> [{newItem.itemName}] 교체");
-                }
                 armorSlot = newItem;
 
                 StatsUpdater.Instance.UpdateStats();
@@ -143,14 +131,9 @@ public class EquipmentManager : MonoBehaviour
 
                     if (sameItemCount >= 3)
                     {
-                        Debug.LogWarning($"[{newItem.itemName}]은(는) 최대 3개까지만 장착할 수 있습니다.");
                         return false;
                     }
 
-                    if (accessorySlots[slotIndex] != null)
-                    {
-                        Debug.Log($"슬롯 {slotIndex}의 [{accessorySlots[slotIndex].itemName}] -> [{newItem.itemName}] 교체");
-                    }
                     accessorySlots[slotIndex] = newItem;
 
                     StatsUpdater.Instance.UpdateStats();
@@ -166,7 +149,6 @@ public class EquipmentManager : MonoBehaviour
                         DataManager.Instance.SavePermanentData();
                     }
 
-                    Debug.Log($"악세서리 장착: {newItem.itemName} (슬롯 {slotIndex})");
                     return true;
                 }
                 else
@@ -217,18 +199,6 @@ public class EquipmentManager : MonoBehaviour
             {
                 accessoryIcons[i].enabled = false;
             }
-        }
-    }
-
-    // 현재 장착중인 아이템 출력(UI 만들면 지우기)
-    public void CurrentEquipment()
-    {
-        Debug.Log($"무기: {weaponSlot?.itemName ?? "없음"}");
-        Debug.Log($"방어구: {armorSlot?.itemName ?? "없음"}");
-
-        for (int i = 0; i < maxAccessorySlots; i++)
-        {
-            Debug.Log($"악세서리 슬롯 {i}: {accessorySlots[i]?.itemName ?? "비어있음"}");
         }
     }
 

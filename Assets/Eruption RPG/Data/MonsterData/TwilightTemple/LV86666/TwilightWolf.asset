@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TwilightWolf
   m_EditorClassIdentifier: 
   monsterName: TwilightWolf
-  health: 20500000
-  attack: 365000
+  health: 29500000
+  attack: 465000
   defence: 210000
   nextMapName: 

@@ -30,10 +30,6 @@ public class Item : MonoBehaviour
         {
             InitializeItemStat();
         }
-        else
-        {
-            Debug.LogWarning("ItemData가 연결되지 않았습니다!");
-        }
     }
 
     void InitializeItemStat()

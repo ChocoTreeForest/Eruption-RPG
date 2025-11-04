@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TeddyBear
   m_EditorClassIdentifier: 
   monsterName: TeddyBear
-  health: 8000
-  attack: 340
+  health: 6000
+  attack: 240
   defence: 70
   nextMapName: 

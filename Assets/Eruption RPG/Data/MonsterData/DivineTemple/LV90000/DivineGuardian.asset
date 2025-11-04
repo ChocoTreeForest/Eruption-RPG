@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DivineGuardian
   m_EditorClassIdentifier: 
   monsterName: DivineGuardian
-  health: 22000000
-  attack: 400000
+  health: 32000000
+  attack: 500000
   defence: 250000
   nextMapName: 

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Axer
   health: 1000000
-  attack: 30000
+  attack: 23000
   defence: 15000
   nextMapName: 

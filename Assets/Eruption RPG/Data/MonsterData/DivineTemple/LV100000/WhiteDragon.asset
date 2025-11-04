@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WhiteDragon
   m_EditorClassIdentifier: 
   monsterName: WhiteDragon
-  health: 27000000
-  attack: 530000
+  health: 37000000
+  attack: 630000
   defence: 300000
   nextMapName: 

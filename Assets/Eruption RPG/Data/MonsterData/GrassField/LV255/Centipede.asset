@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Centipede
   m_EditorClassIdentifier: 
   monsterName: Centipede
-  health: 9200
-  attack: 350
+  health: 7200
+  attack: 250
   defence: 50
   nextMapName: 

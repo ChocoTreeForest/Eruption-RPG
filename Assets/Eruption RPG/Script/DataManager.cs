@@ -72,7 +72,6 @@ public class DataManager : MonoBehaviour
         {
             PlayerStatus.Instance.LoadFromSessionData(data);
             PlayerStatus.Instance.transform.position = data.playerPosition;
-            Debug.Log("로드 실행됨, 레벨:" + data.level);
         }
 
         yield return null;

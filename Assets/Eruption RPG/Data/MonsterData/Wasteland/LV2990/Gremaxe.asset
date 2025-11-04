@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gremaxe
   m_EditorClassIdentifier: 
   monsterName: Gremaxe
-  health: 150000
-  attack: 6200
+  health: 135000
+  attack: 5700
   defence: 2990
   nextMapName: 

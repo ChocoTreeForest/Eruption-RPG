@@ -28,7 +28,10 @@ public class BonusManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    void Start()
+    {
         InitializeBonus();
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BrownStone
   m_EditorClassIdentifier: 
   monsterName: BrownStone
-  health: 250000
-  attack: 6000
+  health: 230000
+  attack: 5500
   defence: 3600
   nextMapName: 

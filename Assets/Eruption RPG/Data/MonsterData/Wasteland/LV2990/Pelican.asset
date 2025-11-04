@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pelican
   m_EditorClassIdentifier: 
   monsterName: Pelican
-  health: 180000
-  attack: 5600
+  health: 160000
+  attack: 5000
   defence: 2990
   nextMapName: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ninja
   m_EditorClassIdentifier: 
   monsterName: Ninja
-  health: 240000
-  attack: 5800
+  health: 220000
+  attack: 5500
   defence: 3400
   nextMapName: 

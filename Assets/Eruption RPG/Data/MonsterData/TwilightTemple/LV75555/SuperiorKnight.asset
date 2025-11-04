@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SuperiorKnight
   m_EditorClassIdentifier: 
   monsterName: SuperiorKnight
-  health: 15990000
-  attack: 276680
+  health: 20990000
+  attack: 346680
   defence: 170000
   nextMapName: 

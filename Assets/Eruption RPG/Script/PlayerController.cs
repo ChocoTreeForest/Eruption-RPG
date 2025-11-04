@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!CanMove())
         {
+            inputVec = Vector2.zero;
             return;
         }
 
@@ -62,10 +63,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!CanMove())
         {
+            inputVec = Vector2.zero;
             return;
         }
 
-        Vector2 nextVec = inputVec * speed * Time.fixedDeltaTime;
+        Vector2 nextVec = inputVec * PlayerStatus.Instance.GetCurrentSpeed() * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
     }
 

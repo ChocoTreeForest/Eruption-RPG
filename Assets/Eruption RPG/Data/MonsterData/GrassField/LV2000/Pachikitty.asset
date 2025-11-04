@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pachikitty
   m_EditorClassIdentifier: 
   monsterName: Pachikitty
-  health: 155000
-  attack: 7500
+  health: 125000
+  attack: 5500
   defence: 4000
   nextMapName: Wasteland

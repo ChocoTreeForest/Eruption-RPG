@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreenDragon
   m_EditorClassIdentifier: 
   monsterName: GreenDragon
-  health: 16500000
-  attack: 348000
+  health: 25500000
+  attack: 408000
   defence: 240000
   nextMapName: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShadeDragon
   m_EditorClassIdentifier: 
   monsterName: ShadeDragon
-  health: 15330000
-  attack: 281290
+  health: 18330000
+  attack: 341290
   defence: 170000
   nextMapName: 

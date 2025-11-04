@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StoneGoblin
   m_EditorClassIdentifier: 
   monsterName: StoneGoblin
-  health: 200000
-  attack: 4700
+  health: 180000
+  attack: 4300
   defence: 2950
   nextMapName: 

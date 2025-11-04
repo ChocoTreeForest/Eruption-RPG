@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tiger
   m_EditorClassIdentifier: 
   monsterName: Tiger
-  health: 300000
+  health: 280000
   attack: 8000
   defence: 4700
   nextMapName: 
