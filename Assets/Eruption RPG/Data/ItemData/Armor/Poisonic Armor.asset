@@ -26,7 +26,7 @@ MonoBehaviour:
   bonusCriticalChance: 0
   healthMultiplier: 0
   attackMultiplier: 0
-  defenceMultiplier: 150
+  defenceMultiplier: 200
   luckMultiplier: 0
   bonusCriticalMultiplier: 0
   speedMultiplier: 0
@@ -34,5 +34,6 @@ MonoBehaviour:
   bonusEXPMultiplier: 0
   specialItem: 0
   criticalRing: 0
+  charm: 0
   specialEffectType: 0
   effectValue: 0

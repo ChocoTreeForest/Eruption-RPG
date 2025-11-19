@@ -21,12 +21,12 @@ MonoBehaviour:
   icon: {fileID: -42593829, guid: e98a12f58f8a02648b272e5fe078a893, type: 3}
   bonusHealth: 0
   bonusAttack: 0
-  bonusDefence: 1200
+  bonusDefence: 3000
   bonusLuck: 0
   bonusCriticalChance: 0
   healthMultiplier: 0
   attackMultiplier: 0
-  defenceMultiplier: 60
+  defenceMultiplier: 85
   luckMultiplier: 0
   bonusCriticalMultiplier: 0
   speedMultiplier: 0

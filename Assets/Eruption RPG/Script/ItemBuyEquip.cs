@@ -149,9 +149,8 @@ public class ItemBuyEquip : MonoBehaviour
         int currentPrice = EquipmentManager.Instance.GetCurrentPrice(itemData);
 
         PlayerStatus.Instance.UseMoney(currentPrice);
-        GameOverUIManager.Instance.UpdateUI();
-
         EquipmentManager.Instance.AddItem(itemData);
+        GameOverUIManager.Instance.UpdateUI();
         StatsUpdater.Instance.UpdateStats();
         EquipmentManager.Instance.UpdateEquipmentUI();
         UpdateUI();
@@ -159,7 +158,13 @@ public class ItemBuyEquip : MonoBehaviour
         EquipButtonControl();
         UpdateBuyEquipPanel();
 
-        DataManager.Instance.SavePermanentData();
+        // 자유 경험치 무한 획득 버그 방지로 게임 오버 시에는 저장 X
+        if (!PlayerStatus.Instance.gameOver)
+        {
+            DataManager.Instance.SaveSessionData();
+            DataManager.Instance.SavePermanentData();
+        }
+
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
     }
 

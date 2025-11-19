@@ -275,15 +275,15 @@ public class MenuUIManager : MonoBehaviour
 
     public void ApplyTitle()
     {
-        if (!GameCore.Instance.isInInfinityMode)
-        {
-            // 일반 모드 데이터 저장
-            DataManager.Instance.SaveSessionData();
-        }
-        else
+        if (GameCore.Instance.isInInfinityMode)
         {
             // 무한 모드 데이터 저장
             DataManager.Instance.SaveInfinityModeData();
+        }
+        else
+        {
+            // 일반 모드 데이터 저장
+            DataManager.Instance.SaveSessionData();
         }
 
         DataManager.Instance.SavePermanentData();
