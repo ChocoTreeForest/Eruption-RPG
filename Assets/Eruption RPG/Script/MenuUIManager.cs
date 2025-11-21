@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager.UI;
 #endif
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuUIManager : MonoBehaviour
 {
     public static MenuUIManager Instance;
+    public AdsManager adsManager;
 
     public GameObject menuPanel;
     public GameObject statusPanel;
@@ -295,10 +297,19 @@ public class MenuUIManager : MonoBehaviour
 
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
 
-        StartCoroutine(ReturnToTitle());
+        // 광고 보여주기
+        if (adsManager.interstitialAd != null && adsManager.interstitialAd.CanShowAd())
+        {
+            adsManager.ShowInterstitialAd();
+        }
+        else
+        {
+            // 광고 없으면 그냥 씬 이동
+            StartCoroutine(ReturnToTitle());
+        }
     }
 
-    IEnumerator ReturnToTitle()
+    public IEnumerator ReturnToTitle()
     {
         yield return StartCoroutine(FadeOut());
         UnityEngine.SceneManagement.SceneManager.LoadScene("Title");

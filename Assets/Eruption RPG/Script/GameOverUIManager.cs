@@ -7,6 +7,7 @@ public class GameOverUIManager : MonoBehaviour
 {
     public static GameOverUIManager Instance;
     public FreeEXPTable freeEXPTable;
+    public AdsManager adsManager;
 
     public GameObject gameOverPanel;
     public GameObject recordPanel;
@@ -196,10 +197,20 @@ public class GameOverUIManager : MonoBehaviour
     public void OnClickTitleButton()
     {
         AudioManager.Instance.PlaySFX(AudioManager.SFX.Click);
-        StartCoroutine(ReturnToTitle());
+
+        // 광고 보여주기
+        if (adsManager.interstitialAd != null && adsManager.interstitialAd.CanShowAd())
+        {
+            adsManager.ShowInterstitialAd();
+        }
+        else
+        {
+            // 광고 없으면 그냥 씬 이동
+            StartCoroutine(ReturnToTitle());
+        }
     }
 
-    IEnumerator ReturnToTitle()
+    public IEnumerator ReturnToTitle()
     {
         yield return StartCoroutine(MenuUIManager.Instance.FadeOut());
 
