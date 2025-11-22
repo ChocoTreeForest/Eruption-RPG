@@ -54,19 +54,17 @@ public class AdsManager : MonoBehaviour
         if (interstitialAd != null && interstitialAd.CanShowAd())
         {
             interstitialAd.Show();
+            return;
         }
-        else
-        {
-            print("Intersititial ad not ready!!");
-        }
+
+        // 광고가 없으면 로드하고 다음부터 표시
+        LoadInterstitialAd();
     }
 
     public void InterstitialEvent(InterstitialAd ad)
     {
         ad.OnAdFullScreenContentOpened += () =>
         {
-            Debug.Log("Interstitial ad full screen content opened.");
-
             // 광고 뜨면 BGM 즉시 끄기
             foreach (var player in AudioManager.Instance.bgmPlayers)
             {
@@ -78,8 +76,6 @@ public class AdsManager : MonoBehaviour
         // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
-            Debug.Log("Interstitial ad full screen content closed.");
-
             // 광고 닫히면 BGM 다시 키우기
             foreach (var player in AudioManager.Instance.bgmPlayers)
             {
@@ -103,7 +99,6 @@ public class AdsManager : MonoBehaviour
             {
                 if (error != null || newAd == null)
                 {
-                    Debug.Log("Failed to reload interstitial ad: " + error);
                     return;
                 }
 
@@ -115,16 +110,12 @@ public class AdsManager : MonoBehaviour
         // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
-            Debug.LogError("Interstitial ad failed to open full screen content " +
-                           "with error : " + error);
-
             // 광고 새로 로드
             var adRequest = new AdRequest();
             InterstitialAd.Load(interId, adRequest, (InterstitialAd newAd, LoadAdError error) =>
             {
                 if (error != null || newAd == null)
                 {
-                    Debug.Log("Failed to reload interstitial ad: " + error);
                     return;
                 }
 

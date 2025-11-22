@@ -312,7 +312,7 @@ public class MenuUIManager : MonoBehaviour
     public IEnumerator ReturnToTitle()
     {
         yield return StartCoroutine(FadeOut());
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+        SceneManager.LoadScene("Title");
     }
 
     public void OpenEndAlertPanel()
