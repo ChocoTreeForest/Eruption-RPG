@@ -36,11 +36,8 @@ public class AdsManager : MonoBehaviour
         {
             if (error != null || ad == null)
             {
-                print("Interstitial ad failed to load" + error);
                 return;
             }
-
-            print("Interstitial ad loaded !!" + ad.GetResponseInfo());
 
             interstitialAd = ad;
             InterstitialEvent(interstitialAd);
@@ -56,9 +53,6 @@ public class AdsManager : MonoBehaviour
             interstitialAd.Show();
             return;
         }
-
-        // 광고가 없으면 로드하고 다음부터 표시
-        LoadInterstitialAd();
     }
 
     public void InterstitialEvent(InterstitialAd ad)
@@ -73,7 +67,6 @@ public class AdsManager : MonoBehaviour
             }
         };
 
-        // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
             // 광고 닫히면 BGM 다시 키우기
@@ -107,7 +100,6 @@ public class AdsManager : MonoBehaviour
             });
         };
 
-        // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             // 광고 새로 로드

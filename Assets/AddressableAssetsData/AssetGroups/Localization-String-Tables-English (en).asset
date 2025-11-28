@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 956470ca4200a324b9fa50d4e0dab465
   m_SerializeEntries:
+  - m_GUID: 64ef179703bcff24e973ac5c0b46473e
+    m_Address: AppInfo_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 90ebccb8a558aa74fabafa7ad169e88d
     m_Address: BattleLog_en
     m_ReadOnly: 1

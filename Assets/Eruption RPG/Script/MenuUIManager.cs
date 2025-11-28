@@ -304,8 +304,9 @@ public class MenuUIManager : MonoBehaviour
         }
         else
         {
-            // 광고 없으면 그냥 씬 이동
+            // 광고 없으면 그냥 씬 이동 후 광고 로드
             StartCoroutine(ReturnToTitle());
+            adsManager.LoadInterstitialAd();
         }
     }
 
