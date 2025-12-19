@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using static AudioManager; // ¿Ã∞« ππæﬂ
 
 public class BattleManager : MonoBehaviour
 {

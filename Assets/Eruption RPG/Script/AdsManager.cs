@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class AdsManager : MonoBehaviour
 {
-    string interId = "ca-app-pub-3940256099942544/1033173712"; // Å×½ºÆ® ±¤°í id
+    string interId = "ca-app-pub-3940256099942544/1033173712"; // Å×½ºÆ® ±¤°í id ca-app-pub-3940256099942544/1033173712
     public InterstitialAd interstitialAd;
 
     public void Start()
